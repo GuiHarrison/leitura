@@ -1,6 +1,6 @@
 // Set theme dir
 const themeDir = './';
-const proxyUrl = 'https://airdev.test';
+const proxyUrl = 'http://leitura.local';
 
 module.exports = {
   cssnano: {
@@ -36,14 +36,14 @@ module.exports = {
       logLevel: 'debug',
       injectChanges: true,
       proxy: proxyUrl,
-      browser: 'Google Chrome',
+      browser: 'Vivaldi',
       open: false,
       notify: true,
       // Generate with: mkdir -p ../../../certs && cd ../../../certs && mkcert localhost 192.168.x.xxx ::1
-      https: {
-        key: "../../../certs/localhost-key.pem",
-        cert: "../../../certs/localhost.pem",
-      }
+      // https: {
+      //   key: "../../../certs/localhost-key.pem",
+      //   cert: "../../../certs/localhost.pem",
+      // }
     },
   },
   styles: {
@@ -100,12 +100,12 @@ module.exports = {
       themeDir + 'template-parts/**/*.php'
     ]
   },
-  phpcs: {
-    src: [themeDir + '**/*.php', '!' + themeDir + 'node_modules/**/*', '!' + themeDir + 'vendor/**/*'],
-    opts: {
-      bin: '/usr/local/bin/phpcs',
-      standard: themeDir + 'phpcs.xml',
-      warningSeverity: 0
-    }
-  }
+  // phpcs: {
+  //   src: [themeDir + '**/*.php', '!' + themeDir + 'node_modules/**/*', '!' + themeDir + 'vendor/**/*'],
+  //   opts: {
+  //     bin: themeDir + 'vendor/bin/phpcs',
+  //     standard: themeDir + 'phpcs.xml',
+  //     warningSeverity: 0
+  //   }
+  // }
 };
