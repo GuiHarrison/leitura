@@ -106,8 +106,8 @@ add_action( 'after_setup_theme', function() {
     // Register custom ACF Blocks
     'acf_blocks' => [
       [
-        'name'           => 'block-file-slug',
-        'title'          => 'Block Visible Name',
+        'name'           => 'hero',
+        'title'          => 'Hero',
         // You can safely remove lines below if you find no use for them
         // 'prevent_cache'  => false, // Defaults to false,
         // Icon defaults to svg file inside svg/block-icons named after the block name,
@@ -141,7 +141,7 @@ add_action( 'after_setup_theme', function() {
     // Accepts both string (all*/none-options only) and array (options + specific blocks)
     'allowed_blocks' => [
       'post' => 'all-core-blocks',
-      'page' => [],
+      'page' => 'all-acf-blocks',
       // 'page' => [
       //   'all-acf-blocks',
       //   'core/paragraph',

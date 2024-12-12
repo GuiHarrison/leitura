@@ -5,42 +5,42 @@
 // global.scss to see them on front end side.
 
 // Helpers
-@import 'helpers/animations';
-@import 'helpers/aspect-ratio';
-@import 'helpers/box-model';
-@import 'helpers/clamp';
-@import 'helpers/images';
-@import 'helpers/font';
-@import 'helpers/variablefont';
+@use 'helpers/animations';
+@use 'helpers/aspect-ratio';
+@use 'helpers/box-model';
+@use 'helpers/clamp';
+@use 'helpers/images';
+@use 'helpers/font';
+@use 'helpers/variablefont';
 
 // Variables
-@import 'variables/colors';
-@import 'variables/breakpoints';
-@import 'variables/typography';
-@import 'variables/forms';
-@import 'variables/spacings';
+@use 'variables/colors';
+@use 'variables/breakpoints';
+@use 'variables/typography';
+@use 'variables/forms';
+@use 'variables/spacings';
 
 // Accessibility
-@import 'base/accessibility';
+@use 'base/accessibility';
 
 // Gutenberg editor specific webfonts
-@import 'gutenberg/variables/typography';
+@use 'gutenberg/variables/typography' as typography2;
 
 // Components needed by gutenberg
-@import 'components/components';
+@use 'components/index';
 
 // Gutenberg layout outside blocks
-@import 'gutenberg/layout/content';
-@import 'gutenberg/layout/button';
+@use 'gutenberg/layout/content';
+@use 'gutenberg/layout/button';
 
 // Gutenberg blocks
-@import 'gutenberg/blocks';
+@use 'gutenberg/blocks';
 
 // Apply general styles from site front-end
-@import 'layout/general';
+@use 'layout/general';
 
 // Gutenberg formatting
-@import 'gutenberg/formatting';
+@use 'gutenberg/formatting';
 
 // Editor
-@import 'gutenberg/editor';
+@use 'gutenberg/editor';

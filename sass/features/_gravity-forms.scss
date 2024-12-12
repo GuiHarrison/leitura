@@ -1,3 +1,5 @@
+@use "base/accessibility";
+
 // Gravity forms styles >= 2.5
 // Please disable CSS in /admin.php?page=gf_settings
 
@@ -46,7 +48,7 @@ body *[aria-invalid="true"] {
 // Form screen reader texts
 .gform_required_legend,
 .sr-only {
-  @include screen-reader-text();
+  @include accessibility.screen-reader-text();
 }
 
 // Default required label

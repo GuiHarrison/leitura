@@ -1,8 +1,5 @@
 // Dependencies
-const {
-  dest,
-  src
-} = require('gulp');
+const { dest, src } = require('gulp');
 const bs = require('browser-sync').create();
 const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass')( require('sass') );
@@ -22,9 +19,8 @@ const config = require('../config.js');
 
 function devstyles() {
   return src(config.styles.src)
-    .pipe(bs.stream())
     .pipe(sourcemaps.init())
-    .pipe(sass.sync(config.styles.opts.development))
+    .pipe(sass.sync(config.styles.opts.development).on('error', sass.logError))
     .pipe(postcss([
       autoprefixer(),
       colormin(),
@@ -38,8 +34,9 @@ function devstyles() {
       zIndex(),
       uniqueSelectors()
     ]))
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('.'))
     .pipe(dest(config.styles.development))
+    .pipe(bs.stream());
 }
 
 exports.devstyles = devstyles;

@@ -1,3 +1,8 @@
+@use "components/button";
+@use "components/button-size-large";
+@use "components/button-size-small";
+@use "components/button-style-ghost";
+
 .site-main,
 .site-footer {
 
@@ -11,20 +16,20 @@
   input[type="reset"],
   input[type="submit"],
   input[type="button"] {
-    @include button();
+    @include button.button();
 
     // Button sizes
     &.button-small {
-      @include button-size-small();
+      @include button-size-small.button-size-small();
     }
 
     &.button-large {
-      @include button-size-large();
+      @include button-size-large.button-size-large();
     }
 
     // Button styles
     &.button-ghost {
-      @include button-style-ghost();
+      @include button-style-ghost.button-style-ghost();
     }
   }
 }

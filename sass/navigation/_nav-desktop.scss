@@ -1,3 +1,5 @@
+@use "variables/breakpoints";
+
 // stylelint-disable a11y/no-display-none, plugin/file-max-lines
 // Navigation for large screens
 // CSS variables
@@ -36,7 +38,7 @@
   list-style: none;
 }
 
-@media only screen and (min-width: $width-max-mobile) {
+@media only screen and (min-width: breakpoints.$width-max-mobile) {
   // Need to use display: none here to make sure mobile nav-toggle is visually hidden on desktop
   .nav-toggle {
     display: none;
@@ -329,7 +331,7 @@
     transform: translateY(0%) rotate(90deg);
   }
 
-  @media only screen and (max-width: $width-max-mobile) {
+  @media only screen and (max-width: breakpoints.$width-max-mobile) {
     ul li:focus > ul,
     ul li:hover > ul {
       display: block;

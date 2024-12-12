@@ -1,3 +1,5 @@
+@use "variables/breakpoints";
+
 // WordPress built-in comments with comment_form().
 // Custom comment template can be found in inc/comments.php
 .comments-area {
@@ -104,7 +106,7 @@
 
 // Comment form grid
 .comment-form {
-  @media (min-width: $container-mobile) {
+  @media (min-width: breakpoints.$container-mobile) {
     display: grid;
     grid-gap: 1em;
     // doiuse-disable
@@ -127,7 +129,7 @@
   overflow: visible;
 
   input {
-    @media (max-width: $container-mobile) {
+    @media (max-width: breakpoints.$container-mobile) {
       width: 100%;
     }
   }

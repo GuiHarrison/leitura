@@ -1,3 +1,6 @@
+@use "sass:meta";
+@use "variables/breakpoints";
+
 // stylelint-disable selector-not-notation, selector-max-pseudo-class, selector-max-specificity, plugin/file-max-lines
 :root {
   // Set root size for rems so that 1rem = 10px
@@ -51,10 +54,10 @@
 // stylelint-disable-next-line
 .editor-styles-wrapper {
   // Import typography related styles inside blocks
-  @import 'layout/typography';
+  @include meta.load-css('layout/typography');
 
   // Import gravity forms inside Gutenberg editor
-  @import 'features/gravity-forms';
+  @include meta.load-css('features/gravity-forms');
 
   // Fix acf icons visibility issue
   .acf-icon {
@@ -73,14 +76,14 @@
 
   // Make buttons and input fields work in ACF previews
   .acf-block-preview .block {
-    @import 'layout/forms';
+    @include meta.load-css('layout/forms');
   }
 
   // Fix padding for certain native blocks in article view
   .wp-block-text-columns,
   .wp-block-gallery,
   .wp-block.editor-post-title {
-    @media (max-width: $width-max-article + 40px) {
+    @media (max-width: breakpoints.$width-max-article + 40px) {
       padding-left: var(--spacing-container-padding-inline);
       padding-right: var(--spacing-container-padding-inline);
       width: 100%;
@@ -145,7 +148,7 @@
 
   // Full width block
   &[data-align="full"] {
-    max-width: $width-full;
+    max-width: breakpoints.$width-full;
     padding-left: 0;
     padding-right: 0;
     width: 100%;
@@ -153,7 +156,7 @@
 
   // Wide width block
   &[data-align="wide"] {
-    max-width: $width-wide;
+    max-width: breakpoints.$width-wide;
     width: 100%;
 
     @media (min-width: 870px) {
@@ -192,7 +195,7 @@
 .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper .editor-post-title {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  max-width: $width-max-article;
+  max-width: breakpoints.$width-max-article;
   // stylelint-disable-next-line value-keyword-case
   text-rendering: geometricPrecision;
 }
@@ -208,7 +211,7 @@
   // Font smoothing
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  max-width: $width-max-article;
+  max-width: breakpoints.$width-max-article;
 
   // stylelint-disable-next-line value-keyword-case
   text-rendering: geometricPrecision;

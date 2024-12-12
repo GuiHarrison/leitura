@@ -1,3 +1,5 @@
+@use "helpers/animations";
+
 // Alternative style: https://i.imgur.com/A8gUyu2.png
 // stylelint-disable a11y/font-size-is-readable
 .navigation:not(.post-navigation) .nav-links {
@@ -37,7 +39,7 @@
   justify-content: center;
   margin-left: 0;
   margin-right: 0;
-  transition: all $transition-duration;
+  transition: all animations.$transition-duration;
   width: 2.1875rem;
 
   &:last-child {

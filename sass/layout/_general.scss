@@ -1,3 +1,6 @@
+@use "helpers/animations";
+@use "variables/breakpoints";
+
 // This file is meant for general styles and containers
 // that apply everywhere throughout the website. Add more
 // always repeating elements right below.
@@ -21,7 +24,7 @@ body:not(.wp-admin) {
 .block {
   background-color: var(--color-white);
   margin: 0 auto;
-  max-width: $width-max-layout;
+  max-width: breakpoints.$width-max-layout;
   position: relative;
 }
 
@@ -59,15 +62,15 @@ body:not(.wp-admin) {
   margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
-  max-width: $width-grid-base;
+  max-width: breakpoints.$width-grid-base;
   padding-bottom: var(--spacing-container-padding-block);
   padding-left: var(--spacing-container-padding-inline);
   padding-right: var(--spacing-container-padding-inline);
   padding-top: var(--spacing-container-padding-block);
 
   // If base grid is larger than Macbook Air screen
-  @if $width-grid-base > 1440 {
-    @media (min-width: $container-ipad-landscape) and (max-width: 140rem + 6.4rem) {
+  @if breakpoints.$width-grid-base > 1440 {
+    @media (min-width: breakpoints.$container-ipad-landscape) and (max-width: 140rem + 6.4rem) {
       padding-left: var(--spacing-container-padding-inline-large);
       padding-right: var(--spacing-container-padding-inline-large);
     }
@@ -88,7 +91,7 @@ body:not(.wp-admin) {
   min-width: 0;
   overflow: hidden;
   text-align: left;
-  transition: all $transition-duration;
+  transition: all animations.$transition-duration;
   width: 100%;
 
   a {
@@ -101,7 +104,7 @@ body:not(.wp-admin) {
     padding: 1.25rem;
     text-align: center;
     text-decoration: none;
-    transition: all $transition-duration;
+    transition: all animations.$transition-duration;
   }
 
   &:focus,
@@ -114,7 +117,7 @@ body:not(.wp-admin) {
 // Hide/show helpers
 // stylelint-disable-next-line a11y/no-display-none
 .hide-on-desktop {
-  @media (min-width: $container-mobile) {
+  @media (min-width: breakpoints.$container-mobile) {
     // Forced to use important here, because makes no sense to write too specific selectors here
     // stylelint-disable-next-line declaration-no-important
     display: none !important;
@@ -124,7 +127,7 @@ body:not(.wp-admin) {
 // Forced to use important here, because makes no sense to write too specific selectors here
 // stylelint-disable-next-line a11y/no-display-none
 .hide-on-mobile {
-  @media (max-width: $container-mobile) {
+  @media (max-width: breakpoints.$container-mobile) {
     // stylelint-disable-next-line declaration-no-important
     display: none !important;
   }
@@ -134,7 +137,7 @@ body:not(.wp-admin) {
 // Forced to use important here, because makes no sense to write too specific selectors here
 // stylelint-disable-next-line a11y/no-display-none
 .hide-on-mobile-nav-view {
-  @media (max-width: $width-max-mobile) {
+  @media (max-width: breakpoints.$width-max-mobile) {
     // stylelint-disable-next-line declaration-no-important
     display: none !important;
   }
@@ -143,7 +146,7 @@ body:not(.wp-admin) {
 // Forced to use important here, because makes no sense to write too specific selectors here
 // stylelint-disable-next-line a11y/no-display-none
 .hide-on-desktop-nav-view {
-  @media (min-width: $width-max-mobile) {
+  @media (min-width: breakpoints.$width-max-mobile) {
     // stylelint-disable-next-line declaration-no-important
     display: none !important;
   }

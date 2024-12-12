@@ -1,7 +1,9 @@
+@use "helpers/variablefont";
+
 // Needed typography exceptions for Gutenberg
 
 // Variable fonts
-@include variablefont('Mona Sans', '../../../../../content/themes/leitura/fonts/monasansvf', 1 999);
+@include variablefont.variablefont('Mona Sans', '../../../../../content/themes/leitura/fonts/monasansvf', 1 999);
 
 // Regular fonts
 // @include font('Inter', '../../../../../content/themes/leitura/fonts/inter-400', 400);

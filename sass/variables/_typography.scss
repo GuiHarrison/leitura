@@ -1,8 +1,11 @@
+@use "helpers/variablefont";
+@use "breakpoints";
+
 // Self-hosted fonts
 // Remember to add these also to gutenberg/variables/_typography.scss with correct paths
 
 // Variable fonts
-@include variablefont('Mona Sans', '../../fonts/monasansvf', 1 999);
+@include variablefont.variablefont('Mona Sans', '../../fonts/monasansvf', 1 999);
 
 // Regular fonts
 // @include font('Inter', '../../fonts/inter-400', 400);
@@ -60,7 +63,7 @@
   --typography-weight-heading: var(--typography-weight-bold);
 
   // Heading font sizes in mobile
-  @media (max-width: $container-mobile) {
+  @media (max-width: breakpoints.$container-mobile) {
     --typography-size-hero: 38px;
     --typography-h1-size: 32px;
     --typography-h2-size: 24px;

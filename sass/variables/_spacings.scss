@@ -1,3 +1,5 @@
+@use "breakpoints";
+
 // CSS Variables for responsive paddings and margins
 :root {
   // Gaps
@@ -16,7 +18,7 @@
   --spacing-paragraphs-margin-block: 1.6875rem;
 
   // Mid-sized screens
-  @media (max-width: $width-grid-base + 150px) {
+  @media (max-width: breakpoints.$width-grid-base + 150px) {
     --spacing-container-padding-inline: 4rem;
   }
 
@@ -26,16 +28,16 @@
   }
 
   // When navigation transforms to a responsive hamburger menu
-  @media (max-width: $width-max-mobile) {
+  @media (max-width: breakpoints.$width-max-mobile) {
     --spacing-site-header-padding-block: 1.25rem;
   }
 
   // iPad
-  @media (max-width: $container-ipad-landscape) {
+  @media (max-width: breakpoints.$container-ipad-landscape) {
     --spacing-grid-gap: 2rem;
   }
 
-  @media (max-width: $container-ipad) {
+  @media (max-width: breakpoints.$container-ipad) {
     --spacing-grid-gap: var(--spacing-container-padding-inline);
     --spacing-container-padding-block: 3.125rem;
   }
@@ -46,7 +48,7 @@
   }
 
   // Vars in mobile
-  @media (max-width: $container-mobile) {
+  @media (max-width: breakpoints.$container-mobile) {
     --spacing-container-padding-block: 2.5rem;
   }
 }

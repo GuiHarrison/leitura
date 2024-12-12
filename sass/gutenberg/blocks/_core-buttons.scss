@@ -1,3 +1,5 @@
+@use '../../components/button' as *;
+
 .wp-block-button__link {
   @include button();
 }

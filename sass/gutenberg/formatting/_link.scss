@@ -1,3 +1,5 @@
+@use '../../components/_link.scss' as *;
+
 // Default links everywhere
 a {
   @include link();

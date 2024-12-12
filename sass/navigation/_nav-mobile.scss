@@ -1,6 +1,8 @@
 // stylelint-disable a11y/no-display-none, plugin/file-max-lines
 // Import nav-toggle
-@import 'nav-toggle';
+@use 'nav-toggle';
+@use "helpers/animations";
+@use "variables/breakpoints";
 
 // CSS variables
 :root {
@@ -33,21 +35,21 @@
 }
 
 // Navigation core functionality
-@media only screen and (max-width: $width-max-mobile) {
+@media only screen and (max-width: breakpoints.$width-max-mobile) {
   // Functionality needs display: none here for visual reasons
   .menu-items ul {
     display: none;
   }
 }
 
-@media only screen and (max-width: $width-max-mobile) {
+@media only screen and (max-width: breakpoints.$width-max-mobile) {
   ul .sub-menu.toggled-on {
     display: block;
   }
 }
 
 // Mobile styles
-@media screen and (max-width: $width-max-mobile - 1px) {
+@media screen and (max-width: breakpoints.$width-max-mobile - 1px) {
   // Let's ensure site-header loads properly and doesn't leave empty spaces
   .site-header {
     background-color: var(--color-background-nav-mobile-header);
@@ -173,7 +175,7 @@
       pointer-events: none;
       position: relative;
       transform: rotate(0);
-      transition: all $transition-duration;
+      transition: all animations.$transition-duration;
       width: var(--dropdown-toggle-size);
       z-index: -1;
 

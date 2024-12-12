@@ -1,3 +1,5 @@
+@use "variables/breakpoints";
+
 // Search
 .block-search,
 .block-search-results {
@@ -20,7 +22,7 @@
   > .container {
     padding-top: 0;
 
-    @media (min-width: $container-ipad-landscape) {
+    @media (min-width: breakpoints.$container-ipad-landscape) {
       // Make a CSS grid for multiple columns if you use other post type results
       display: grid;
     }

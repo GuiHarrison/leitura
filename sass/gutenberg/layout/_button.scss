@@ -1,3 +1,5 @@
+@use '../../components/index' as *;
+
 // Buttons inside Gutenberg
 // We have to override default wp-admin blue buttons
 .wp-block .acf-block-preview {
