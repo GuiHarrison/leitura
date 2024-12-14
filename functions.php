@@ -97,7 +97,7 @@ add_action( 'after_setup_theme', function() {
      * https://github.com/digitoimistodude/leitura#custom-post-types
      */
     'post_types' => [
-      // 'Your_Post_Type',
+      'Tipinho',
     ],
 
     /**
@@ -115,6 +115,11 @@ add_action( 'after_setup_theme', function() {
         //
         // Icon setting defines the dashicon equivalent: https://developer.wordpress.org/resource/dashicons/#block-default
         // 'icon'  => 'block-default',
+      ],
+      [
+        'name'           => 'loja',
+        'title'          => 'Loja',
+        'icon'           => 'dashicons-location-alt',
       ],
     ],
 
@@ -141,7 +146,11 @@ add_action( 'after_setup_theme', function() {
     // Accepts both string (all*/none-options only) and array (options + specific blocks)
     'allowed_blocks' => [
       'post' => 'all-core-blocks',
-      'page' => 'all-acf-blocks',
+      'page' => [
+        'all-acf-blocks',
+        'core/paragraph',
+      ],
+      'all-acf-blocks',
       // 'page' => [
       //   'all-acf-blocks',
       //   'core/paragraph',

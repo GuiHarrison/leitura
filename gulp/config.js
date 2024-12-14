@@ -100,12 +100,12 @@ module.exports = {
       themeDir + 'template-parts/**/*.php'
     ]
   },
-  // phpcs: {
-  //   src: [themeDir + '**/*.php', '!' + themeDir + 'node_modules/**/*', '!' + themeDir + 'vendor/**/*'],
-  //   opts: {
-  //     bin: themeDir + 'vendor/bin/phpcs',
-  //     standard: themeDir + 'phpcs.xml',
-  //     warningSeverity: 0
-  //   }
-  // }
+  phpcs: {
+    src: [themeDir + '**/*.php', '!' + themeDir + 'node_modules/**/*', '!' + themeDir + 'vendor/**/*'],
+    opts: {
+      bin: themeDir + 'vendor/bin/phpcs',
+      standard: themeDir + 'phpcs.xml',
+      warningSeverity: 0
+    }
+  }
 };
