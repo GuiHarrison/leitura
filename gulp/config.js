@@ -101,11 +101,12 @@ module.exports = {
     ]
   },
   phpcs: {
-    src: [themeDir + '**/*.php', '!' + themeDir + 'node_modules/**/*', '!' + themeDir + 'vendor/**/*'],
+    src: [`"${themeDir}**/*.php"`, `!"${themeDir}node_modules/**/*"`, `!"${themeDir}vendor/**/*"`],
     opts: {
-      bin: themeDir + 'vendor/bin/phpcs',
-      standard: themeDir + 'phpcs.xml',
-      warningSeverity: 0
+      bin: 'phpcs', // Usando o caminho global configurado
+      standard: `"${themeDir}phpcs.xml"`,
+      warningSeverity: 0,
+      shell: true
     }
   }
 };

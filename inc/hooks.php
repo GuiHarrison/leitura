@@ -53,6 +53,11 @@ add_filter( 'block_categories_all', __NAMESPACE__ . '\acf_blocks_add_category_in
 add_action( 'acf/init', __NAMESPACE__ . '\acf_blocks_init' );
 
 /**
+ * Chamando API do Google
+ */
+add_action( 'acf/init', __NAMESPACE__ . '\acf_maps_key' );
+
+/**
  * Form related hooks
  */
 require get_theme_file_path( 'inc/hooks/forms.php' );

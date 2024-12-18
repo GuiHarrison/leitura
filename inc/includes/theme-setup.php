@@ -147,3 +147,11 @@ function build_theme_support() {
     ]
   );
 }
+
+/**
+ * Inserindo chamada da API do Google Maps
+ */
+
+ function acf_maps_key() {
+  acf_update_setting('google_api_key', THEME_SETTINGS['google_api_key']);
+}

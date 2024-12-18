@@ -19,6 +19,10 @@ namespace Air_Light;
  */
 define( 'AIR_LIGHT_VERSION', '9.4.7' );
 
+/* Puxando post-type */
+require get_theme_file_path('post-type.php');
+require get_theme_file_path('taxonomy.php');
+
 // We need to have some defaults as comments or empties so let's allow this:
 // phpcs:disable Squiz.Commenting.InlineComment.SpacingBefore, WordPress.Arrays.ArrayDeclarationSpacing.SpaceInEmptyArray
 
@@ -42,6 +46,11 @@ add_action( 'after_setup_theme', function() {
      */
     'default_featured_image'  => null,
     'logo'                    => '/svg/logo.svg',
+
+    /**
+     * API do Google
+     */
+    'google_api_key' => 'AIzaSyCd3YuSfeALAzF5nC9DY5n3wLKGHkeRceg',
 
     /**
      * Custom setting group settings when using Air setting groups plugin.
@@ -88,6 +97,7 @@ add_action( 'after_setup_theme', function() {
      */
     'taxonomies' => [
       // 'Your_Taxonomy' => [ 'post', 'page' ],
+      'Category_Cidade_Estado' => [ 'post', 'page', 'lojas' ],
     ],
 
     /**
@@ -97,7 +107,7 @@ add_action( 'after_setup_theme', function() {
      * https://github.com/digitoimistodude/leitura#custom-post-types
      */
     'post_types' => [
-      'Tipinho',
+      'Lojas',
     ],
 
     /**
@@ -119,7 +129,7 @@ add_action( 'after_setup_theme', function() {
       [
         'name'           => 'loja',
         'title'          => 'Loja',
-        'icon'           => 'dashicons-location-alt',
+        // 'icon'           => 'dashicons-sticky',
       ],
     ],
 
@@ -169,7 +179,7 @@ add_action( 'after_setup_theme', function() {
     'use_classic_editor' => [],
 
     // Add your own settings and use them wherever you need, for example THEME_SETTINGS['my_custom_setting']
-    'my_custom_setting' => true,
+    'geoapify' => '3c001376c0034014bf3ccd6b881d4811',
   ];
 
   $theme_settings = apply_filters( 'air_light_theme_settings', $theme_settings );

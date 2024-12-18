@@ -1,0 +1,17 @@
+{
+  "preset": "wordpress",
+  "requireSpacesInsideParentheses": false,
+  "requirePaddingNewLinesBeforeLineComments": false,
+  "disallowSpacesInFunctionExpression": false,
+  "disallowSpacesInAnonymousFunctionExpression": false,
+  "fileExtensions": [".js"],
+  "excludeFiles": [
+    "content/themes/leitura/js/dist/*.js",
+    "content/themes/leitura/js/src/legacy.js",
+    "content/themes/leitura/js/src/modules/lazyload.js",
+    "content/themes/leitura/js/src/modules/sticky-nav.js",
+    "content/themes/leitura/js/src/modules/navigation.js",
+    "content/themes/leitura/js/all.js",
+    "gulpfile.js"
+  ]
+}
