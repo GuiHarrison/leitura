@@ -152,9 +152,11 @@ function build_theme_support() {
  * Inserindo chamada da API do Google Maps
  */
 
-function acf_maps_key($resources) {
-    $mapsKey = isset($resources['apiKeys']['maps']) ? $resources['apiKeys']['maps'] : null;
-    if (isset($mapsKey)) {
+function acf_maps_key() {
+    $apiKeys = APIKeys::getInstance();
+    $mapsKey = $apiKeys->getKey('maps');
+
+    if ($mapsKey) {
         acf_update_setting('google_api_key', $mapsKey);
     }
 }
