@@ -55,7 +55,9 @@ add_action( 'acf/init', __NAMESPACE__ . '\acf_blocks_init' );
 /**
  * Chamando API do Google
  */
-add_action( 'acf/init', __NAMESPACE__ . '\acf_maps_key' );
+add_action( 'acf/init', function() use ($resources) {
+    acf_maps_key($resources);
+});
 
 /**
  * Form related hooks

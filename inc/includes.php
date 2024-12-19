@@ -7,6 +7,11 @@
 
 namespace Air_Light;
 
+// Puxa recursos externos (APIs, etc)
+if ( file_exists( get_theme_file_path( '/inc/includes/resources.php' ) ) ) {
+  $resources = require get_theme_file_path( '/inc/includes/resources.php' );
+}
+
 // Theme setup
 require get_theme_file_path( '/inc/includes/theme-setup.php' );
 

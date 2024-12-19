@@ -26,7 +26,7 @@ get_header(); ?>
 		method: 'GET',
 	};
 
-	fetch("https://api.geoapify.com/v1/ipinfo?apiKey=<?= THEME_SETTINGS['geoapify'] ?>", requestOptions)
+	fetch("https://api.geoapify.com/v1/ipinfo?apiKey=<?= $apiKeys['geoapify'] ?>", requestOptions)
 	.then(response => response.json())
 	.then(result => console.log(result))
 	.catch(error => console.log('error', error));
@@ -37,7 +37,7 @@ get_header(); ?>
 
 	<?php if( have_rows('lojas') ): ?>
 		<div class="acf-map" data-zoom="16">
-			<?php while ( have_rows('lojas') ) : the_row(); 
+			<?php while ( have_rows('lojas') ) : the_row();
 
 				// Voltar aqui
 				$location = get_field('loja');
