@@ -151,12 +151,11 @@ function build_theme_support() {
 /**
  * Inserindo chamada da API do Google Maps
  */
-
 function acf_maps_key() {
-    $apiKeys = APIKeys::getInstance();
-    $mapsKey = $apiKeys->getKey('maps');
+    $api_keys = APIKeys::get_instance();
+    $maps_key = $api_keys->get_key( 'maps' );
 
-    if ($mapsKey) {
-        acf_update_setting('google_api_key', $mapsKey);
+    if ( $maps_key ) {
+        acf_update_setting( 'google_api_key', $maps_key );
     }
 }

@@ -88,7 +88,7 @@ add_action( 'after_setup_theme', function() {
      */
     'taxonomies' => [
       // 'Your_Taxonomy' => [ 'post', 'page' ],
-      'Category_Cidade_Estado' => [ 'post', 'page', 'lojas' ],
+      'Category_Cidade_Estado' => [ 'lojas' ],
     ],
 
     /**
@@ -98,7 +98,7 @@ add_action( 'after_setup_theme', function() {
      * https://github.com/digitoimistodude/leitura#custom-post-types
      */
     'post_types' => [
-      'Lojas',
+      'lojas',
     ],
 
     /**

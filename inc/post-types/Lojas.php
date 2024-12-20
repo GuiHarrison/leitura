@@ -53,7 +53,7 @@ class Lojas extends Post_Type {
         'slug'              => 'loja',
       ],
       'supports'            => [ 'title', 'revisions' ],
-      'taxonomies'          => ['category_cidade_estado'],
+      'taxonomies'          => [ 'category_cidade_estado' ],
     ];
 
     $this->register_wp_post_type( $this->slug, $args );
