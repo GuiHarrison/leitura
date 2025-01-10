@@ -39,21 +39,24 @@ $geoapify = $api_keys->get_key( 'geoapify' );
 <main class="site-main">
 	<h1><?php the_title(); ?></h1>
 
-	<?php if ( have_rows( 'group_5c44d6f413f95' ) ) : ?>
-		<div class="acf-map" data-zoom="16">
-			<?php while ( have_rows( 'group_5c44d6f413f95' ) ) : the_row();
-				$location = get_field( 'mapa_loja' );
-				$description = get_field( 'infor_loja' );
-				?>
-				<div class="marker" data-lat="<?php echo esc_attr( $location['lat'] ); ?>" data-lng="<?php echo esc_attr( $location['lng'] ); ?>">
-					<p><em><?php echo esc_html( $location['address'] ); ?></em></p>
-					<p><?php echo esc_html( $description ); ?></p>
-				</div>
-		<?php endwhile; ?>
+	<?php
+		$specifications_group_id    = 'group_5c44d6f413f95';
+		$specifications_fields      = array();
+		$fields = acf_get_fields( $specifications_group_id );
+		foreach ( $fields as $field ) {
+				$field_value = get_field( $field['name'] );
+				if ( ! empty( $field_value ) ) {
+						$specifications_fields[ $field['name'] ] = $field_value;
+				}
+		}
+    var_dump( $specifications_fields );
+	?>
+
+	<div class="loja-container">
+		<div class="loja-mapa">
+			<div id="map"></div>
 		</div>
-  <?php else : ?>
-		<p>Nenhuma loja encontrada.</p>
-	<?php endif; ?>
+	</div>
 
 	<?php
 		the_content();
