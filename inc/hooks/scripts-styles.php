@@ -12,16 +12,16 @@ namespace Air_Light;
  */
 function move_jquery_into_footer( $wp_scripts ) {
   if ( ! is_admin() ) {
-    $wp_scripts->add_data( 'jquery',         'group', 1 );
-    $wp_scripts->add_data( 'jquery-core',    'group', 1 );
-    $wp_scripts->add_data( 'jquery-migrate', 'group', 1 );
+		$wp_scripts->add_data( 'jquery',         'group', 1 );
+		$wp_scripts->add_data( 'jquery-core',    'group', 1 );
+		$wp_scripts->add_data( 'jquery-migrate', 'group', 1 );
   }
 } // end air_light_move_jquery_into_footer
 
 /**
  * Enqueue scripts and styles.
  */
-function enqueue_theme_scripts() {
+function enqueue_theme_scripts(): void {
 
   // Enqueue global.css
   wp_enqueue_style( 'styles',
@@ -39,9 +39,32 @@ function enqueue_theme_scripts() {
     true
   );
 
+  if ( is_page( 'lojas' ) ) {
+    $api_keys = APIKeys::get_instance();
+    $maps_key = $api_keys->get_key( 'maps' );
+
+    if ( $api_keys ) {
+      wp_enqueue_script(
+        'google-maps',
+        'https://maps.googleapis.com/maps/api/js?key=' . $maps_key . '&libraries=places&loading=async',
+        [],
+        null,
+        true
+      );
+
+      // Async e defer ao google-maps
+      add_filter( 'script_loader_tag', function ( $tag, $handle ) {
+        if ( 'google-maps' !== $handle ) {
+          return $tag;
+        }
+        return str_replace( ' src', ' async defer src', $tag );
+      }, 10, 2 );
+    }
+  }
+
   // Required comment-reply script
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-    wp_enqueue_script( 'comment-reply' );
+		wp_enqueue_script( 'comment-reply' );
   }
 
   wp_localize_script( 'scripts', 'air_light_screenReaderText', [
