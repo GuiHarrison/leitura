@@ -39,6 +39,7 @@ function enqueue_theme_scripts(): void {
     true
   );
 
+  // Adicionando API do maps à página de Lojas
   if ( is_page( 'lojas' ) ) {
     $api_keys = APIKeys::get_instance();
     $maps_key = $api_keys->get_key( 'maps' );

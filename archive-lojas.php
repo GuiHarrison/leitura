@@ -4,9 +4,9 @@
  *
  * Página de arquivos do tipo loja
  *
- * @Date:   2025-01-03 16:54:35
- * @Last Modified by:   Guilherme Harrison
- * @Last Modified time: 2025-01-03 16:54:35
+ * @Date:                 2025-01-03 16:54:35
+ * @Last Modified by:     Guilherme Harrison
+ * @Last Modified time:   2025-01-03 16:54:35
  *
  * @package leitura
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
@@ -55,7 +55,7 @@ endif;
         console.log(result);
         var latDetec = result.location.latitude || -14.235004; // Latitude padrão do Brasil
         var longDetec = result.location.longitude || -51.92528; // Longitude padrão do Brasil
-        var zoom = (latDetec === -14.235004) ? 6 : 13;
+        var zoom = ( latDetec === -14.235004 ) ? 6 : 13;
 
         window.latDetec = latDetec;
         window.longDetec = longDetec;
@@ -79,7 +79,10 @@ endif;
     function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: zoom,
-            center: {lat: window.latDetec, lng: window.longDetec}
+            center: {lat: window.latDetec, lng: window.longDetec},
+            streetViewControl: false,
+            mapTypeControl: false,
+            mapfullscreenControl: false,
         });
 
         var geocoder = new google.maps.Geocoder();
@@ -102,7 +105,7 @@ endif;
 
 	<div class="loja-container">
 		<div class="loja-mapa">
-			<div id="map" style="min-height: calc(100vh - 60px);">
+			<div id="map" style="min-height: calc(100vh - 100px);">
       </div>
 		</div>
 	</div>
