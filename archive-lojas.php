@@ -112,6 +112,7 @@ endif;
 		<div class="loja-mapa">
 			<div id="map" style="min-height: calc(100vh - 100px);">
       </div>
+      .container-lista-lojas>(.busca-lojas>input.campo-loja+button.buscar-lojas)+ul.lista-lojas>li.loja
 		</div>
 	</div>
 
