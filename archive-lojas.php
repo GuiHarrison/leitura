@@ -32,13 +32,12 @@ $query = new \WP_Query( $args );
 if ( $query->have_posts() ) :
   $locations = array();
   while ( $query->have_posts() ) : $query->the_post();
-      // Obtém o campo personalizado 'mapa_loja'
-      $mapa_loja = get_post_meta( get_the_ID(), 'mapa_loja', true );
-      if ( $mapa_loja ) {
-          $locations[] = $mapa_loja;
-      }
+		// Obtém o campo personalizado 'mapa_loja'
+		$mapa_loja = get_post_meta( get_the_ID(), 'mapa_loja', true );
+		if ( $mapa_loja ) {
+			$locations[] = $mapa_loja;
+			}
   endwhile;
-
   wp_reset_postdata();
 endif;
 
@@ -83,17 +82,23 @@ endif;
             streetViewControl: false,
             mapTypeControl: false,
             mapfullscreenControl: false,
-        });
+            fullscreenControl: false,
+          });
 
-        var geocoder = new google.maps.Geocoder();
-        var locations = <?php echo json_encode( $locations ); ?>;
+          var geocoder = new google.maps.Geocoder();
+          var locations = <?php echo json_encode( $locations ); ?>;
+          var icon = {
+            url: <?php echo '"' . esc_url( get_theme_file_uri( 'svg/icone-mapa.svg' ) ) . '"'; ?>,
+            scaledSize: new google.maps.Size(36, 49),
+          }
 
-        locations.forEach(function(location) {
+          locations.forEach(function(location) {
             geocoder.geocode({'address': location['address']}, function(results, status) {
-                if (status === 'OK') {
-                    new google.maps.Marker({
+              if (status === 'OK') {
+                new google.maps.Marker({
                         map: map,
-                        position: results[0].geometry.location
+                        position: results[0].geometry.location,
+                        icon: icon,
                     });
                 }
             });
