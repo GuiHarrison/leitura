@@ -111,9 +111,61 @@ endif;
 	<div class="loja-container">
 		<div class="loja-mapa">
 			<div id="map" style="min-height: calc(100vh - 100px);">
-      </div>
-      .container-lista-lojas>(.busca-lojas>input.campo-loja+button.buscar-lojas)+ul.lista-lojas>li.loja
-		</div>
+        </div>
+        <div class="lista-lojas-container">
+            <h3 class="ll-titulo">Encotre uma Leitura próxima de você</h3>
+            <input type="text" class="ll-campo"><button class="ll-buscar hidden">Procurar</button>
+            <ul class="ll-lista">
+                <li class="ll-loja">
+                    <a href="#_" class="ll-link"></a>
+                    <h4 class="ll-nome">Shopping Contagem</h4>
+                    <p class="ll-endereco">Avenida Severino Ballesteros Rodrigues, 850 Cabral, Contagem - MG</p>
+                    <div class="ll-detalhes hidden">
+                        <p class="ll-horario">09h00 às 18h00</p>
+                        <p class="ll-email">teste@teste</p>
+                        <p class="ll-telefone">(31) 9999 9999</p>
+                        <p class="ll-whatsapp">(31) 9 9999 9999</p>
+                        <a href="$para-o-maps" class="ll-como-chegar">Como chegar</a>
+                    </div>
+                </li>
+                <li class="ll-loja">
+                    <a href="#_" class="ll-link"></a>
+                    <h4 class="ll-nome">Shopping partage campina grande</h4>
+                    <p class="ll-endereco">Avenida Prefeito Severino Bezerra Cabral Catolé, Campina Grande - PB</p>
+                    <div class="ll-detalhes hidden">
+                        <p class="ll-horario">09h00 às 18h00</p>
+                        <p class="ll-email">teste@teste</p>
+                        <p class="ll-telefone">(31) 9999 9999</p>
+                        <p class="ll-whatsapp">(31) 9 9999 9999</p>
+                        <a href="$para-o-maps" class="ll-como-chegar">Como chegar</a>
+                    </div>
+                </li>
+                <li class="ll-loja">
+                    <a href="#_" class="ll-link"></a>
+                    <h4 class="ll-nome">Shopping Paralela</h4>
+                    <p class="ll-endereco">Av. Luís Viana, 8544 - Alphaville, Salvador - BA</p>
+                    <div class="ll-detalhes hidden">
+                        <p class="ll-horario">09h00 às 18h00</p>
+                        <p class="ll-email">teste@teste</p>
+                        <p class="ll-telefone">(31) 9999 9999</p>
+                        <p class="ll-whatsapp">(31) 9 9999 9999</p>
+                        <a href="$para-o-maps" class="ll-como-chegar">Como chegar</a>
+                    </div>
+                </li>
+                <li class="ll-loja">
+                    <a href="#_" class="ll-link"></a>
+                    <h4 class="ll-nome">IGUATEMI SÃO JOSÉ DO RIO PRETO</h4>
+                    <p class="ll-endereco">Avenida Presidente Juscelino Kubitschek de Oliveira 5000</p>
+                    <div class="ll-detalhes hidden">
+                        <p class="ll-horario">09h00 às 18h00</p>
+                        <p class="ll-email">teste@teste</p>
+                        <p class="ll-telefone">(31) 9999 9999</p>
+                        <p class="ll-whatsapp">(31) 9 9999 9999</p>
+                        <a href="$para-o-maps" class="ll-como-chegar">Como chegar</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
 	</div>
 
 </main>
