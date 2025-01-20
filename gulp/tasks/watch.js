@@ -1,13 +1,8 @@
 // Dependencies
-const {
-  watch,
-  series
-} = require('gulp');
+const { watch, series } = require('gulp');
 const bs = require('browser-sync').create();
 const config = require('../config.js');
-const {
-  handleError
-} = require('../helpers/handle-errors.js');
+const { handleError } = require('../helpers/handle-errors.js');
 
 // Watch task
 function watchFiles(done) {
@@ -21,20 +16,32 @@ function watchFiles(done) {
   }
 
   // Styles in development environment
-  const devstyles = watch(config.styles.watch.development, series('devstyles')).on('error', handleError());
-  devstyles.on('change', function(path) { consoleInfo(path); });
+  const devstyles = watch(config.styles.watch.development, series('devstyles', 'lintstyles')).on('error', handleError());
+  devstyles.on('change', function (path) {
+    consoleInfo(path);
+    bs.reload(); // Recarrega o BrowserSync após mudanças no CSS de desenvolvimento
+  });
 
   // Styles in production environment
   const prodstyles = watch(config.styles.watch.production, series('prodstyles'));
-  prodstyles.on('change', function(path) { consoleInfo(path); });
+  prodstyles.on('change', function (path) {
+    consoleInfo(path);
+    bs.reload(); // Recarrega o BrowserSync após mudanças no CSS de produção
+  });
 
   // JavaScript
   const javascript = watch(config.js.watch, series('js'));
-  javascript.on('change', function(path) { consoleInfo(path); });
+  javascript.on('change', function (path) {
+    consoleInfo(path);
+    bs.reload(); // Recarrega o BrowserSync após mudanças no JavaScript
+  });
 
   // PHP
-  // const php = watch(config.php.watch, series('phpcs'), bs.reload);
-  // php.on('change', function(path) { consoleInfo(path); });
+  const php = watch(config.php.watch, series('phpcs'));
+  php.on('change', function (path) {
+    consoleInfo(path);
+    bs.reload(); // Recarrega o BrowserSync após mudanças no PHP
+  });
 
   // Lint styles
   watch(config.styles.watch.development, series('lintstyles'));

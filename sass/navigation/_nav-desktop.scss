@@ -39,6 +39,7 @@
 }
 
 @media only screen and (min-width: breakpoints.$width-max-mobile) {
+
   // Need to use display: none here to make sure mobile nav-toggle is visually hidden on desktop
   .nav-toggle {
     display: none;
@@ -73,7 +74,7 @@
 
   // Menu items
   .menu-item-clickable,
-  .menu-item > a {
+  .menu-item>a {
     align-items: center;
     color: var(--color-main-level);
     display: inline-flex;
@@ -104,8 +105,8 @@
   }
 
   // Current menu item color
-  .menu-item.current-menu-parent > a,
-  .menu-item.current-menu-item > a {
+  .menu-item.current-menu-parent>a,
+  .menu-item.current-menu-item>a {
     color: var(--color-current);
   }
 
@@ -114,8 +115,8 @@
     transition: background-color .2s cubic-bezier(.19, 1, .22, 1);
   }
 
-  .menu-item > a:hover,
-  .menu-item > a:focus {
+  .menu-item>a:hover,
+  .menu-item>a:focus {
     color: var(--color-hover-main-level);
   }
 
@@ -137,8 +138,8 @@
     padding-top: var(--padding-sub-menu-vertical);
   }
 
-  .nav-primary > ul:first-of-type > .menu-item-has-children:focus::before,
-  .nav-primary > ul:first-of-type > .menu-item-has-children:hover::before {
+  .nav-primary>ul:first-of-type>.menu-item-has-children:focus::before,
+  .nav-primary>ul:first-of-type>.menu-item-has-children:hover::before {
     transform: scale(1);
     transition: all .2s cubic-bezier(.19, 1, .22, 1);
   }
@@ -164,7 +165,7 @@
     .menu-item-has-children:focus,
     .menu-item-has-children:focus-within,
     .menu-item-has-children:hover {
-      & > .sub-menu {
+      &>.sub-menu {
         display: block;
       }
     }
@@ -231,8 +232,8 @@
   }
 
   // This is where the magic happens
-  .menu-item-has-children:focus > .sub-menu,
-  .menu-item-has-children.hover-intent > .sub-menu {
+  .menu-item-has-children:focus>.sub-menu,
+  .menu-item-has-children.hover-intent>.sub-menu {
     opacity: 1;
     transform: translateY(0%);
     visibility: visible;
@@ -284,7 +285,7 @@
   }
 
   // Main level toggle icon
-  .hover-intent > .dropdown-toggle svg {
+  .hover-intent>.dropdown-toggle svg {
     transform: rotateX(180deg);
   }
 
@@ -308,7 +309,7 @@
     transform: rotate(-90deg) rotateX(0deg);
   }
 
-  .sub-menu .hover-intent > .dropdown-toggle > svg {
+  .sub-menu .hover-intent>.dropdown-toggle>svg {
     transform: rotate(-90deg) rotateX(180deg);
   }
 
@@ -319,21 +320,22 @@
   }
 
   // Smooth animation
-  .menu-item.menu-item-has-children.hover-intent > .dropdown-toggle svg,
-  .menu-item.menu-item-has-children:focus > .dropdown-toggle svg {
+  .menu-item.menu-item-has-children.hover-intent>.dropdown-toggle svg,
+  .menu-item.menu-item-has-children:focus>.dropdown-toggle svg {
     transform: translateY(0%) rotate(180deg);
   }
 
   // Smooth animation
   // stylelint-disable-next-line selector-max-specificity, selector-max-class
-  .menu-item.menu-item-has-children .menu-item.menu-item-has-children.hover-intent > .dropdown-toggle svg,
-  .menu-item.menu-item-has-children .menu-item.menu-item-has-children:focus > .dropdown-toggle svg {
+  .menu-item.menu-item-has-children .menu-item.menu-item-has-children.hover-intent>.dropdown-toggle svg,
+  .menu-item.menu-item-has-children .menu-item.menu-item-has-children:focus>.dropdown-toggle svg {
     transform: translateY(0%) rotate(90deg);
   }
 
   @media only screen and (max-width: breakpoints.$width-max-mobile) {
-    ul li:focus > ul,
-    ul li:hover > ul {
+
+    ul li:focus>ul,
+    ul li:hover>ul {
       display: block;
     }
   }

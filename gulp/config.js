@@ -26,7 +26,6 @@ module.exports = {
     }
   },
   browsersync: {
-    // Important! If src is wrong, styles will not inject to the browser
     src: [
       themeDir + '**/*.php',
       themeDir + 'css/**/*',
@@ -106,7 +105,6 @@ module.exports = {
       bin: 'phpcs', // Usando o caminho global configurado
       standard: `"${themeDir}phpcs.xml"`,
       warningSeverity: 0,
-      shell: true
     }
   }
 };

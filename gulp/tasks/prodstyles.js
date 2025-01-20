@@ -3,7 +3,7 @@ const {
   dest,
   src
 } = require('gulp');
-const sass = require('gulp-sass')( require('sass') );
+const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
@@ -21,10 +21,10 @@ const size = require('gulp-size');
 const config = require('../config.js');
 
 function prodstyles() {
-  return src(config.sass.src)
+  return src(config.styles.src)
 
     // Compile SCSS synchronously
-    .pipe(sass.sync(config.sass.production))
+    .pipe(sass.sync(config.styles.opts.production)).on('error', sass.logError)
 
     // Run PostCSS plugins
     .pipe(postcss([
@@ -46,7 +46,7 @@ function prodstyles() {
     .pipe(size(config.size))
 
     // Save the final version for production
-    .pipe(dest(config.sass.dest.production));
+    .pipe(dest(config.styles.production));
 }
 
 exports.prodstyles = prodstyles;

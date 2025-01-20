@@ -1,0 +1,15 @@
+.lista-lojas-container {
+  position: fixed;
+  top: 20%;
+  right: auto;
+  bottom: 20%;
+  left: 5%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  .ll-titulo {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}
