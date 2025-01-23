@@ -19,14 +19,12 @@ function watchFiles(done) {
   const devstyles = watch(config.styles.watch.development, series('devstyles', 'lintstyles')).on('error', handleError());
   devstyles.on('change', function (path) {
     consoleInfo(path);
-    bs.reload(); // Recarrega o BrowserSync após mudanças no CSS de desenvolvimento
   });
 
   // Styles in production environment
   const prodstyles = watch(config.styles.watch.production, series('prodstyles'));
   prodstyles.on('change', function (path) {
     consoleInfo(path);
-    bs.reload(); // Recarrega o BrowserSync após mudanças no CSS de produção
   });
 
   // JavaScript

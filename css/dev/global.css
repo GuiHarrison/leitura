@@ -939,12 +939,18 @@ body:not(.js-nav-active) .nav-toggle:hover .hamburger::after {
 }
 .lista-lojas-container {
   position: fixed;
-  top: 20%;
+  top: 120px;
   right: auto;
-  bottom: 20%;
+  bottom: 10%;
   left: 5%;
+  max-width: 320px;
+  width: 100%;
+  padding: 20px;
+  margin: 0 10px;
   overflow-x: hidden;
   overflow-y: scroll;
+  background-color: #fefefe;
+  border-radius: 20px;
 }
 .lista-lojas-container .ll-titulo {
   font-size: 1.5em;

@@ -46,7 +46,7 @@ class Lojas extends Post_Type {
       'menu_position'       => 21,
       'has_archive'         => false,
       'exclude_from_search' => false,
-      'show_in_rest'        => false,
+      'show_in_rest'        => true,
       'pll_translatable'    => true,
       'rewrite'             => [
         'with_front'        => false,
