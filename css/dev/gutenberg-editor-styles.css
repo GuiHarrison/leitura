@@ -34,13 +34,19 @@ img {
 
 :root {
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
@@ -49,7 +55,7 @@ img {
   --color-error: #cc2e2e;
   --color-success: #21aa14;
   --width-max-mobile: 1030px;
-  --typography-family-main: "Mona Sans", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   --typography-family-paragraph: var(--typography-family-main);
   --typography-family-heading: var(--typography-family-main);
   --typography-size-hero: 52px;
@@ -89,6 +95,34 @@ img {
   font-weight: 1 999;
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
 @media (max-width: 600px) {
   :root {
     --typography-size-hero: 38px;
@@ -113,13 +147,13 @@ img {
   --color-form-text: var(--color-paragraph);
   --color-form-label-text: var(--color-form-text);
   --color-required-label-text: var(--color-form-text);
-  --color-border-forms: var(--color-paragraph);
-  --color-border-forms-focus: var(--color-paragraph);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
   --color-button: var(--color-white);
   --color-button-hover: var(--color-white);
-  --color-button-background: var(--color-east-bay);
-  --color-button-background-hover: var(--color-valhalla);
-  --color-checkbox: var(--color-east-bay);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
   --color-checkbox-outline: 0 0 0 3px #54577333;
   --color-checkbox-border-hover: color.adjust(#545773, 15%);
   --color-checkbox-checked: var(--color-form-label-text);
@@ -407,13 +441,19 @@ textarea:focus {
 
 .article-content :root,.editor-styles-wrapper :root {
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
@@ -422,7 +462,7 @@ textarea:focus {
   --color-error: #cc2e2e;
   --color-success: #21aa14;
   --width-max-mobile: 1030px;
-  --typography-family-main: "Mona Sans", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   --typography-family-paragraph: var(--typography-family-main);
   --typography-family-heading: var(--typography-family-main);
   --typography-size-hero: 52px;
@@ -461,6 +501,34 @@ textarea:focus {
   font-weight: 1 999;
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
 @media (max-width: 600px) {
   
   .article-content :root,.editor-styles-wrapper :root {
@@ -487,13 +555,13 @@ textarea:focus {
   --color-form-text: var(--color-paragraph);
   --color-form-label-text: var(--color-form-text);
   --color-required-label-text: var(--color-form-text);
-  --color-border-forms: var(--color-paragraph);
-  --color-border-forms-focus: var(--color-paragraph);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
   --color-button: var(--color-white);
   --color-button-hover: var(--color-white);
-  --color-button-background: var(--color-east-bay);
-  --color-button-background-hover: var(--color-valhalla);
-  --color-checkbox: var(--color-east-bay);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
   --color-checkbox-outline: 0 0 0 3px #54577333;
   --color-checkbox-border-hover: color.adjust(#545773, 15%);
   --color-checkbox-checked: var(--color-form-label-text);
@@ -675,13 +743,19 @@ textarea:focus {
 
 .article-content :root,.editor-styles-wrapper :root {
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
@@ -690,7 +764,7 @@ textarea:focus {
   --color-error: #cc2e2e;
   --color-success: #21aa14;
   --width-max-mobile: 1030px;
-  --typography-family-main: "Mona Sans", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   --typography-family-paragraph: var(--typography-family-main);
   --typography-family-heading: var(--typography-family-main);
   --typography-size-hero: 52px;
@@ -729,6 +803,34 @@ textarea:focus {
   font-weight: 1 999;
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
 @media (max-width: 600px) {
   
   .article-content :root,.editor-styles-wrapper :root {
@@ -755,13 +857,13 @@ textarea:focus {
   --color-form-text: var(--color-paragraph);
   --color-form-label-text: var(--color-form-text);
   --color-required-label-text: var(--color-form-text);
-  --color-border-forms: var(--color-paragraph);
-  --color-border-forms-focus: var(--color-paragraph);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
   --color-button: var(--color-white);
   --color-button-hover: var(--color-white);
-  --color-button-background: var(--color-east-bay);
-  --color-button-background-hover: var(--color-valhalla);
-  --color-checkbox: var(--color-east-bay);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
   --color-checkbox-outline: 0 0 0 3px #54577333;
   --color-checkbox-border-hover: color.adjust(#545773, 15%);
   --color-checkbox-checked: var(--color-form-label-text);
@@ -1087,13 +1189,19 @@ textarea:focus {
 
 .article-content :root,.editor-styles-wrapper :root {
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
@@ -1102,7 +1210,7 @@ textarea:focus {
   --color-error: #cc2e2e;
   --color-success: #21aa14;
   --width-max-mobile: 1030px;
-  --typography-family-main: "Mona Sans", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   --typography-family-paragraph: var(--typography-family-main);
   --typography-family-heading: var(--typography-family-main);
   --typography-size-hero: 52px;
@@ -1141,6 +1249,34 @@ textarea:focus {
   font-weight: 1 999;
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
 @media (max-width: 600px) {
   
   .article-content :root,.editor-styles-wrapper :root {
@@ -1167,13 +1303,13 @@ textarea:focus {
   --color-form-text: var(--color-paragraph);
   --color-form-label-text: var(--color-form-text);
   --color-required-label-text: var(--color-form-text);
-  --color-border-forms: var(--color-paragraph);
-  --color-border-forms-focus: var(--color-paragraph);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
   --color-button: var(--color-white);
   --color-button-hover: var(--color-white);
-  --color-button-background: var(--color-east-bay);
-  --color-button-background-hover: var(--color-valhalla);
-  --color-checkbox: var(--color-east-bay);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
   --color-checkbox-outline: 0 0 0 3px #54577333;
   --color-checkbox-border-hover: color.adjust(#545773, 15%);
   --color-checkbox-checked: var(--color-form-label-text);
@@ -1308,13 +1444,19 @@ textarea:focus {
 
 .article-content :root,.editor-styles-wrapper :root {
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
@@ -1323,7 +1465,7 @@ textarea:focus {
   --color-error: #cc2e2e;
   --color-success: #21aa14;
   --width-max-mobile: 1030px;
-  --typography-family-main: "Mona Sans", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   --typography-family-paragraph: var(--typography-family-main);
   --typography-family-heading: var(--typography-family-main);
   --typography-size-hero: 52px;
@@ -1362,6 +1504,34 @@ textarea:focus {
   font-weight: 1 999;
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
 @media (max-width: 600px) {
   
   .article-content :root,.editor-styles-wrapper :root {
@@ -1388,13 +1558,13 @@ textarea:focus {
   --color-form-text: var(--color-paragraph);
   --color-form-label-text: var(--color-form-text);
   --color-required-label-text: var(--color-form-text);
-  --color-border-forms: var(--color-paragraph);
-  --color-border-forms-focus: var(--color-paragraph);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
   --color-button: var(--color-white);
   --color-button-hover: var(--color-white);
-  --color-button-background: var(--color-east-bay);
-  --color-button-background-hover: var(--color-valhalla);
-  --color-checkbox: var(--color-east-bay);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
   --color-checkbox-outline: 0 0 0 3px #54577333;
   --color-checkbox-border-hover: color.adjust(#545773, 15%);
   --color-checkbox-checked: var(--color-form-label-text);
@@ -1559,13 +1729,19 @@ textarea:focus {
 
 .article-content :root,.editor-styles-wrapper :root {
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
@@ -1574,7 +1750,7 @@ textarea:focus {
   --color-error: #cc2e2e;
   --color-success: #21aa14;
   --width-max-mobile: 1030px;
-  --typography-family-main: "Mona Sans", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   --typography-family-paragraph: var(--typography-family-main);
   --typography-family-heading: var(--typography-family-main);
   --typography-size-hero: 52px;
@@ -1613,6 +1789,34 @@ textarea:focus {
   font-weight: 1 999;
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
 @media (max-width: 600px) {
   
   .article-content :root,.editor-styles-wrapper :root {
@@ -1639,13 +1843,13 @@ textarea:focus {
   --color-form-text: var(--color-paragraph);
   --color-form-label-text: var(--color-form-text);
   --color-required-label-text: var(--color-form-text);
-  --color-border-forms: var(--color-paragraph);
-  --color-border-forms-focus: var(--color-paragraph);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
   --color-button: var(--color-white);
   --color-button-hover: var(--color-white);
-  --color-button-background: var(--color-east-bay);
-  --color-button-background-hover: var(--color-valhalla);
-  --color-checkbox: var(--color-east-bay);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
   --color-checkbox-outline: 0 0 0 3px #54577333;
   --color-checkbox-border-hover: color.adjust(#545773, 15%);
   --color-checkbox-checked: var(--color-form-label-text);
@@ -1752,13 +1956,19 @@ textarea:focus {
 
 .article-content :root,.editor-styles-wrapper :root {
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
@@ -1767,7 +1977,7 @@ textarea:focus {
   --color-error: #cc2e2e;
   --color-success: #21aa14;
   --width-max-mobile: 1030px;
-  --typography-family-main: "Mona Sans", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   --typography-family-paragraph: var(--typography-family-main);
   --typography-family-heading: var(--typography-family-main);
   --typography-size-hero: 52px;
@@ -1806,6 +2016,34 @@ textarea:focus {
   font-weight: 1 999;
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
 @media (max-width: 600px) {
   
   .article-content :root,.editor-styles-wrapper :root {
@@ -1832,13 +2070,13 @@ textarea:focus {
   --color-form-text: var(--color-paragraph);
   --color-form-label-text: var(--color-form-text);
   --color-required-label-text: var(--color-form-text);
-  --color-border-forms: var(--color-paragraph);
-  --color-border-forms-focus: var(--color-paragraph);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
   --color-button: var(--color-white);
   --color-button-hover: var(--color-white);
-  --color-button-background: var(--color-east-bay);
-  --color-button-background-hover: var(--color-valhalla);
-  --color-checkbox: var(--color-east-bay);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
   --color-checkbox-outline: 0 0 0 3px #54577333;
   --color-checkbox-border-hover: color.adjust(#545773, 15%);
   --color-checkbox-checked: var(--color-form-label-text);
@@ -1968,13 +2206,19 @@ textarea:focus {
 
 .article-content :root,.editor-styles-wrapper :root {
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
@@ -1983,7 +2227,7 @@ textarea:focus {
   --color-error: #cc2e2e;
   --color-success: #21aa14;
   --width-max-mobile: 1030px;
-  --typography-family-main: "Mona Sans", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   --typography-family-paragraph: var(--typography-family-main);
   --typography-family-heading: var(--typography-family-main);
   --typography-size-hero: 52px;
@@ -2022,6 +2266,34 @@ textarea:focus {
   font-weight: 1 999;
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
 @media (max-width: 600px) {
   
   .article-content :root,.editor-styles-wrapper :root {
@@ -2048,13 +2320,13 @@ textarea:focus {
   --color-form-text: var(--color-paragraph);
   --color-form-label-text: var(--color-form-text);
   --color-required-label-text: var(--color-form-text);
-  --color-border-forms: var(--color-paragraph);
-  --color-border-forms-focus: var(--color-paragraph);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
   --color-button: var(--color-white);
   --color-button-hover: var(--color-white);
-  --color-button-background: var(--color-east-bay);
-  --color-button-background-hover: var(--color-valhalla);
-  --color-checkbox: var(--color-east-bay);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
   --color-checkbox-outline: 0 0 0 3px #54577333;
   --color-checkbox-border-hover: color.adjust(#545773, 15%);
   --color-checkbox-checked: var(--color-form-label-text);
@@ -2217,13 +2489,19 @@ textarea:focus {
 
 .article-content :root,.editor-styles-wrapper :root {
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
@@ -2232,7 +2510,7 @@ textarea:focus {
   --color-error: #cc2e2e;
   --color-success: #21aa14;
   --width-max-mobile: 1030px;
-  --typography-family-main: "Mona Sans", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   --typography-family-paragraph: var(--typography-family-main);
   --typography-family-heading: var(--typography-family-main);
   --typography-size-hero: 52px;
@@ -2271,6 +2549,34 @@ textarea:focus {
   font-weight: 1 999;
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
 @media (max-width: 600px) {
   
   .article-content :root,.editor-styles-wrapper :root {
@@ -2297,13 +2603,13 @@ textarea:focus {
   --color-form-text: var(--color-paragraph);
   --color-form-label-text: var(--color-form-text);
   --color-required-label-text: var(--color-form-text);
-  --color-border-forms: var(--color-paragraph);
-  --color-border-forms-focus: var(--color-paragraph);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
   --color-button: var(--color-white);
   --color-button-hover: var(--color-white);
-  --color-button-background: var(--color-east-bay);
-  --color-button-background-hover: var(--color-valhalla);
-  --color-checkbox: var(--color-east-bay);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
   --color-checkbox-outline: 0 0 0 3px #54577333;
   --color-checkbox-border-hover: color.adjust(#545773, 15%);
   --color-checkbox-checked: var(--color-form-label-text);
@@ -2411,13 +2717,19 @@ textarea:focus {
 
 .article-content :root,.editor-styles-wrapper :root {
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
@@ -2426,7 +2738,7 @@ textarea:focus {
   --color-error: #cc2e2e;
   --color-success: #21aa14;
   --width-max-mobile: 1030px;
-  --typography-family-main: "Mona Sans", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   --typography-family-paragraph: var(--typography-family-main);
   --typography-family-heading: var(--typography-family-main);
   --typography-size-hero: 52px;
@@ -2465,6 +2777,34 @@ textarea:focus {
   font-weight: 1 999;
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
 @media (max-width: 600px) {
   
   .article-content :root,.editor-styles-wrapper :root {
@@ -2491,13 +2831,13 @@ textarea:focus {
   --color-form-text: var(--color-paragraph);
   --color-form-label-text: var(--color-form-text);
   --color-required-label-text: var(--color-form-text);
-  --color-border-forms: var(--color-paragraph);
-  --color-border-forms-focus: var(--color-paragraph);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
   --color-button: var(--color-white);
   --color-button-hover: var(--color-white);
-  --color-button-background: var(--color-east-bay);
-  --color-button-background-hover: var(--color-valhalla);
-  --color-checkbox: var(--color-east-bay);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
   --color-checkbox-outline: 0 0 0 3px #54577333;
   --color-checkbox-border-hover: color.adjust(#545773, 15%);
   --color-checkbox-checked: var(--color-form-label-text);
@@ -2606,13 +2946,19 @@ textarea:focus {
 
 .article-content :root,.editor-styles-wrapper :root {
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
@@ -2621,7 +2967,7 @@ textarea:focus {
   --color-error: #cc2e2e;
   --color-success: #21aa14;
   --width-max-mobile: 1030px;
-  --typography-family-main: "Mona Sans", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   --typography-family-paragraph: var(--typography-family-main);
   --typography-family-heading: var(--typography-family-main);
   --typography-size-hero: 52px;
@@ -2660,6 +3006,34 @@ textarea:focus {
   font-weight: 1 999;
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
 @media (max-width: 600px) {
   
   .article-content :root,.editor-styles-wrapper :root {
@@ -2686,13 +3060,13 @@ textarea:focus {
   --color-form-text: var(--color-paragraph);
   --color-form-label-text: var(--color-form-text);
   --color-required-label-text: var(--color-form-text);
-  --color-border-forms: var(--color-paragraph);
-  --color-border-forms-focus: var(--color-paragraph);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
   --color-button: var(--color-white);
   --color-button-hover: var(--color-white);
-  --color-button-background: var(--color-east-bay);
-  --color-button-background-hover: var(--color-valhalla);
-  --color-checkbox: var(--color-east-bay);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
   --color-checkbox-outline: 0 0 0 3px #54577333;
   --color-checkbox-border-hover: color.adjust(#545773, 15%);
   --color-checkbox-checked: var(--color-form-label-text);
@@ -2836,13 +3210,19 @@ textarea:focus {
 .editor-styles-wrapper :root,
 .site-main :root {
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
@@ -2851,7 +3231,7 @@ textarea:focus {
   --color-error: #cc2e2e;
   --color-success: #21aa14;
   --width-max-mobile: 1030px;
-  --typography-family-main: "Mona Sans", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
   --typography-family-paragraph: var(--typography-family-main);
   --typography-family-heading: var(--typography-family-main);
   --typography-size-hero: 52px;
@@ -2890,6 +3270,34 @@ textarea:focus {
   font-weight: 1 999;
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: optional;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
 @media (max-width: 600px) {
   .editor-styles-wrapper :root,
   .site-main :root {
@@ -2916,13 +3324,13 @@ textarea:focus {
   --color-form-text: var(--color-paragraph);
   --color-form-label-text: var(--color-form-text);
   --color-required-label-text: var(--color-form-text);
-  --color-border-forms: var(--color-paragraph);
-  --color-border-forms-focus: var(--color-paragraph);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
   --color-button: var(--color-white);
   --color-button-hover: var(--color-white);
-  --color-button-background: var(--color-east-bay);
-  --color-button-background-hover: var(--color-valhalla);
-  --color-checkbox: var(--color-east-bay);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
   --color-checkbox-outline: 0 0 0 3px #54577333;
   --color-checkbox-border-hover: color.adjust(#545773, 15%);
   --color-checkbox-checked: var(--color-form-label-text);

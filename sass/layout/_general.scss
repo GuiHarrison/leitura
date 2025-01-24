@@ -31,7 +31,7 @@ body:not(.wp-admin) {
 // Block padding exceptions
 // This class is useful when we have multiple blocks stacked with same background-color
 // stylelint-disable-next-line selector-max-class, selector-max-specificity
-.block.has-unified-padding-if-stacked + .block.has-unified-padding-if-stacked .container {
+.block.has-unified-padding-if-stacked+.block.has-unified-padding-if-stacked .container {
   overflow: visible;
   padding-top: 0;
 }
@@ -69,7 +69,7 @@ body:not(.wp-admin) {
   padding-top: var(--spacing-container-padding-block);
 
   // If base grid is larger than Macbook Air screen
-  @if breakpoints.$width-grid-base > 1440 {
+  @if breakpoints.$width-grid-base >1440 {
     @media (min-width: breakpoints.$container-ipad-landscape) and (max-width: 140rem + 6.4rem) {
       padding-left: var(--spacing-container-padding-inline-large);
       padding-right: var(--spacing-container-padding-inline-large);

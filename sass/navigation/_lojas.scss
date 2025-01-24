@@ -1,21 +1,121 @@
 .lista-lojas-container {
-  position: fixed;
+  position: absolute;
   top: 120px;
   right: auto;
-  bottom: 10%;
   left: 5%;
-  max-width: 320px;
+  max-width: 400px;
   width: 100%;
-  padding: 20px;
+  height: calc(100vh - 200px);
   margin: 0 10px;
   overflow-x: hidden;
   overflow-y: scroll;
-  background-color: #fefefe;
-  border-radius: 20px;
+  background-color: var(--cinza-clarinho);
+  border-radius: 12px;
+  border: 1px solid var(--cinza-claro);
+  border-bottom-color: var(--cinza-medio);
+  box-shadow: 0 10px 20px rgba(0, 77, 143, .2);
 
   .ll-titulo {
     font-size: 1.5em;
+    text-transform: uppercase;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin: 20px;
+    line-height: 1.2;
   }
+
+  .ll-campo {
+    width: calc(100% - 40px);
+    margin: 0 20px;
+  }
+
+  .ll-lista {
+    list-style: none;
+    padding: 0;
+
+    .ll-loja {
+      position: relative;
+      margin: 0;
+      padding: 10px 20px;
+
+      &:hover {
+        background-color: var(--color-white);
+        outline: 1px solid var(--cinza-claro);
+      }
+
+      &.selected {
+        background-color: var(--azul-leitura);
+
+        h4,
+        p {
+          color: var(--color-white);
+          text-decoration-color: var(--cinza-clarinho);
+        }
+      }
+
+      h4 {
+        font-size: 1.2em;
+        margin: 0;
+      }
+
+      p {
+        font-size: 80%;
+        margin: 0;
+
+        span {
+          font-weight: 700;
+        }
+      }
+
+      .ll-como-chegar {
+        display: inline-block;
+        margin: 20px 0 10px;
+        font-size: 1rem;
+        text-decoration: none;
+        padding: 10px 40px;
+        background-color: var(--color-white);
+        color: var(--azul-leitura);
+        text-transform: uppercase;
+      }
+
+      .ll-fechar {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        z-index: 9;
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 20px;
+          height: 1px;
+          background-color: var(--color-white);
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &::after {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        &:hover {
+          background-color: initial;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+
+#zoom-out {
+  position: absolute;
+  right: 10px;
+  padding: 5px;
+  top: calc(100vh - 180px);
+  width: 40px;
+  height: 40px;
+  z-index: 9;
 }

@@ -6,13 +6,21 @@
 :root {
   // Brand color pool
   --color-black: #000;
-  --color-blue-chalk: #ece6f2;
+  --color-blue-chalk: #e6e6e6;
   --color-east-bay: #545773;
-  --color-pattens-blue: #eaf1f8;
-  --color-science-blue: #0049d1;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004D8F;
   --color-scorpion: #5f5f5f;
   --color-valhalla: #2a2d3e;
   --color-white: #fff;
+
+  --azul-leitura: #004D8F; // 0, 77, 143
+  --azul-forte: #005CE8; // 0, 92, 232
+
+  --cinza-clarinho: #f7f7f7;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escuro: #333;
 
   // Main element colors
   --color-main: var(--color-valhalla);
