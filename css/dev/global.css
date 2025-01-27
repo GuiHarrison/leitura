@@ -234,9 +234,10 @@ img {
   --color-white: #fff;
   --azul-leitura: #004d8f;
   --azul-forte: #005ce8;
-  --cinza-clarinho: #f7f7f7;
+  --cinza-clarinho: #f2f2f2;
   --cinza-claro: #e6e6e6;
   --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
   --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
@@ -287,32 +288,32 @@ img {
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 400;
-  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 500;
-  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 600;
-  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 700;
-  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
 }
 @media (max-width: 600px) {
   :root {
@@ -971,112 +972,6 @@ body:not(.js-nav-active) .nav-toggle:hover .hamburger::after {
     display: block;
   }
 }
-.lista-lojas-container {
-  position: absolute;
-  top: 120px;
-  right: auto;
-  left: 5%;
-  max-width: 400px;
-  width: 100%;
-  height: calc(100vh - 200px);
-  margin: 0 10px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  background-color: var(--cinza-clarinho);
-  border-radius: 12px;
-  border: 1px solid var(--cinza-claro);
-  border-bottom-color: var(--cinza-medio);
-  box-shadow: 0 10px 20px #004d8f33;
-}
-.lista-lojas-container .ll-titulo {
-  font-size: 1.5em;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin: 20px;
-  line-height: 1.2;
-}
-.lista-lojas-container .ll-campo {
-  width: calc(100% - 40px);
-  margin: 0 20px;
-}
-.lista-lojas-container .ll-lista {
-  list-style: none;
-  padding: 0;
-}
-.lista-lojas-container .ll-lista .ll-loja {
-  position: relative;
-  margin: 0;
-  padding: 10px 20px;
-}
-.lista-lojas-container .ll-lista .ll-loja:hover {
-  background-color: var(--color-white);
-  outline: 1px solid var(--cinza-claro);
-}
-.lista-lojas-container .ll-lista .ll-loja.selected {
-  background-color: var(--azul-leitura);
-}
-.lista-lojas-container .ll-lista .ll-loja.selected h4,
-.lista-lojas-container .ll-lista .ll-loja.selected p {
-  color: var(--color-white);
-  text-decoration-color: var(--cinza-clarinho);
-}
-.lista-lojas-container .ll-lista .ll-loja h4 {
-  font-size: 1.2em;
-  margin: 0;
-}
-.lista-lojas-container .ll-lista .ll-loja p {
-  font-size: 80%;
-  margin: 0;
-}
-.lista-lojas-container .ll-lista .ll-loja p span {
-  font-weight: 700;
-}
-.lista-lojas-container .ll-lista .ll-loja .ll-como-chegar {
-  display: inline-block;
-  margin: 20px 0 10px;
-  font-size: 1rem;
-  text-decoration: none;
-  padding: 10px 40px;
-  background-color: var(--color-white);
-  color: var(--azul-leitura);
-  text-transform: uppercase;
-}
-.lista-lojas-container .ll-lista .ll-loja .ll-fechar {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 40px;
-  height: 40px;
-  z-index: 9;
-}
- .lista-lojas-container .ll-lista .ll-loja .ll-fechar::after,.lista-lojas-container .ll-lista .ll-loja .ll-fechar::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 1px;
-  background-color: var(--color-white);
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-.lista-lojas-container .ll-lista .ll-loja .ll-fechar::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-.lista-lojas-container .ll-lista .ll-loja .ll-fechar:hover {
-  background-color: initial;
-  border-radius: 50%;
-}
-
-#zoom-out {
-  position: absolute;
-  right: 10px;
-  padding: 5px;
-  top: calc(100vh - 180px);
-  width: 40px;
-  height: 40px;
-  z-index: 9;
-}
-
 
 .acf-block-preview .block,.is-root-container,
 body:not(.wp-admin) {
@@ -1723,6 +1618,133 @@ input[type=radio]:focus,input[type=radio]:hover {
   visibility: visible;
 }
 
+.lista-lojas-container {
+  position: absolute;
+  top: 120px;
+  right: auto;
+  left: 5%;
+  max-width: 650px;
+  width: 45vw;
+  height: calc(100vh - 200px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: var(--cinza-clarinho);
+  border: 1px solid var(--cinza-claro);
+  border-bottom-color: var(--cinza-medio);
+  box-shadow: 0 10px 20px #004d8f33;
+}
+.lista-lojas-container .ll-spacer {
+  padding: 40px 10%;
+}
+.lista-lojas-container .ll-titulo {
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+.lista-lojas-container .ll-campo {
+  width: 100%;
+  font-size: var(--typography-paragraph-size);
+  margin: 0;
+  padding: 32px 50px 32px 80px;
+  background-image: url(../../svg/marcador-cinza.svg);
+  background-repeat: no-repeat;
+  background-position: 50px 50%;
+  background-size: 20px;
+}
+.lista-lojas-container .ll-lista {
+  list-style: none;
+  padding: 0;
+}
+.lista-lojas-container .ll-lista .ll-loja {
+  position: relative;
+  margin: 20px 0;
+  padding: 40px 50px;
+  background-color: var(--color-white);
+}
+.lista-lojas-container .ll-lista .ll-loja:hover {
+  background-color: var(--color-white);
+  outline: 1px solid var(--cinza-claro);
+}
+.lista-lojas-container .ll-lista .ll-loja.selected {
+  background-color: var(--azul-leitura);
+}
+.lista-lojas-container .ll-lista .ll-loja.selected h4,
+.lista-lojas-container .ll-lista .ll-loja.selected p {
+  color: var(--color-white);
+  text-decoration-color: var(--cinza-clarinho);
+}
+.lista-lojas-container .ll-lista .ll-loja.selected h4 {
+  padding-left: 33px;
+  background-image: url(../../svg/store.svg);
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+  background-size: 23px;
+}
+.lista-lojas-container .ll-lista .ll-loja h4,
+.lista-lojas-container .ll-lista .ll-loja p {
+  color: var(--cinza-escurinho);
+}
+.lista-lojas-container .ll-lista .ll-loja h4 {
+  font-size: 1.2em;
+  margin: 0;
+}
+.lista-lojas-container .ll-lista .ll-loja p {
+  margin: 0;
+}
+.lista-lojas-container .ll-lista .ll-loja p span {
+  font-weight: 700;
+}
+.lista-lojas-container .ll-lista .ll-loja .ll-como-chegar {
+  display: inline-block;
+  margin: 20px 0 10px;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 10px 40px;
+  background-color: var(--color-white);
+  color: var(--azul-leitura);
+  text-transform: uppercase;
+}
+.lista-lojas-container .ll-lista .ll-loja .ll-fechar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: #0000;
+  border-color: #0000;
+  z-index: 9;
+}
+ .lista-lojas-container .ll-lista .ll-loja .ll-fechar::after,.lista-lojas-container .ll-lista .ll-loja .ll-fechar::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 1px;
+  background-color: var(--color-white);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.lista-lojas-container .ll-lista .ll-loja .ll-fechar::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.lista-lojas-container .ll-lista .ll-loja .ll-fechar:hover {
+  background-color: initial;
+  border: 1px solid #ffffff80;
+  border-radius: 50%;
+}
+
+#zoom-out {
+  position: absolute;
+  right: 10px;
+  padding: 5px;
+  top: calc(100vh - 180px);
+  width: 40px;
+  height: 40px;
+  z-index: 9;
+}
+
 .gallery {
   display: grid;
   grid-gap: 1.5em;
@@ -1854,193 +1876,6 @@ a.page-numbers:focus,a.page-numbers:hover {
     padding-left: 0.625rem;
     padding-right: 0.625rem;
   }
-}
-
-div.validation_error {
-  background-color: var(--color-error);
-  font-size: var(--typography-size-17);
-  font-weight: var(--typography-weight-bold);
-  margin-bottom: var(--form-row-gap);
-  padding: 1.25rem;
-}
-div.validation_error,div.validation_error:focus {
-  color: var(--color-white);
-}
-
-body *[aria-invalid=true] {
-  border-color: var(--color-error);
-}
-
-.validation_message {
-  color: var(--color-error);
-  font-size: var(--typography-size-16);
-  font-weight: var(--typography-weight-regular);
-}
-
-.validation_list {
-  list-style: none;
-  margin-bottom: var(--form-row-gap);
-  margin-left: 0;
-  padding: 0;
-}
-.validation_list a {
-  color: var(--color-error);
-  text-decoration: none;
-}
-.validation_list li {
-  color: var(--color-error);
-  font-weight: var(--typography-weight-bold);
-}
-
-.gform_required_legend,
-.sr-only {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  word-wrap: normal !important;
-}
-.gform_required_legend:focus,
-.sr-only:focus {
-  opacity: 0;
-}
-.gform_required_legend:focus-visible,
-.sr-only:focus-visible {
-  background-color: var(--color-white);
-  border-radius: 0;
-  box-shadow: 0 0 2px 2px #16161699;
-  clip: auto;
-  clip-path: none;
-  display: block;
-  font-size: 1.0625rem;
-  font-weight: var(--typography-weight-bold);
-  height: auto;
-  left: 0.3125rem;
-  line-height: normal;
-  opacity: 1;
-  padding: 0.9375rem 1.4375rem 0.875rem;
-  text-decoration: none;
-  top: 0.3125rem;
-  width: auto;
-  z-index: 100000;
-}
-
-.gfield_required.gfield_required_asterisk {
-  font-size: var(--typography-size-required-asterisk-label);
-}
-
-.gfield_required.gfield_required_asterisk,
-.gfield_required.gfield_required_text {
-  color: var(--color-required-label-text);
-}
-
-.gfield_required.gfield_required_text {
-  font-size: var(--typography-size-required-text-label);
-}
-
-.gform_wrapper > form {
-  display: grid;
-  grid-column-gap: var(--form-column-gap);
-  grid-row-gap: var(--form-row-gap);
-}
-
-.gform-body ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.gform-body input:not([type=checkbox]):not([type=radio]),.gform-body textarea {
-  width: 100%;
-}
-.gform-body .ginput_container.ginput_container_textarea {
-  display: flex;
-}
-
-.gform-body .gfield_checkbox,.gform-body .gfield_radio {
-  display: grid;
-  gap: 0.625rem;
-}
-.gform-body .gchoice {
-  display: flex;
-  gap: 0.625rem;
-}
-.gform-body .gfield_label {
-  display: inline-flex;
-  gap: var(--form-required-gap);
-  margin-bottom: 0.625rem;
-  margin-top: 0.625rem;
-  padding-inline-end: 0;
-  padding-inline-start: 0;
-}
-.gform-body .gform_fields {
-  display: grid;
-  grid-column-gap: var(--form-column-gap);
-  grid-row-gap: var(--form-row-gap);
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(auto-fill, auto);
-  width: 100%;
-}
-.gform-body .gfield {
-  border: 0;
-  grid-column: 1/-1;
-  padding: 0;
-}
-.gform-body .gfield.gfield--width-full {
-  grid-column: span 12;
-}
-.gform-body .gfield.gfield--width-eleven-twelfths {
-  grid-column: span 11;
-}
-.gform-body .gfield.gfield--width-five-sixths {
-  grid-column: span 10;
-}
-.gform-body .gfield.gfield--width-three-quarter {
-  grid-column: span 9;
-}
-.gform-body .gfield.gfield--width-two-thirds {
-  grid-column: span 8;
-}
-.gform-body .gfield.gfield--width-seven-twelfths {
-  grid-column: span 7;
-}
-.gform-body .gfield.gfield--width-half {
-  grid-column: span 6;
-}
-.gform-body .gfield.gfield--width-five-twelfths {
-  grid-column: span 5;
-}
-.gform-body .gfield.gfield--width-third {
-  grid-column: span 4;
-}
-.gform-body .gfield.gfield--width-quarter {
-  grid-column: span 3;
-}
-@media (max-width: 640px) {
-  .gform-body .gform_fields {
-    grid-column-gap: 0;
-  }
-  .gform-body .gfield:not(.gfield--width-full) {
-    grid-column: 1/-1;
-  }
-}
-
-.gform_validation_container {
-  display: none;
-}
-
-.gform_confirmation_message {
-  background-color: #0000;
-  border: 2px solid var(--color-success);
-  color: var(--color-success);
-  font-size: var(--typography-paragraph-size);
-  font-weight: var(--typography-weight-semibold);
-  padding: 1.25rem;
 }
 
 /* features/_index.scss */
@@ -2379,9 +2214,10 @@ body *[aria-invalid=true] {
   --color-white: #fff;
   --azul-leitura: #004d8f;
   --azul-forte: #005ce8;
-  --cinza-clarinho: #f7f7f7;
+  --cinza-clarinho: #f2f2f2;
   --cinza-claro: #e6e6e6;
   --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
   --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
@@ -2431,32 +2267,32 @@ body *[aria-invalid=true] {
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 400;
-  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 500;
-  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 600;
-  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 700;
-  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
 }
 @media (max-width: 600px) {
   
@@ -2681,9 +2517,10 @@ body *[aria-invalid=true] {
   --color-white: #fff;
   --azul-leitura: #004d8f;
   --azul-forte: #005ce8;
-  --cinza-clarinho: #f7f7f7;
+  --cinza-clarinho: #f2f2f2;
   --cinza-claro: #e6e6e6;
   --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
   --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
@@ -2733,32 +2570,32 @@ body *[aria-invalid=true] {
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 400;
-  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 500;
-  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 600;
-  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 700;
-  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
 }
 @media (max-width: 600px) {
   
@@ -3127,9 +2964,10 @@ body *[aria-invalid=true] {
   --color-white: #fff;
   --azul-leitura: #004d8f;
   --azul-forte: #005ce8;
-  --cinza-clarinho: #f7f7f7;
+  --cinza-clarinho: #f2f2f2;
   --cinza-claro: #e6e6e6;
   --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
   --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
@@ -3179,32 +3017,32 @@ body *[aria-invalid=true] {
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 400;
-  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 500;
-  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 600;
-  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 700;
-  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
 }
 @media (max-width: 600px) {
   
@@ -3382,9 +3220,10 @@ body *[aria-invalid=true] {
   --color-white: #fff;
   --azul-leitura: #004d8f;
   --azul-forte: #005ce8;
-  --cinza-clarinho: #f7f7f7;
+  --cinza-clarinho: #f2f2f2;
   --cinza-claro: #e6e6e6;
   --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
   --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
@@ -3434,32 +3273,32 @@ body *[aria-invalid=true] {
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 400;
-  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 500;
-  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 600;
-  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 700;
-  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
 }
 @media (max-width: 600px) {
   
@@ -3667,9 +3506,10 @@ body *[aria-invalid=true] {
   --color-white: #fff;
   --azul-leitura: #004d8f;
   --azul-forte: #005ce8;
-  --cinza-clarinho: #f7f7f7;
+  --cinza-clarinho: #f2f2f2;
   --cinza-claro: #e6e6e6;
   --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
   --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
@@ -3719,32 +3559,32 @@ body *[aria-invalid=true] {
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 400;
-  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 500;
-  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 600;
-  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 700;
-  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
 }
 @media (max-width: 600px) {
   
@@ -3894,9 +3734,10 @@ body *[aria-invalid=true] {
   --color-white: #fff;
   --azul-leitura: #004d8f;
   --azul-forte: #005ce8;
-  --cinza-clarinho: #f7f7f7;
+  --cinza-clarinho: #f2f2f2;
   --cinza-claro: #e6e6e6;
   --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
   --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
@@ -3946,32 +3787,32 @@ body *[aria-invalid=true] {
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 400;
-  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 500;
-  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 600;
-  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 700;
-  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
 }
 @media (max-width: 600px) {
   
@@ -4144,9 +3985,10 @@ body *[aria-invalid=true] {
   --color-white: #fff;
   --azul-leitura: #004d8f;
   --azul-forte: #005ce8;
-  --cinza-clarinho: #f7f7f7;
+  --cinza-clarinho: #f2f2f2;
   --cinza-claro: #e6e6e6;
   --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
   --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
@@ -4196,32 +4038,32 @@ body *[aria-invalid=true] {
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 400;
-  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 500;
-  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 600;
-  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 700;
-  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
 }
 @media (max-width: 600px) {
   
@@ -4427,9 +4269,10 @@ body *[aria-invalid=true] {
   --color-white: #fff;
   --azul-leitura: #004d8f;
   --azul-forte: #005ce8;
-  --cinza-clarinho: #f7f7f7;
+  --cinza-clarinho: #f2f2f2;
   --cinza-claro: #e6e6e6;
   --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
   --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
@@ -4479,32 +4322,32 @@ body *[aria-invalid=true] {
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 400;
-  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 500;
-  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 600;
-  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 700;
-  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
 }
 @media (max-width: 600px) {
   
@@ -4655,9 +4498,10 @@ body *[aria-invalid=true] {
   --color-white: #fff;
   --azul-leitura: #004d8f;
   --azul-forte: #005ce8;
-  --cinza-clarinho: #f7f7f7;
+  --cinza-clarinho: #f2f2f2;
   --cinza-claro: #e6e6e6;
   --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
   --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
@@ -4707,32 +4551,32 @@ body *[aria-invalid=true] {
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 400;
-  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 500;
-  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 600;
-  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 700;
-  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
 }
 @media (max-width: 600px) {
   
@@ -4884,9 +4728,10 @@ body *[aria-invalid=true] {
   --color-white: #fff;
   --azul-leitura: #004d8f;
   --azul-forte: #005ce8;
-  --cinza-clarinho: #f7f7f7;
+  --cinza-clarinho: #f2f2f2;
   --cinza-claro: #e6e6e6;
   --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
   --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
@@ -4936,32 +4781,32 @@ body *[aria-invalid=true] {
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 400;
-  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 500;
-  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 600;
-  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 700;
-  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
 }
 @media (max-width: 600px) {
   
@@ -5148,9 +4993,10 @@ body *[aria-invalid=true] {
   --color-white: #fff;
   --azul-leitura: #004d8f;
   --azul-forte: #005ce8;
-  --cinza-clarinho: #f7f7f7;
+  --cinza-clarinho: #f2f2f2;
   --cinza-claro: #e6e6e6;
   --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
   --cinza-escuro: #333;
   --color-main: var(--color-valhalla);
   --color-heading: var(--color-main);
@@ -5200,32 +5046,32 @@ body *[aria-invalid=true] {
   src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 400;
-  src: url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 500;
-  src: url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 600;
-  src: url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-display: optional;
+  font-display: fallback;
   font-family: "Faktum";
   font-style: normal;
   font-weight: 700;
-  src: url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
 }
 @media (max-width: 600px) {
   .editor-styles-wrapper :root,

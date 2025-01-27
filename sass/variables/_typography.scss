@@ -9,10 +9,10 @@
 @include variablefont.variablefont('Mona Sans', '../../fonts/monasansvf', 1 999);
 
 // Regular fonts
-@include font('Faktum', '../../fonts/Faktum-Light', 400);
-@include font('Faktum', '../../fonts/Faktum-Regular', 500);
-@include font('Faktum', '../../fonts/Faktum-SemiBold', 600);
-@include font('Faktum', '../../fonts/Faktum-Bold', 700);
+@include font.font('Faktum', '../../fonts/Faktum-Light', 400);
+@include font.font('Faktum', '../../fonts/Faktum-Regular', 500);
+@include font.font('Faktum', '../../fonts/Faktum-SemiBold', 600);
+@include font.font('Faktum', '../../fonts/Faktum-Bold', 700);
 // @include font('Inter', '../../fonts/inter-400', 400);
 // @include font('Inter', '../../fonts/inter-400-italic', 400, italic);
 // @include font('Inter', '../../fonts/inter-500', 500);

@@ -70,7 +70,7 @@ body:not(.wp-admin) {
 
   // If base grid is larger than Macbook Air screen
   @if breakpoints.$width-grid-base >1440 {
-    @media (min-width: breakpoints.$container-ipad-landscape) and (max-width: 140rem + 6.4rem) {
+    @media (min-width: breakpoints.$container-ipad-landscape) and (max-width: calc(140rem + 6.4rem)) {
       padding-left: var(--spacing-container-padding-inline-large);
       padding-right: var(--spacing-container-padding-inline-large);
     }

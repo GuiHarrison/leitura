@@ -144,7 +144,7 @@ endif;
                     });
 
                     // Adicionar loja à lista
-                    jQuery('.lista-lojas-container>.ll-lista').append(`
+                    jQuery('#ll-lista').append(`
                         <li class="ll-loja" id="${location.id}">
                           <h4 class="ll-nome" onclick="lojaSelecionada(${location.id})">${location.nome}</h4>
                           <p class="ll-endereco" onclick="lojaSelecionada(${location.id})">${location.endereço}</p>
@@ -169,14 +169,14 @@ endif;
       document.getElementById('busca_lojas').addEventListener('keyup', function() {
           if (this.value.length > 3) {
               const termoLoja = this.value.toLowerCase();
-              const $lista_loja = document.querySelectorAll('.ll-lista li');
+              const $lista_loja = document.querySelectorAll('#ll-lista li');
 
               $lista_loja.forEach(function($storeItem) {
                   const storeName = $storeItem.textContent.toLowerCase();
                   $storeItem.style.display = storeName.includes(termoLoja) ? '' : 'none';
               });
           } else {
-              const $lista_loja = document.querySelectorAll('.ll-lista li');
+              const $lista_loja = document.querySelectorAll('#ll-lista li');
               $lista_loja.forEach(function($storeItem) {
                   $storeItem.style.display = '';
               });
@@ -207,9 +207,11 @@ endif;
       <button id="zoom-out" onclick="zoomOut()">▣</button>
       <!-- Navegador de lojas -->
       <div class="lista-lojas-container">
+        <div class="ll-spacer">
           <h3 class="ll-titulo">→ Encotre uma Leitura próxima de você</h3>
           <input type="text" id="busca_lojas" class="ll-campo" placeholder="Cidade, shopping, etc…">
-          <ul class="ll-lista"></ul>
+          <ul id="ll-lista" class="ll-lista"></ul>
+        </div>
       </div>
     </div>
 	</div>

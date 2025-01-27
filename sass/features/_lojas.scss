@@ -3,29 +3,37 @@
   top: 120px;
   right: auto;
   left: 5%;
-  max-width: 400px;
-  width: 100%;
+  max-width: 650px; // desktop
+  width: 45vw; // desktop
   height: calc(100vh - 200px);
-  margin: 0 10px;
   overflow-x: hidden;
   overflow-y: scroll;
   background-color: var(--cinza-clarinho);
-  border-radius: 12px;
   border: 1px solid var(--cinza-claro);
   border-bottom-color: var(--cinza-medio);
   box-shadow: 0 10px 20px rgba(0, 77, 143, .2);
+
+  .ll-spacer {
+    padding: 40px 10%;
+  }
 
   .ll-titulo {
     font-size: 1.5em;
     text-transform: uppercase;
     font-weight: bold;
-    margin: 20px;
+    margin: 0 0 20px 0;
     line-height: 1.2;
   }
 
   .ll-campo {
-    width: calc(100% - 40px);
-    margin: 0 20px;
+    width: 100%;
+    font-size: var(--typography-paragraph-size);
+    margin: 0;
+    padding: 32px 50px 32px 80px;
+    background-image: url(../../svg/marcador-cinza.svg);
+    background-repeat: no-repeat;
+    background-position: 50px 50%;
+    background-size: 20px;
   }
 
   .ll-lista {
@@ -34,8 +42,9 @@
 
     .ll-loja {
       position: relative;
-      margin: 0;
-      padding: 10px 20px;
+      margin: 20px 0;
+      padding: 40px 50px;
+      background-color: var(--color-white);
 
       &:hover {
         background-color: var(--color-white);
@@ -50,6 +59,19 @@
           color: var(--color-white);
           text-decoration-color: var(--cinza-clarinho);
         }
+
+        h4 {
+          padding-left: 33px;
+          background-image: url(../../svg/store.svg);
+          background-repeat: no-repeat;
+          background-position: 0 50%;
+          background-size: 23px;
+        }
+      }
+
+      h4,
+      p {
+        color: var(--cinza-escurinho);
       }
 
       h4 {
@@ -58,7 +80,7 @@
       }
 
       p {
-        font-size: 80%;
+        // font-size: 80%;
         margin: 0;
 
         span {
@@ -83,6 +105,8 @@
         right: 10px;
         width: 40px;
         height: 40px;
+        background-color: transparent;
+        border-color: transparent;
         z-index: 9;
 
         &::before,
@@ -103,6 +127,7 @@
 
         &:hover {
           background-color: initial;
+          border: solid 1px rgba(255, 255, 255, .5);
           border-radius: 50%;
         }
       }

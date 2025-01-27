@@ -1,8 +1,5 @@
 // Dependencies
-const {
-  dest,
-  src
-} = require('gulp');
+const { dest, src } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
@@ -18,6 +15,7 @@ const normalizeUrl = require('postcss-normalize-url');
 const uniqueSelectors = require('postcss-unique-selectors');
 const zIndex = require('postcss-zindex');
 const size = require('gulp-size');
+// const cleanCSS = require('gulp-clean-css');
 const config = require('../config.js');
 
 function prodstyles() {
