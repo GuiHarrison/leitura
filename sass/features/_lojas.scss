@@ -1,17 +1,29 @@
+@use "variables/breakpoints";
+
+.loja-mapa {
+  // position: relative;
+}
+
 .lista-lojas-container {
-  position: absolute;
-  top: 120px;
-  right: auto;
-  left: 5%;
-  max-width: 650px; // desktop
-  width: 45vw; // desktop
-  height: calc(100vh - 200px);
+  position: relative;
+  width: 100vw;
   overflow-x: hidden;
   overflow-y: scroll;
+  font-size: .9rem;
   background-color: var(--cinza-clarinho);
   border: 1px solid var(--cinza-claro);
   border-bottom-color: var(--cinza-medio);
   box-shadow: 0 10px 20px rgba(0, 77, 143, .2);
+
+  @media (min-width: breakpoints.$container-mobile) {
+    position: absolute;
+    top: 120px;
+    right: auto;
+    left: 5%;
+    max-width: 650px;
+    width: 45vw;
+    height: calc(100vh - 200px);
+  }
 
   .ll-spacer {
     padding: 40px 10%;
@@ -45,6 +57,7 @@
       margin: 20px 0;
       padding: 40px 50px;
       background-color: var(--color-white);
+      border-radius: var(--border-radius-input-field);
 
       &:hover {
         background-color: var(--color-white);
@@ -137,10 +150,15 @@
 
 #zoom-out {
   position: absolute;
+  bottom: 120px;
   right: 10px;
   padding: 5px;
-  top: calc(100vh - 180px);
   width: 40px;
   height: 40px;
   z-index: 9;
+
+  @media (min-width: breakpoints.$container-mobile) {
+    top: calc(100vh - 180px);
+    bottom: initial;
+  }
 }

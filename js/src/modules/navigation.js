@@ -12,6 +12,7 @@ import checkForSubmenuOverflow from './navigation/check-for-submenu-overflow';
 import dropdownMenuOnHover from './navigation/dropdown-menu-on-hover';
 import a11yAddDropdownToggleLabels from './navigation/a11y-add-dropdown-toggle-labels';
 import a11yDropdownMenuKeyboardNavigation from './navigation/a11y-dropdown-menu-keyboard-navigation';
+import seCelular from './navigation/se-celular';
 
 // Navigation desktop click functions
 import convertDropdownMenuItems from './navigation/convert-dropdown-menu-items';
@@ -195,20 +196,7 @@ const navSticky = () => {
   }
 
   function initStickyNav() {
-    // Get --width-max-mobile from CSS
-    const widthMaxMobile = getComputedStyle(
-      document.documentElement,
-    ).getPropertyValue('--width-max-mobile');
-
-    // Let's see if we are on mobile viewport
-    const isMobile = window.matchMedia(
-      `(max-width: ${widthMaxMobile})`,
-    ).matches;
-
-    // If things are not okay, bail
-    if (isMobile) {
-      return;
-    }
+    seCelular();
 
     const siteHeader = document.querySelector('.site-header');
     const headerHeight = getComputedStyle(siteHeader).height.split('px')[0];

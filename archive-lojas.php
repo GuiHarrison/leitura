@@ -20,200 +20,238 @@ $api_keys = APIKeys::get_instance();
 $geoapify = $api_keys->get_key( 'geoapify' );
 
 $args = array(
-  'post_type'      => 'lojas',
-  'posts_per_page' => -1,
-  'post_status'    => 'publish',
-  'orderby'        => 'name',
-  'order'          => 'ASC',
+	'post_type'      => 'lojas',
+	'posts_per_page' => -1,
+	'post_status'    => 'publish',
+	'orderby'        => 'name',
+	'order'          => 'ASC',
 );
 
 $query = new \WP_Query( $args );
 
 if ( $query->have_posts() ) :
-  $locations = array();
-  while ( $query->have_posts() ) : $query->the_post();
+	$locations = array();
+	while ( $query->have_posts() ) : $query->the_post();
 		// Obtém o campo personalizado 'mapa_loja'
 		$mapa_loja = get_post_meta( get_the_ID(), 'mapa_loja', true );
 		if ( $mapa_loja ) {
 			$locations[] = $mapa_loja;
 			}
-  endwhile;
-  wp_reset_postdata();
+	endwhile;
+	wp_reset_postdata();
 endif;
 ?>
 
 <script>
-    var map; // Declare a variável map no escopo global
-    var markers = {};
-    var requestOptions = {
-        method: 'GET',
-    };
+		// Testando se é celular.
+		var isMobile; // Declare isMobile no escopo global
 
-    fetch("https://api.geoapify.com/v1/ipinfo?apiKey=<?php echo esc_js( $geoapify ); ?>", requestOptions)
-    .then(response => response.json())
-    .then(result => {
-        var latDetec = result.location.latitude || -14.235004; // Latitude padrão do Brasil
-        var longDetec = result.location.longitude || -51.92528; // Longitude padrão do Brasil
-        var zoom = ( latDetec === -14.235004 ) ? 6 : 13;
-        var offsetX = 0.03;
+		function seCelular(e) {
 
-        window.latDetec = latDetec;
-        window.longDetec = longDetec - offsetX;
-        window.zoom = zoom;
-        window.offsetX = offsetX;
+				// Pega --width-max-mobile do CSS
+				const widthMaxMobile = getComputedStyle(
+						document.documentElement,
+				).getPropertyValue('--width-max-mobile');
 
-        if (typeof initMap === 'function') {
-            initMap();
-        }
-    })
-    .catch(error => {
-        console.log('error', error);
-        // Coordenadas padrão do Brasil
-        window.latDetec = -14.235004;
-        window.longDetec = -51.92528;
+				// Vamos ver se estamos em dimensões de celular
+				isMobile = window.matchMedia(
+						`(max-width: ${widthMaxMobile})`,
+				).matches;
 
-        if (typeof initMap === 'function') {
-            initMap();
-        }
-    });
+				// Se as coisas não estão bem, saia
+				if (isMobile) {
+						return;
+				}
+		}
+		// quando colocar esse código com módulos, importar seCelular assim:
+		// import seCelular from './navigation/se-celular';
 
-    function lojaSelecionada(lojaId) {
-        var marker = markers[lojaId];
-        if (marker) {
-          offsetX = 0.003;
-          map.setZoom(zoom + 3);
-          var center = marker.getPosition();
-          var offsetCenter = {
-              lat: center.lat(),
-              lng: center.lng() - offsetX
-          };
-          map.setCenter(offsetCenter);
+		seCelular();
 
-          jQuery('.ll-loja').removeClass('selected');
-          jQuery('#' + lojaId).addClass('selected');
+		var map; // Declare a variável map no escopo global
+		var markers = {};
+		var requestOptions = {
+				method: 'GET',
+		};
 
-          jQuery('.ll-detalhes').addClass('hide-completely');
-          jQuery('#' + lojaId + ' .ll-detalhes').removeClass('hide-completely');
-        }
-    }
+		fetch("https://api.geoapify.com/v1/ipinfo?apiKey=<?php echo esc_js( $geoapify ); ?>", requestOptions)
+		.then(response => response.json())
+		.then(result => {
+				var latDetec = result.location.latitude || -14.235004; // Latitude padrão do Brasil
+				var longDetec = result.location.longitude || -51.92528; // Longitude padrão do Brasil
+				var zoom = ( latDetec === -14.235004 ) ? 6 : 14;
+				var offsetX = seCelular ? 0 : 0.03;
 
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), { // Inicialize a variável map
-            zoom: window.zoom,
-            center: {lat: window.latDetec, lng: window.longDetec},
-            streetViewControl: false,
-            mapTypeControl: false,
-            mapfullscreenControl: false,
-            fullscreenControl: false,
-        });
+				window.latDetec = latDetec;
+				window.longDetec = longDetec - offsetX;
+				window.zoom = zoom;
+				window.offsetX = offsetX;
 
-        var geocoder = new google.maps.Geocoder();
-        var locations = <?php echo json_encode( $locations ); ?>;
-        var icon = {
-            url: <?php echo '"' . esc_url( get_theme_file_uri( 'svg/icone-mapa.svg' ) ) . '"'; ?>,
-            scaledSize: new google.maps.Size(36, 49),
-        }
+				if (typeof initMap === 'function') {
+						initMap();
+				}
+		})
+		.catch(error => {
+				console.log('error', error);
+				// Coordenadas padrão do Brasil
+				window.latDetec = -14.235004;
+				window.longDetec = -51.92528;
 
-        // Buscar dados das lojas
-        fetch( 'http://leitura.local/wp-json/wp/v2/lojas')
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(store => {
-                    var location = {
-                        id: store.id,
-                        nome: store.title.rendered,
-                        email: store.acf.email_loja,
-                        telefone: store.acf.telefone_loja,
-                        whatsapp: store.acf.wpp_loja,
-                        informações: store.acf.infor_loja,
-                        horário: store.acf.funcionamento_loja,
-                        endereço: store.acf.mapa_loja.address,
-                        lat: parseFloat(store.acf.mapa_loja.lat),
-                        lng: parseFloat(store.acf.mapa_loja.lng),
-                    };
+				if (typeof initMap === 'function') {
+						initMap();
+				}
+		});
 
-                    // Adicionar marcadores ao mapa
-                    var marker = new google.maps.Marker({
-                        position: { lat: location.lat, lng: location.lng },
-                        map: map,
-                        icon: icon
-                    });
-                    markers[location.id] = marker;
-                    google.maps.event.addListener(marker, 'click', function() {
-                        lojaSelecionada(location.id);
-                    });
+		function lojaSelecionada(lojaId) {
+				var marker = markers[lojaId];
+				if (marker) {
+					offsetX = seCelular ? 0 : 0.003;
+					map.setZoom(zoom + 3);
+					var center = marker.position;
+					var offsetCenter = {
+							lat: center.lat,
+							lng: center.lng - offsetX
+					};
+					map.setCenter(offsetCenter);
 
-                    // Adicionar loja à lista
-                    jQuery('#ll-lista').append(`
-                        <li class="ll-loja" id="${location.id}">
-                          <h4 class="ll-nome" onclick="lojaSelecionada(${location.id})">${location.nome}</h4>
-                          <p class="ll-endereco" onclick="lojaSelecionada(${location.id})">${location.endereço}</p>
-                          <div class="ll-detalhes hide-completely">
-                            <p class="ll-email">${location.email}</p>
-                            <p class="ll-telefone">${location.telefone}</p>
-                            <p class="ll-whatsapp">${location.whatsapp}</p>
-                            <p class="ll-horario">${location.horário}</p>
-                            <div class="ll-detalhes hide-completely">
-                            <a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr=${location.lat},${location.lng}" class="ll-como-chegar">Como chegar</a>
-                            <button class="ll-fechar" onclick="zoomOut()"></button>
-                          </div>
-                          </div>
-                        </li>
-                    `);
-                });
-            })
-        .catch(error => console.error('Erro ao buscar dados das lojas:', error));
-    }
+					// Rolar até o mapa
+					// também fazer com que quando clica no marcador, mostre os detalhes.
 
-    function buscador_lojas() {
-      document.getElementById('busca_lojas').addEventListener('keyup', function() {
-          if (this.value.length > 3) {
-              const termoLoja = this.value.toLowerCase();
-              const $lista_loja = document.querySelectorAll('#ll-lista li');
+					jQuery('.ll-loja').removeClass('selected');
+					jQuery('#' + lojaId).addClass('selected');
 
-              $lista_loja.forEach(function($storeItem) {
-                  const storeName = $storeItem.textContent.toLowerCase();
-                  $storeItem.style.display = storeName.includes(termoLoja) ? '' : 'none';
-              });
-          } else {
-              const $lista_loja = document.querySelectorAll('#ll-lista li');
-              $lista_loja.forEach(function($storeItem) {
-                  $storeItem.style.display = '';
-              });
-              zoomOut();
-          }
-      });
-    }
+					jQuery('.ll-detalhes').addClass('hide-completely');
+					jQuery('#' + lojaId + ' .ll-detalhes').removeClass('hide-completely');
+				}
+		}
 
-    function zoomOut() {
-      jQuery('.ll-detalhes').addClass('hide-completely');
-      jQuery('.ll-loja').removeClass('selected');
-      map.setCenter({lat: window.latDetec, lng: window.longDetec});
-      map.setZoom(zoom);
-    }
+		function initMap() {
+				map = new google.maps.Map(document.getElementById('map'), { // Inicialize a variável map
+						zoom: window.zoom,
+						center: {lat: window.latDetec, lng: window.longDetec},
+						streetViewControl: false,
+						mapTypeControl: false,
+						mapfullscreenControl: false,
+						fullscreenControl: false,
+						mapId: 'YOUR_MAP_ID' // Adicione o ID do mapa aqui
+				});
 
-    document.addEventListener('DOMContentLoaded', function() {
-        buscador_lojas();
-    });
+				var geocoder = new google.maps.Geocoder();
+				var locations = <?php echo json_encode( $locations ); ?>;
+				var iconUrl = <?php echo '"' . esc_url( get_theme_file_uri( 'svg/icone-mapa.svg' ) ) . '"'; ?>;
+
+				// Buscar dados das lojas
+				fetch( 'http://leitura.local/wp-json/wp/v2/lojas')
+						.then(response => response.json())
+						.then(data => {
+								data.forEach(store => {
+										var location = {
+												id: store.id,
+												nome: store.title.rendered,
+												email: store.acf.email_loja,
+												telefone: store.acf.telefone_loja,
+												whatsapp: store.acf.wpp_loja,
+												informações: store.acf.infor_loja,
+												horário: store.acf.funcionamento_loja,
+												endereço: store.acf.mapa_loja.address,
+												lat: parseFloat(store.acf.mapa_loja.lat),
+												lng: parseFloat(store.acf.mapa_loja.lng),
+										};
+
+										// Criar elemento de conteúdo do marcador
+										var markerContent = document.createElement('div');
+										var markerImage = document.createElement('img');
+										markerImage.src = iconUrl;
+										markerImage.style.width = '36px';
+										markerImage.style.height = '49px';
+										markerContent.appendChild(markerImage);
+
+										// Adicionar marcadores ao mapa
+										var marker = new google.maps.marker.AdvancedMarkerElement({
+												position: { lat: location.lat, lng: location.lng },
+												map: map,
+												content: markerContent
+										});
+										markers[location.id] = marker;
+										marker.addListener('click', function() {
+												lojaSelecionada(location.id);
+										});
+
+										// Adicionar loja à lista
+										jQuery('#ll-lista').append(`
+												<li class="ll-loja ${isMobile ? 'hide-completely' : ''}" onclick="lojaSelecionada(${location.id})" id="${location.id}">
+													<h4 class="ll-nome">${location.nome}</h4>
+													<p class="ll-endereco">${location.endereço}</p>
+													<div class="ll-detalhes hide-completely">
+														<p class="ll-email">${location.email}</p>
+														<p class="ll-telefone">${location.telefone}</p>
+														<p class="ll-whatsapp">${location.whatsapp}</p>
+														<p class="ll-horário">${location.horário}</p>
+														<div class="ll-detalhes hide-completely">
+														<a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr=${location.lat},${location.lng}" class="ll-como-chegar">Como chegar</a>
+														<button class="ll-fechar" onclick="zoomOut()"></button>
+													</div>
+													</div>
+												</li>
+										`);
+								});
+						})
+				.catch(error => console.error('Erro ao buscar dados das lojas:', error));
+		}
+
+		function buscador_lojas() {
+			document.getElementById('busca_lojas').addEventListener('keyup', function() {
+					const termoLoja = this.value.toLowerCase();
+					const ll = document.querySelectorAll('#ll-lista li');
+
+					ll.forEach(function(loja) {
+							const storeName = loja.textContent.toLowerCase();
+							const match = storeName.includes(termoLoja);
+							loja.classList.toggle('hide-completely', !match);
+					});
+
+					if (this.value.length <= 3) {
+							ll.forEach(function(loja) {
+									loja.classList.toggle('hide-completely', isMobile);
+							});
+							zoomOut();
+					}
+			});
+		}
+
+		function zoomOut() {
+			jQuery('.ll-detalhes').addClass('hide-completely');
+			jQuery('.ll-loja').removeClass('selected');
+			map.setCenter({lat: window.latDetec, lng: window.longDetec});
+			map.setZoom(zoom);
+
+			if (!e) var e = window.event;
+			e.cancelBubble = true;
+			if (e.stopPropagation) e.stopPropagation();
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+				buscador_lojas();
+		});
 </script>
 
 <main class="site-main">
 
 	<div class="loja-container">
 		<div class="loja-mapa">
+			<!-- Navegador de lojas -->
+			<div class="lista-lojas-container">
+				<div class="ll-spacer">
+					<h3 class="ll-titulo">→ Encotre uma Leitura próxima de você</h3>
+					<input type="text" id="busca_lojas" class="ll-campo" placeholder="Cidade, shopping, etc…">
+					<ul id="ll-lista" class="ll-lista"></ul>
+				</div>
+			</div>
 			<div id="map" style="min-height: calc(100vh - 100px);">
-        <p id="carregando-mapa">Carregando mapa...</p>
-      </div>
-      <button id="zoom-out" onclick="zoomOut()">▣</button>
-      <!-- Navegador de lojas -->
-      <div class="lista-lojas-container">
-        <div class="ll-spacer">
-          <h3 class="ll-titulo">→ Encotre uma Leitura próxima de você</h3>
-          <input type="text" id="busca_lojas" class="ll-campo" placeholder="Cidade, shopping, etc…">
-          <ul id="ll-lista" class="ll-lista"></ul>
-        </div>
-      </div>
-    </div>
+				<p id="carregando-mapa">Carregando mapa...</p>
+			</div>
+			<button id="zoom-out" onclick="zoomOut()">▣</button>
+		</div>
 	</div>
 
 </main>

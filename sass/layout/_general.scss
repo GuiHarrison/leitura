@@ -116,7 +116,7 @@ body:not(.wp-admin) {
 
 // Hide/show helpers
 // stylelint-disable-next-line a11y/no-display-none
-.hide-on-desktop {
+.hide-on- {
   @media (min-width: breakpoints.$container-mobile) {
     // Forced to use important here, because makes no sense to write too specific selectors here
     // stylelint-disable-next-line declaration-no-important

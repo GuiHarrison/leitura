@@ -47,7 +47,7 @@ function enqueue_theme_scripts(): void {
     if ( $api_keys ) {
       wp_enqueue_script(
         'google-maps',
-        'https://maps.googleapis.com/maps/api/js?key=' . $maps_key . '&libraries=places&loading=async',
+        'https://maps.googleapis.com/maps/api/js?key=' . $maps_key . '&libraries=places,marker&loading=async',
         [],
         null,
         true

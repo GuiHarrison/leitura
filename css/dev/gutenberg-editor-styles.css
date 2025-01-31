@@ -3536,7 +3536,7 @@ body:not(.wp-admin) {
 }
 
 @media (min-width: 600px) {
-  .hide-on-desktop {
+  .hide-on- {
     display: none !important;
   }
 }

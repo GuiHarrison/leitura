@@ -149,7 +149,7 @@ function build_theme_support() {
 }
 
 /**
- * Inserindo chamada da API do Google Maps
+ * API do Google Maps para o ACF
  */
 function acf_maps_key() {
     $api_keys = APIKeys::get_instance();
