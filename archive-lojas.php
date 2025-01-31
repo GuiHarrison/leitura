@@ -80,12 +80,19 @@ endif;
 				var latDetec = result.location.latitude || -14.235004; // Latitude padrão do Brasil
 				var longDetec = result.location.longitude || -51.92528; // Longitude padrão do Brasil
 				var zoom = ( latDetec === -14.235004 ) ? 6 : 14;
-				var offsetX = seCelular ? 0 : 0.03;
+        if (isMobile) {
+          offsetX = 0;
+          offsetY = -0.006;
+        } else {
+          offsetX = 0.03;
+          offsetY = 0;
+        }
 
-				window.latDetec = latDetec;
+				window.latDetec = latDetec + offsetY;
 				window.longDetec = longDetec - offsetX;
 				window.zoom = zoom;
 				window.offsetX = offsetX;
+        window.offsetY = offsetY;
 
 				if (typeof initMap === 'function') {
 						initMap();
@@ -105,23 +112,32 @@ endif;
 		function lojaSelecionada(lojaId) {
 				var marker = markers[lojaId];
 				if (marker) {
-					offsetX = seCelular ? 0 : 0.003;
-					map.setZoom(zoom + 3);
+          if (isMobile) {
+            offsetY = 0.0015;
+          } else {
+            offsetX = 0.003;
+          }
 					var center = marker.position;
 					var offsetCenter = {
-							lat: center.lat,
-							lng: center.lng - offsetX
+            lat: center.lat - offsetY,
+            lng: center.lng - offsetX
 					};
+          map.setZoom(zoom + 3);
 					map.setCenter(offsetCenter);
 
-					// Rolar até o mapa
-					// também fazer com que quando clica no marcador, mostre os detalhes.
-
 					jQuery('.ll-loja').removeClass('selected');
-					jQuery('#' + lojaId).addClass('selected');
+					jQuery('#' + lojaId).addClass('selected').removeClass('hide-completely');
 
 					jQuery('.ll-detalhes').addClass('hide-completely');
 					jQuery('#' + lojaId + ' .ll-detalhes').removeClass('hide-completely');
+
+          setTimeout(() => {
+            if (isMobile) {
+              document.getElementById('colophon').scrollIntoView({ behavior: 'smooth', block: 'end' });
+            } else {
+              document.getElementsByClassName('selected')[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }, 200);
 				}
 		}
 
@@ -220,10 +236,13 @@ endif;
 		}
 
 		function zoomOut() {
+      var campo = document.getElementById('busca_lojas');
 			jQuery('.ll-detalhes').addClass('hide-completely');
-			jQuery('.ll-loja').removeClass('selected');
+			jQuery('.ll-loja').removeClass('selected').toggleClass('hide-completely', isMobile);
 			map.setCenter({lat: window.latDetec, lng: window.longDetec});
 			map.setZoom(zoom);
+
+      campo.focus();
 
 			if (!e) var e = window.event;
 			e.cancelBubble = true;
@@ -237,7 +256,7 @@ endif;
 
 <main class="site-main">
 
-	<div class="loja-container">
+	<div id="loja-container">
 		<div class="loja-mapa">
 			<!-- Navegador de lojas -->
 			<div class="lista-lojas-container">
@@ -247,7 +266,7 @@ endif;
 					<ul id="ll-lista" class="ll-lista"></ul>
 				</div>
 			</div>
-			<div id="map" style="min-height: calc(100vh - 100px);">
+			<div id="map">
 				<p id="carregando-mapa">Carregando mapa...</p>
 			</div>
 			<button id="zoom-out" onclick="zoomOut()">▣</button>

@@ -1618,6 +1618,16 @@ input[type=radio]:focus,input[type=radio]:hover {
   visibility: visible;
 }
 
+#map {
+  min-height: 300px;
+  height: calc(100vh - 325px);
+}
+@media (min-width: 600px) {
+  #map {
+    min-height: calc(100vh - 100px);
+  }
+}
+
 .lista-lojas-container {
   position: relative;
   width: 100vw;
@@ -1628,6 +1638,7 @@ input[type=radio]:focus,input[type=radio]:hover {
   border: 1px solid var(--cinza-claro);
   border-bottom-color: var(--cinza-medio);
   box-shadow: 0 10px 20px #004d8f33;
+  z-index: 9;
 }
 @media (min-width: 600px) {
   .lista-lojas-container {
@@ -1654,11 +1665,17 @@ input[type=radio]:focus,input[type=radio]:hover {
   width: 100%;
   font-size: var(--typography-paragraph-size);
   margin: 0;
-  padding: 32px 50px 32px 80px;
+  padding: 33px 23px 33px 63px;
   background-image: url(../../svg/marcador-cinza.svg);
+  background-position: 30px 50%;
   background-repeat: no-repeat;
-  background-position: 50px 50%;
   background-size: 20px;
+}
+@media (min-width: 600px) {
+  .lista-lojas-container .ll-campo {
+    padding: 32px 50px 32px 80px;
+    background-position: 50px 50%;
+  }
 }
 .lista-lojas-container .ll-lista {
   list-style: none;
@@ -1676,7 +1693,18 @@ input[type=radio]:focus,input[type=radio]:hover {
   outline: 1px solid var(--cinza-claro);
 }
 .lista-lojas-container .ll-lista .ll-loja.selected {
+  position: fixed;
+  bottom: -20px;
+  left: 0;
+  right: 0;
   background-color: var(--azul-leitura);
+  z-index: 10;
+}
+@media (min-width: 600px) {
+  .lista-lojas-container .ll-lista .ll-loja.selected {
+    position: relative;
+    bottom: initial;
+  }
 }
 .lista-lojas-container .ll-lista .ll-loja.selected h4,
 .lista-lojas-container .ll-lista .ll-loja.selected p {
@@ -1745,12 +1773,12 @@ input[type=radio]:focus,input[type=radio]:hover {
 
 #zoom-out {
   position: absolute;
-  bottom: 120px;
+  top: calc(100vh - 150px);
   right: 10px;
   padding: 5px;
   width: 40px;
   height: 40px;
-  z-index: 9;
+  z-index: 3;
 }
 @media (min-width: 600px) {
   #zoom-out {
