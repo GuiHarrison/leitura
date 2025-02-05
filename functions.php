@@ -22,6 +22,8 @@ define( 'AIR_LIGHT_VERSION', '9.4.7' );
 // We need to have some defaults as comments or empties so let's allow this:
 // phpcs:disable Squiz.Commenting.InlineComment.SpacingBefore, WordPress.Arrays.ArrayDeclarationSpacing.SpaceInEmptyArray
 
+error_log( 'Iniciando o functions.php' );
+
 /**
  * Theme settings
  */
@@ -68,6 +70,7 @@ add_action( 'after_setup_theme', function() {
      */
     'external_link_domains_exclude' => [
       'localhost:3000',
+      'leitura.local',
       'airdev.test',
       'airwptheme.com',
       'localhost',
@@ -88,7 +91,7 @@ add_action( 'after_setup_theme', function() {
      */
     'taxonomies' => [
       // 'Your_Taxonomy' => [ 'post', 'page' ],
-      'Category_Cidade_Estado' => [ 'lojas' ],
+      'Category_Cidade_Estado' => [ 'lojas', 'eventos' ],
     ],
 
     /**
@@ -99,6 +102,8 @@ add_action( 'after_setup_theme', function() {
      */
     'post_types' => [
       'lojas',
+      'eventos',
+      'revista',
     ],
 
     /**

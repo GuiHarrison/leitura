@@ -71,14 +71,24 @@ abstract class Post_Type {
     return register_post_type( $slug, $args );
   }
 
+  public function register_acf_rest() {
+    add_action( 'rest_api_init', function () {
+      register_rest_field( $this->slug, 'acf', [
+        'get_callback' => function ( $post ) {
+          return get_fields( $post['id'] );
+        },
+        'schema' => null,
+      ]);
+    });
+  }
+
   // Wrapper for ask__
   public function ask__( $key, $value ) {
     $pll_key = "{$key}: {$value}";
     $this->translations[ $pll_key ] = $value;
     if ( function_exists( 'ask__' ) ) {
-      return ask__( $pll_key );
+      return \ask__( $pll_key );
     }
-
     return $value;
   }
 

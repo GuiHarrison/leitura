@@ -62,3 +62,8 @@ add_action( 'acf/init', __NAMESPACE__ . '\acf_maps_key' );
  */
 require get_theme_file_path( 'inc/hooks/forms.php' );
 add_action( 'gform_enqueue_scripts', __NAMESPACE__ . '\dequeue_gf_stylesheets', 999 );
+
+/**
+ * Remove barra administrativa
+ */
+add_filter( 'show_admin_bar', '__return_false' );

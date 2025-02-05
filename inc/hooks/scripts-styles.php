@@ -41,26 +41,26 @@ function enqueue_theme_scripts(): void {
 
   // Adicionando API do maps à página de Lojas
   if ( is_page( 'lojas' ) ) {
-    $api_keys = APIKeys::get_instance();
-    $maps_key = $api_keys->get_key( 'maps' );
+		$api_keys = APIKeys::get_instance();
+		$maps_key = $api_keys->get_key( 'maps' );
 
-    if ( $api_keys ) {
-      wp_enqueue_script(
-        'google-maps',
-        'https://maps.googleapis.com/maps/api/js?key=' . $maps_key . '&libraries=places,marker&loading=async',
-        [],
-        null,
-        true
-      );
+		if ( $api_keys ) {
+		  wp_enqueue_script(
+			'google-maps',
+			'https://maps.googleapis.com/maps/api/js?key=' . $maps_key . '&libraries=places,marker&loading=async',
+			[],
+			null,
+			true
+		  );
 
-      // Async e defer ao google-maps
-      add_filter( 'script_loader_tag', function ( $tag, $handle ) {
-        if ( 'google-maps' !== $handle ) {
-          return $tag;
-        }
-        return str_replace( ' src', ' async defer src', $tag );
-      }, 10, 2 );
-    }
+		  // Async e defer ao google-maps
+		  add_filter( 'script_loader_tag', function ( $tag, $handle ) {
+				  if ( 'google-maps' !== $handle ) {
+			return $tag;
+					}
+				return str_replace( ' src', ' async defer src', $tag );
+		  }, 10, 2 );
+			}
   }
 
   // Required comment-reply script
@@ -71,8 +71,8 @@ function enqueue_theme_scripts(): void {
   wp_localize_script( 'scripts', 'air_light_screenReaderText', [
     'expand_for'      => get_default_localization( 'Open child menu for' ),
     'collapse_for'    => get_default_localization( 'Close child menu for' ),
-    'expand_toggle'   => get_default_localization( 'Open main menu' ),
-    'collapse_toggle' => get_default_localization( 'Close main menu' ),
+    'expand_toggle'   => get_default_localization( 'Abrir' ),
+    'collapse_toggle' => get_default_localization( 'Fechar' ),
     'external_link'   => get_default_localization( 'External site' ),
     'target_blank'    => get_default_localization( 'opens in a new window' ),
     'previous_slide'  => get_default_localization( 'Previous slide' ),

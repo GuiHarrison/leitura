@@ -36,6 +36,7 @@
 
 // Navigation core functionality
 @media only screen and (max-width: breakpoints.$width-max-mobile) {
+
   // Functionality needs display: none here for visual reasons
   .menu-items ul {
     display: none;
@@ -49,7 +50,8 @@
 }
 
 // Mobile styles
-@media screen and (max-width: breakpoints.$width-max-mobile - 1px) {
+@media screen and (max-width: calc(breakpoints.$width-max-mobile - 1px)) {
+
   // Let's ensure site-header loads properly and doesn't leave empty spaces
   .site-header {
     background-color: var(--color-background-nav-mobile-header);
@@ -141,8 +143,8 @@
   }
 
   // Current menu item color
-  .menu-item.current-menu-parent > a,
-  .menu-item.current-menu-item > a {
+  .menu-item.current-menu-parent>a,
+  .menu-item.current-menu-item>a {
     color: var(--color-current-menu-item);
   }
 
