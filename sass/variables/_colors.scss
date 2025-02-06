@@ -16,6 +16,7 @@
 
   --azul-leitura: #004D8F; // 0, 77, 143
   --azul-forte: #005CE8; // 0, 92, 232
+  --destaque: #F7710C; // 247, 113, 12
 
   --cinza-clarinho: #F2F2F2;
   --cinza-claro: #e6e6e6;
@@ -24,7 +25,7 @@
   --cinza-escuro: #333;
 
   // Main element colors
-  --color-main: var(--color-valhalla);
+  --color-main: var(--azul-leitura);
   --color-heading: var(--color-main);
   --color-paragraph: var(--color-east-bay);
 

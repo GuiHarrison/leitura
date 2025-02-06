@@ -43,7 +43,18 @@ add_action( 'after_setup_theme', function() {
      * Logo and featured image
      */
     'default_featured_image'  => null,
-    'logo'                    => '/svg/logo.svg',
+    'logo'                    => '/svg/logo-azul.svg',
+    'logo-simbolo-preta'      => '/svg/logo-simbolo-preta.svg',
+
+    /**
+     * Social media links
+     */
+    'Instagram'               => '/svg/s-Instagram.svg',
+    'WhatsApp'                => '/svg/s-WhatsApp.svg',
+    'TikTok'                  => '/svg/s-TikTok.svg',
+    'LinkedIn'                => '/svg/s-LinkedIn.svg',
+    'Facebook'                => '/svg/s-Facebook.svg',
+    'Youtube'                 => '/svg/s-Youtube.svg',
 
     /**
      * Custom setting group settings when using Air setting groups plugin.

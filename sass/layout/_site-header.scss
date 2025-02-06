@@ -3,19 +3,12 @@
 // The very top of the site, element that usually includes
 // the site navigation and search for example.
 .site-header {
-  align-items: flex-start;
-  column-gap: var(--spacing-grid-gap);
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
   margin-left: auto;
   margin-right: auto;
-  max-width: breakpoints.$width-grid-base;
-  padding-bottom: var(--spacing-site-header-padding-block);
-  // stylelint-disable-next-line
-  padding-left: 20px;
-  // stylelint-disable-next-line
-  padding-right: 20px;
-  padding-top: var(--spacing-site-header-padding-block);
+  // max-width: breakpoints.$width-grid-base;
   position: relative;
   z-index: 15;
 }
@@ -27,5 +20,164 @@
   a {
     align-items: center;
     display: flex;
+  }
+}
+
+.barra-topo .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+
+  @media (min-width: breakpoints.$container-ipad-landscape) {
+    justify-content: space-between;
+  }
+
+  p {
+    margin: 0;
+    font-size: .9rem;
+  }
+}
+
+.barra-boas-vindas {
+  background-color: var(--azul-leitura);
+
+  p, a {
+    color: var(--color-white);
+    text-transform: uppercase;
+  }
+  
+  .boas-vindas {
+    background-color: var(--destaque);
+    border-radius: 10px;
+    padding: .1rem .75rem 0;
+    vertical-align: bottom;
+  }
+
+  .sac p a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+
+    svg {
+      margin-right: .5rem;
+      margin-left: .5rem;
+    }
+  }
+}
+
+.barra-logo-busca-redes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 0;
+  
+  @media (min-width: breakpoints.$container-ipad-landscape) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--cinza-clarinho);
+  }
+
+  .site-branding {
+    padding: 40px 54px 40px 1rem;
+    min-height: 100px;
+    width: 100vw;
+
+    @media (min-width: breakpoints.$container-ipad-landscape) {
+      max-width: 400px;
+    }
+
+    svg {
+      height: 100%;
+      max-height: 30px;
+      width: auto;
+
+      @media (min-width: breakpoints.$container-ipad-landscape) {
+        max-height: initial;
+      }
+    }
+  }
+
+  .busca {
+    background-color: var(--azul-leitura);
+    padding: 40px 54px;
+
+    @media (min-width: breakpoints.$container-ipad-landscape) {
+      background-color: transparent;
+      width: 550px;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: row;
+
+      input, button {
+        height: 3rem;
+
+        @media (min-width: breakpoints.$container-ipad-landscape) {
+          height: 3.5rem;
+        }
+      }
+
+      input[type="search"] {
+        width: calc(100% - 3rem);
+        background-color: var(--color-white);
+        border: solid 1px var(--cinza-claro);
+        border-right-color: transparent;
+        border-radius: 14px 0 0 14px;
+        color: var(--cinza-escuro);
+        font-size: 1rem;
+        padding: 1rem;
+      }
+
+      button {
+        width: 3rem;
+        border: solid 1px var(--cinza-claro);
+        border-left-color: none;
+        margin: 0;
+        border-radius: 0 14px 14px 0;
+        background-color: var(--cinza-clarinho);
+        background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"%3E%3Cpath d="M6.23548 0.0196049C12.2401 -0.419217 15.8045 6.42617 12.0609 11.099L16.194 15.2446C16.5931 15.8881 15.8476 16.6166 15.2194 16.1766L11.1039 12.0696C7.63586 14.8715 2.41819 13.6503 0.592598 9.5841C-1.31577 5.33536 1.59781 0.358643 6.23548 0.0196049ZM6.44752 1.37802C2.37907 1.64846 0.00126636 6.19769 2.19481 9.67992C4.38835 13.1621 9.2993 13.0663 11.4135 9.6544C13.7306 5.91535 10.817 1.08774 6.44752 1.37802Z" fill="var(--cinza-medio)" fill-opacity="0.4"/%3E%3C/svg%3E%0A');
+        background-position: 50% 50%;
+      }
+    }
+  }
+
+  .redes-sociais {
+    display: none;
+
+    @media (min-width: breakpoints.$container-ipad-landscape) {
+      display: flex;
+      min-width: 240px;
+      flex-direction: row;
+      justify-content: space-between;
+      color: var(--azul-leitura);
+    }
+  }
+}
+
+.barra-navegação {
+  position: absolute;
+  top: 9vh; // <----------------------- automatizar essa posição
+  right: 1rem;
+
+  .container {
+    justify-content: end;
+  }
+
+  @media (min-width: breakpoints.$container-ipad-landscape) {
+    position: relative;
+    top: 0;
+    padding: 34px 0;
+    background-color: var(--azul-leitura);
+
+    .container {
+      padding: 0;
+      justify-content: center;
+    }
   }
 }

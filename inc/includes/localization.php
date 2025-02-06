@@ -48,9 +48,9 @@ function get_default_localization_strings( $language = 'en' ) {
       'Next slide'                                   => __( 'Next slide', 'leitura' ),
       'Last slide'                                   => __( 'Last slide', 'leitura' ),
     ],
-    'fi'  => [
+    'pt'  => [
       'Add a menu'                                   => 'Luo uusi valikko',
-      'Open main menu'                               => 'Avaa päävalikko',
+      'Open main menu'                               => 'Abrir',
       'Close main menu'                              => 'Sulje päävalikko',
       'Main navigation'                              => 'Päävalikko',
       'Back to top'                                  => 'Siirry takaisin sivun alkuun',

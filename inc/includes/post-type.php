@@ -75,7 +75,10 @@ abstract class Post_Type {
     add_action( 'rest_api_init', function () {
       register_rest_field( $this->slug, 'acf', [
         'get_callback' => function ( $post ) {
-          return get_fields( $post['id'] );
+          if ( function_exists( 'get_fields' ) ) {
+            return \get_fields( $post['id'] );
+          }
+          return [];
         },
         'schema' => null,
       ]);

@@ -29,6 +29,7 @@ namespace Air_Light;
   <div id="page" class="site">
 
     <header class="site-header">
+      <?php get_template_part( 'template-parts/header/boas-vindas' ); ?>
       <?php get_template_part( 'template-parts/header/branding' ); ?>
       <?php get_template_part( 'template-parts/header/navigation' ); ?>
     </header>
