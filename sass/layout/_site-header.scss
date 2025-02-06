@@ -45,6 +45,10 @@
   p, a {
     color: var(--color-white);
     text-transform: uppercase;
+
+    &:hover {
+      color: var(--color-white);
+    }
   }
   
   .boas-vindas {

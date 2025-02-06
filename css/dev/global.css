@@ -1219,6 +1219,9 @@ p:last-child {
   color: var(--color-white);
   text-transform: uppercase;
 }
+ .barra-boas-vindas a:hover,.barra-boas-vindas p:hover {
+  color: var(--color-white);
+}
 .barra-boas-vindas .boas-vindas {
   background-color: var(--destaque);
   border-radius: 10px;
