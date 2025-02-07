@@ -19,20 +19,20 @@ class Revista extends Post_Type {
 		// The Post_Type ask__ function wraps the air-helper ask__, and automatically registers the keys to Polylang!
 		// self::ask__( 'Key', 'Default value' )
 		// -> Key: Default value => 'Default value'
-		'menu_name'          => self::ask__( 'Revistas', 'Revistas' ),
-		'name'               => self::ask__( 'Revistas', 'Revistas' ),
-		'singular_name'      => self::ask__( 'Revistas', 'Revista' ),
-		'name_admin_bar'     => self::ask__( 'Revistas', 'Revistas' ),
-		'add_new'            => self::ask__( 'Revistas', 'Adicionar nova' ),
-		'add_new_item'       => self::ask__( 'Revistas', 'Adicionar nova Revista' ),
-		'new_item'           => self::ask__( 'Revistas', 'Nova Revista' ),
-		'edit_item'          => self::ask__( 'Revistas', 'Editar Revista' ),
-		'view_item'          => self::ask__( 'Revistas', 'Ver Revista' ),
-		'all_items'          => self::ask__( 'Revistas', 'Todas as Revistas' ),
-		'search_items'       => self::ask__( 'Revistas', 'Buscar Revistas' ),
-		'parent_item_colon'  => self::ask__( 'Revistas', 'Revistas mães:' ),
-		'not_found'          => self::ask__( 'Revistas', 'Nenhuma Revista encontrado.' ),
-		'not_found_in_trash' => self::ask__( 'Revistas', 'Nenhuma Revista encontrado no lixo.' ),
+		'menu_name'          => 'Revistas',
+		'name'               => 'Revistas',
+		'singular_name'      => 'Revista',
+		'name_admin_bar'     => 'Revistas',
+		'add_new'            => 'Adicionar nova',
+		'add_new_item'       => 'Adicionar nova Revista',
+		'new_item'           => 'Nova Revista',
+		'edit_item'          => 'Editar Revista',
+		'view_item'          => 'Ver Revista',
+		'all_items'          => 'Todas as Revistas',
+		'search_items'       => 'Buscar Revistas',
+		'parent_item_colon'  => 'Revistas mães:',
+		'not_found'          => 'Nenhuma Revista encontrado.',
+		'not_found_in_trash' => 'Nenhuma Revista encontrado no lixo.',
 		];
 
 		// Definition of the post type arguments. For full list see:

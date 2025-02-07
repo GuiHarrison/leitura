@@ -573,7 +573,7 @@ body:not(.js-nav-active) .nav-toggle:hover .hamburger::after {
   --padding-main-level-vertical-mobile: 0.75rem;
   --color-main-level-menu-item-hover-focus-mobile: var(--color-black);
   --color-main-level-menu-item-mobile: var(--color-black);
-  --typography-size-sub-menu-mobile:1.1rem;
+  --typography-size-sub-menu-mobile: 1.1rem;
   --typography-weight-sub-menu-mobile: 600;
   --margin-left-sub-menu: 0.625rem;
   --padding-sub-menu-vertical-mobile: 0.5rem;
@@ -725,12 +725,16 @@ body:not(.js-nav-active) .nav-toggle:hover .hamburger::after {
     visibility: visible;
     width: var(--width-navigation);
   }
-  
-  .site-footer,.site-main {
+  .barra-boas-vindas,
+  .barra-logo-busca-redes,
+  .site-footer,
+  .site-main {
     transition: transform 180ms ease-in-out;
   }
-  
-  .js-nav-active .site-footer,.js-nav-active .site-main {
+  .js-nav-active .barra-boas-vindas,
+  .js-nav-active .barra-logo-busca-redes,
+  .js-nav-active .site-footer,
+  .js-nav-active .site-main {
     transform: translate3d(calc(var(--width-navigation)*-1), 0, 0);
   }
   .redes-sociais {
@@ -742,7 +746,7 @@ body:not(.js-nav-active) .nav-toggle:hover .hamburger::after {
 }
 :root {
   --color-dropdown-toggle: var(--color-white);
-  --color-current: var(--color-link-text);
+  --color-current: var(--cinza-clarinho);
   --dropdown-toggle-size: 0.75rem;
   --typography-size-main-level: var(--typography-size-16);
   --typography-weight-main-level: var(--typography-weight-medium);
@@ -1774,7 +1778,7 @@ input[type=radio]:focus,input[type=radio]:hover {
   min-height: 300px;
   height: calc(100vh - 325px);
 }
-@media (min-width: 600px) {
+@media (min-width: 1030px) {
   #map {
     min-height: calc(100vh - 100px);
   }
@@ -1789,13 +1793,13 @@ input[type=radio]:focus,input[type=radio]:hover {
   background-color: var(--cinza-clarinho);
   border: 1px solid var(--cinza-claro);
   border-bottom-color: var(--cinza-medio);
-  box-shadow: 0 10px 20px #004d8f33;
+  box-shadow: 0 10px 20px -10px #0000004d;
   z-index: 9;
 }
-@media (min-width: 600px) {
+@media (min-width: 1030px) {
   .lista-lojas-container {
     position: absolute;
-    top: 120px;
+    top: 336px;
     right: auto;
     left: 5%;
     max-width: 650px;
@@ -1823,7 +1827,7 @@ input[type=radio]:focus,input[type=radio]:hover {
   background-repeat: no-repeat;
   background-size: 20px;
 }
-@media (min-width: 600px) {
+@media (min-width: 1030px) {
   .lista-lojas-container .ll-campo {
     padding: 32px 50px 32px 80px;
     background-position: 50px 50%;
@@ -1852,7 +1856,7 @@ input[type=radio]:focus,input[type=radio]:hover {
   background-color: var(--azul-leitura);
   z-index: 10;
 }
-@media (min-width: 600px) {
+@media (min-width: 1030px) {
   .lista-lojas-container .ll-lista .ll-loja.selected {
     position: relative;
     bottom: initial;
@@ -1925,16 +1929,16 @@ input[type=radio]:focus,input[type=radio]:hover {
 
 #zoom-out {
   position: absolute;
-  top: calc(100vh - 150px);
+  top: calc(-149px + 100vh);
   right: 10px;
   padding: 5px;
   width: 40px;
   height: 40px;
   z-index: 3;
 }
-@media (min-width: 600px) {
+@media (min-width: 1030px) {
   #zoom-out {
-    top: calc(100vh - 180px);
+    top: calc(26px + 100vh);
     bottom: initial;
   }
 }

@@ -19,20 +19,20 @@ class Eventos extends Post_Type {
 		// The Post_Type ask__ function wraps the air-helper ask__, and automatically registers the keys to Polylang!
 		// self::ask__( 'Key', 'Default value' )
 		// -> Key: Default value => 'Default value'
-		'menu_name'          => self::ask__( 'Eventos', 'Eventos' ),
-		'name'               => self::ask__( 'Eventos', 'Eventos' ),
-		'singular_name'      => self::ask__( 'Eventos', 'Evento' ),
-		'name_admin_bar'     => self::ask__( 'Eventos', 'Eventos' ),
-		'add_new'            => self::ask__( 'Eventos', 'Add New' ),
-		'add_new_item'       => self::ask__( 'Eventos', 'Add New Evento' ),
-		'new_item'           => self::ask__( 'Eventos', 'New Evento' ),
-		'edit_item'          => self::ask__( 'Eventos', 'Edit Evento' ),
-		'view_item'          => self::ask__( 'Eventos', 'View Evento' ),
-		'all_items'          => self::ask__( 'Eventos', 'All Eventos' ),
-		'search_items'       => self::ask__( 'Eventos', 'Search Eventos' ),
-		'parent_item_colon'  => self::ask__( 'Eventos', 'Parent Eventos:' ),
-		'not_found'          => self::ask__( 'Eventos', 'No Eventos found.' ),
-		'not_found_in_trash' => self::ask__( 'Eventos', 'No Eventos found in Trash.' ),
+		'menu_name'          => 'Eventos',
+		'name'               => 'Eventos',
+		'singular_name'      => 'Evento',
+		'name_admin_bar'     => 'Eventos',
+		'add_new'            => 'Add New',
+		'add_new_item'       => 'Add New Evento',
+		'new_item'           => 'New Evento',
+		'edit_item'          => 'Edit Evento',
+		'view_item'          => 'View Evento',
+		'all_items'          => 'All Eventos',
+		'search_items'       => 'Search Eventos',
+		'parent_item_colon'  => 'Parent Eventos:',
+		'not_found'          => 'No Eventos found.',
+		'not_found_in_trash' => 'No Eventos found in Trash.',
 		];
 
 		// Definition of the post type arguments. For full list see:

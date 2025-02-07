@@ -4,7 +4,7 @@
   min-height: 300px;
   height: calc(100vh - 325px);
 
-  @media (min-width: breakpoints.$container-mobile) {
+  @media (min-width: breakpoints.$width-max-mobile) {
     min-height: calc(100vh - 100px);
   }
 }
@@ -18,12 +18,12 @@
   background-color: var(--cinza-clarinho);
   border: 1px solid var(--cinza-claro);
   border-bottom-color: var(--cinza-medio);
-  box-shadow: 0 10px 20px rgba(0, 77, 143, .2);
+  box-shadow: 0 10px 20px -10px rgba(0, 0, 0, .3);
   z-index: 9;
 
-  @media (min-width: breakpoints.$container-mobile) {
+  @media (min-width: breakpoints.$width-max-mobile) {
     position: absolute;
-    top: 120px;
+    top: 336px; // <---------------------------------------- Automatizar essa conta
     right: auto;
     left: 5%;
     max-width: 650px;
@@ -53,7 +53,7 @@
     background-repeat: no-repeat;
     background-size: 20px;
 
-    @media (min-width: breakpoints.$container-mobile) {
+    @media (min-width: breakpoints.$width-max-mobile) {
       padding: 32px 50px 32px 80px;
       background-position: 50px 50%;
     }
@@ -83,7 +83,7 @@
         background-color: var(--azul-leitura);
         z-index: 10;
 
-        @media (min-width: breakpoints.$container-mobile) {
+        @media (min-width: breakpoints.$width-max-mobile) {
           position: relative;
           bottom: initial;
         }
@@ -171,15 +171,15 @@
 
 #zoom-out {
   position: absolute;
-  top: calc(100vh - 150px);
+  top: calc(286px + 100vh - 435px); // <---------------------------------- Automatizar essa conta
   right: 10px;
   padding: 5px;
   width: 40px;
   height: 40px;
   z-index: 3;
 
-  @media (min-width: breakpoints.$container-mobile) {
-    top: calc(100vh - 180px);
+  @media (min-width: breakpoints.$width-max-mobile) {
+    top: calc(286px + 100vh - 260px); // <------------------------------- Automatizar essa conta
     bottom: initial;
   }
 }

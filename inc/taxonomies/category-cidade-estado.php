@@ -18,20 +18,20 @@ class Category_Cidade_Estado extends Taxonomy {
   public function register( array $post_types = [ 'lojas' ] ) {
 		// Taxonomy labels.
 		$labels = [
-		'name'                  => self::ask__( 'Cidade e estado', 'Cidades e estados' ),
-		'singular_name'         => self::ask__( 'Cidade e estado', 'Cidade ou estado' ),
-		'search_items'          => self::ask__( 'Cidade e estado', 'Buscar cidade ou estado' ),
-		'popular_items'         => self::ask__( 'Cidade e estado', 'Cidades e estados populares' ),
-		'all_items'             => self::ask__( 'Cidade e estado', 'Todas as cidades e estados' ),
-		'parent_item'           => self::ask__( 'Cidade e estado', 'Estado' ),
-		'parent_item_colon'     => self::ask__( 'Cidade e estado', 'Estado' ),
-		'edit_item'             => self::ask__( 'Cidade e estado', 'Editar Cidade e estado' ),
-		'update_item'           => self::ask__( 'Cidade e estado', 'Atualizar cidade ou estado' ),
-		'add_new_item'          => self::ask__( 'Cidade e estado', 'Adicionar cidade ou estado' ),
-		'new_item_name'         => self::ask__( 'Cidade e estado', 'Nova cidade ou estado' ),
-		'add_or_remove_items'   => self::ask__( 'Cidade e estado', 'Adicionar ou remover cidade ou estado' ),
-		'choose_from_most_used' => self::ask__( 'Cidade e estado', 'Cidades e estados mais usados' ),
-		'menu_name'             => self::ask__( 'Cidade e estado', 'Cidade e estado' ),
+		'name'                  => 'Cidades e estados',
+		'singular_name'         => 'Cidade ou estado',
+		'search_items'          => 'Buscar cidade ou estado',
+		'popular_items'         => 'Cidades e estados populares',
+		'all_items'             => 'Todas as cidades e estados',
+		'parent_item'           => 'Estado',
+		'parent_item_colon'     => 'Estado',
+		'edit_item'             => 'Editar Cidade e estado',
+		'update_item'           => 'Atualizar cidade ou estado',
+		'add_new_item'          => 'Adicionar cidade ou estado',
+		'new_item_name'         => 'Nova cidade ou estado',
+		'add_or_remove_items'   => 'Adicionar ou remover cidade ou estado',
+		'choose_from_most_used' => 'Cidades e estados mais usados',
+		'menu_name'             => 'Cidade e estado',
 		];
 
 		$args = [

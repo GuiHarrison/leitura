@@ -76,7 +76,7 @@ function get_default_localization_strings( $language = 'en' ) {
   return ( array_key_exists( $language, $strings ) ) ? $strings[ $language ] : $strings['en'];
 } // end get_default_localization_strings
 
-function get_default_localization( $string ) { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.stringFound
+function  $string  { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.stringFound
   if ( function_exists( 'ask__' ) && array_key_exists( "Accessibility: {$string}", apply_filters( 'air_helper_pll_register_strings', [] ) ) ) {
     return ask__( "Accessibility: {$string}" );
   }

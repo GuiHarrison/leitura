@@ -43,7 +43,7 @@ namespace Air_Light;
   class="top no-external-link-indicator"
   data-version="<?php echo esc_attr( AIR_LIGHT_VERSION ); ?>"
 >
-  <span class="screen-reader-text"><?php echo esc_html( get_default_localization( 'Back to top' ) ); ?></span>
+  <span class="screen-reader-text"><?php echo esc_html( 'Back to top' ); ?></span>
   <span aria-hidden="true">&uarr;</span>
 </a>
 

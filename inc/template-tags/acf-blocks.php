@@ -37,13 +37,13 @@ function render_acf_block( $block, $content = '', $is_preview = false, $post_id 
 
   // Get block contents
   if ( ! $block_cache_enabled ) {
-    $cache_bypass_reason = $is_preview || 'development' === wp_get_environment_type() ? 'preview/development' : 'cache setting';
+		$cache_bypass_reason = $is_preview || 'development' === wp_get_environment_type() ? 'preview/development' : 'cache setting';
 
-    \do_action( 'qm/debug', "Block {$block_slug} bypassed cache because {$cache_bypass_reason} ({$cache_key})" ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+		\do_action( 'qm/debug', "Block {$block_slug} bypassed cache because {$cache_bypass_reason} ({$cache_key})" ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 
-    $block_output = load_acf_block( $block_path, false, $block, $is_preview, $post_id );
+		$block_output = load_acf_block( $block_path, false, $block, $is_preview, $post_id );
   } else {
-    $block_output = load_acf_block_from_cache( $cache_key, $block_slug, $block_path, $block, $is_preview, $post_id );
+		$block_output = load_acf_block_from_cache( $cache_key, $block_slug, $block_path, $block, $is_preview, $post_id );
   }
 
   // Output block contents (this is safe unescaped)
@@ -55,8 +55,8 @@ function load_acf_block_from_cache( $cache_key, $block_slug, $block_path, $block
   $output = \wp_cache_get( $cache_key, 'theme' );
 
   if ( $output ) {
-    \do_action( 'qm/debug', "Block {$block_slug} served from cache ({$cache_key})" ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
-    return $output;
+		\do_action( 'qm/debug', "Block {$block_slug} served from cache ({$cache_key})" ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+		return $output;
   }
 
   // Block is not found in cache, load block content
@@ -80,20 +80,20 @@ function load_acf_block( $block_path, $cache = false, $block = [], $is_preview =
    * then add that reusable block to post
    */
   if ( ! $is_preview ) {
-    $post_type = get_post_type();
+		$post_type = get_post_type();
 
-    $is_not_wp_block = $post_type && 'wp_block' !== $post_type;
-    $is_disallowed_in_post_type = is_array( $block['post_types'] ) && ! in_array( $post_type, $block['post_types'] ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$is_not_wp_block = $post_type && 'wp_block' !== $post_type;
+		$is_disallowed_in_post_type = is_array( $block['post_types'] ) && ! in_array( $post_type, $block['post_types'] ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 
-    if ( $is_not_wp_block && $is_disallowed_in_post_type ) {
-      return '';
-    }
+		if ( $is_not_wp_block && $is_disallowed_in_post_type ) {
+		  return '';
+			}
   }
 
   // Validate that file actually exists
   if ( ! \file_exists( $block_path ) ) {
-    \do_action( 'qm/error', "Block file {$block_path} not found" ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
-    return '';
+		\do_action( 'qm/error', "Block file {$block_path} not found" ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+		return '';
   }
 
   // Get and return block contents
@@ -102,7 +102,7 @@ function load_acf_block( $block_path, $cache = false, $block = [], $is_preview =
   $content = \ob_get_clean();
 
   if ( ! $is_preview && isset( $block['anchor'] ) && ! empty( $block['anchor'] ) ) {
-    $content = str_replace( '<section class="block', '<section id="' . $block['anchor'] . '" class="block', $content );
+		$content = str_replace( '<section class="block', '<section id="' . $block['anchor'] . '" class="block', $content );
   }
 
   return $content;
@@ -119,15 +119,15 @@ function acf_block_maybe_enable_cache( string $block_slug ) {
 
   // This function shouldn't really be running if we don't have these, but check to be safe
   if ( empty( THEME_SETTINGS ) || empty( THEME_SETTINGS['acf_blocks'] ) ) {
-    \do_action( 'qm/debug', 'Blocks couldnt be found in theme settings' ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores, WordPress.PHP.StrictInArray.MissingTrueStrict
-    return apply_filters( 'air_acf_block_maybe_enable_cache', $enable_cache, null );
+		\do_action( 'qm/debug', 'Blocks couldnt be found in theme settings' ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores, WordPress.PHP.StrictInArray.MissingTrueStrict
+		return apply_filters( 'air_acf_block_maybe_enable_cache', $enable_cache, null );
   }
 
   // Check that we have the block in defined in theme settings
   $block_key = array_search( $block_slug, array_column( THEME_SETTINGS['acf_blocks'], 'name' ) ); // phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
   if ( false === $block_key ) {
-    \do_action( 'qm/debug', "Block {$block_slug} settings couldn't be found in theme settings" ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
-    return apply_filters( 'air_acf_block_maybe_enable_cache', $enable_cache, $block_slug );
+		\do_action( 'qm/debug', "Block {$block_slug} settings couldn't be found in theme settings" ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+		return apply_filters( 'air_acf_block_maybe_enable_cache', $enable_cache, $block_slug );
   }
 
   // Get block settings
@@ -135,12 +135,12 @@ function acf_block_maybe_enable_cache( string $block_slug ) {
 
   // Check from block settings if we should prevent cache
   if ( isset( $block['prevent_cache'] ) ) {
-    $enable_cache = $block['prevent_cache'] ? false : true;
+		$enable_cache = $block['prevent_cache'] ? false : true;
   }
 
   // If block likely contains form and GF is used, disable cache to avoid problems
   if ( false !== strpos( $block_slug, 'form' ) && function_exists( 'gravity_form' ) ) {
-    $enable_cache = false;
+		$enable_cache = false;
   }
 
   return apply_filters( 'air_acf_block_maybe_enable_cache', $enable_cache, $block_slug );
@@ -154,11 +154,11 @@ function acf_block_maybe_enable_cache( string $block_slug ) {
  */
 function maybe_show_error_block( $message, $title = false ) {
   if ( ! current_user_can( 'edit_posts' ) ) {
-    return;
+		return;
   }
 
   if ( false === $title ) {
-    $title = get_default_localization( 'Block missing required data' );
+		$title = 'Block missing required data';
   }
   ?>
   <div class="block block-error">
@@ -171,7 +171,7 @@ function maybe_show_error_block( $message, $title = false ) {
         <p class="error-message"><?php echo wp_kses_post( $message ) ?></p>
       <?php endif; ?>
 
-      <p class="info"><?php echo esc_html( get_default_localization( 'This error is shown only for logged in users' ) ); ?></p>
+      <p class="info"><?php echo esc_html( 'This error is shown only for logged in users' ); ?></p>
     </div>
   </div>
   <?php

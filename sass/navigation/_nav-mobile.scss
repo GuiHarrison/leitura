@@ -27,7 +27,7 @@
   --color-main-level-menu-item-mobile: var(--color-black);
 
   // Sub-menu items on mobile
-  --typography-size-sub-menu-mobile:1.1rem;
+  --typography-size-sub-menu-mobile: 1.1rem;
   --typography-weight-sub-menu-mobile: 600;
   --margin-left-sub-menu: 0.625rem;
   --padding-sub-menu-vertical-mobile: 0.5rem;
@@ -193,7 +193,7 @@
 
       // Let's hide the original SVG because we have a custom one here
       path {
-      display: none;
+        display: none;
       }
     }
   }
@@ -232,12 +232,16 @@
     }
   }
 
+  .barra-boas-vindas,
+  .barra-logo-busca-redes,
   .site-main,
   .site-footer {
     transition: transform 180ms ease-in-out;
   }
 
   // Push site content and footer to the left
+  .js-nav-active .barra-boas-vindas,
+  .js-nav-active .barra-logo-busca-redes,
   .js-nav-active .site-main,
   .js-nav-active .site-footer {
     transform: translate3d(calc(var(--width-navigation) * -1), 0, 0);

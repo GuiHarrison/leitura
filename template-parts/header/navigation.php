@@ -9,12 +9,12 @@ namespace Air_Light;
 
 ?>
 
-<nav id="nav" class="barra-topo barra-navegação nav-primary nav-menu" aria-label="<?php echo esc_html( get_default_localization( 'Main navigation' ) ); ?>">
+<nav id="nav" class="barra-topo barra-navegação nav-primary nav-menu" aria-label="<?php echo esc_html( 'Main navigation' ); ?>">
   <div class="container">
     <button aria-haspopup="true" aria-expanded="false" aria-controls="nav" id="nav-toggle" class="nav-toggle" type="button" aria-label="<?php echo esc_html( 'Abrir menu' ); ?>">
       <span class="hamburger" aria-hidden="true"></span>
     </button>
-    
+
     <div id="menu-items-wrapper" class="menu-items-wrapper">
       <div class="logo-preta hide-on-desktop-nav-view">
         <?php include get_theme_file_path( THEME_SETTINGS['logo-simbolo-preta'] ); ?>

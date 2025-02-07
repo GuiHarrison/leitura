@@ -85,6 +85,7 @@ abstract class Post_Type {
     });
   }
 
+/*
   // Wrapper for ask__
   public function ask__( $key, $value ) {
     $pll_key = "{$key}: {$value}";
@@ -94,6 +95,7 @@ abstract class Post_Type {
     }
     return $value;
   }
+ */
 
   private function register_translations() {
     $translations = $this->translations;

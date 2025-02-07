@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import getLocalization from './localization';
+// import getLocalization from './localization';
 
 function isLinkExternal(link, localDomains) {
   // Empty links are not external
@@ -92,7 +92,7 @@ export function styleExternalLinks() {
       const textContent = externalLink.textContent.trim().length
         ? externalLink.textContent.trim() : getChildAltText(externalLink);
       if (textContent && !externalLink.getAttribute('aria-label')) {
-        const ariaLabel = externalLink.target === '_blank' ? `${textContent}: ${getLocalization('external_link')}, ${getLocalization('target_blank')}` : `${textContent}: ${getLocalization('external_link')}`;
+        const ariaLabel = externalLink.target === '_blank' ? `${textContent}: 'external_link', 'target_blank'` : `${textContent}: 'external_link'`;
         externalLink.setAttribute('aria-label', ariaLabel);
       }
     }

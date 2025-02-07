@@ -16,7 +16,7 @@ if ( file_exists( get_theme_file_path( '/inc/includes/resources.php' ) ) ) {
 require get_theme_file_path( '/inc/includes/theme-setup.php' );
 
 // Localized strings
-require get_theme_file_path( '/inc/includes/localization.php' );
+// require get_theme_file_path( '/inc/includes/localization.php' );
 
 // Nav Walker
 require get_theme_file_path( '/inc/includes/nav-walker.php' );

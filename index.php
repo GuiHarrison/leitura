@@ -87,20 +87,6 @@ get_header(); ?>
               </a>
             </h2>
 
-            <h3>
-            <?php
-              $destaque = get_field( 'destaque' );
-
-              if ( $destaque ) {
-                echo '<ul>';
-                foreach ( $destaque as $onde ) {
-                  echo '<li>' . $onde . '</li>';
-                }
-                echo '</ul>';
-              }
-            ?>
-            </h3>
-
             <p>
               <time datetime="<?php the_time( 'c' ); ?>">
                 <?php echo get_the_date( get_option( 'date_format' ) ); ?>

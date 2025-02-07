@@ -18,14 +18,14 @@ $results = [];
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 if ( ! empty( $_GET['s'] ) && have_posts() ) {
   while ( have_posts() ) {
-    the_post();
-    $post_type = get_post_type();
+		the_post();
+		$post_type = get_post_type();
 
-    $results[ $post_type ]['posts'][] = [
-      'title'     => (string) get_the_title(),
-      'permalink' => (string) get_permalink(),
-      'excerpt'   => (string) get_the_excerpt(),
-    ];
+		$results[ $post_type ]['posts'][] = [
+		'title'     => (string) get_the_title(),
+		'permalink' => (string) get_permalink(),
+		'excerpt'   => (string) get_the_excerpt(),
+		];
   }
 } wp_reset_postdata();
 
@@ -42,7 +42,7 @@ get_header(); ?>
   <section class="block block-search">
     <div class="container">
 
-      <h1><?php echo esc_html( get_default_localization( 'Search' ) ); ?></h1>
+      <h1><?php echo esc_html( 'Search' ); ?></h1>
       <?php get_search_form( true ); ?>
 
     </div>
@@ -89,10 +89,10 @@ get_header(); ?>
   if ( ! empty( $_GET['s'] ) && ! have_posts() ) : ?>
     <section class="block block-search-results">
       <div class="container">
-        <h2><?php echo esc_html( get_default_localization( 'No results found for your search' ) ); ?>.</h2>
+        <h2><?php echo esc_html( 'No results found for your search' ); ?>.</h2>
       </div>
     </section>
-  <?php endif; ?>
+													<?php endif; ?>
 
 </main>
 

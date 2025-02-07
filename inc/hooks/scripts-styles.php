@@ -39,7 +39,7 @@ function enqueue_theme_scripts(): void {
     true
   );
 
-  // Adicionando API do maps à página de Lojas
+  // Adicionando API do Google Maps à página de Lojas
   if ( is_page( 'lojas' ) ) {
 		$api_keys = APIKeys::get_instance();
 		$maps_key = $api_keys->get_key( 'maps' );
@@ -68,17 +68,18 @@ function enqueue_theme_scripts(): void {
 		wp_enqueue_script( 'comment-reply' );
   }
 
+  // Tradução do menu
   wp_localize_script( 'scripts', 'air_light_screenReaderText', [
-    'expand_for'      => get_default_localization( 'Open child menu for' ),
-    'collapse_for'    => get_default_localization( 'Close child menu for' ),
-    'expand_toggle'   => get_default_localization( 'Abrir' ),
-    'collapse_toggle' => get_default_localization( 'Fechar' ),
-    'external_link'   => get_default_localization( 'External site' ),
-    'target_blank'    => get_default_localization( 'opens in a new window' ),
-    'previous_slide'  => get_default_localization( 'Previous slide' ),
-    'next_slide'      => get_default_localization( 'Next slide' ),
-    'last_slide'      => get_default_localization( 'Last slide' ),
-    'skip_slider'     => get_default_localization( 'Skip over the carousel element' ),
+    'expand_for'      => 'Open child menu for',
+    'collapse_for'    => 'Close child menu for',
+    'expand_toggle'   => 'Abrir',
+    'collapse_toggle' => 'Fechar',
+    'external_link'   => 'External site',
+    'target_blank'    => 'opens in a new window',
+    'previous_slide'  => 'Previous slide',
+    'next_slide'      => 'Next slide',
+    'last_slide'      => 'Last slide',
+    'skip_slider'     => 'Skip over the carousel element',
   ] );
 
   // Add domains/hosts to disable external link indicators
