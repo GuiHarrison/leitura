@@ -24,6 +24,53 @@ get_header(); ?>
   <section class="block block-blog">
     <div class="container">
 
+    <?php
+    $posts_destaque = get_posts(array(
+      'meta_query' => array(
+        array(
+          'key' => 'destaque',
+          'value' => '"home"',
+          'compare' => 'LIKE',
+        ),
+      ),
+    ));
+
+    if ( $posts_destaque ) {
+      foreach ( $posts_destaque as $post ) {
+        setup_postdata( $post );
+        ?>
+
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+          <h2 class="<?php echo esc_attr( get_post_type() ); ?>-title">
+            <a href="<?php echo esc_url( get_the_permalink() ); ?>">
+              <?php the_title(); ?>
+            </a>
+          </h2>
+
+          <p>
+            <time datetime="<?php the_time( 'c' ); ?>">
+              <?php echo get_the_date( get_option( 'date_format' ) ); ?>
+            </time>
+          </p>
+
+          <div class="content">
+            <?php
+              the_content();
+              entry_footer();
+            ?>
+          </div>
+
+        </article>
+
+        <?php
+      }
+      wp_reset_postdata();
+    } else {
+      echo '<h2>Sem posts de destaque 😳</h2>';
+    }
+    ?>
+
       <?php if ( have_posts() ) : ?>
 
         <?php if ( is_home() && ! is_front_page() ) : ?>
@@ -34,11 +81,25 @@ get_header(); ?>
           the_post(); ?>
           <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-            <h2>
+            <h2 class="<?php echo esc_attr( get_post_type() ); ?>-title">
               <a href="<?php echo esc_url( get_the_permalink() ); ?>">
                 <?php the_title(); ?>
               </a>
             </h2>
+
+            <h3>
+            <?php
+              $destaque = get_field( 'destaque' );
+
+              if ( $destaque ) {
+                echo '<ul>';
+                foreach ( $destaque as $onde ) {
+                  echo '<li>' . $onde . '</li>';
+                }
+                echo '</ul>';
+              }
+            ?>
+            </h3>
 
             <p>
               <time datetime="<?php the_time( 'c' ); ?>">
