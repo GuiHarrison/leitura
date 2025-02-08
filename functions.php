@@ -92,6 +92,8 @@ add_action( 'after_setup_theme', function() {
      */
     'menu_locations' => [
       'primary' => __( 'Primary Menu', 'leitura' ),
+      'informacoes' => __( 'Informações', 'leitura' ),
+      'servicos_ao_cliente' => __( 'Serviços ao cliente', 'leitura' ),
     ],
 
     /**
