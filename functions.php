@@ -136,9 +136,16 @@ add_action( 'after_setup_theme', function() {
         // 'icon'  => 'block-default',
       ],
       [
-        'name'           => 'loja',
-        'title'          => 'Loja',
-        // 'icon'           => 'dashicons-sticky',
+        'name'           => 'cta-1-3',
+        'title'          => 'CTA 1/3',
+      ],
+      [
+        'name'           => 'cta-2-3',
+        'title'          => 'CTA 2/3',
+      ],
+      [
+        'name'           => 'cta-3-3',
+        'title'          => 'CTA 3/3',
       ],
     ],
 

@@ -41,18 +41,18 @@ namespace Air_Light;
       <h2>Contato</h2>
       <p>
         <?php
-        $telefones = get_field('telefones', 'option');
-        if ($telefones) {
-          foreach ($telefones as $telefone) {
-            $telefone = preg_replace('/\D/', '', $telefone); // Remove caracteres não-numéricos
-            echo '<a href="tel:+55' . $telefone . '">+55 ' . $telefone . '</a><br>';
+        $telefones = get_field( 'telefones', 'option' );
+        if ( $telefones ) {
+          foreach ( $telefones as $telefone ) {
+            $telefone = preg_replace( '/\D/', '', $telefone['telefone'] ); // Remove caracteres não-numéricos
+            echo '<a href="tel:+55' . esc_html( $telefone ) . '">+55 ' . esc_html( $telefone ) . '</a><br>';
           }
         }
         ?>
         <?php
-        $email = get_field('email', 'option');
-        if ($email) {
-          echo '<a href="mailto:' . esc_attr($email) . '">' . esc_html($email) . '</a>';
+        $email = get_field( 'email', 'option' );
+        if ( $email ) {
+          echo '<a href="mailto:' . esc_attr( $email ) . '">' . esc_html( $email ) . '</a>';
         }
         ?>
       </p>
