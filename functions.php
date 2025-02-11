@@ -14,6 +14,8 @@
 
 namespace Air_Light;
 
+// use function PHPSTORM_META\map;
+
 /**
  * The current version of the theme.
  */
@@ -136,6 +138,10 @@ add_action( 'after_setup_theme', function() {
         // 'icon'  => 'block-default',
       ],
       [
+        'name'           => 'slider',
+        'title'          => 'Slider',
+      ],
+      [
         'name'           => 'cta-1-3',
         'title'          => 'CTA 1/3',
       ],
@@ -147,6 +153,34 @@ add_action( 'after_setup_theme', function() {
         'name'           => 'cta-3-3',
         'title'          => 'CTA 3/3',
       ],
+      [
+        'name'           => 'revista',
+        'title'          => 'Chamada para revista',
+      ],
+      [
+        'name'           => 'cta-lojas',
+        'title'          => 'Chamada para Lojas',
+      ],
+      [
+        'name'           => 'newsletter',
+        'title'          => 'Newsletter',
+      ],
+      [
+        'name'           => 'destaques-home',
+        'title'          => 'Destaques Home',
+      ],
+      [
+        'name'           => 'mais-recentes',
+        'title'          => 'Mais Recentes',
+      ],
+      [
+        'name'           => 'colunas-resenhas',
+        'title'          => 'Colunas & Resenhas',
+      ],
+      [
+        'name'           => 'nossa-leitura',
+        'title'          => 'Nossa Leitura',
+      ]
     ],
 
     // Custom ACF block default settings
