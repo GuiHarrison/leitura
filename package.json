@@ -69,5 +69,10 @@
     "moveto": "^1.8.2",
     "reframe.js": "^4.0.0",
     "vnu-jar": "^24.10.17"
-  }
+  },
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC"
 }
