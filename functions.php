@@ -144,10 +144,16 @@ add_action( 'after_setup_theme', function() {
       [
         'name'           => 'cta-1-3',
         'title'          => 'CTA 1/3',
+        'supports'       => [
+          'customClassName' => true,
+        ],
       ],
       [
         'name'           => 'cta-2-3',
         'title'          => 'CTA 2/3',
+        'supports'       => [
+          'customClassName' => true,
+        ],
       ],
       [
         'name'           => 'cta-3-3',
@@ -156,6 +162,9 @@ add_action( 'after_setup_theme', function() {
       [
         'name'           => 'revista',
         'title'          => 'Chamada para revista',
+        'supports'       => [
+          'customClassName' => true,
+        ],
       ],
       [
         'name'           => 'cta-lojas',
@@ -261,3 +270,8 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\build_post_types' );
 
 add_action( 'after_air_helper_init', __NAMESPACE__ . '\rebuild_taxonomies' );
 add_action( 'after_air_helper_init', __NAMESPACE__ . '\rebuild_post_types' );
+
+/**
+ * Tamanhos de imagens
+ */
+add_action( 'after_setup_theme', __NAMESPACE__ . '\tamanhos_de_imagens' );

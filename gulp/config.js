@@ -59,7 +59,7 @@ module.exports = {
         fix: false,
         reporters: [{
           formatter: 'string',
-          console: true,
+          console: false,
           failAfterError: false,
           debug: false
         }]

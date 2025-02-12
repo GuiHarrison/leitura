@@ -3203,6 +3203,7 @@ textarea:focus {
 .editor-styles-wrapper,
 .site-main {
   /* variables/_index.scss */
+  /* variables/_index.scss */
 }
 .editor-styles-wrapper .block-error,
 .site-main .block-error {
@@ -3464,6 +3465,234 @@ textarea:focus {
   margin-right: auto;
   max-width: 900px;
   text-align: center;
+}
+.editor-styles-wrapper :root,
+.site-main :root {
+  --color-black: #000;
+  --color-blue-chalk: #e6e6e6;
+  --color-east-bay: #545773;
+  --color-pattens-blue: #f7f7f7;
+  --color-science-blue: #004d8f;
+  --color-scorpion: #5f5f5f;
+  --color-valhalla: #2a2d3e;
+  --color-white: #fff;
+  --azul-leitura: #004d8f;
+  --azul-forte: #005ce8;
+  --destaque: #f7710c;
+  --cinza-clarinho: #f2f2f2;
+  --cinza-claro: #e6e6e6;
+  --cinza-medio: #9b9b9b;
+  --cinza-escurinho: #666;
+  --cinza-escuro: #333;
+  --color-main: var(--azul-leitura);
+  --color-heading: var(--color-main);
+  --color-paragraph: var(--color-east-bay);
+  --color-link-text: var(--color-science-blue);
+  --color-link-text-hover: var(--color-black);
+  --color-error: #cc2e2e;
+  --color-success: #21aa14;
+  --width-max-mobile: 1030px;
+  --typography-family-main: "Faktum", -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  --typography-family-paragraph: var(--typography-family-main);
+  --typography-family-heading: var(--typography-family-main);
+  --typography-size-hero: 52px;
+  --typography-h1-size: 40px;
+  --typography-h2-size: 30px;
+  --typography-h3-size: 24px;
+  --typography-h4-size: 20px;
+  --typography-h5-size: 16px;
+  --typography-h6-size: 14px;
+  --typography-size-12: 12px;
+  --typography-size-13: 13px;
+  --typography-size-14: 14px;
+  --typography-size-15: 15px;
+  --typography-size-16: 16px;
+  --typography-size-17: 17px;
+  --typography-size-18: 18px;
+  --typography-size-20: 20px;
+  --typography-size-22: 22px;
+  --typography-paragraph-size: var(--typography-size-18);
+  --typography-nav-toggle-label-size: 15px;
+  --typography-captions-size: 15px;
+  --typography-heading-line-height: 1.5;
+  --typography-heading-core-line-height: 1.23;
+  --typography-paragraph-line-height: 1.7;
+  --typography-weight-regular: 400;
+  --typography-weight-medium: 500;
+  --typography-weight-semibold: 600;
+  --typography-weight-bold: 700;
+  --typography-weight-paragraph: var(--typography-weight-regular);
+  --typography-weight-heading: var(--typography-weight-bold);
+}
+@font-face {
+  font-display: auto;
+  font-family: "Mona Sans";
+  font-style: normal;
+  font-weight: 1 999;
+  src: url(../../fonts/monasansvf.woff2) format("woff2"), url(../../fonts/monasansvf.woff) format("woff");
+}
+@font-face {
+  font-display: fallback;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../../fonts/Faktum-Light.woff2) format("woff2"), url(../../fonts/Faktum-Light.woff) format("woff"), url(../../fonts/Faktum-Light.ttf) format("truetype");
+}
+@font-face {
+  font-display: fallback;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../../fonts/Faktum-Regular.woff2) format("woff2"), url(../../fonts/Faktum-Regular.woff) format("woff"), url(../../fonts/Faktum-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-display: fallback;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../../fonts/Faktum-SemiBold.woff2) format("woff2"), url(../../fonts/Faktum-SemiBold.woff) format("woff"), url(../../fonts/Faktum-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-display: fallback;
+  font-family: "Faktum";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../../fonts/Faktum-Bold.woff2) format("woff2"), url(../../fonts/Faktum-Bold.woff) format("woff"), url(../../fonts/Faktum-Bold.ttf) format("truetype");
+}
+@media (max-width: 600px) {
+  .editor-styles-wrapper :root,
+  .site-main :root {
+    --typography-size-hero: 38px;
+    --typography-h1-size: 32px;
+    --typography-h2-size: 24px;
+    --typography-h3-size: 21px;
+    --typography-h4-size: 18px;
+    --typography-h5-size: 14px;
+    --typography-h6-size: 12px;
+    --typography-paragraph-size: 16px;
+  }
+}
+@media (max-width: 420px) {
+  .editor-styles-wrapper :root,
+  .site-main :root {
+    --typography-size-16: 14px;
+    --typography-nav-toggle-label-size: 13px;
+  }
+}
+.editor-styles-wrapper :root,
+.site-main :root {
+  --color-background-input-field: var(--color-white);
+  --color-form-text: var(--color-paragraph);
+  --color-form-label-text: var(--color-form-text);
+  --color-required-label-text: var(--color-form-text);
+  --color-border-forms: var(--cinza-claro);
+  --color-border-forms-focus: var(--cinza-medio);
+  --color-button: var(--color-white);
+  --color-button-hover: var(--color-white);
+  --color-button-background: var(--color-science-blue);
+  --color-button-background-hover: var(--azul-forte);
+  --color-checkbox: var(--color-science-blue);
+  --color-checkbox-outline: 0 0 0 3px #54577333;
+  --color-checkbox-border-hover: color.adjust(#545773, 15%);
+  --color-checkbox-checked: var(--color-form-label-text);
+  --color-placeholder: var(--color-paragraph);
+  --color-placeholder-focus: var(--color-black);
+  --opacity-placeholder: .4;
+  --opacity-placeholder-focus: .8;
+  --border-radius-checkbox: 3px;
+  --border-radius-input-field: 3px;
+  --border-radius-button: 3px;
+  --border-radius-select: 3px;
+  --border-width-checkbox: 1px;
+  --border-width-input-field: 1px;
+  --typography-size-input-fields: var(--typography-size-17);
+  --typography-size-input-labels: var(--typography-size-input-fields);
+  --typography-size-required-text-label: var(--typography-size-input-fields);
+  --typography-size-required-asterisk-label: 0.8593rem;
+  --form-column-gap: 1.25rem;
+  --form-row-gap: 1.25rem;
+  --form-required-gap: 0.3125rem;
+  --form-line-height: 0.9375rem;
+  --form-padding-vertical: 0.625rem;
+  --form-padding-horizontal: 0.9375rem;
+  --gap-checkbox: 0.3905rem;
+  --gap-select-icon: 0.9375rem;
+  --size-checkbox: 1.375rem;
+  --size-checkbox-marker: 0.4675rem;
+  --size-radio-button: 0.625rem;
+  --size-radio-button-marker: 0.3125rem;
+  --spacing-grid-gap: 3rem;
+  --spacing-container-padding-inline: 1.25rem;
+  --spacing-container-padding-inline-large: 4rem;
+  --spacing-container-padding-block: 4rem;
+  --spacing-site-header-padding-block: 1.25rem;
+  --spacing-content-padding-block: 5rem;
+  --spacing-text-margin-block: 2.5rem;
+  --spacing-wp-block-image-margin-block: 2.5rem;
+  --spacing-paragraphs-margin-block: 1.6875rem;
+}
+@media (max-width: 1590px) {
+  .editor-styles-wrapper :root,
+  .site-main :root {
+    --spacing-container-padding-inline: 4rem;
+  }
+}
+@media (max-width: 700px) {
+  .editor-styles-wrapper :root,
+  .site-main :root {
+    --spacing-container-padding-inline: 1.25rem;
+  }
+}
+@media (max-width: 1030px) {
+  .editor-styles-wrapper :root,
+  .site-main :root {
+    --spacing-site-header-padding-block: 1.25rem;
+  }
+}
+@media (max-width: 1024px) {
+  .editor-styles-wrapper :root,
+  .site-main :root {
+    --spacing-grid-gap: 2rem;
+  }
+}
+@media (max-width: 770px) {
+  .editor-styles-wrapper :root,
+  .site-main :root {
+    --spacing-grid-gap: var(--spacing-container-padding-inline);
+    --spacing-container-padding-block: 3.125rem;
+  }
+}
+@media (max-width: 600px) {
+  .editor-styles-wrapper :root,
+  .site-main :root {
+    --spacing-content-padding-block: 3.75rem;
+    --spacing-container-padding-block: 2.5rem;
+  }
+}
+@media (max-width: 600px) {
+}
+.editor-styles-wrapper .wp-block-acf-cta-1-3,
+.editor-styles-wrapper .wp-block-acf-cta-2-3,
+.editor-styles-wrapper .wp-block-acf-revista,
+.site-main .wp-block-acf-cta-1-3,
+.site-main .wp-block-acf-cta-2-3,
+.site-main .wp-block-acf-revista {
+  color: var(--color-black);
+  content: "CTA";
+  min-height: 100px;
+  background-color: var(--color-white);
+  border: 4px solid var(--color-black);
+  float: left;
+}
+.editor-styles-wrapper .wp-block-acf-cta-1-3,
+.editor-styles-wrapper .wp-block-acf-revista,
+.site-main .wp-block-acf-cta-1-3,
+.site-main .wp-block-acf-revista {
+  width: 33.33%;
+}
+.editor-styles-wrapper .wp-block-acf-cta-2-3,
+.site-main .wp-block-acf-cta-2-3 {
+  width: 66.66%;
 }
 
 
