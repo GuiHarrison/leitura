@@ -4,23 +4,29 @@ module.exports = {
   },
   mode: 'development',
   module: {
-    rules: [{
-      test: /.js$/,
-      exclude: /node_modules/,
-      use: [{
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            ['airbnb', {
-              targets: {
-                chrome: 50,
-                ie: 11,
-                firefox: 45
-              }
-            }]
-          ]
-        }
-      }]
-    }]
+    rules: [
+      {
+        test: /.js$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['airbnb', {
+                targets: {
+                  chrome: 50,
+                  ie: 11,
+                  firefox: 45
+                }
+              }]
+            ]
+          }
+        }]
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      }
+    ]
   }
 };

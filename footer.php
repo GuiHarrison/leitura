@@ -74,14 +74,14 @@ namespace Air_Light;
             <li>
               <a href="https://www.instagram.com/livrarialeitura/">
                 <span class="screen-reader-text">Instagram</span>
-              </a> 
-              <?php include get_theme_file_path( THEME_SETTINGS['Instagram'] ) ?> 
+              </a>
+              <?php include get_theme_file_path( THEME_SETTINGS['Instagram'] ) ?>
             </li>
             <li>
               <a href="https://api.whatsapp.com/send?phone=5519989494465">
                 <span class="screen-reader-text">WhatsApp</span>
-              </a> 
-              <?php include get_theme_file_path( THEME_SETTINGS['WhatsApp'] ) ?> 
+              </a>
+              <?php include get_theme_file_path( THEME_SETTINGS['WhatsApp'] ) ?>
             </li>
             <li>
               <a href="https://www.tiktok.com/@livrarialeitura">
@@ -92,7 +92,7 @@ namespace Air_Light;
             <li>
               <a href="https://www.linkedin.com/company/livraria-leitura/?originalSubdomain=br">
                 <span class="screen-reader-text">LinkedIn</span>
-              </a> 
+              </a>
               <?php include get_theme_file_path( THEME_SETTINGS['LinkedIn'] ) ?>
             </li>
             <li>
@@ -148,3 +148,5 @@ namespace Air_Light;
           echo '<a href="mailto:' . esc_attr( $email ) . '">' . esc_html( $email ) . '</a>';
         }
         ?> -->
+
+

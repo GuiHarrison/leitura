@@ -152,10 +152,18 @@ function build_theme_support() {
  * API do Google Maps para o ACF
  */
 function acf_maps_key() {
-    $api_keys = APIKeys::get_instance();
-    $maps_key = $api_keys->get_key( 'maps' );
+  $api_keys = APIKeys::get_instance();
+  $maps_key = $api_keys->get_key( 'maps' );
 
-    if ( $maps_key ) {
-        acf_update_setting( 'google_api_key', $maps_key );
-    }
+  if ( $maps_key ) {
+    acf_update_setting( 'google_api_key', $maps_key );
+  }
+}
+
+
+/**
+ * Adicionando tamanhos de arquivos
+ */
+function tamanhos_de_imagens() {
+  add_image_size('destaque-home', 346, 346, true);
 }
