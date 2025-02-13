@@ -9,6 +9,28 @@ namespace Air_Light;
 
 ?>
 
+<script>
+  function ajustarPosicaoMenu() {
+  const logo = document.querySelector(".site-branding"); // O container do logo
+  const menu = document.querySelector(".barra-navegação"); // O menu hambúrguer
+
+  if (logo && menu) {
+    let logoRect = logo.getBoundingClientRect(); // Obtém posição do logo
+    let menuHeight = menu.clientHeight; // Altura do menu
+
+    // Define o novo `top` baseado no logo
+    let novoTop = logoRect.top + (logoRect.height / 2) - (menuHeight / 2);
+
+    menu.style.top = `${novoTop}px`; // Aplica dinamicamente
+  }
+}
+
+// Executa o ajuste ao carregar e ao redimensionar a tela
+window.addEventListener("load", ajustarPosicaoMenu);
+window.addEventListener("resize", ajustarPosicaoMenu);
+</script>
+
+
 <nav id="nav" class="barra-topo barra-navegação nav-primary nav-menu" aria-label="<?php echo esc_html( 'Main navigation' ); ?>">
   <div class="container">
     <button aria-haspopup="true" aria-expanded="false" aria-controls="nav" id="nav-toggle" class="nav-toggle" type="button" aria-label="<?php echo esc_html( 'Abrir menu' ); ?>">

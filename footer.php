@@ -13,7 +13,6 @@ namespace Air_Light;
 ?>
 
 </div><!-- #content -->
-
   <footer id="colophon" class="site-footer">
     <div class="footer-container">
       <!-- Logo -->
