@@ -7,7 +7,8 @@ module.exports = {
   },
   extends: 'eslint-config-airbnb/base',
   rules: {
-    indent: ['error', 2],
+    indent: [0, 'tab'],
+    noTabs: 0,
   },
   env: {
     browser: true,

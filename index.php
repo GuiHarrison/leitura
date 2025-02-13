@@ -48,6 +48,18 @@ get_header(); ?>
             </a>
           </h2>
 
+          <?php
+          $destaque_values = get_post_meta( get_the_ID(), 'destaque', true );
+          $destaque_values = maybe_unserialize( $destaque_values );
+          if ( is_array( $destaque_values ) ) {
+            echo '<ul class="categories">';
+            foreach ( $destaque_values as $value ) {
+              echo '<li><a href="#_">' . esc_html( $value ) . '</a></li>';
+            }
+            echo '</ul>';
+          }
+          ?>
+
           <p>
             <time datetime="<?php the_time( 'c' ); ?>">
               <?php echo get_the_date( get_option( 'date_format' ) ); ?>
