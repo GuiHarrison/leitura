@@ -39,6 +39,90 @@ function enqueue_theme_scripts(): void {
 		true
 	);
 
+	// Enfileira script de destaques se o bloco estiver presente
+	if ( has_block( 'acf/destaques-home' ) ) {
+
+		// Enfileira biblioteca de funções de destaques se o bloco estiver presente
+		wp_enqueue_script(
+			'destaques-functions',
+			get_theme_file_uri( 'js/src/lib/destaques-functions.js' ),
+			[],
+			filemtime( get_theme_file_path( 'js/src/lib/destaques-functions.js' ) ),
+			true
+		);
+
+		// Adiciona o script inline que depende das funções
+		wp_add_inline_script('destaques-functions', '
+			document.addEventListener("DOMContentLoaded", async function() {
+				const container = document.getElementById("destaques-container");
+				if (!container) return;
+
+				const posts = await window.destaquesLib.fetchDestaques();
+				const content = posts.map((post, index) =>
+					window.destaquesLib.createArticleHTML(post, index)
+				).join("");
+
+				container.innerHTML = content || "<p>Erro ao carregar os destaques</p>";
+			});
+		');
+
+    add_action('rest_api_init', function () {
+      register_rest_route('leitura/v1', '/destaques-home', [
+          'methods' => 'GET',
+          'callback' => function () {
+              $args = [
+                  'post_type' => 'post',
+                  'posts_per_page' => 4,
+                  'meta_query' => [
+                      [
+                          'key' => 'destaque',
+                          'value' => 'home',
+                          'compare' => 'LIKE',
+                      ],
+                  ],
+              ];
+
+              $query = new \WP_Query( $args );
+              $posts = $query->posts;
+
+              foreach ( $posts as &$post ) {
+                  $post->featured_media_url = get_the_post_thumbnail_url( $post->ID );
+                  $post->categories = get_the_category( $post->ID );
+              }
+
+              return rest_ensure_response( $posts );
+          },
+          'permission_callback' => '__return_true',
+      ]);
+    });
+
+	}
+
+	// Enfileira script de mais recentes se o bloco estiver presente
+	if ( has_block( 'acf/mais-recentes' ) ) {
+		wp_enqueue_script(
+			'recentes-functions',
+			get_theme_file_uri( 'js/src/lib/recentes-functions.js' ),
+			[],
+			filemtime( get_theme_file_path( 'js/src/lib/recentes-functions.js' ) ),
+			true
+		);
+
+		wp_add_inline_script('recentes-functions', '
+			document.addEventListener("DOMContentLoaded", async function() {
+				const container = document.getElementById("recentes-container");
+				if (!container) return;
+
+				const posts = await window.recentesLib.fetchRecentes();
+				const content = posts.map((post, index) =>
+					window.recentesLib.createRecentArticleHTML(post, index)
+				).join("");
+
+				container.innerHTML = content || "<p>Erro ao carregar os posts recentes</p>";
+			});
+		');
+	}
+
 	// Adicionando API do Google Maps à página de Lojas
 	if ( is_page( 'lojas' ) ) {
 		$api_keys = APIKeys::get_instance();

@@ -39,7 +39,7 @@ class Revista extends Post_Type {
 		// http://codex.wordpress.org/Function_Reference/register_post_type
 		$args = [
 		'labels'              => $generated_labels,
-		// 'menu_icon'           => 'dashicons-sticky',
+		'menu_icon'           => 'dashicons-text-page',
 		'public'              => true,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
