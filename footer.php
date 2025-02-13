@@ -85,13 +85,43 @@ namespace Air_Light;
               <p>sac@leitura.com.br</p>
             </div>
             <ul class="redes-sociais">
-              <li><a href="https://www.instagram.com/livrarialeitura/"><?php include get_theme_file_path(THEME_SETTINGS['Instagram']); ?></a></li>
-              <li><a href="https://api.whatsapp.com/send?phone=5519989494465"><?php include get_theme_file_path(THEME_SETTINGS['WhatsApp']); ?></a></li>
-              <li><a href="https://www.tiktok.com/@livrarialeitura"><?php include get_theme_file_path(THEME_SETTINGS['TikTok']); ?></a></li>
-              <li><a href="https://www.linkedin.com/company/livraria-leitura/?originalSubdomain=br"><?php include get_theme_file_path(THEME_SETTINGS['LinkedIn']); ?></a></li>
-              <li><a href="https://pt-br.facebook.com/livraria.leitura"><?php include get_theme_file_path(THEME_SETTINGS['Facebook']); ?></a></li>
-              <li><a href="https://www.youtube.com/channel/UCwidZVaByjUfjsJ5KsSqurw"><?php include get_theme_file_path(THEME_SETTINGS['Youtube']); ?></a></li>
-            </ul>
+            <li>
+              <a href="https://www.instagram.com/livrarialeitura/">
+                <span class="screen-reader-text">Instagram</span>
+              </a> 
+              <?php include get_theme_file_path( THEME_SETTINGS['Instagram'] ) ?> 
+            </li>
+            <li>
+              <a href="https://api.whatsapp.com/send?phone=5519989494465">
+                <span class="screen-reader-text">WhatsApp</span>
+              </a> 
+              <?php include get_theme_file_path( THEME_SETTINGS['WhatsApp'] ) ?> 
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@livrarialeitura">
+                <span class="screen-reader-text">TikTok</span>
+              </a>
+              <?php include get_theme_file_path( THEME_SETTINGS['TikTok'] ) ?>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/company/livraria-leitura/?originalSubdomain=br">
+                <span class="screen-reader-text">LinkedIn</span>
+              </a> 
+              <?php include get_theme_file_path( THEME_SETTINGS['LinkedIn'] ) ?>
+            </li>
+            <li>
+              <a href="https://pt-br.facebook.com/livraria.leitura">
+                <span class="screen-reader-text">Facebook</span>
+              </a>
+              <?php include get_theme_file_path( THEME_SETTINGS['Facebook'] ) ?>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/channel/UCwidZVaByjUfjsJ5KsSqurw">
+                <span class="screen-reader-text">Youtube</span>
+              </a>
+              <?php include get_theme_file_path( THEME_SETTINGS['Youtube'] ) ?>
+            </li>
+          </ul>
           </div>
         </div>
       </div>
