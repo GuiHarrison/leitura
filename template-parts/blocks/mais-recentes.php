@@ -56,9 +56,15 @@
 				</a>
 			</h3>
 
-			<div class="content">
-				<?php the_excerpt(); ?>
-			</div>
+      <div class="content">
+        <?php
+        if ( $citacao ) {
+          echo '<span>“</span>' . esc_html( $citacao ) . '<span>”</span>';
+        } else {
+          echo '<span>“</span>' . esc_html( wp_trim_words( get_the_excerpt() ), 10, '[…]' ) . '<span>”</span>';
+        }
+        ?>
+      </div>
 
 			<p>
 				<time datetime="<?php the_time( 'c' ); ?>">
