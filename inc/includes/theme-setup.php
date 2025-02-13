@@ -156,7 +156,7 @@ function acf_maps_key() {
   $maps_key = $api_keys->get_key( 'maps' );
 
   if ( $maps_key ) {
-    acf_update_setting( 'google_api_key', $maps_key );
+		acf_update_setting( 'google_api_key', $maps_key );
   }
 }
 
@@ -165,5 +165,8 @@ function acf_maps_key() {
  * Adicionando tamanhos de arquivos
  */
 function tamanhos_de_imagens() {
-  add_image_size('destaque-home', 346, 346, true);
+  add_image_size( 'destaque-home', 346, 346, true );
+  add_image_size( 'revista', 250, 356, true );
+  add_image_size( 'resenha-g', 193, 300 );
+  add_image_size( 'resenha-p', 130, 203 );
 }

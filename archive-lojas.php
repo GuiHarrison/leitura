@@ -18,16 +18,6 @@ get_header();
 
 $api_keys = APIKeys::get_instance();
 $geoapify = $api_keys->get_key( 'geoapify' );
-
-// $args = array(
-// 'post_type'         => 'lojas',
-// 'posts_per_page'    => -1,
-// 'post_status'       => 'publish',
-// 'orderby'           => 'name',
-// 'order'             => 'ASC',
-// );
-
-// $query = new \WP_Query( $args );
 ?>
 
 <script>
@@ -266,7 +256,7 @@ $geoapify = $api_keys->get_key( 'geoapify' );
 			<!-- Navegador de lojas -->
 			<div class="lista-lojas-container">
 				<div class="ll-spacer">
-					<h3 class="ll-titulo">→ Encotre uma Leitura próxima de você</h3>
+					<h3 class="ll-titulo">→ Encontre uma Leitura próxima de você</h3>
 					<input type="text" id="busca_lojas" class="ll-campo" placeholder="Cidade, shopping, etc…">
 					<ul id="ll-lista" class="ll-lista"></ul>
 				</div>

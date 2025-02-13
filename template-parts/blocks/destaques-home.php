@@ -16,44 +16,50 @@
 		),
 	),
 	'posts_per_page' => 4,
+	'category__not_in' => array( 403 ), // 403 = Colunas e resenhas
  ));
 
  if ( $posts_destaque ) {
     global $post;
     $contador = 0;
-    foreach ( $posts_destaque as $post ) {
-		    setup_postdata( $post );
-        $contador++;
 ?>
 
-		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+  <div id="publicacoes-em-destaque">
+    <h2 id="destaque-home">→ Publicações em destaque</h2>
+    <a href="<?php echo esc_url( home_url( '/se-liga-na-leitura' ) ); ?>" class="ver-todas">Ver todas</a>
+    <?php
+        foreach ( $posts_destaque as $post ) {
+            setup_postdata( $post );
+        $contador++;
+    ?>
 
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="destaque thumbnail">
 				<?php
-            if ( $contador <= 2 && has_post_thumbnail() ) {
-                the_post_thumbnail( 'destaque-home', array( 'loading' => 'lazy', 'fetchpriority' => 'low' ) );
-            }
-        ?>
+				if ( $contador <= 2 && has_post_thumbnail() ) {
+					 the_post_thumbnail( 'destaque-home', array( 'loading' => 'lazy', 'fetchpriority' => 'low' ) );
+					}
+				?>
 			</div>
 
-			<?php if ( has_category() ) : ?>
+				<?php if ( has_category() ) : ?>
 				<ul class="categories">
 						<?php
                 $categories = wp_get_post_categories( get_the_id(), [ 'fields' => 'all' ] );
 						    if ( ! empty( $categories ) ) {
-								    foreach ( $categories as $category ) {
-								        echo '<li><a href="' . esc_url( get_category_link( $category ) ) . '">' . esc_html( $category->name ) . '</a></li>';
-								    }
+                  foreach ( $categories as $category ) {
+										echo '<li><a href="' . esc_url( get_category_link( $category ) ) . '">' . esc_html( $category->name ) . '</a></li>';
+                  }
 						    }
             ?>
 					</ul>
 				<?php	endif; ?>
 
-			<h2 class="<?php echo esc_attr( get_post_type() ); ?>-title">
+			<h3 class="<?php echo esc_attr( get_post_type() ); ?>-title">
 				<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 					<?php the_title(); ?>
 				</a>
-			</h2>
+			</h3>
 
 			<?php
 			/**
@@ -66,7 +72,7 @@
 					}
 					echo '</ul>';
 				}
-				*/
+             */
 			?>
 
 			<div class="content">
@@ -83,9 +89,9 @@
 
 		</article>
 
-		<?php
+				<?php
 	}
 	wp_reset_postdata();
- }
+}
 
 ?>
