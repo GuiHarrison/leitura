@@ -1337,7 +1337,7 @@ p:last-child {
 
 .barra-navegação {
   position: absolute;
-  right: 1rem;
+  top: 9vh;
 }
 .barra-navegação .container {
   justify-content: end;

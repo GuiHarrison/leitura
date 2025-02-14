@@ -11,23 +11,27 @@ namespace Air_Light;
 
 <script>
   function ajustarPosicaoMenu() {
-  const logo = document.querySelector(".site-branding"); // O container do logo
-  const menu = document.querySelector(".barra-navegação"); // O menu hambúrguer
+    const logo = document.querySelector(".site-branding");
+    const menu = document.querySelector(".barra-navegação");
 
-  if (logo && menu) {
-    let logoRect = logo.getBoundingClientRect(); // Obtém posição do logo
-    let menuHeight = menu.clientHeight; // Altura do menu
+    if (logo && menu) {
+      if (window.innerWidth < 1024) {
+        let logoRect = logo.getBoundingClientRect();
+        let menuHeight = menu.clientHeight;
 
-    // Define o novo `top` baseado no logo
-    let novoTop = logoRect.top + (logoRect.height / 2) - (menuHeight / 2);
+        let novoTop = logoRect.top + (logoRect.height / 2) - (menuHeight / 2);
 
-    menu.style.top = `${novoTop}px`; // Aplica dinamicamente
+        menu.style.top = `${novoTop}px`;
+      } else {
+        menu.style.top = ""; 
+      }
+    }
   }
-}
 
-// Executa o ajuste ao carregar e ao redimensionar a tela
-window.addEventListener("load", ajustarPosicaoMenu);
-window.addEventListener("resize", ajustarPosicaoMenu);
+  // Executa o ajuste ao carregar e ao redimensionar a tela
+  window.addEventListener("load", ajustarPosicaoMenu);
+  window.addEventListener("resize", ajustarPosicaoMenu);
+
 </script>
 
 

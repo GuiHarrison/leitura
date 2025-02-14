@@ -166,7 +166,8 @@
 
 .barra-navegação {
   position: absolute;
-  right: 1rem;
+  top: 9vh; // <----------------------- automatizar essa posição
+  // right: 1rem;
 
   .container {
     justify-content: end;
