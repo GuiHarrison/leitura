@@ -51,7 +51,7 @@ if ( $posts ) {
 				<div class="content">
 					<?php
 					if ( $citacao ) {
-						echo esc_html( $citacao );
+						echo '<span>“</span>' . esc_html( $citacao ) . '<span>”</span>';
 					} else {
 						echo '<span>“</span>' . esc_html( wp_trim_words( get_the_excerpt(), 20, '[…]' ) ) . '<span>”</span>';
 					}

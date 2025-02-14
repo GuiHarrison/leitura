@@ -1,6 +1,6 @@
 <?php
 /**
- * Post type Nossa Leitura.
+ * Post type Queridinho.
  *
  * @package leitura
  **/
@@ -8,9 +8,9 @@
 namespace Air_Light;
 
 /**
- * Registers the Nossa Leitura post type.
+ * Registers the Queridinho post type.
  */
-class Nossa_Leitura extends Post_Type {
+class Queridinhos extends Post_Type {
 
   public function register() {
     // Modify all the i18ized strings here.
@@ -18,20 +18,20 @@ class Nossa_Leitura extends Post_Type {
       // The Post_Type ask__ function wraps the air-helper ask__, and automatically registers the keys to Polylang!
       // self::ask__( 'Key', 'Default value' )
       // -> Key: Default value => 'Default value'
-      'menu_name'          => 'Nossa Leitura',
-      'name'               => 'Nossas Leituras',
-      'singular_name'      => 'Nossa Leitura',
-      'name_admin_bar'     => 'Nossa Leitura',
+      'menu_name'          => 'Queridinhos',
+      'name'               => 'Queridinhos',
+      'singular_name'      => 'Queridinhos',
+      'name_admin_bar'     => 'Queridinhos',
       'add_new'            => 'Adicionar novo',
-      'add_new_item'       => 'Adicionar novo Nossa Leitura',
-      'new_item'           => 'Novo Nossa Leitura',
-      'edit_item'          => 'Editar Nossa Leitura',
-      'view_item'          => 'Ver Nossa Leitura',
-      'all_items'          => 'Todos os Nossas Leituras',
-      'search_items'       => 'Search Nossas Leituras',
-      'parent_item_colon'  => 'Parent Nossas Leituras:',
-      'not_found'          => 'Nenhum Nossas Leituras encontrado.',
-      'not_found_in_trash' => 'Nenhum Nossas Leituras encontrado no lixo.',
+      'add_new_item'       => 'Adicionar novo queridinho',
+      'new_item'           => 'Novo queridinho',
+      'edit_item'          => 'Editar queridinho',
+      'view_item'          => 'Ver queridinho',
+      'all_items'          => 'Todos os queridinhos',
+      'search_items'       => 'Procurar queridinhos',
+      'parent_item_colon'  => 'Mãe de queridinhos:',
+      'not_found'          => 'Nenhum queridinho encontrado.',
+      'not_found_in_trash' => 'Nenhum queridinho encontrado no lixo.',
     ];
 
     // Definition of the post type arguments. For full list see:
@@ -47,7 +47,7 @@ class Nossa_Leitura extends Post_Type {
       'pll_translatable'    => true,
       'rewrite'             => [
         'with_front'  => false,
-        'slug'        => 'nossa-leitura',
+        'slug'        => 'queridinhos',
       ],
       'supports'            => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions' ],
       'taxonomies'          => [],
