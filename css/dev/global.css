@@ -1219,11 +1219,13 @@ p:last-child {
 .barra-boas-vindas {
   background-color: var(--azul-leitura);
 }
- .barra-boas-vindas a,.barra-boas-vindas p {
+
+.barra-boas-vindas a,.barra-boas-vindas p {
   color: var(--color-white);
   text-transform: uppercase;
 }
- .barra-boas-vindas a:hover,.barra-boas-vindas p:hover {
+
+.barra-boas-vindas a:hover,.barra-boas-vindas p:hover {
   color: var(--color-white);
 }
 .barra-boas-vindas .boas-vindas {
@@ -1293,11 +1295,13 @@ p:last-child {
   display: flex;
   flex-direction: row;
 }
- .barra-logo-busca-redes .busca form button,.barra-logo-busca-redes .busca form input {
+
+.barra-logo-busca-redes .busca form button,.barra-logo-busca-redes .busca form input {
   height: 3rem;
 }
 @media (min-width: 1024px) {
-   .barra-logo-busca-redes .busca form button,.barra-logo-busca-redes .busca form input {
+  
+  .barra-logo-busca-redes .busca form button,.barra-logo-busca-redes .busca form input {
     height: 3.5rem;
   }
 }
@@ -1346,6 +1350,7 @@ p:last-child {
   .barra-navegação {
     position: relative;
     top: 0;
+    right: 0;
     padding: 34px 0;
     background-color: var(--azul-leitura);
   }

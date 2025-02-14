@@ -42,7 +42,8 @@
 .barra-boas-vindas {
   background-color: var(--azul-leitura);
 
-  p, a {
+  p,
+  a {
     color: var(--color-white);
     text-transform: uppercase;
 
@@ -50,7 +51,7 @@
       color: var(--color-white);
     }
   }
-  
+
   .boas-vindas {
     background-color: var(--destaque);
     border-radius: 10px;
@@ -78,7 +79,7 @@
   justify-content: space-between;
   align-items: stretch;
   padding: 0;
-  
+
   @media (min-width: breakpoints.$container-ipad-landscape) {
     flex-direction: row;
     align-items: center;
@@ -114,12 +115,13 @@
       background-color: transparent;
       width: 550px;
     }
-    
+
     form {
       display: flex;
       flex-direction: row;
 
-      input, button {
+      input,
+      button {
         height: 3rem;
 
         @media (min-width: breakpoints.$container-ipad-landscape) {
@@ -176,6 +178,7 @@
   @media (min-width: breakpoints.$container-ipad-landscape) {
     position: relative;
     top: 0;
+    right: 0;
     padding: 34px 0;
     background-color: var(--azul-leitura);
 

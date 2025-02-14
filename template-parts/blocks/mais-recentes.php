@@ -7,10 +7,11 @@
 
  namespace Air_Light;
 
- $posts = get_posts(array(
-	'posts_per_page' => 2,
-	'category__not_in' => array( 403 ), // 403 = Colunas e resenhas
- ));
+$ppp = get_field( 'ppp' );
+$posts = get_posts(array(
+  'posts_per_page' => $ppp,
+  'category__not_in' => array( 403 ), // 403 = Colunas e resenhas
+));
 
  if ( $posts ) {
 		global $post;
@@ -56,15 +57,9 @@
 				</a>
 			</h3>
 
-      <div class="content">
-        <?php
-        if ( $citacao ) {
-          echo '<span>“</span>' . esc_html( $citacao ) . '<span>”</span>';
-        } else {
-          echo '<span>“</span>' . esc_html( wp_trim_words( get_the_excerpt() ), 10, '[…]' ) . '<span>”</span>';
-        }
-        ?>
-      </div>
+			<div class="content">
+				<?php the_excerpt(); ?>
+			</div>
 
 			<p>
 				<time datetime="<?php the_time( 'c' ); ?>">

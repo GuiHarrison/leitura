@@ -174,11 +174,6 @@ add_action( 'after_setup_theme', function() {
         'icon'           => 'text-page',
       ],
       [
-        'name'           => 'newsletter',
-        'title'          => 'Newsletter',
-        'icon'           => 'tickets',
-      ],
-      [
         'name'           => 'destaques-home',
         'title'          => 'Destaques Home',
         'icon'           => 'excerpt-view',
@@ -197,6 +192,11 @@ add_action( 'after_setup_theme', function() {
         'name'           => 'queridinhos-da-leitura',
         'title'          => 'Queridinhos da Leitura',
         'icon'           => 'excerpt-view',
+      ],
+      [
+        'name'           => 'newsletter',
+        'title'          => 'Newsletter',
+        'icon'           => 'tickets',
       ],
     ],
 

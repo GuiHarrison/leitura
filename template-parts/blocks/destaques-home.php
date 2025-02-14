@@ -7,6 +7,7 @@
 
  namespace Air_Light;
 
+ $ppp = get_field( 'ppp' );
  $posts_destaque = get_posts(array(
 	'meta_query' => array(
 		array(
@@ -15,7 +16,7 @@
 			'compare' => 'LIKE',
 		),
 	),
-	'posts_per_page' => 4,
+	'posts_per_page' => $ppp,
 	'category__not_in' => array( 403 ), // 403 = Colunas e resenhas
  ));
 
@@ -72,7 +73,7 @@
 					}
 					echo '</ul>';
 				}
-             */
+      */
 			?>
 
 			<div class="content">

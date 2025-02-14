@@ -7,10 +7,11 @@
 
  namespace Air_Light;
 
- $posts = get_posts(array(
-	'posts_per_page' => 3,
+$ppp = get_field( 'ppp' );
+$posts = get_posts(array(
+	'posts_per_page' => $ppp,
 	'category' => array( 403 ), // 403 = Colunas e resenhas
- ));
+));
 
 if ( $posts ) {
 	 global $post;
@@ -26,6 +27,7 @@ if ( $posts ) {
 			setup_postdata( $post );
         $autoria = get_field( 'autoria', get_the_id() );
         $citacao = get_field( 'citacao', get_the_id() );
+        $usuário = get_the_author_meta( 'ID' );
 			  ?>
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -47,6 +49,11 @@ if ( $posts ) {
 						<?php echo esc_html( $autoria ) ?>
 					</a>
 				</h4>
+
+        <div class="autor-do-post">
+            <img src="<?php echo esc_url( get_avatar_url( $usuário ) ); ?>" alt="Autor: <?php echo esc_html( get_the_author() ); ?>" class="ap-foto">
+          <h5 class="ap-nome"><?php echo esc_html( get_the_author() ); ?></h5>
+        </div>
 
 				<div class="content">
 					<?php
