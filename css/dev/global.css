@@ -1777,6 +1777,16 @@ input[type=radio]:focus,input[type=radio]:hover {
   cursor: pointer;
 }
 
+.newsletter-formulário {
+  padding-top: 300px;
+  background-image: url(../../img/banner-newsletter-desktop.png);
+  background-position: 0 50%;
+  background-size: contain;
+}
+.newsletter-formulário .frm_submit.frm_flex ::before {
+  display: none !important;
+}
+
 :root {
   --color-border-sticky: #d7e4f2;
   --color-bypostauthor: #2a2d3e80;

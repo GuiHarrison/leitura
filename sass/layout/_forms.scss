@@ -43,7 +43,7 @@ label {
 }
 
 // Unset checkbox and radio button labels
-input + label {
+input+label {
   // stylelint-disable-next-line font-weight-notation
   font-weight: unset;
 }
@@ -181,12 +181,27 @@ input[type="checkbox"]:checked {
 }
 
 input[type="radio"]:hover,
-input[type="radio"] + label:hover,
+input[type="radio"]+label:hover,
 input[type="radio"]:focus,
-input[type="radio"] + label:focus,
+input[type="radio"]+label:focus,
 input[type="checkbox"]:hover,
-input[type="checkbox"] + label:hover,
+input[type="checkbox"]+label:hover,
 input[type="checkbox"]:focus,
-input[type="checkbox"] + label:focus {
+input[type="checkbox"]+label:focus {
   cursor: pointer;
+}
+
+// Esses valores são pensados para desktop.
+.newsletter-formulário {
+  padding-top: 300px; // <-- ----------------------------------------- Fazer esse valor relativo
+  background-image: url(../../img/banner-newsletter-desktop.png);
+  background-position: 0 50%;
+  background-size: contain;
+
+  .frm_submit.frm_flex {
+    ::before {
+      display: none !important;
+      // não estou conseguindo tirar o before que está empurrando o botão de envio para baixo.
+    }
+  }
 }
