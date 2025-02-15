@@ -1,3 +1,4 @@
+@charset "UTF-8";
 
 *,
 *::after,
@@ -4611,6 +4612,15 @@ p {
 .editor-styles-wrapper .acf-block-preview .block input[type=radio] + label:hover,
 .editor-styles-wrapper .acf-block-preview .block input[type=radio]:focus,.editor-styles-wrapper .acf-block-preview .block input[type=radio]:hover {
   cursor: pointer;
+}
+.editor-styles-wrapper .acf-block-preview .block .newsletter-formulário {
+  padding-top: 300px;
+  background-image: url(../../img/banner-newsletter-desktop.png);
+  background-position: 0 50%;
+  background-size: contain;
+}
+.editor-styles-wrapper .acf-block-preview .block .newsletter-formulário .frm_submit.frm_flex ::before {
+  display: none !important;
 }
 @media (max-width: 840px) {
   

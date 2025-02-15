@@ -608,25 +608,22 @@ body:not(.js-nav-active) .nav-toggle:hover .hamburger::after {
     overflow: hidden;
   }
   .menu-items-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
     backface-visibility: hidden;
     background-color: var(--color-white);
     height: calc(100vh - 7.2rem);
     overflow: auto;
-    padding-bottom: 7.5rem;
+    padding: 90px 50px 7.5rem;
     pointer-events: none;
     position: fixed;
     right: 0;
-    top: 4.5rem;
     transform: translate3d(100%, 0, 0);
     transition: all 180ms ease-in-out;
     visibility: hidden;
     width: var(--width-navigation);
-    padding-top: 100px;
     z-index: 5;
-  }
-  .logo-preta {
-    padding: var(--padding-sub-menu-vertical-mobile) calc(var(--padding-sub-menu-horizontal-mobile) - var(--dropdown-toggle-size)/2) var(--padding-sub-menu-vertical-mobile) var(--padding-sub-menu-horizontal-mobile);
-    margin-bottom: 40px;
   }
   .menu-items {
     margin: 0;
@@ -1205,7 +1202,7 @@ p:last-child {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 50px 1rem 1rem;
 }
 @media (min-width: 1024px) {
   .barra-topo .container {
@@ -1220,11 +1217,13 @@ p:last-child {
 .barra-boas-vindas {
   background-color: var(--azul-leitura);
 }
- .barra-boas-vindas a,.barra-boas-vindas p {
+
+.barra-boas-vindas a,.barra-boas-vindas p {
   color: var(--color-white);
   text-transform: uppercase;
 }
- .barra-boas-vindas a:hover,.barra-boas-vindas p:hover {
+
+.barra-boas-vindas a:hover,.barra-boas-vindas p:hover {
   color: var(--color-white);
 }
 .barra-boas-vindas .boas-vindas {
@@ -1261,7 +1260,7 @@ p:last-child {
   }
 }
 .barra-logo-busca-redes .site-branding {
-  padding: 40px 54px 40px 1rem;
+  padding: 40px 54px 40px 50px;
   min-height: 100px;
   width: 100vw;
 }
@@ -1294,11 +1293,13 @@ p:last-child {
   display: flex;
   flex-direction: row;
 }
- .barra-logo-busca-redes .busca form button,.barra-logo-busca-redes .busca form input {
+
+.barra-logo-busca-redes .busca form button,.barra-logo-busca-redes .busca form input {
   height: 3rem;
 }
 @media (min-width: 1024px) {
-   .barra-logo-busca-redes .busca form button,.barra-logo-busca-redes .busca form input {
+  
+  .barra-logo-busca-redes .busca form button,.barra-logo-busca-redes .busca form input {
     height: 3.5rem;
   }
 }
@@ -1337,7 +1338,6 @@ p:last-child {
 
 .barra-navegação {
   position: absolute;
-  top: 9vh;
 }
 .barra-navegação .container {
   justify-content: end;
@@ -1346,6 +1346,7 @@ p:last-child {
   .barra-navegação {
     position: relative;
     top: 0;
+    right: 0;
     padding: 34px 0;
     background-color: var(--azul-leitura);
   }
@@ -1842,6 +1843,16 @@ input[type=radio]:focus,input[type=radio]:hover {
   cursor: pointer;
 }
 
+.newsletter-formulário {
+  padding-top: 300px;
+  background-image: url(../../img/banner-newsletter-desktop.png);
+  background-position: 0 50%;
+  background-size: contain;
+}
+.newsletter-formulário .frm_submit.frm_flex ::before {
+  display: none !important;
+}
+
 :root {
   --color-border-sticky: #d7e4f2;
   --color-bypostauthor: #2a2d3e80;
@@ -2241,6 +2252,13 @@ a.page-numbers:focus,a.page-numbers:hover {
   visibility: hidden;
   line-height: 0;
   height: 0;
+}
+
+.owl-carousel .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .owl-carousel .owl-stage-outer {

@@ -23,7 +23,7 @@ add_filter( 'air_helper_pll_register_strings', function() {
   return apply_filters( 'air_light_translations', $strings );
 } );
 
-function get_default_localization_strings( $language = 'en' ) {
+function get_default_localization_strings( $language = 'pt' ) {
   $strings = [
     'en'  => [
       'Add a menu'                                   => __( 'Add a menu', 'leitura' ),
@@ -49,24 +49,24 @@ function get_default_localization_strings( $language = 'en' ) {
       'Last slide'                                   => __( 'Last slide', 'leitura' ),
     ],
     'pt'  => [
-      'Add a menu'                                   => 'Luo uusi valikko',
+      'Add a menu'                                   => 'Adicionar um menu',
       'Open main menu'                               => 'Abrir',
-      'Close main menu'                              => 'Sulje päävalikko',
-      'Main navigation'                              => 'Päävalikko',
-      'Back to top'                                  => 'Siirry takaisin sivun alkuun',
+      'Close main menu'                              => 'Fechar menu',
+      'Main navigation'                              => 'Navegação principal',
+      'Back to top'                                  => 'Voltar ao topo',
       'Open child menu for'                          => 'Avaa alavalikko kohteelle',
       'Close child menu for'                         => 'Sulje alavalikko kohteelle',
       'Skip to content'                              => 'Siirry suoraan sisältöön',
       'Skip over the carousel element'               => 'Hyppää karusellisisällön yli seuraavaan sisältöön',
-      'External site'                                => 'Ulkoinen sivusto',
+      'External site'                                => 'Site externo',
       'opens in a new window'                        => 'avautuu uuteen ikkunaan',
-      'Page not found.'                              => 'Hups. Näyttää, ettei sivua löydy.',
+      'Page not found.'                              => 'Opa! Página não encontrada.',
       'The reason might be mistyped or expired URL.' => 'Syynä voi olla virheellisesti kirjoitettu tai vanhentunut linkki.',
-      'Search'                                       => 'Haku',
+      'Search'                                       => 'Buscar',
       'Block missing required data'                  => 'Lohkon pakollisia tietoja puuttuu',
       'This error is shown only for logged in users' => 'Tämä virhe näytetään vain kirjautuneille käyttäjille',
       'No results for your search'                   => 'Haullasi ei löytynyt tuloksia',
-      'Edit'                                         => 'Muokkaa',
+      'Edit'                                         => 'Editar',
       'Previous slide'                               => 'Edellinen dia',
       'Next slide'                                   => 'Seuraava dia',
       'Last slide'                                   => 'Viimeinen dia',

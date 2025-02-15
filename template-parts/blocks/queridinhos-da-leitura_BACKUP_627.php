@@ -1,6 +1,6 @@
 <?php
 /**
- * Bloco para Nossa Leitura
+ * Bloco para Queridinhos da Leitura
  *
  * @package airclean
  */
@@ -8,7 +8,7 @@
  namespace Air_Light;
 
  $posts = get_posts(array(
-  'post_type' => 'nossa_leitura',
+  'post_type' => 'queridinhos_da_leitura',
 	'posts_per_page' => 3,
  ));
 
@@ -17,8 +17,8 @@ if ( $posts ) {
 	$contador = 0;
 	?>
 
-	<div id="nossa-leitura">
-		<h2 id="destaque-home">→ Nossa Leitura</h2>
+	<div id="queridinhos-da-leitura">
+		<h2 id="destaque-home">→ Queridinhos da Leitura</h2>
 		<a href="<?php echo esc_url( home_url( '/se-liga-na-leitura' ) ); ?>" class="ver-todas">Ver todas</a>
 
 		<?php
@@ -51,7 +51,7 @@ if ( $posts ) {
 				<div class="content">
 					<?php
 					if ( $citacao ) {
-						echo esc_html( $citacao );
+						echo '<span>“</span>' . esc_html( $citacao ) . '<span>”</span>';
 					} else {
             echo '<span>“</span>' . esc_html( wp_trim_words( get_the_excerpt() ), 10, '[…]' ) . '<span>”</span>';
 					}

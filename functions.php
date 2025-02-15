@@ -119,7 +119,7 @@ add_action( 'after_setup_theme', function() {
       'lojas',
       'eventos',
       'revista',
-      'nossa_leitura',
+      'queridinhos',
     ],
 
     /**
@@ -174,11 +174,6 @@ add_action( 'after_setup_theme', function() {
         'icon'           => 'text-page',
       ],
       [
-        'name'           => 'newsletter',
-        'title'          => 'Newsletter',
-        'icon'           => 'tickets',
-      ],
-      [
         'name'           => 'destaques-home',
         'title'          => 'Destaques Home',
         'icon'           => 'excerpt-view',
@@ -194,9 +189,14 @@ add_action( 'after_setup_theme', function() {
         'icon'           => 'excerpt-view',
       ],
       [
-        'name'           => 'nossa-leitura',
-        'title'          => 'Nossa Leitura',
+        'name'           => 'queridinhos-da-leitura',
+        'title'          => 'Queridinhos da Leitura',
         'icon'           => 'excerpt-view',
+      ],
+      [
+        'name'           => 'newsletter',
+        'title'          => 'Newsletter',
+        'icon'           => 'tickets',
       ],
     ],
 

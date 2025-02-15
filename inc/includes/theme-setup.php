@@ -160,7 +160,6 @@ function acf_maps_key() {
   }
 }
 
-
 /**
  * Adicionando tamanhos de arquivos
  */
@@ -169,4 +168,14 @@ function tamanhos_de_imagens() {
   add_image_size( 'revista', 250, 356, true );
   add_image_size( 'resenha-g', 193, 300 );
   add_image_size( 'resenha-p', 130, 203 );
+}
+
+/**
+ * Pegar estados do endereço do maps
+ */
+function endereco_para_estado_curto($string) {
+  if (preg_match('/(\w{2}),(?=[^,]*$)/', $string, $matches)) {
+      return $matches[1];
+  }
+  return '';
 }
