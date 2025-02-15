@@ -43,54 +43,38 @@
 				?>
 			</div>
 
-				<?php if ( has_category() ) : ?>
-				<ul class="categories">
-						<?php
+      <div class="detalhes-do-post">
+        <?php if ( has_category() ) : ?>
+        <ul class="categories">
+            <?php
                 $categories = wp_get_post_categories( get_the_id(), [ 'fields' => 'all' ] );
-						    if ( ! empty( $categories ) ) {
+                if ( ! empty( $categories ) ) {
                   foreach ( $categories as $category ) {
-										echo '<li><a href="' . esc_url( get_category_link( $category ) ) . '">' . esc_html( $category->name ) . '</a></li>';
+                    echo '<li><a href="' . esc_url( get_category_link( $category ) ) . '">' . esc_html( $category->name ) . '</a></li>';
                   }
-						    }
+                }
             ?>
-					</ul>
-				<?php	endif; ?>
+          </ul>
+        <?php	endif; ?>
 
-			<h3 class="<?php echo esc_attr( get_post_type() ); ?>-title">
-				<a href="<?php echo esc_url( get_the_permalink() ); ?>">
-					<?php the_title(); ?>
-				</a>
-			</h3>
+        <h3 class="<?php echo esc_attr( get_post_type() ); ?>-title">
+          <a href="<?php echo esc_url( get_the_permalink() ); ?>">
+            <?php the_title(); ?>
+          </a>
+        </h3>
 
-			<?php
-			/**
-				$destaque_values = get_post_meta( get_the_ID(), 'destaque', true );
-				$destaque_values = maybe_unserialize( $destaque_values );
-				if ( is_array( $destaque_values ) ) {
-					echo '<ul class="categories">';
-					foreach ( $destaque_values as $value ) {
-						echo '<li><a href="#_">' . esc_html( $value ) . '</a></li>';
-					}
-					echo '</ul>';
-				}
-      */
-			?>
+        <div class="content"> <?php the_excerpt(); ?> </div>
 
-			<div class="content">
-				<?php
-					the_excerpt();
-				?>
-			</div>
-
-			<p>
-				<time datetime="<?php the_time( 'c' ); ?>">
-					<?php echo get_the_date( get_option( 'date_format' ) ); ?>
-				</time>
-			</p>
+        <p>
+          <time datetime="<?php the_time( 'c' ); ?>">
+            <?php echo get_the_date( get_option( 'date_format' ) ); ?>
+          </time>
+        </p>
+      </div>
 
 		</article>
 
-				<?php
+  <?php
 	}
 	wp_reset_postdata();
 }

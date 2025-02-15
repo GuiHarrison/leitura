@@ -24,100 +24,118 @@ get_header(); ?>
   <section class="block block-blog">
     <div class="container">
 
-    <?php
-    $posts_destaque = get_posts(array(
-      'meta_query' => array(
-        array(
-          'key' => 'destaque',
-          'value' => '"home"',
-          'compare' => 'LIKE',
+      <?php
+      $detaque_blog = get_posts(array(
+        'meta_query' => array(
+          array(
+            'key' => 'destaque',
+            'value' => '"home"',
+            'compare' => 'LIKE',
+          ),
         ),
-      ),
-    ));
+        'posts_per_page' => 1
+      ));
 
-    if ( $posts_destaque ) {
-      foreach ( $posts_destaque as $post ) {
-        setup_postdata( $post );
-        ?>
+      if ( $detaque_blog ) {
+          global $post;
+      ?>
 
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-          <h2 class="<?php echo esc_attr( get_post_type() ); ?>-title">
-            <a href="<?php echo esc_url( get_the_permalink() ); ?>">
-              <?php the_title(); ?>
-            </a>
-          </h2>
-
+        <div id="destaque_blog">
           <?php
-          $destaque_values = get_post_meta( get_the_ID(), 'destaque', true );
-          $destaque_values = maybe_unserialize( $destaque_values );
-          if ( is_array( $destaque_values ) ) {
-            echo '<ul class="categories">';
-            foreach ( $destaque_values as $value ) {
-              echo '<li><a href="#_">' . esc_html( $value ) . '</a></li>';
-            }
-            echo '</ul>';
-          }
-          ?>
-
-          <p>
-            <time datetime="<?php the_time( 'c' ); ?>">
-              <?php echo get_the_date( get_option( 'date_format' ) ); ?>
-            </time>
-          </p>
-
-          <div class="content">
-            <?php
-              the_content();
-              entry_footer();
+          foreach ( $detaque_blog as $post ) {
+            setup_postdata( $post );
             ?>
-          </div>
 
-        </article>
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+              <div class="destaque thumbnail">
+                <?php
+                if ( has_post_thumbnail() ) {
+                  the_post_thumbnail( 'destaque-home', array( 'loading' => 'lazy', 'fetchpriority' => 'low' ) );
+                }
+                ?>
+              </div>
+
+              <div class="detalhes-do-post">
+                <?php if ( has_category() ) : ?>
+                <ul class="categories">
+                    <?php
+                        $categories = wp_get_post_categories( get_the_id(), [ 'fields' => 'all' ] );
+                        if ( ! empty( $categories ) ) {
+                          foreach ( $categories as $category ) {
+                            echo '<li><a href="' . esc_url( get_category_link( $category ) ) . '">' . esc_html( $category->name ) . '</a></li>';
+                          }
+                        }
+                    ?>
+                  </ul>
+                <?php	endif; ?>
+
+                <h3 class="<?php echo esc_attr( get_post_type() ); ?>-title">
+                  <a href="<?php echo esc_url( get_the_permalink() ); ?>">
+                    <?php the_title(); ?>
+                  </a>
+                </h3>
+
+                <div class="content"> <?php the_excerpt(); ?> </div>
+
+                <p>
+                  <time datetime="<?php the_time( 'c' ); ?>">
+                    <?php echo get_the_date( get_option( 'date_format' ) ); ?>
+                  </time>
+                </p>
+              </div>
+
+            </article>
         <?php
+        }
+        wp_reset_postdata();
       }
-      wp_reset_postdata();
-    } else {
-      echo '<h2>Sem posts de destaque 😳</h2>';
-    }
-    ?>
+      ?>
+      </div>
 
-      <?php if ( have_posts() ) : ?>
+      <?php
+      if ( have_posts() ) :
 
-        <?php if ( is_home() && ! is_front_page() ) : ?>
-          <h1 id="content" class="screen-reader-text"><?php single_post_title(); ?></h1>
-        <?php endif; ?>
+        while ( have_posts() ) :
+          the_post();
+          $thumb = get_the_post_thumbnail( the_post( 'ID' ), 'destaque-home', array( 'loading' => 'lazy', 'fetchpriority' => 'low' ) );
 
-        <?php while ( have_posts() ) :
-          the_post(); ?>
-          <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+          echo '<hr />';
+          ?>
+          <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
 
-            <h2 class="<?php echo esc_attr( get_post_type() ); ?>-title">
-              <a href="<?php echo esc_url( get_the_permalink() ); ?>">
-                <?php the_title(); ?>
-              </a>
-            </h2>
+            <div class="thumbnail">
+            <?php
+            if ( $thumb ) {
+              echo $thumb;
+            }
+            ?>
+            </div>
 
-            <p>
-              <time datetime="<?php the_time( 'c' ); ?>">
-                <?php echo get_the_date( get_option( 'date_format' ) ); ?>
-              </time>
-            </p>
+            <div class="detalhes-do-post">
+              <h2 class="<?php echo esc_attr( get_post_type() ); ?>-title">
+                <a href="<?php echo esc_url( get_the_permalink() ); ?>">
+                  <?php the_title(); ?>
+                </a>
+              </h2>
 
-            <div class="content">
-              <?php
-                the_content();
-                entry_footer();
-              ?>
+              <div class="content"> <?php the_excerpt(); ?> </div>
+
+              <p>
+                <time datetime="<?php the_time( 'c' ); ?>">
+                  <?php echo get_the_date( get_option( 'date_format' ) ); ?>
+                </time>
+              </p>
             </div>
 
           </article>
-        <?php endwhile; ?>
+        <?php
+        endwhile;
 
-        <?php the_posts_pagination(); ?>
+        the_posts_pagination();
 
-      <?php endif; ?>
+      endif;
+      ?>
 
     </div>
   </section>
