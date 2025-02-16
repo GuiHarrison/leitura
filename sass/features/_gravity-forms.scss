@@ -20,6 +20,10 @@ div.validation_error {
 
 body *[aria-invalid="true"] {
   border-color: var(--color-error);
+  margin: 0;
+  padding: 0 30px;
+  display: flex;
+  justify-content: center; /* Centraliza tudo */
 }
 
 .validation_message {

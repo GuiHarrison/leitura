@@ -60,7 +60,7 @@
           li {
             display: inline-block;
             a {
-              color: var(--cinza-medio-900);
+              color: var(--cinza-medio-600);
               font-family: "Faktum", sans-serif;
               font-size: 20px;
               font-weight: 400;
@@ -71,7 +71,7 @@
               padding: 0;
               position: relative;
               &:hover {
-                color: var(--cinza-medio-900);
+                color: var(--cinza-medio-600);
               }
               &::after {
                 content: "";
