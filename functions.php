@@ -105,8 +105,8 @@ add_action( 'after_setup_theme', function() {
      * https://github.com/digitoimistodude/leitura#custom-taxonomies
      */
     'taxonomies' => [
-      // 'Your_Taxonomy' => [ 'post', 'page' ],
       'Category_Cidade_Estado' => [ 'lojas', 'eventos' ],
+      'Category_Generos' => [ 'post', 'eventos', 'queridinhos' ],
     ],
 
     /**
@@ -283,7 +283,6 @@ add_action( 'after_air_helper_init', __NAMESPACE__ . '\rebuild_post_types' );
  * Tamanhos de imagens
  */
 add_action( 'after_setup_theme', __NAMESPACE__ . '\tamanhos_de_imagens' );
-
 
 /**
  * Suporte temporário para SVG
