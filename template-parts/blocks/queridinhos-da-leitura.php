@@ -19,9 +19,10 @@ if ( $posts ) {
 	?>
 
 	<div id="queridinhos-da-leitura">
-		<h2 id="destaque-home">→ Queridinhos da Leitura</h2>
+		<h2 id="queridinhos-home">→ Queridinhos da Leitura</h2>
 		<a href="<?php echo esc_url( home_url( '/se-liga-na-leitura' ) ); ?>" class="ver-todas">Ver todas</a>
 
+    <div id="slider-queridinhos" class="owl-carousel owl-theme">
 		<?php
 		foreach ( $posts as $post ) {
 			setup_postdata( $post );
@@ -35,37 +36,60 @@ if ( $posts ) {
       $estado = endereco_para_estado_curto( $endereço['address'] );
       ?>
 
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-      <div class="q-colunas">
-				<div class="queridinho thumbnail">
-					<?php
-						the_post_thumbnail( 'resenha-p', array( 'loading' => 'lazy', 'fetchpriority' => 'low' ) );
-					?>
-				</div>
+      <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-        <div class="q-c-detalhes">
-          <h3 class="<?php echo esc_attr( get_post_type() ); ?>-title">
-            <a href="<?php echo esc_url( get_the_permalink() ); ?>">
-              <?php the_title(); ?>
-            </a>
-          </h3>
-          <div class="q-c-d-colaborador">
-            <p class="q-c-d-pessoa"><?php echo esc_html( get_the_author() ); ?></p>
-            <?php if ($loja) { echo '<p class="c-loja">' . esc_html( $loja->post_title ) . ' / ' . esc_html( $estado ) . '</p>'; } ?>
+        <div class="q-colunas">
+          <div class="queridinho thumbnail">
+            <?php
+              // the_post_thumbnail( 'resenha-p', array( 'loading' => 'lazy', 'fetchpriority' => 'low' ) );
+            ?>
+          </div>
+
+          <div class="q-c-detalhes">
+            <h3 class="<?php echo esc_attr( get_post_type() ); ?>-title">
+              <a href="<?php echo esc_url( get_the_permalink() ); ?>">
+                <?php the_title(); ?>
+              </a>
+            </h3>
+            <div class="q-c-d-colaborador">
+              <p class="q-c-d-pessoa"><?php echo esc_html( get_the_author() ); ?></p>
+              <?php if ($loja) { echo '<p class="c-loja">' . esc_html( $loja->post_title ) . ' / ' . esc_html( $estado ) . '</p>'; } ?>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="ler-comprar">
-        <a href="<?php echo esc_url( get_the_permalink() ); ?>" class="button ler">Ler resenha</a>
-        <a href="<?php echo esc_html( $comprar ); ?>" class="button comprar">🛒</a>
-      </div>
+        <div class="ler-comprar">
+          <a href="<?php echo esc_url( get_the_permalink() ); ?>" class="button ler">Ler resenha</a>
+          <a href="<?php echo esc_html( $comprar ); ?>" class="button comprar">🛒</a>
+        </div>
 
-			</article>
+      </article>
 
-		<?php
+    <?php
 		}
-	wp_reset_postdata();
-}
-?>
+    wp_reset_postdata();
+  }
+  ?>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    jQuery('#slider-queridinhos').owlCarousel({
+      responsive:{
+  	    0:{
+  	        items:1
+  	    },
+  	    600:{
+  	        items:3
+  	    }
+  	  },
+      loop: false,
+      margin: 20,
+      nav: true,
+      dots: true,
+      autoplay: false,
+      slideBy: 3,
+    });
+  });
+</script>
