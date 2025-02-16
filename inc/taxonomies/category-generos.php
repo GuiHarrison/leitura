@@ -48,7 +48,7 @@ class Category_Generos extends Taxonomy {
       'query_var'         => true,
       'pll_translatable'  => true,
       'rewrite'           => [
-        'slug' => 'generos',
+        'slug' => 'genero',
       ],
     ];
 
