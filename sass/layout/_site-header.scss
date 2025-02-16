@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 50px 1rem 1rem;
 
   @media (min-width: breakpoints.$container-ipad-landscape) {
     justify-content: space-between;
@@ -88,7 +88,7 @@
   }
 
   .site-branding {
-    padding: 40px 54px 40px 1rem;
+    padding: 40px 54px 40px 50px;
     min-height: 100px;
     width: 100vw;
 
@@ -168,7 +168,6 @@
 
 .barra-navegação {
   position: absolute;
-  top: 9vh; // <----------------------- automatizar essa posição
   // right: 1rem;
 
   .container {

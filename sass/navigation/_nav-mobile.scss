@@ -76,6 +76,12 @@
   }
 
   .menu-items-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+
+    padding: 90px 50px 100px 50px;
+
     backface-visibility: hidden;
     background-color: var(--color-white);
     // Real height is calculated in JS so this is a fallback
@@ -88,19 +94,15 @@
     position: fixed;
     right: 0;
     // Real top is calculated in JS so this is a fallback
-    top: 4.5rem;
+    // top: 4.5rem;
     transform: translate3d(100%, 0, 0);
     transition: all 180ms ease-in-out;
     visibility: hidden;
     width: var(--width-navigation);
-    padding-top: 100px;
     z-index: 5;
   }
 
-  .logo-preta {
-    padding: var(--padding-sub-menu-vertical-mobile) calc(var(--padding-sub-menu-horizontal-mobile) - var(--dropdown-toggle-size)/2) var(--padding-sub-menu-vertical-mobile) var(--padding-sub-menu-horizontal-mobile);
-    margin-bottom: 40px;
-  }
+
 
   .menu-items {
     margin: 0;

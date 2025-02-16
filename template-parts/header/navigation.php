@@ -28,7 +28,6 @@ namespace Air_Light;
     }
   }
 
-  // Executa o ajuste ao carregar e ao redimensionar a tela
   window.addEventListener("load", ajustarPosicaoMenu);
   window.addEventListener("resize", ajustarPosicaoMenu);
 
@@ -68,5 +67,6 @@ namespace Air_Light;
         <li><a href=""><span class="screen-reader-text">Youtube</span></a> <?php include get_theme_file_path( THEME_SETTINGS['Youtube'] ) ?> </li>
       </ul>
     </div>
+    
   </div>
 </nav>
