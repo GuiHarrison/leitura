@@ -20,7 +20,7 @@ if ( $posts ) {
 
 	<div id="colunas-e-resenhas">
 		<h2 id="destaque-home">→ Colunas e resenhas</h2>
-		<a href="<?php echo esc_url( home_url( '/se-liga-na-leitura' ) ); ?>" class="ver-todas">Ver todas</a>
+    <a href="<?php echo esc_url( get_category_link( 403 ) ); ?>" class="ver-todas">Ver todas</a>
 
 		<?php
 		foreach ( $posts as $post ) {

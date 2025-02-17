@@ -25,7 +25,7 @@ get_header(); ?>
     <div class="container">
 
       <?php
-      $detaque_blog = get_posts(array(
+      $destaque_blog = get_posts(array(
         'meta_query' => array(
           array(
             'key' => 'destaque',
@@ -36,13 +36,13 @@ get_header(); ?>
         'posts_per_page' => 1
       ));
 
-      if ( $detaque_blog ) {
+      if ( $destaque_blog ) {
           global $post;
       ?>
 
         <div id="destaque_blog">
           <?php
-          foreach ( $detaque_blog as $post ) {
+          foreach ( $destaque_blog as $post ) {
             setup_postdata( $post );
             ?>
 
