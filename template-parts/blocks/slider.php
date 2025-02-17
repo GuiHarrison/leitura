@@ -8,7 +8,7 @@
 namespace Air_Light;
 
 if ( have_rows( 'slides' ) ) : ?>
-  <div class="owl-carousel owl-theme">
+  <div id="slider1" class="owl-carousel owl-theme">
     <?php while ( have_rows( 'slides' ) ) : the_row();
       $imagem_desktop = get_sub_field( 'imagem_desktop' );
       $imagem_celular = get_sub_field( 'imagem_celular' );
@@ -26,7 +26,7 @@ if ( have_rows( 'slides' ) ) : ?>
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      jQuery('.owl-carousel').owlCarousel({
+      jQuery('#slider1').owlCarousel({
         items: 1,
         loop: true,
         margin: 10,

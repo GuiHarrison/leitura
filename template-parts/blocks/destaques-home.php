@@ -28,6 +28,7 @@ if ($posts_destaque) {
             <a href="<?php echo esc_url(home_url('/se-liga-na-leitura')); ?>" class="ver-todas">Ver todas</a>
         </div>
 
+<<<<<<< HEAD
         <div class="grid-container">
             <?php
             $contador = 0;
@@ -80,3 +81,42 @@ if ($posts_destaque) {
     </div>
 
 <?php } ?>
+=======
+      <div class="detalhes-do-post">
+        <?php if ( has_category() ) : ?>
+        <ul class="categories">
+            <?php
+                $categories = wp_get_post_categories( get_the_id(), [ 'fields' => 'all' ] );
+                if ( ! empty( $categories ) ) {
+                  foreach ( $categories as $category ) {
+                    echo '<li><a href="' . esc_url( get_category_link( $category ) ) . '">' . esc_html( $category->name ) . '</a></li>';
+                  }
+                }
+            ?>
+          </ul>
+        <?php	endif; ?>
+
+        <h3 class="<?php echo esc_attr( get_post_type() ); ?>-title">
+          <a href="<?php echo esc_url( get_the_permalink() ); ?>">
+            <?php the_title(); ?>
+          </a>
+        </h3>
+
+        <div class="content"> <?php the_excerpt(); ?> </div>
+
+        <p>
+          <time datetime="<?php the_time( 'c' ); ?>">
+            <?php echo get_the_date( get_option( 'date_format' ) ); ?>
+          </time>
+        </p>
+      </div>
+
+		</article>
+
+  <?php
+	}
+	wp_reset_postdata();
+}
+
+?>
+>>>>>>> 0832efaf1570abc82f42f59944f62fb41ebd0a01

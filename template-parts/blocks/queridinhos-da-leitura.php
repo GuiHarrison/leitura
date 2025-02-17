@@ -22,7 +22,11 @@ if ( $posts ) {
 		<h2 id="queridinhos-home">→ Queridinhos da Leitura</h2>
 		<a href="<?php echo esc_url( home_url( '/se-liga-na-leitura' ) ); ?>" class="ver-todas">Ver todas</a>
 
+<<<<<<< HEAD
     <div class="slider-queridinhos owl-theme">
+=======
+    <div id="slider-queridinhos" class="owl-carousel owl-theme">
+>>>>>>> 0832efaf1570abc82f42f59944f62fb41ebd0a01
 		<?php
 		foreach ( $posts as $post ) {
 			setup_postdata( $post );
@@ -75,7 +79,11 @@ if ( $posts ) {
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+<<<<<<< HEAD
     jQuery('.slider-queridinhos').owlCarousel({
+=======
+    jQuery('#slider-queridinhos').owlCarousel({
+>>>>>>> 0832efaf1570abc82f42f59944f62fb41ebd0a01
       responsive:{
   	    0:{
   	        items:1
@@ -89,6 +97,10 @@ if ( $posts ) {
       nav: true,
       dots: true,
       autoplay: false,
+<<<<<<< HEAD
+=======
+      slideBy: 3,
+>>>>>>> 0832efaf1570abc82f42f59944f62fb41ebd0a01
     });
   });
 </script>

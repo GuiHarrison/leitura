@@ -43,7 +43,7 @@ label {
 }
 
 // Unset checkbox and radio button labels
-input+label {
+input + label {
   // stylelint-disable-next-line font-weight-notation
   font-weight: unset;
 }
@@ -181,13 +181,13 @@ input[type="checkbox"]:checked {
 }
 
 input[type="radio"]:hover,
-input[type="radio"]+label:hover,
+input[type="radio"] + label:hover,
 input[type="radio"]:focus,
-input[type="radio"]+label:focus,
+input[type="radio"] + label:focus,
 input[type="checkbox"]:hover,
-input[type="checkbox"]+label:hover,
+input[type="checkbox"] + label:hover,
 input[type="checkbox"]:focus,
-input[type="checkbox"]+label:focus {
+input[type="checkbox"] + label:focus {
   cursor: pointer;
 }
 
