@@ -55,6 +55,7 @@ body:not(.wp-admin) {
   max-width: 100%;
   overflow: hidden;
   position: relative;
+  background-color: var(--cinza-clarinho);
 }
 
 // Containers
@@ -157,5 +158,5 @@ body:not(.wp-admin) {
 // stylelint-disable-next-line a11y/no-display-none
 .hide-completely {
   // stylelint-disable-next-line declaration-no-important
-  display: none !important;
+  // display: none !important;
 }

@@ -14,8 +14,6 @@
 
 namespace Air_Light;
 
-// use function PHPSTORM_META\map;
-
 /**
  * The current version of the theme.
  */
@@ -105,8 +103,8 @@ add_action( 'after_setup_theme', function() {
      * https://github.com/digitoimistodude/leitura#custom-taxonomies
      */
     'taxonomies' => [
+      // 'Your_Taxonomy' => [ 'post', 'page' ],
       'Category_Cidade_Estado' => [ 'lojas', 'eventos' ],
-      'Category_Generos' => [ 'post', 'eventos', 'queridinhos' ],
     ],
 
     /**
@@ -119,7 +117,6 @@ add_action( 'after_setup_theme', function() {
       'lojas',
       'eventos',
       'revista',
-      'queridinhos',
     ],
 
     /**
@@ -130,6 +127,8 @@ add_action( 'after_setup_theme', function() {
       [
         'name'           => 'hero',
         'title'          => 'Hero',
+        // You can safely remove lines below if you find no use for them
+        // 'prevent_cache'  => false, // Defaults to false,
         // Icon defaults to svg file inside svg/block-icons named after the block name,
         // eg. svg/block-icons/block-file-slug.svg
         //
@@ -137,66 +136,9 @@ add_action( 'after_setup_theme', function() {
         // 'icon'  => 'block-default',
       ],
       [
-        'name'           => 'slider',
-        'title'          => 'Slider',
-        'icon'           => 'interactive',
-      ],
-      [
-        'name'           => 'cta-1-3',
-        'title'          => 'CTA 1/3',
-        'supports'       => [
-          'customClassName' => true,
-          'align'           => 'left',
-        ],
-        'icon'           => 'tickets',
-      ],
-      [
-        'name'           => 'cta-2-3',
-        'title'          => 'CTA 2/3',
-        'supports'       => [
-          'customClassName' => true,
-          'align'           => 'left',
-        ],
-        'icon'           => 'tickets',
-      ],
-      [
-        'name'           => 'cta-3-3',
-        'title'          => 'CTA 3/3',
-        'icon'           => 'tickets',
-      ],
-      [
-        'name'           => 'revista',
-        'title'          => 'Chamada para revista',
-        'supports'       => [
-          'customClassName' => true,
-          'align'           => 'left',
-        ],
-        'icon'           => 'text-page',
-      ],
-      [
-        'name'           => 'destaques-home',
-        'title'          => 'Destaques Home',
-        'icon'           => 'excerpt-view',
-      ],
-      [
-        'name'           => 'mais-recentes',
-        'title'          => 'Mais Recentes',
-        'icon'           => 'excerpt-view',
-      ],
-      [
-        'name'           => 'colunas-resenhas',
-        'title'          => 'Colunas & Resenhas',
-        'icon'           => 'excerpt-view',
-      ],
-      [
-        'name'           => 'queridinhos-da-leitura',
-        'title'          => 'Queridinhos da Leitura',
-        'icon'           => 'excerpt-view',
-      ],
-      [
-        'name'           => 'newsletter',
-        'title'          => 'Newsletter',
-        'icon'           => 'tickets',
+        'name'           => 'loja',
+        'title'          => 'Loja',
+        // 'icon'           => 'dashicons-sticky',
       ],
     ],
 
@@ -225,10 +167,6 @@ add_action( 'after_setup_theme', function() {
       'post' => 'all-core-blocks',
       'page' => [
         'all',
-        'all-acf-blocks',
-      ],
-      'queridinhos' => [
-        'core/paragraph',
         'all-acf-blocks',
       ],
       'all-acf-blocks',
@@ -282,44 +220,3 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\build_post_types' );
 
 add_action( 'after_air_helper_init', __NAMESPACE__ . '\rebuild_taxonomies' );
 add_action( 'after_air_helper_init', __NAMESPACE__ . '\rebuild_post_types' );
-
-/**
- * Tamanhos de imagens
- */
-add_action( 'after_setup_theme', __NAMESPACE__ . '\tamanhos_de_imagens' );
-
-/**
- * Suporte temporário para SVG
- */
-// Allow SVG
-add_filter( 'wp_check_filetype_and_ext', function( $data, $file, $filename, $mimes ) {
-  global $wp_version;
-
-  if ( '4.7.1' !== $wp_version ) {
-		 return $data;
-  }
-
-  $filetype = wp_check_filetype( $filename, $mimes );
-
-  return [
-      'ext'             => $filetype['ext'],
-      'type'            => $filetype['type'],
-      'proper_filename' => $data['proper_filename'],
-  ];
-}, 10, 4 );
-
-function cc_mime_types( $mimes ) {
-  $mimes['svg'] = 'image/svg+xml';
-  return $mimes;
-}
-add_filter( 'upload_mimes',  __NAMESPACE__ . '\cc_mime_types' );
-
-function fix_svg() {
-  echo '<style type="text/css">
-        .attachment-266x266, .thumbnail img {
-             width: 100% !important;
-             height: auto !important;
-        }
-        </style>';
-}
-add_action( 'admin_head',  __NAMESPACE__ . '\fix_svg' );
