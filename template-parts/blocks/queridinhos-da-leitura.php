@@ -11,6 +11,9 @@ $ppp = get_field( 'ppp' );
 $posts = get_posts(array(
   'post_type' => 'queridinhos',
   'posts_per_page' => $ppp,
+  'meta_key' => 'queridinho_n',
+  'orderby' => 'meta_value_num',
+  'order' => 'ASC',
 ));
 
 if ( $posts ) {
@@ -26,8 +29,7 @@ if ( $posts ) {
 		<?php
 		foreach ( $posts as $post ) {
 			setup_postdata( $post );
-      $autoria = get_field( 'autoria' );
-      $citacao = get_field( 'citacao' );
+      $ordem = get_field( 'queridinho_n', get_the_ID() );
       $comprar = get_field( 'lnik_na_loja' );
       $usuário = get_the_author_meta( 'ID' );
       $loja = get_field( 'loja_relacionada', 'user_' . $usuário );
@@ -39,10 +41,14 @@ if ( $posts ) {
 
       <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+        <span class="queridinho-n">
+          <?php echo $ordem; ?>
+        </span>
+
         <div class="q-colunas">
           <div class="queridinho thumbnail">
             <?php
-              // the_post_thumbnail( 'resenha-p', array( 'loading' => 'lazy', 'fetchpriority' => 'low' ) );
+              the_post_thumbnail( 'resenha-p', array( 'loading' => 'lazy', 'fetchpriority' => 'low' ) );
             ?>
           </div>
 
