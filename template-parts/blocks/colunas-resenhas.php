@@ -32,38 +32,33 @@ if ($posts) {
                 ?>
 
                 <article id="post-<?php the_ID(); ?>" class="resenha-item">
-					<h3 class="resenha-title">
-                        <a href="<?php echo esc_url(get_the_permalink()); ?>">
-                            <?php the_title(); ?>
-                        </a>
-                    </h3>
-
-
-
+					<div class="info-livro">
+						<h3 class="resenha-title">
+							<a href="<?php echo esc_url(get_the_permalink()); ?>">
+								<?php the_title(); ?>
+							</a>
+						</h3>
+						<h4 class="resenha-autor">
+							<a href="<?php echo esc_url(get_the_permalink()); ?>">
+								<?php echo esc_html($autoria); ?>
+							</a>
+						</h4>
+					</div>
                     <div class="resenha-thumbnail">
                         <?php the_post_thumbnail('resenha-p', array('loading' => 'lazy', 'fetchpriority' => 'low')); ?>
                     </div>
-
-
-
-                    <h4 class="resenha-autor">
-                        <a href="<?php echo esc_url(get_the_permalink()); ?>">
-                            <?php echo esc_html($autoria); ?>
-                        </a>
-                    </h4>
-
                     <div class="autor-info">
+						<img  class="aspas" src="<?php echo get_theme_file_uri('/img/aspas.svg'); ?>" >
                         <img src="<?php echo esc_url(get_avatar_url($usuario)); ?>" alt="Autor: <?php echo esc_html(get_the_author()); ?>" class="autor-foto">
                         <h5 class="autor-nome"><?php echo esc_html(get_the_author()); ?></h5>
                     </div>
-
                     <div class="resenha-citacao">
                         <span class="aspas">“</span>
                         <?php echo esc_html($citacao ? $citacao : wp_trim_words(get_the_excerpt(), 20, '[…]')); ?>
                         <span class="aspas">”</span>
                     </div>
-
                     <p class="resenha-data">
+						→  
                         <time datetime="<?php the_time('c'); ?>">
                             <?php echo get_the_date(get_option('date_format')); ?>
                         </time>

@@ -224,8 +224,8 @@ add_action( 'after_setup_theme', function() {
     'allowed_blocks' => [
       'post' => 'all-core-blocks',
       'page' => [
+        'all',
         'all-acf-blocks',
-        'core/paragraph',
       ],
       'all-acf-blocks',
       // 'page' => [
