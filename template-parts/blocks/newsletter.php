@@ -6,8 +6,7 @@
  */
 
 namespace Air_Light;
-
-
-echo \FrmFormsController::get_form_shortcode( array( 'id' => 11 ) );
-
 ?>
+<section id="newsletter">
+  <?php echo \FrmFormsController::get_form_shortcode( array( 'id' => 11 ) ); ?>
+</section>

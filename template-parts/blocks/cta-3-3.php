@@ -15,11 +15,10 @@ if ($imagem_desktop && $link) {
     $is_mobile = wp_is_mobile();
     $imagem = $is_mobile && $imagem_celular ? $imagem_celular : $imagem_desktop;
     if ($imagem) {
-        echo '<div class="cta-container-mapa">';
-        echo '<a href="' . esc_url($link) . '" class="cta-link" rel="nofollow">';
-        echo '<img src="' . esc_url($imagem['url']) . '" alt="' . esc_html($imagem['alt']) . '" class="cta-image">';
-        echo '</a>';
-        echo '</div>';
+      echo
+      '<a href="' . esc_url($link) . '" class="cta-link" rel="nofollow">'.
+        '<img src="' . esc_url($imagem['url']) . '" alt="' . esc_html($imagem['alt']) . '" class="cta-image">'.
+      '</a>';
     }
 }
 ?>

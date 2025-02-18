@@ -1,0 +1,98 @@
+@use 'variables/breakpoints';
+
+
+
+article.queridinhos {
+  width: 100%;
+  background-color: var(--color-white);
+  padding: 40px;
+
+  .q-colunas {
+    display: flex;
+    gap: 10px;
+
+    @media (min-width: breakpoints.$width-max-mobile) {
+      gap: 30px;
+    }
+
+    .thumbnail {
+      position: relative;
+      text-align: center;
+      max-height: 184px;
+
+      .queridinho-n {
+        position: absolute;
+        width: 42px;
+        height: 42px;
+        left: calc(50% - 55px);
+        top: -10px;
+        color: var(--color-white);
+        text-align: center;
+        font-weight: var(--typography-weight-bold);
+        line-height: 42px;
+        background-color: var(--azul-leitura);
+        border-radius: 50%;
+
+        @media (min-width: breakpoints.$width-max-mobile) {
+          left: calc(50% - 75px);
+        }
+      }
+
+      img {
+        display: inline-block;
+      }
+    }
+
+    .q-c-detalhes {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      text-align: left;
+      text-transform: uppercase;
+
+      h3 {
+        margin: 0;
+      }
+
+      .q-c-d-colaborador {
+        font-size: .8rem;
+        font-weight: var(--typography-weight-normal);
+
+        p {
+          position: relative;
+          color: var(--cinza-medio);
+          margin: 10px 0;
+          padding-left: 25px;
+          line-height: 1.2;
+
+          &.q-pessoa {
+            background-image: url(../../svg/q-pessoa.svg);
+          }
+
+          &.q-loja {
+            background-image: url(../../svg/q-loja.svg);
+          }
+        }
+      }
+    }
+  }
+
+  .ler-comprar {
+    display: flex;
+    justify-content: stretch;
+    gap: 10px;
+    margin-top: 20px;
+
+    .button {
+      font-weight: var(--typography-weight-normal);
+      text-align: left;
+      max-width: 100%;
+    }
+
+    .ler {
+      flex: 1;
+    }
+  }
+
+}

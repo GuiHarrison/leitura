@@ -20,6 +20,15 @@ body:not(.wp-admin) {
   text-rendering: geometricPrecision;
 }
 
+body.home {
+  background-color: var(--cinza-clarinho);
+}
+
+section {
+  position: relative;
+  margin: 60px auto;
+}
+
 // Default structural element
 .block {
   background-color: var(--color-white);
@@ -55,7 +64,6 @@ body:not(.wp-admin) {
   max-width: 100%;
   overflow: hidden;
   position: relative;
-  background-color: var(--cinza-clarinho);
 }
 
 // Containers
@@ -159,4 +167,19 @@ body:not(.wp-admin) {
 .hide-completely {
   // stylelint-disable-next-line declaration-no-important
   // display: none !important;
+}
+
+a.sublinhado-bonito {
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(var(--cinza-medio), var(--cinza-medio));
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.3s ease-in-out;
+  letter-spacing: -0.66px;
+
+  &:hover {
+    background-size: 100% 1px;
+  }
 }

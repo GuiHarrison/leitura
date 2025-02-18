@@ -179,3 +179,8 @@ function endereco_para_estado_curto($string) {
   }
   return '';
 }
+
+/**
+ * Alterando o tamanho do excerpt
+ */
+function tamanho_do_excerpt( $tamanho ) { return 20; }

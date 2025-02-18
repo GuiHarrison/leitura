@@ -20,14 +20,14 @@ if ($revistas) {
     $first_word = strtok(get_the_title(), ' ');
     $pdf = get_field('pdf', get_the_ID());
 
-    echo '' .
-      '<div class="revista-container">' .        
-        '<div class="conteudo">' . 
-          '<h3>Explore as ofertas de ' . esc_html($first_word) . '</h3>' .
-          '<a class="button" href="' . esc_url($pdf) . '" target="_blank">Acessar revista</a>' .
-        '</div>' .
-          get_the_post_thumbnail(get_the_ID(), 'revista') .
-      '</div>';
+    echo
+    '<div class="revista-container">' .
+      '<div class="conteudo">' .
+        '<h3>Explore as ofertas de ' . esc_html($first_word) . '</h3>' .
+        '<a class="button" href="' . esc_url($pdf) . '" target="_blank">Acessar revista</a>' .
+      '</div>' .
+        get_the_post_thumbnail(get_the_ID(), 'revista') .
+    '</div>';
   }
   wp_reset_postdata();
 }

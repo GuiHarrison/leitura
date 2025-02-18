@@ -43,7 +43,7 @@ label {
 }
 
 // Unset checkbox and radio button labels
-input + label {
+input+label {
   // stylelint-disable-next-line font-weight-notation
   font-weight: unset;
 }
@@ -181,23 +181,28 @@ input[type="checkbox"]:checked {
 }
 
 input[type="radio"]:hover,
-input[type="radio"] + label:hover,
+input[type="radio"]+label:hover,
 input[type="radio"]:focus,
-input[type="radio"] + label:focus,
+input[type="radio"]+label:focus,
 input[type="checkbox"]:hover,
-input[type="checkbox"] + label:hover,
+input[type="checkbox"]+label:hover,
 input[type="checkbox"]:focus,
-input[type="checkbox"] + label:focus {
+input[type="checkbox"]+label:focus {
   cursor: pointer;
 }
 
-
+.button.comprar {
+  background-color: var(--color-black);
+  background-image: url(../../svg/comprar.svg);
+  background-position: 50% 50%;
+  width: 60px;
+}
 
 // Esses valores são pensados para desktop.
 .newsletter-formulário {
   display: flex;
   flex-direction: column;
-  padding-top: 180px; // <-- ----------------------------------------- Fazer esse valor relativo
+  padding-top: 220px; // <-- ----------------------------------------- Fazer esse valor relativo
   gap: 50px;
   background-image: url(../../img/banner-newsletter-desktop.png);
   // background-position: 0 50%;
@@ -210,15 +215,17 @@ input[type="checkbox"] + label:focus {
       // não estou conseguindo tirar o before que está empurrando o botão de envio para baixo.
     }
   }
+
   @media (max-width: 640px) {
     padding-top: 350px;
     background-image: url(../../img/banner-newsletter-mobile.png);
   }
 }
 
-.frm_forms{
+.frm_forms {
   background-color: var(--color-white);
   padding: 60px;
+
   @media (max-width: 640px) {
     padding: 30px;
   }

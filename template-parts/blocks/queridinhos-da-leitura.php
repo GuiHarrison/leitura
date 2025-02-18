@@ -21,75 +21,66 @@ if ( $posts ) {
 	$contador = 0;
 	?>
 
-	<div id="queridinhos-da-leitura">
-		<h2 id="queridinhos-home">→ Queridinhos da Leitura</h2>
-		<a href="<?php echo esc_url( home_url( '/se-liga-na-leitura' ) ); ?>" class="ver-todas">Ver todas</a>
+<section id="queridinhos-da-leitura" class="publicacoes">
+  <div class="titulo">
+    <h2 class="section-title">→ Queridinhos da Leitura</h2>
+    <a href="<?php echo esc_url(home_url('/queridinhos')); ?>" class="ver-todas">Ver todas</a>
+  </div>
 
-<<<<<<< HEAD
-    <div class="slider-queridinhos owl-theme">
-=======
-    <div id="slider-queridinhos" class="owl-carousel owl-theme">
->>>>>>> 0832efaf1570abc82f42f59944f62fb41ebd0a01
-		<?php
-		foreach ( $posts as $post ) {
-			setup_postdata( $post );
-      $ordem = get_field( 'queridinho_n', get_the_ID() );
-      $comprar = get_field( 'lnik_na_loja' );
-      $usuário = get_the_author_meta( 'ID' );
-      $loja = get_field( 'loja_relacionada', 'user_' . $usuário );
-      $id_loja = $loja->ID;
-      $endereço = get_field( 'mapa_loja', $id_loja );
-      $estado = endereco_para_estado_curto( $endereço['address'] );
-      ?>
+  <div id="slider-queridinhos" class="owl-carousel owl-theme">
+  <?php
+  foreach ( $posts as $post ) {
+    setup_postdata( $post );
+    $ordem = get_field( 'queridinho_n', get_the_ID() );
+    $comprar = get_field( 'lnik_na_loja' );
+    $usuário = get_the_author_meta( 'ID' );
+    $loja = get_field( 'loja_relacionada', 'user_' . $usuário );
+    $id_loja = $loja->ID;
+    $endereço = get_field( 'mapa_loja', $id_loja );
+    $estado = endereco_para_estado_curto( $endereço['address'] );
+    ?>
+
+  <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 
-      <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <div class="q-colunas">
+      <div class="thumbnail livro-thumbnail">
+        <span class="queridinho-n"><?php echo $ordem; ?></span>
+        <?php the_post_thumbnail( 'resenha-p', array( 'loading' => 'lazy', 'fetchpriority' => 'low' ) ); ?>
+      </div>
 
-        <span class="queridinho-n">
-          <?php echo $ordem; ?>
-        </span>
-
-        <div class="q-colunas">
-          <div class="queridinho thumbnail">
-            <?php
-              the_post_thumbnail( 'resenha-p', array( 'loading' => 'lazy', 'fetchpriority' => 'low' ) );
-            ?>
-          </div>
-
-          <div class="q-c-detalhes">
-            <h3 class="<?php echo esc_attr( get_post_type() ); ?>-title">
-              <a href="<?php echo esc_url( get_the_permalink() ); ?>">
-                <?php the_title(); ?>
-              </a>
-            </h3>
-            <div class="q-c-d-colaborador">
-              <p class="q-c-d-pessoa"><?php echo esc_html( get_the_author() ); ?></p>
-              <?php if ($loja) { echo '<p class="c-loja">' . esc_html( $loja->post_title ) . ' / ' . esc_html( $estado ) . '</p>'; } ?>
-            </div>
-          </div>
+      <div class="q-c-detalhes">
+        <h3 class="<?php echo esc_attr( get_post_type() ); ?>-title">
+          <a class="sublinhado-bonito" href="<?php echo esc_url( get_the_permalink() ); ?>">
+            <?php the_title(); ?>
+          </a>
+        </h3>
+        <div class="q-c-d-colaborador">
+          <p class="q-pessoa"><?php echo esc_html( get_the_author() ); ?></p>
+          <?php if ($loja) { echo '<p class="q-loja">' . esc_html( $loja->post_title ) . ' / ' . esc_html( $estado ) . '</p>'; } ?>
         </div>
+      </div>
 
-        <div class="ler-comprar">
-          <a href="<?php echo esc_url( get_the_permalink() ); ?>" class="button ler">Ler resenha</a>
-          <a href="<?php echo esc_html( $comprar ); ?>" class="button comprar">🛒</a>
-        </div>
+    </div>
 
-      </article>
+    <div class="ler-comprar">
+      <a href="<?php echo esc_url( get_the_permalink() ); ?>" class="button ler">Ler resenha</a>
+      <a href="<?php echo esc_html( $comprar ); ?>" class="button comprar"></a>
+    </div>
+
+  </article>
 
     <?php
 		}
     wp_reset_postdata();
   }
   ?>
-</div>
+  </div>
+</section>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-<<<<<<< HEAD
-    jQuery('.slider-queridinhos').owlCarousel({
-=======
     jQuery('#slider-queridinhos').owlCarousel({
->>>>>>> 0832efaf1570abc82f42f59944f62fb41ebd0a01
       responsive:{
   	    0:{
   	        items:1
@@ -102,11 +93,7 @@ if ( $posts ) {
       margin: 20,
       nav: true,
       dots: true,
-      autoplay: false,
-<<<<<<< HEAD
-=======
-      slideBy: 3,
->>>>>>> 0832efaf1570abc82f42f59944f62fb41ebd0a01
+      autoplay: false
     });
   });
 </script>

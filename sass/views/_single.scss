@@ -13,18 +13,21 @@
 
 .categories,
 .article-content .categories {
+  margin: 0;
   gap: 0.75rem;
 }
 
 .categories a {
-  background-color: var(--color-valhalla);
-  border-radius: 1.875rem;
-  color: var(--color-white);
-  display: inline-block;
+  background-color: var(--cinza-claro);
+  border-radius: 0;
+  color: var(--cinza-escuro);
   font-size: var(--typography-size-14);
+  display: inline-block;
   margin: 0;
-  padding: 0.3125rem 0.9375rem;
+  padding: .6rem .9rem 0.3rem 0.9rem;
   transition: all animations.$transition-duration;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
 .categories a:hover,
