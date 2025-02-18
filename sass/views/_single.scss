@@ -31,7 +31,8 @@
 }
 
 .categories a:hover,
-.categories a:focus {
+.categories a:focus,
+.categories a.atual {
   background-color: var(--color-black);
   color: var(--color-white);
 }

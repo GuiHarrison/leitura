@@ -33,7 +33,7 @@ if ($posts) {
 
         <article id="post-<?php the_ID(); ?>" class="resenha-item">
           <div class="resenha-titulo">
-            <h3 class="resenha-title">
+            <h3 class="post-title">
               <a class="sublinhado-bonito" href="<?php echo esc_url(get_the_permalink()); ?>">
                 <?php the_title(); ?>
               </a>

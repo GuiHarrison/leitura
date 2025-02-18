@@ -107,6 +107,7 @@ add_action( 'after_setup_theme', function() {
     'taxonomies' => [
       // 'Your_Taxonomy' => [ 'post', 'page' ],
       'Category_Cidade_Estado' => [ 'lojas', 'eventos' ],
+      'Category_Generos' => [ 'post', 'queridinhos' ],
     ],
 
     /**

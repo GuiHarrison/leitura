@@ -50,7 +50,7 @@ if ( $posts ) {
       </div>
 
       <div class="q-c-detalhes">
-        <h3 class="<?php echo esc_attr( get_post_type() ); ?>-title">
+        <h3 class="post-title">
           <a class="sublinhado-bonito" href="<?php echo esc_url( get_the_permalink() ); ?>">
             <?php the_title(); ?>
           </a>

@@ -1,0 +1,125 @@
+@use 'variables/breakpoints';
+
+.block-blog {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  align-items: start;
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+
+    article.destaque-blog {
+      grid-column: span 2;
+      display: flex;
+      gap: 40px;
+
+      .thumbnail {
+        flex-basis: 100%;
+      }
+    }
+  }
+}
+
+.sidebar {
+  &>div {
+    margin-top: 40px;
+  }
+
+  h4 {
+    text-transform: uppercase;
+  }
+
+  .s-categorias {
+    .s-c-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+
+      a.grandes-categorias {
+        padding: 1.8rem;
+        font-size: .8rem;
+        font-weight: var(--typography-weight-semibold);
+        text-transform: uppercase;
+
+        &:before {
+          position: relative;
+          display: inline-block;
+          margin-right: 10px;
+          width: 20px;
+          height: 20px;
+          vertical-align: bottom;
+          content: '';
+        }
+
+        &.atual {
+          background-color: var(--azul-forte);
+        }
+      }
+
+      .notícias:before {
+        background-image: url(../../svg/c-noticias.svg);
+      }
+
+      .resenhas:before {
+        background-image: url(../../svg/c-resenhas.svg);
+      }
+
+      .colunas:before {
+        background-image: url(../../svg/c-colunas.svg);
+      }
+
+      .ofertas:before {
+        background-image: url(../../svg/c-ofertas.svg);
+      }
+    }
+  }
+
+  .histórico {
+    a {
+      color: var(--cinza-medio);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    ul {
+      padding: 0 0 0 20px;
+
+      li {
+        &::marker {
+          content: '';
+        }
+
+        h5 {
+          font-size: 1.2rem;
+          margin: 10px 0 0 0;
+
+          &:before {
+            content: '→';
+            margin-right: 20px;
+            font-weight: var(--typography-weight-bold);
+          }
+
+          &[aria-expanded="true"] {
+            &:before {
+              content: '↓';
+            }
+          }
+        }
+
+        ul {
+          li {
+            a {
+              font-weight: var(--typography-weight-normal);
+
+              &:before {
+                content: '→';
+                margin-right: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,775 @@
+#chamada-home {
+  margin: 0;
+}
+
+body.home section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+  .titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      color: var(--color-black);
+      // font-family: "Faktum", sans-serif;
+      font-size: 1.6rem;
+      font-weight: var(--typography-weight-bold);
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .ver-todas {
+      text-transform: uppercase;
+      text-decoration: none;
+      // position: relative;
+
+      &:hover {
+        color: var(--cinza-medio);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0%;
+        height: 2px;
+        background-color: currentColor;
+        transition: width 0.3s ease-in-out;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  // .detalhes-do-post {
+  //   // .categories {
+  //   //   // margin: 0;
+
+  //   //   li {
+  //   //     // background: var(--PRETO-10, rgba(0, 0, 0, 0.10));
+
+  //   //     a {
+  //   //       // background-color: var(--cinza-claro);
+  //   //       // color: var(--cinza-medio);
+  //   //       // font-family: Faktum;
+  //   //       // font-size: 12px;
+  //   //       // font-weight: var(--typography-weight-medium);
+  //   //       // text-transform: uppercase;
+  //   //       // background-color: transparent;
+  //   //       // text-decoration: none;
+  //   //     }
+  //   //   }
+  //   // }
+
+  //   // .title {
+  //   //   // margin: 0;
+  //   // }
+
+  //   // .content {
+  //   //   p {
+  //   //     // color: var(--PRETO-40, rgba(0, 0, 0, 0.40));
+  //   //     // font-size: 18px;
+  //   //     // font-weight: 400;
+  //   //     // margin: 0;
+  //   //   }
+  //   // }
+  // }
+
+  @media (max-width: 640px) {
+    padding: 0px 30px;
+    gap: 20px;
+
+    .titulo {
+      h2 {
+        font-size: 18px !important;
+      }
+
+      a {
+        display: none;
+      }
+    }
+
+    .grid-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 340px;
+
+      .post-destaque {
+        padding: 20px;
+      }
+
+      .thumbnail {
+        gap: 20px;
+
+        .title {
+          a {
+            font-size: 18px;
+            width: 100%;
+          }
+        }
+
+        .content {
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.grid {
+  h3 {
+    font-weight: var(--typography-weight-semibold);
+    text-transform: uppercase;
+    margin: 20px 0 0 0;
+    line-height: 1.3;
+
+    a {
+      color: var(--color-black);
+      text-decoration: none;
+    }
+  }
+
+  article {
+    background: #fff;
+    padding: 40px;
+    grid-row: auto;
+
+    &.post-destaque:nth-child(-n + 2) {
+      grid-row: span 2;
+    }
+  }
+
+  .thumbnail {
+    margin-bottom: 20px;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // gap: 30.24px;
+    // margin: 0 auto;
+
+    .img-thumbnail {
+      width: 100%;
+    }
+  }
+
+  .livro-thumbnail {
+    margin-bottom: 40px;
+
+    img {
+      width: 100%;
+      max-width: 130px;
+      height: auto;
+      box-shadow: -3px 3px var(--cinza-escuro);
+      margin-left: 3px;
+    }
+  }
+}
+
+time {
+  color: var(--cinza-medio);
+  text-transform: uppercase;
+  // font-size: 12px;
+  // font-weight: 400;
+  // margin: 0;
+  // text-align: left;
+}
+
+
+
+// .cta-container {
+//   display: flex;
+//   justify-content: start;
+//   align-items: center;
+//   width: 100%;
+//   max-width: 873px;
+
+//   .cta-link {
+//     display: flex;
+//     width: 100%;
+//     max-width: 100%;
+//     justify-content: center;
+//   }
+
+//   .cta-image {
+//     width: 100%;
+//     height: auto;
+//     max-width: 100%;
+//     object-fit: contain;
+//   }
+
+//   @media (max-width: 640px) {
+//     width: 100%;
+//     height: 200px;
+//     margin: 0 auto;
+
+//     .cta-image {
+//       width: 90%;
+//     }
+//   }
+// }
+
+img.cta-image {
+  width: 100%;
+}
+
+.cta-container-mapa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    height: 441px;
+    align-self: stretch;
+  }
+}
+
+.revista-container {
+  display: flex;
+  background-color: var(--color-white);
+  padding: 20px;
+  max-height: 250px;
+  gap: 20px;
+  // flex-direction: row;
+  // justify-content: space-evenly;
+  // margin: 0 auto;
+
+  .conteudo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // gap: 29.34px;
+    // width: 187.422px;
+
+    h3 {
+      font-weight: var(--typography-weight-bold);
+      text-transform: uppercase;
+      font-size: 1.7rem;
+      line-height: 1.2;
+      margin: 0 0 20px 0;
+      // color: var(--color-black);
+      // font-family: "Faktum", sans-serif;
+      // letter-spacing: -0.865px;
+    }
+
+    .button {
+      font-weight: var(--typography-weight-medium);
+      text-align: left;
+      width: 100%;
+    }
+  }
+
+  .size-revista {
+    width: 125px;
+    height: 178px;
+    // flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    padding: 34px;
+    gap: 21px;
+
+    .conteudo {
+      gap: 22.61px;
+      width: 149px;
+
+      h3 {
+        font-size: 22.959px;
+      }
+    }
+
+    .size-revista {
+      width: 99.561px;
+      height: 141.967px;
+    }
+  }
+}
+
+.publicacoes-container {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // margin: 0 auto;
+  // gap: 40px;
+
+  // .header-publicacoes {
+  //   display: flex;
+  //   justify-content: space-between;
+
+  //   // .titulo-publicacoes {
+  //   //   color: var(--color-black);
+  //   //   font-family: Faktum;
+  //   //   font-size: 28.834px;
+  //   //   font-weight: 700;
+  //   //   line-height: normal;
+  //   //   letter-spacing: -0.865px;
+  //   //   text-transform: uppercase;
+  //   //   margin: 0;
+  //   // }
+
+  //   .ver-todas {
+  //     color: #004D8F;
+  //     font-family: "Faktum", sans-serif;
+  //     font-size: 12px;
+  //     font-weight: var(--typography-weight-medium);
+  //     text-transform: uppercase;
+  //     text-decoration: none;
+  //     position: relative;
+
+  //     &:hover {
+  //       color: var(--cinza-medio);
+  //     }
+
+  //     &::after {
+  //       content: "";
+  //       position: absolute;
+  //       left: 0;
+  //       bottom: -2px;
+  //       width: 0%;
+  //       height: 2px;
+  //       background-color: currentColor;
+  //       transition: width 0.3s ease-in-out;
+  //     }
+
+  //     &:hover::after {
+  //       width: 100%;
+  //     }
+  //   }
+  // }
+
+  .publicacoes-grid {
+
+    article:first-child {
+      grid-column: span 2;
+    }
+
+    .publicacao-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 40px;
+      background-color: var(--color-white);
+
+      .puglicacao-thumbnail,
+      .detalhes-do-post {
+        float: left;
+      }
+
+      .publicacao-thumbnail {
+        width: 346px;
+        flex-shrink: 0;
+
+        // img {
+        //   // width: 100%;
+        //   // max-width: 346px;
+        //   // height: 346px;
+        // }
+      }
+
+      // .detalhes-do-post {
+      //   // display: flex;
+      //   // flex-direction: column;
+      //   // gap: 30px;
+
+      //   // .publicacao-categorias {
+      //   //   padding: 0;
+      //   //   margin: 0;
+      //   //   list-style-type: none;
+      //   //   display: flex;
+      //   //   flex-wrap: wrap;
+
+      //   //   li {
+      //   //     padding: 0 8.63px;
+      //   //     background: var(--PRETO-10, rgba(0, 0, 0, 0.10));
+
+      //   //     .categoria {
+      //   //       color: var(--cinza-medio);
+      //   //       font-family: "Faktum", sans-serif;
+      //   //       font-size: 12px;
+      //   //       font-weight: var(--typography-weight-medium);
+      //   //       text-transform: uppercase;
+      //   //       background-color: transparent;
+      //   //       text-decoration: none;
+      //   //     }
+      //   //   }
+      //   // }
+
+      //   // .publicacao-titulo {
+      //   //   margin: 0;
+
+      //   //   // a {
+      //   //   //   // color: var(--color-black);
+      //   //   //   // font-family: 'Faktum', sans-serif;
+      //   //   //   // font-size: 22px;
+      //   //   //   // font-weight: var(--typography-weight-medium);
+      //   //   //   // text-transform: uppercase;
+      //   //   //   // text-decoration: none;
+      //   //   //   // margin: 0;
+      //   //   //   // position: relative;
+      //   //   //   // display: inline;
+      //   //   //   // background-image: linear-gradient(var(--cinza-medio), var(--cinza-medio));
+      //   //   //   // background-size: 0% 1px;
+      //   //   //   // background-repeat: no-repeat;
+      //   //   //   // background-position: 0 100%;
+      //   //   //   // transition: background-size 0.3s ease-in-out;
+
+      //   //   //   // &:hover {
+      //   //   //   //   background-size: 100% 1px;
+      //   //   //   // }
+      //   //   // }
+      //   // }
+
+      //   // // .publicacao-excerpt {
+      //   // //   p {
+      //   // //     color: var(--PRETO-40, rgba(0, 0, 0, 0.40));
+      //   // //     font-size: 18px;
+      //   // //     font-weight: 400;
+      //   // //     margin: 0;
+      //   // //     letter-spacing: -0.54px;
+      //   // //   }
+      //   // // }
+
+      //   // .data-publicacao {
+      //   //   // color: var(--PRETO-40, rgba(0, 0, 0, 0.40));
+      //   //   // font-size: 12px;
+      //   //   // font-weight: 400;
+      //   //   // margin: 0;
+      //   //   // text-transform: uppercase;
+      //   // }
+      // }
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: 0px 30px;
+    gap: 20px;
+
+    .header-publicacoes {
+      h2 {
+        font-size: 18px !important;
+      }
+
+      a {
+        display: none;
+      }
+    }
+
+    .publicacoes-grid {
+      display: flex;
+      flex-direction: column;
+      max-width: 320px;
+
+      .publicacao-item {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .publicacao-thumbnail {
+          img {
+            max-width: 280px;
+          }
+        }
+
+        // .detalhes-do-post {
+        //   // gap: 20px;
+
+        //   .publicacao-titulo {
+        //     a {
+        //       // font-size: 18px;
+        //     }
+        //   }
+        // }
+      }
+    }
+  }
+}
+
+#colunas-e-resenhas {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // margin: 0 auto;
+  // gap: 40px;
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .section-title {
+      color: var(--color-black);
+      font-weight: 700;
+      letter-spacing: -0.865px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+
+  .resenhas-container {
+    // gap: 40px;
+
+    .resenha-item {
+      position: relative;
+      // display: flex;
+      // flex-direction: column;
+      // gap: 20px;
+      background: var(--color-white);
+      padding: 70px 70px 190px 70px;
+      text-align: center;
+
+      .resenha-titulo {
+        text-transform: uppercase;
+        height: 110px;
+        margin-bottom: 40px;
+
+        h3,
+        h4 {
+          margin: 10px 0;
+        }
+
+        h4 {
+          font-weight: var(--typography-weight-medium);
+          font-size: 1rem;
+        }
+      }
+
+      // .info-livro {
+      //   display: flex;
+      //   flex-direction: column;
+      //   gap: 20px;
+
+      //   .resenha-title {
+      //     // color: var(--PRETO-80, rgba(0, 0, 0, 0.80));
+      //     // font-family: "Faktum", sans-serif;
+      //     // font-size: 22px;
+      //     // font-weight: 600;
+      //     text-transform: uppercase;
+      //     margin: 0;
+      //     // height: 66px;
+
+      //     a {
+      //       text-decoration: none;
+      //     }
+      //   }
+
+      //   .resenha-autor {
+      //     color: var(--color-science-blue);
+      //     // font-family: "Faktum", sans-serif;
+      //     // font-size: 12px;
+      //     // font-weight: var(--typography-weight-medium);
+      //     // line-height: 20px;
+      //     // letter-spacing: -0.36px;
+      //     margin: 0;
+      //   }
+      // }
+
+      .autor-info {
+        margin-top: 20px;
+      }
+
+      .autor-info {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        position: relative;
+        margin-bottom: 40px;
+
+        .autor-foto {
+          width: 86px;
+          height: 86px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .autor-nome {
+          color: var(--azul-leitura);
+          font-weight: var(--typography-weight-semibold);
+          text-transform: uppercase;
+          margin: 0;
+          // color: var(--color-science-blue);
+          // font-family: "Faktum", sans-serif;
+          // font-size: 12px;
+          // line-height: 20px;
+          // letter-spacing: -0.36px;
+        }
+
+        .aspas {
+          position: absolute;
+          top: 0;
+        }
+      }
+
+      // .resenha-citacao {
+      //   // color: var(--PRETO-40, rgba(0, 0, 0, 0.40));
+      //   // font-family: "Faktum", sans-serif;
+      //   // font-size: 21.104px;
+      //   // font-weight: 400;
+      //   // text-align: left;
+      //   // line-height: 30.485px;
+      //   // letter-spacing: -0.633px;
+
+      //   .aspas {
+      //     // font-size: 2rem;
+      //     // color: rgba(0, 0, 0, 0.5);
+      //   }
+
+      // }
+
+      .resenha-data {
+        position: absolute;
+        bottom: 70px;
+        left: 70px;
+        margin: 0;
+        text-transform: uppercase;
+        // color: var(--PRETO-40, rgba(0, 0, 0, 0.40));
+        // font-size: 12px;
+        // font-weight: 400;
+        // text-align: left;
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: 0px 30px;
+    gap: 20px;
+
+    // .section-header {
+    //   .section-title {
+    //     // font-size: 18px;
+    //   }
+
+    //   .ver-todas {
+    //     // display: none;
+    //   }
+    // }
+
+    .resenhas-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 340px;
+      gap: 20px;
+
+      .resenha-item {
+        padding: 55px;
+
+        .info-livro {
+          gap: 13px;
+
+          .resenha-title {
+            font-size: 18px;
+            color: var(--PRETO-80, rgba(0, 0, 0, 0.80));
+            height: 50px;
+          }
+        }
+
+        .resenha-thumbnail {
+          img {
+            width: 104.096px;
+            height: 161.639px;
+          }
+
+        }
+
+        .autor-info {
+          .autor-foto {
+            width: 68px;
+            height: 68px;
+          }
+        }
+
+        .resenha-citacao {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+// .queridinhos-da-leitura{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     gap: 40px;
+//     .section-header{
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         .section-title{
+//             color: var(--color-black);
+//             font-family: Faktum;
+//             font-size: 28.834px;
+//             font-weight: 700;
+//             line-height: normal;
+//             letter-spacing: -0.865px;
+//             text-transform: uppercase;
+//             margin: 0;
+//         }
+//         .ver-todas {
+//             color: #004D8F;
+//             font-family: "Faktum", sans-serif;
+//             font-size: 12px;
+//             font-weight: var(--typography-weight-medium);
+//             text-transform: uppercase;
+//             text-decoration: none;
+//             position: relative;
+//             &:hover {
+//                 color: var(--cinza-medio);
+//               }
+//               &::after {
+//                 content: "";
+//                 position: absolute;
+//                 left: 0;
+//                 bottom: -2px;
+//                 width: 0%;
+//                 height: 2px;
+//                 background-color: currentColor;
+//                 transition: width 0.3s ease-in-out;
+//               }
+
+//               &:hover::after {
+//                 width: 100%;
+//               }
+//         }
+//     }
+//     .carousel{
+//         display: flex;
+//         overflow-x: auto;
+//         gap: 20px;
+//         scroll-snap-type: x mandatory;
+//         padding-bottom: 10px;
+//         .carousel-item{
+//             background: #fff;
+//             // width: 425px;
+//             // height: 333px;
+
+//             padding: 40px;
+//             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//             // min-width: 300px;
+//             flex: 0 0 auto;
+//             scroll-snap-align: start;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             text-align: center;
+//             .livro-thumbnail{
+//                 img{
+//                     width: 100%;
+//                     width: 102.985px;
+//                     height: 159.914px;
+//                 }
+//             }
+//         }
+//     }
+// }

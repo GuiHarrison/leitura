@@ -23,7 +23,7 @@ if ($revistas) {
     echo
     '<div class="revista-container">' .
       '<div class="conteudo">' .
-        '<h3>Explore as ofertas de ' . esc_html($first_word) . '</h3>' .
+        '<h3 class="post-title">Explore as ofertas de ' . esc_html($first_word) . '</h3>' .
         '<a class="button" href="' . esc_url($pdf) . '" target="_blank">Acessar revista</a>' .
       '</div>' .
         get_the_post_thumbnail(get_the_ID(), 'revista') .
