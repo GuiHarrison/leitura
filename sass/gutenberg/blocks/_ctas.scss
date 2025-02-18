@@ -24,6 +24,12 @@ img.cta-image {
   width: 100%;
 }
 
+.cta-rodape {
+  .cta-link {
+    grid-column: span 2;
+  }
+}
+
 .cta-link {
   line-height: 0;
 }

@@ -143,26 +143,8 @@ add_action( 'after_setup_theme', function() {
         'icon'           => 'interactive',
       ],
       [
-        'name'           => 'cta-1-3',
-        'title'          => 'CTA 1/3',
-        'supports'       => [
-          'customClassName' => true,
-          'align'           => 'left',
-        ],
-        'icon'           => 'tickets',
-      ],
-      [
-        'name'           => 'cta-2-3',
-        'title'          => 'CTA 2/3',
-        'supports'       => [
-          'customClassName' => true,
-          'align'           => 'left',
-        ],
-        'icon'           => 'tickets',
-      ],
-      [
         'name'           => 'cta-3-3',
-        'title'          => 'CTA 3/3',
+        'title'          => 'CTA site externo',
         'supports'       => [
             'customClassName' => true,
             'align'          => true,
@@ -177,7 +159,25 @@ add_action( 'after_setup_theme', function() {
             ]
         ],
         'icon'           => 'tickets',
-    ],
+      ],
+      [
+        'name'           => 'cta-pagina',
+        'title'          => 'CTA Página interna',
+        'supports'       => [
+            'customClassName' => true,
+            'align'          => true,
+            'spacing'        => true,
+            'anchor'         => true,
+            'jsx'            => true,
+            'blockGap'       => true,
+            'dimensions'     => true,
+            'grid'           => [
+                'columnCount' => true,
+                'columnSpan'  => true
+            ]
+        ],
+        'icon'           => 'tickets',
+      ],
       [
         'name'           => 'revista',
         'title'          => 'Chamada para revista',

@@ -1,21 +1,39 @@
 @use 'variables/breakpoints';
 
-.block-blog {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-  align-items: start;
+body.blog {
+  .block-blog {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    align-items: start;
 
-  .grid {
-    grid-template-columns: 1fr 1fr;
+    .grid {
+      grid-template-columns: 1fr 1fr;
 
-    article.destaque-blog {
-      grid-column: span 2;
-      display: flex;
-      gap: 40px;
+      article.destaque-blog {
+        grid-column: span 2;
+        display: flex;
+        gap: 40px;
 
-      .thumbnail {
-        flex-basis: 100%;
+        .thumbnail {
+          flex-basis: 100%;
+        }
+      }
+    }
+  }
+}
+
+body.archive {
+  .block-blog {
+    article {
+      &:first-child {
+        grid-column: span 2;
+        display: flex;
+        gap: 40px;
+
+        .thumbnail {
+          flex-basis: 100%;
+        }
       }
     }
   }
