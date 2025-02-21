@@ -1,6 +1,8 @@
 @use 'variables/breakpoints';
+@use 'variables/typography';
 
-body.blog {
+body.blog,
+body.archive {
   .block-blog {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -24,15 +26,79 @@ body.blog {
 }
 
 body.archive {
-  .block-blog {
-    article {
-      &:first-child {
-        grid-column: span 2;
-        display: flex;
-        gap: 40px;
+  article:not(.resenha-item, .queridinhos) {
 
-        .thumbnail {
-          flex-basis: 100%;
+    &:first-child,
+    &.destaque-blog {
+      grid-column: span 2;
+      display: flex;
+      gap: 40px;
+
+      .thumbnail {
+        flex-basis: 100%;
+      }
+    }
+  }
+}
+
+#destaques-blog {
+  margin: 0;
+  padding-top: 0;
+
+  article {
+    position: relative;
+    width: 100%;
+
+    .thumbnail {
+      flex-basis: 45%;
+      text-align: center;
+
+      &.livro-thumbnail {
+        padding: 10% initial;
+        background-color: var(--cinza-clarinho);
+      }
+
+      img {
+        display: inline-block;
+        height: auto;
+
+        &.attachment-resenha-g {
+          height: initial;
+          width: initial;
+          max-width: initial;
+        }
+      }
+    }
+
+    .detalhes-do-post {
+      flex-basis: 55%;
+      padding: 0 8% 0 14%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .post-title {
+        font-size: var(--typography-h3-size);
+      }
+
+      .content {
+        font-size: 1rem;
+      }
+
+      .resenha-citacao {
+        color: var(--cinza-medio);
+        font-size: var(--typography-h3-size);
+        line-height: var(--typography-heading-line-height);
+      }
+
+      .resenha-link {
+        a {
+          display: inline-block;
+          font-weight: var(--typography-weight-semibold);
+          margin-top: 60px;
+          font-size: 12px;
+          text-decoration: none;
+          text-transform: uppercase;
         }
       }
     }
@@ -40,7 +106,7 @@ body.archive {
 }
 
 .sidebar {
-  &>div {
+  &>div:not(.s-categorias) {
     margin-top: 40px;
   }
 
@@ -111,6 +177,7 @@ body.archive {
         h5 {
           font-size: 1.2rem;
           margin: 10px 0 0 0;
+          cursor: pointer;
 
           &:before {
             content: '→';

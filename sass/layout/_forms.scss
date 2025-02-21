@@ -2,6 +2,7 @@
 @use "components/button-size-large";
 @use "components/button-size-small";
 @use "components/button-style-ghost";
+@use "variables/breakpoints";
 
 .site-main,
 .site-footer {
@@ -202,23 +203,23 @@ input[type="checkbox"]+label:focus {
 .newsletter-formulário {
   display: flex;
   flex-direction: column;
-  padding-top: 220px; // <-- ----------------------------------------- Fazer esse valor relativo
+  padding-top: 16%;
   gap: 50px;
   background-image: url(../../img/banner-newsletter-desktop.png);
-  // background-position: 0 50%;
-  // background-size: contain;
-  // object-fit: contain;
+  background-size: contain;
+  background-position: 50% 0;
 
-  .frm_submit.frm_flex {
-    ::before {
-      display: none !important;
-      // não estou conseguindo tirar o before que está empurrando o botão de envio para baixo.
-    }
-  }
+  // .frm_submit.frm_flex {
+  //   ::before {
+  //     display: none !important;
+  //     // não estou conseguindo tirar o before que está empurrando o botão de envio para baixo.
+  //   }
+  // }
 
-  @media (max-width: 640px) {
+  @media (max-width: breakpoints.$width-max-mobile) {
     padding-top: 350px;
     background-image: url(../../img/banner-newsletter-mobile.png);
+    background-size: auto;
   }
 }
 

@@ -12,4 +12,31 @@
   @media (max-width: breakpoints.$container-mobile) {
     grid-template-columns: 1fr;
   }
+
+  article {
+    background: #fff;
+    padding: 40px;
+    grid-row: auto;
+    overflow: hidden;
+
+    &.post-destaque:nth-child(-n + 2) {
+      grid-row: span 2;
+    }
+
+    &.has-post-thumbnail:not(:first-child, :last-child, .queridinhos) {
+      grid-row: span 2;
+    }
+
+    &:not(.has-post-thumbnail) {
+      grid-row: span 1
+    }
+  }
+
+  .thumbnail {
+    margin-bottom: 20px;
+
+    .img-thumbnail {
+      width: 100%;
+    }
+  }
 }

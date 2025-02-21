@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bloco de chamada para revista
  *
@@ -23,12 +24,21 @@ if ($revistas) {
     echo
     '<div class="revista-container">' .
       '<div class="conteudo">' .
-        '<h3 class="post-title">Explore as ofertas de ' . esc_html($first_word) . '</h3>' .
-        '<a class="button" href="' . esc_url($pdf) . '" target="_blank">Acessar revista</a>' .
+      '<h2 class="post-title"><a href="' . esc_url($pdf) . '">Explore as ofertas de ' . esc_html($first_word) . '</a></h2>' .
+      '<a class="button" href="' . esc_url($pdf) . '" target="_blank">Acessar revista</a>' .
       '</div>' .
-        get_the_post_thumbnail(get_the_ID(), 'revista') .
-    '</div>';
+      // '<div class="thumbnail">'.
+      get_the_post_thumbnail(
+        get_the_ID(),
+        'revista',
+        [
+          'class' => 'img-thumbnail',
+          'loading' => 'lazy',
+          'fetchpriority' => 'low'
+        ]
+      ) .
+      // '</div>'.
+      '</div>';
   }
   wp_reset_postdata();
 }
-?>

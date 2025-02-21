@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Blco slider
  *
@@ -9,19 +10,19 @@ namespace Air_Light;
 ?>
 
 <section id="chamada-home">
-<?php
-  if ( have_rows( 'slides' ) ) : ?>
+  <?php
+  if (have_rows('slides')) : ?>
     <div id="slider1" class="owl-carousel owl-theme">
-      <?php while ( have_rows( 'slides' ) ) : the_row();
-        $imagem_desktop = get_sub_field( 'imagem_desktop' );
-        $imagem_celular = get_sub_field( 'imagem_celular' );
-        $link = get_sub_field( 'link' );
+      <?php while (have_rows('slides')) : the_row();
+        $imagem_desktop = get_sub_field('imagem_desktop');
+        $imagem_celular = get_sub_field('imagem_celular');
+        $link = get_sub_field('link');
       ?>
         <div class="item">
-          <a class="no-external-link-indicator" href="<?php echo esc_url( $link ); ?>">
+          <a class="no-external-link-indicator" target="_blank" href="<?php echo esc_url($link); ?>">
             <picture>
-              <source media="(max-width: 768px)" srcset="<?php echo esc_url( $imagem_celular['url'] ); ?>">
-              <img src="<?php echo esc_url( $imagem_desktop['url'] ); ?>" alt="<?php echo esc_attr( $imagem_desktop['alt'] ); ?>">
+              <source media="(max-width: 768px)" srcset="<?php echo esc_url($imagem_celular['url']); ?>">
+              <img src="<?php echo esc_url($imagem_desktop['url']); ?>" alt="<?php echo esc_attr($imagem_desktop['alt']); ?>">
             </picture>
           </a>
         </div>

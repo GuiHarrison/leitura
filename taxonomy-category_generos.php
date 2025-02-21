@@ -13,20 +13,9 @@ get_header(); ?>
 
 <div class="site-main container">
 
-  <section class="block-blog">
+  <section class="block-blog taxonomy">
     <main class="main grid-container grid">
       <?php
-      // Identificar se estamos em uma categoria ou taxonomia
-      $current_term_id = null;
-      $current_taxonomy = null;
-
-      if (is_category()) {
-        $current_term_id = get_queried_object_id();
-        $current_taxonomy = 'category';
-      } elseif (is_tax('category_generos')) {
-        $current_term_id = get_queried_object_id();
-        $current_taxonomy = 'category_generos';
-      }
 
       // Query args base
       $destaque_args = array(
@@ -39,17 +28,6 @@ get_header(); ?>
         ),
         'posts_per_page' => 1
       );
-
-      // Adiciona filtro de taxonomia se estivermos em uma página de categoria/taxonomia
-      if ($current_term_id && $current_taxonomy) {
-        $destaque_args['tax_query'] = array(
-          array(
-            'taxonomy' => $current_taxonomy,
-            'field' => 'term_id',
-            'terms' => $current_term_id,
-          ),
-        );
-      }
 
       $destaque_blog = get_posts($destaque_args);
 
@@ -268,9 +246,8 @@ get_header(); ?>
 
   <aside id="mais-lidos">
     <?php
-    $query_obj = get_queried_object();
-    $categoria_atual = $query_obj ? $query_obj->term_id : '';
-    get_template_part('template-parts/blocks/mais-lidos', null, ['category' => $categoria_atual]);
+    $categoria_atual = get_queried_object();
+    get_template_part('template-parts/blocks/mais-lidos', null, ['category' => $categoria_atual->term_id]);
     ?>
   </aside>
 

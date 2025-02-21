@@ -14,32 +14,38 @@
   padding: 3.75rem 1.25rem;
   display: flex;
   justify-content: center;
-  .footer-container{
+
+  .footer-container {
     display: flex;
     gap: 200px;
     justify-content: space-between;
     align-items: center;
     width: 1400px;
+
     .footer-site-branding {
       width: 245.714px;
       height: 40px;
       text-align: center;
     }
-    .main-area{
+
+    .main-area {
       display: flex;
       flex: 1;
       max-width: 84.1rem;
       align-items: flex-start;
       justify-content: space-between;
-      .footer-column{
+
+      .footer-column {
         display: flex;
         flex-direction: column;
         gap: 84px;
-        .title{
+
+        .title {
           display: flex;
           align-items: center;
           gap: 12px;
-          h2{
+
+          h2 {
             color: var(--color-science-blue);
             font-family: 'Faktum', sans-serif;
             font-size: 20px;
@@ -57,8 +63,10 @@
           padding: 0;
           margin: 0;
           gap: 16px;
+
           li {
             display: inline-block;
+
             a {
               color: var(--cinza-medio-600);
               font-family: "Faktum", sans-serif;
@@ -70,41 +78,47 @@
               margin: 0;
               padding: 0;
               position: relative;
+
               &:hover {
                 color: var(--cinza-medio-600);
               }
+
               &::after {
                 content: "";
                 position: absolute;
                 left: 0;
-                bottom: -2px; 
+                bottom: -2px;
                 width: 0%;
                 height: 2px;
-                background-color: currentColor; 
+                background-color: currentColor;
                 transition: width 0.3s ease-in-out;
               }
 
               &:hover::after {
                 width: 100%;
               }
-              .external-link-icon, .is-external-link{
+
+              .external-link-icon,
+              .is-external-link {
                 display: none;
               }
             }
           }
         }
 
-        .footer-contact{
+        .footer-contact {
           display: flex;
           flex-direction: column;
           gap: 89px;
           margin: 0;
-          .phone-email{
+
+          .phone-email {
             display: flex;
             flex-direction: column;
             gap: 23px;
             margin: 0;
-            p{
+
+            p {
               color: var(--PRETO-40, rgba(0, 0, 0, 0.40));
               font-family: "Faktum", sans-serif;
               font-size: 20px;
@@ -113,17 +127,21 @@
               margin: 0;
             }
           }
-          .redes-sociais{
+
+          .redes-sociais {
             display: flex;
             gap: 16px;
             margin: 0 auto;
             padding: 0;
-            li{
+
+            li {
               list-style-type: none;
               cursor: pointer;
-              a{
+
+              a {
                 list-style-type: none;
-                .external-link-icon{
+
+                .external-link-icon {
                   display: none;
                 }
               }
@@ -137,31 +155,37 @@
   // min-width: breakpoints.$width-max-mobile
 
   @media (max-width: 640px) {
-    .footer-container{
+    .footer-container {
       display: flex;
       flex-direction: column;
       gap: 61px;
-      .main-area{
+
+      .main-area {
         display: flex;
         flex-direction: column;
-        gap: 40px ;
-        .footer-column{
+        gap: 40px;
+
+        .footer-column {
           display: flex;
           flex-direction: column;
           gap: 30px !important;
-          .title{
-            h2{
+
+          .title {
+            h2 {
               color: var(--PRETO-80, rgba(0, 0, 0, 0.80));
               font-size: 18px;
               font-weight: 500;
               letter-spacing: -0.54px;
             }
           }
-          
-          .footer-menu, .phone-email {
-            display: none; /* Oculta os menus no mobile */
-            li{
-              a{
+
+          .footer-menu,
+          .phone-email {
+            display: none;
+
+            /* Oculta os menus no mobile */
+            li {
+              a {
                 color: var(--PRETO-40, rgba(0, 0, 0, 0.40));
                 font-size: 16px;
                 font-weight: 400;
@@ -169,17 +193,22 @@
               }
             }
           }
-          .footer-menu.active, .phone-email.active  {
+
+          .footer-menu.active,
+          .phone-email.active {
             display: flex;
             flex-direction: column;
             gap: 16px;
             padding-top: 10px;
           }
-          .footer-contact{
+
+          .footer-contact {
             gap: 70px;
-            .phone-email{
+
+            .phone-email {
               gap: 19px;
-              p{
+
+              p {
                 color: var(--PRETO-40, rgba(0, 0, 0, 0.40));
                 font-size: 16px;
                 font-weight: 400;
@@ -191,7 +220,7 @@
           .arrow-icon {
             transition: transform 0.3s ease;
           }
-        
+
           .rotated {
             transform: rotate(90deg);
           }
@@ -199,5 +228,5 @@
       }
     }
   }
-  
+
 }

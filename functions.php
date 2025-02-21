@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Gather all bits and pieces together.
  * If you end up having multiple post types, taxonomies,
@@ -19,17 +20,17 @@ namespace Air_Light;
 /**
  * The current version of the theme.
  */
-define( 'AIR_LIGHT_VERSION', '9.4.7' );
+define('AIR_LIGHT_VERSION', '9.4.7');
 
 // We need to have some defaults as comments or empties so let's allow this:
 // phpcs:disable Squiz.Commenting.InlineComment.SpacingBefore, WordPress.Arrays.ArrayDeclarationSpacing.SpaceInEmptyArray
 
-error_log( 'Iniciando o functions.php' );
+error_log('Iniciando o functions.php');
 
 /**
  * Theme settings
  */
-add_action( 'after_setup_theme', function() {
+add_action('after_setup_theme', function () {
   $theme_settings = [
     /**
      * Theme textdomain
@@ -93,9 +94,9 @@ add_action( 'after_setup_theme', function() {
      * Menu locations
      */
     'menu_locations' => [
-      'primary' => __( 'Primary Menu', 'leitura' ),
-      'informacoes' => __( 'Informações', 'leitura' ),
-      'servicos_ao_cliente' => __( 'Serviços ao cliente', 'leitura' ),
+      'primary' => __('Primary Menu', 'leitura'),
+      'informacoes' => __('Informações', 'leitura'),
+      'servicos_ao_cliente' => __('Serviços ao cliente', 'leitura'),
     ],
 
     /**
@@ -106,8 +107,8 @@ add_action( 'after_setup_theme', function() {
      */
     'taxonomies' => [
       // 'Your_Taxonomy' => [ 'post', 'page' ],
-      'Category_Cidade_Estado' => [ 'lojas', 'eventos' ],
-      'Category_Generos' => [ 'post', 'queridinhos' ],
+      'Category_Cidade_Estado' => ['lojas', 'eventos'],
+      'Category_Generos' => ['post', 'queridinhos'],
     ],
 
     /**
@@ -146,17 +147,17 @@ add_action( 'after_setup_theme', function() {
         'name'           => 'cta-3-3',
         'title'          => 'CTA site externo',
         'supports'       => [
-            'customClassName' => true,
-            'align'          => true,
-            'spacing'        => true,
-            'anchor'         => true,
-            'jsx'            => true,
-            'blockGap'       => true,
-            'dimensions'     => true,
-            'grid'           => [
-                'columnCount' => true,
-                'columnSpan'  => true
-            ]
+          'customClassName' => true,
+          'align'          => true,
+          'spacing'        => true,
+          'anchor'         => true,
+          'jsx'            => true,
+          'blockGap'       => true,
+          'dimensions'     => true,
+          'grid'           => [
+            'columnCount' => true,
+            'columnSpan'  => true
+          ]
         ],
         'icon'           => 'tickets',
       ],
@@ -164,17 +165,17 @@ add_action( 'after_setup_theme', function() {
         'name'           => 'cta-pagina',
         'title'          => 'CTA Página interna',
         'supports'       => [
-            'customClassName' => true,
-            'align'          => true,
-            'spacing'        => true,
-            'anchor'         => true,
-            'jsx'            => true,
-            'blockGap'       => true,
-            'dimensions'     => true,
-            'grid'           => [
-                'columnCount' => true,
-                'columnSpan'  => true
-            ]
+          'customClassName' => true,
+          'align'          => true,
+          'spacing'        => true,
+          'anchor'         => true,
+          'jsx'            => true,
+          'blockGap'       => true,
+          'dimensions'     => true,
+          'grid'           => [
+            'columnCount' => true,
+            'columnSpan'  => true
+          ]
         ],
         'icon'           => 'tickets',
       ],
@@ -193,6 +194,11 @@ add_action( 'after_setup_theme', function() {
         'icon'           => 'excerpt-view',
       ],
       [
+        'name'           => 'mais-lidos',
+        'title'          => 'Mais lidos',
+        'icon'           => 'excerpt-view',
+      ],
+      [
         'name'           => 'mais-recentes',
         'title'          => 'Mais Recentes',
         'icon'           => 'excerpt-view',
@@ -206,6 +212,11 @@ add_action( 'after_setup_theme', function() {
         'name'           => 'queridinhos-da-leitura',
         'title'          => 'Queridinhos da Leitura',
         'icon'           => 'excerpt-view',
+      ],
+      [
+        'name'           => 'slider-queridinhos',
+        'title'          => 'Slider de Queridinhos da Leitura',
+        'icon'           => 'interactive',
       ],
       [
         'name'           => 'newsletter',
@@ -263,21 +274,21 @@ add_action( 'after_setup_theme', function() {
 
   ];
 
-  $theme_settings = apply_filters( 'air_light_theme_settings', $theme_settings );
+  $theme_settings = apply_filters('air_light_theme_settings', $theme_settings);
 
-  define( 'THEME_SETTINGS', $theme_settings );
-} ); // end action after_setup_theme
+  define('THEME_SETTINGS', $theme_settings);
+}); // end action after_setup_theme
 
 /**
  * Required files
  */
-require get_theme_file_path( '/inc/includes.php' );
-require get_theme_file_path( '/inc/hooks.php' );
-require get_theme_file_path( '/inc/template-tags.php' );
+require get_theme_file_path('/inc/includes.php');
+require get_theme_file_path('/inc/hooks.php');
+require get_theme_file_path('/inc/template-tags.php');
 
 // Run theme setup
-add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_setup' );
-add_action( 'after_setup_theme', __NAMESPACE__ . '\build_theme_support' );
+add_action('after_setup_theme', __NAMESPACE__ . '\theme_setup');
+add_action('after_setup_theme', __NAMESPACE__ . '\build_theme_support');
 
 /*
  * First: we register the taxonomies and post types after setup theme
@@ -287,49 +298,51 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\build_theme_support' );
  * This allows the slugs translations to work before the translations are available,
  * and for the label translations to work if they are available.
  */
-add_action( 'after_setup_theme', __NAMESPACE__ . '\build_taxonomies' );
-add_action( 'after_setup_theme', __NAMESPACE__ . '\build_post_types' );
+add_action('after_setup_theme', __NAMESPACE__ . '\build_taxonomies');
+add_action('after_setup_theme', __NAMESPACE__ . '\build_post_types');
 
-add_action( 'after_air_helper_init', __NAMESPACE__ . '\rebuild_taxonomies' );
-add_action( 'after_air_helper_init', __NAMESPACE__ . '\rebuild_post_types' );
+add_action('after_air_helper_init', __NAMESPACE__ . '\rebuild_taxonomies');
+add_action('after_air_helper_init', __NAMESPACE__ . '\rebuild_post_types');
 
 /**
  * Tamanhos de imagens
  */
-add_action( 'after_setup_theme', __NAMESPACE__ . '\tamanhos_de_imagens' );
+add_action('after_setup_theme', __NAMESPACE__ . '\tamanhos_de_imagens');
 
 /**
  * Chamando o tamanho do excerpt
  */
-add_filter( 'excerpt_length', __NAMESPACE__ . '\tamanho_do_excerpt' );
+add_filter('excerpt_length', __NAMESPACE__ . '\tamanho_do_excerpt');
 
 /**
  * Suporte temporário para SVG
  */
-// Allow SVG
-add_filter( 'wp_check_filetype_and_ext', function( $data, $file, $filename, $mimes ) {
+/* // Allow SVG
+add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mimes) {
   global $wp_version;
 
-  if ( '4.7.1' !== $wp_version ) {
-		 return $data;
+  if ('4.7.1' !== $wp_version) {
+    return $data;
   }
 
-  $filetype = wp_check_filetype( $filename, $mimes );
+  $filetype = wp_check_filetype($filename, $mimes);
 
   return [
-      'ext'             => $filetype['ext'],
-      'type'            => $filetype['type'],
-      'proper_filename' => $data['proper_filename'],
+    'ext'             => $filetype['ext'],
+    'type'            => $filetype['type'],
+    'proper_filename' => $data['proper_filename'],
   ];
-}, 10, 4 );
+}, 10, 4);
 
-function cc_mime_types( $mimes ) {
+function cc_mime_types($mimes)
+{
   $mimes['svg'] = 'image/svg+xml';
   return $mimes;
 }
-add_filter( 'upload_mimes',  __NAMESPACE__ . '\cc_mime_types' );
+add_filter('upload_mimes',  __NAMESPACE__ . '\cc_mime_types');
 
-function fix_svg() {
+function fix_svg()
+{
   echo '<style type="text/css">
         .attachment-266x266, .thumbnail img {
              width: 100% !important;
@@ -337,4 +350,7 @@ function fix_svg() {
         }
         </style>';
 }
-add_action( 'admin_head',  __NAMESPACE__ . '\fix_svg' );
+add_action('admin_head',  __NAMESPACE__ . '\fix_svg'); */
+
+
+add_action('pre_get_posts', 'Air_Light\ppp_categorias');

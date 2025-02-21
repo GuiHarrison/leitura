@@ -107,6 +107,8 @@
   position: relative;
   height: 30px;
   width: 40px;
+  font-weight: var(--typography-weight-semibold);
+  line-height: 34px;
 }
 
 .owl-carousel .owl-nav .owl-prev {
@@ -297,7 +299,7 @@
 }
 
 .owl-theme .owl-nav [class*='owl-']:hover {
-  background: #869791;
+  background: var(--azul-leitura);
   color: #FFF;
   text-decoration: none;
 }
@@ -314,6 +316,7 @@
 .owl-theme .owl-dots {
   text-align: center;
   -webkit-tap-highlight-color: transparent;
+  margin-top: 20px;
 }
 
 .owl-theme .owl-dots .owl-dot {
@@ -336,5 +339,5 @@
 
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
-  background: #869791;
+  background: var(--azul-forte);
 }
