@@ -187,6 +187,8 @@ a.sublinhado-bonito,
   }
 }
 
-.grid-column-span-2 {
-  grid-column: span 2;
+@media (min-width: breakpoints.$width-max-mobile) {
+  .grid-column-span-2 {
+    grid-column: span 2;
+  }
 }

@@ -1,9 +1,13 @@
 @use "helpers/animations";
+@use "variables/breakpoints";
 
 // Alternative style: https://i.imgur.com/A8gUyu2.png
 // stylelint-disable a11y/font-size-is-readable
 .navigation:not(.post-navigation) {
-  grid-column: span 2;
+
+  @media (min-width: breakpoints.$width-max-mobile) {
+    grid-column: span 2;
+  }
 
   .nav-links {
     align-items: flex-start;

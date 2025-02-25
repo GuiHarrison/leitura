@@ -352,5 +352,6 @@ function fix_svg()
 }
 add_action('admin_head',  __NAMESPACE__ . '\fix_svg'); */
 
+add_action('pre_get_posts', __NAMESPACE__ . '\ppp_categorias');
 
-add_action('pre_get_posts', 'Air_Light\ppp_categorias');
+add_filter('pre_get_posts', __NAMESPACE__ . '\excluir_lojas_da_busca');

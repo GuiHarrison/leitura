@@ -18,19 +18,17 @@ $posts = get_posts(array(
 if ($posts) {
   global $post;
 ?>
-
-  <section id="colunas-e-resenhas" class="publicacoes colunas-e-resenhas">
-    <div class="titulo">
-      <h2 class="section-title">→ Colunas e Resenhas</h2>
-      <a href="<?php echo esc_url(home_url('/category/colunas-e-resenhas')); ?>" class="ver-todas">Ver todas</a>
-    </div>
-
-    <div class="resenhas-container grid">
+  <div class="resenhas-container">
+    <div class="grid">
+      <?php get_template_part('template-parts/blocks/slider-destaques'); ?>
       <?php foreach ($posts as $post) {
         setup_postdata($post);
         $autoria = get_field('autoria', get_the_id());
         $citacao = get_field('citacao', get_the_id());
-        $usuario = get_the_author_meta('ID');
+        $usuário = get_the_author_meta('ID');
+        $foto = get_field('foto_usuario', 'user_' . $usuário);
+        $foto = wp_get_attachment_image_src($foto, 'foto-perfil');
+        $foto = $foto[0];
       ?>
 
         <article id="post-<?php the_ID(); ?>" class="resenha-item">
@@ -53,7 +51,7 @@ if ($posts) {
 
           <div class="autor-info">
             <img class="aspas" src="<?php echo get_theme_file_uri('/img/aspas.svg'); ?>">
-            <img src="<?php echo esc_url(get_avatar_url($usuario)); ?>" alt="Autor: <?php echo esc_html(get_the_author()); ?>" class="autor-foto">
+            <img src="<?php echo esc_url($foto); ?>" alt="Autor: <?php echo esc_html(get_the_author()); ?>" class="autor-foto">
             <h5 class="autor-nome"><?php echo esc_html(get_the_author()); ?></h5>
           </div>
 
@@ -70,7 +68,6 @@ if ($posts) {
 
       <?php } ?>
     </div>
-  </section>
-
+  </div>
 <?php wp_reset_postdata();
 } ?>

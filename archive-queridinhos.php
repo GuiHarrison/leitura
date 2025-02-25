@@ -12,16 +12,15 @@ namespace Air_Light;
 get_header();
 
 // Definindo os CTAs da tela
-for ($i = 0; $i <= 2; $i++) {
-  $cta_data[$i] = [
-    'field' => get_field("cta-queridinhos-$i", 'option'),
-  ];
-
-  if ($cta_data[$i]['field']) {
-    $cta_data[$i]['desktop'] = $cta_data[$i]['field']["imagem_queridinhos{$i}_desktop"];
-    $cta_data[$i]['celular'] = $cta_data[$i]['field']["imagem_queridinhos{$i}_celular"];
-    $cta_data[$i]['link'] = $cta_data[$i]['field']["queridinhos{$i}_link"];
-    $cta_data[$i]['cor'] = $cta_data[$i]['field']["q{$i}_cor"];
+for ($i = 1; $i <= 2; $i++) {
+  $cta_field = get_field("cta-queridinhos-{$i}", 'option');
+  if ($cta_field) {
+    $cta_data[$i] = [
+      'desktop' => $cta_field["imagem_queridinhos{$i}_desktop"],
+      'celular' => $cta_field["imagem_queridinhos{$i}_celular"],
+      'link' => $cta_field["queridinhos{$i}_link"],
+      'cor' => $cta_field["q{$i}_cor"]
+    ];
   }
 }
 ?>
