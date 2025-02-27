@@ -11,9 +11,9 @@
 }
 
 // Gutenberg core magic
-.article-content > [class^='wp-block-'],
-.is-root-container > *,
-.article-content > * {
+.article-content>[class^='wp-block-'],
+.is-root-container>*,
+.article-content>*:not(.livros) {
   line-height: var(--typography-paragraph-line-height);
   margin-left: auto;
   margin-right: auto;

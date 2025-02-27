@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Bloco para Colunas e resenhas
+ * Bloco para assinatura de newsletter
  *
  * @package airclean
  */
@@ -8,5 +9,5 @@
 namespace Air_Light;
 ?>
 <section id="newsletter">
-  <?php echo \FrmFormsController::get_form_shortcode( array( 'id' => 11 ) ); ?>
+  <?php echo \FrmFormsController::get_form_shortcode(array('id' => 11)); ?>
 </section>

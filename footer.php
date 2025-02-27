@@ -97,7 +97,7 @@ namespace Air_Light;
         </ul>
 
         <div class="footer-contact">
-          <?php get_template_part('template-parts/footer/redes-sociais'); ?>
+          <?php get_template_part('template-parts/snippets/redes-sociais'); ?>
         </div>
       </div>
     </div>

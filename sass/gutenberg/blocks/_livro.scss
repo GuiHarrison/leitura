@@ -6,10 +6,23 @@ article.livro {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
+
+  @media (min-width: breakpoints.$width-max-mobile) {
+    display: flex;
+    width: 90%;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    gap: 20px;
+  }
+
+  @media (min-width: breakpoints.$width-wide) {
+    padding: 110px 135px;
+  }
 
   .livro-thumbnail {
     text-align: center;
+    flex-basis: 155px;
 
     picture {
       display: inline-block;
@@ -17,6 +30,10 @@ article.livro {
   }
 
   .detalhes-do-livro {
+    @media (min-width: breakpoints.$width-max-mobile) {
+      flex: 1;
+    }
+
     h3 {
       text-transform: uppercase;
 

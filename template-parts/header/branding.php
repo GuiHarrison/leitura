@@ -38,6 +38,6 @@ $description = get_bloginfo('description', 'display');
     </form>
   </div>
 
-  <?php get_template_part('template-parts/footer/redes-sociais'); ?>
+  <?php get_template_part('template-parts/snippets/redes-sociais'); ?>
 
 </div>

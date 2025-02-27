@@ -20,7 +20,7 @@ if (have_rows('livros')) {
       $descricao = get_sub_field('l-descricao');
       $link = get_sub_field('l-link');
     ?>
-      <article class="livro">
+      <article class="livro article-content">
         <div class="livro-thumbnail">
           <?php if ($link) { ?>
             <a href="<?php echo esc_html($link); ?>">
