@@ -16,7 +16,7 @@ article.livro {
     gap: 20px;
   }
 
-  @media (min-width: breakpoints.$width-wide) {
+  @media (min-width: breakpoints.$width-grid-base) {
     padding: 110px 135px;
   }
 

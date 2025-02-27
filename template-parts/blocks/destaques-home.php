@@ -38,7 +38,7 @@ if ($posts_destaque) {
       ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class('post-destaque item-' . $contador); ?>>
           <?php if (has_post_thumbnail() && $contador <= 2) { ?>
-            <div class="thumbnail">
+            <a href="<?php echo esc_url(get_the_permalink()); ?>" class="thumbnail">
               <?php
               the_post_thumbnail('destaque-home', [
                 'class' => 'img-thumbnail',
@@ -46,7 +46,7 @@ if ($posts_destaque) {
                 'fetchpriority' => 'low'
               ]);
               ?>
-            </div>
+            </a>
           <?php } ?>
 
           <div class="detalhes-do-post">

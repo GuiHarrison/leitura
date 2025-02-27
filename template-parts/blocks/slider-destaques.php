@@ -72,14 +72,14 @@ if ($destaque_blog) {
       ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class('block destaque-blog item'); ?>>
-          <div <?php echo $is_resenha ? 'class="destaque thumbnail livro-thumbnail" style="background-color: ' . $cor . ';"' : 'class="destaque thumbnail"'; ?>>
+          <a href="<?php echo esc_url(get_the_permalink()); ?>" <?php echo $is_resenha ? 'class="destaque thumbnail livro-thumbnail" style="background-color: ' . $cor . ';"' : 'class="destaque thumbnail"'; ?>>
             <?php
             if (has_post_thumbnail()) :
               $tamanho = $is_resenha ? 'resenha-g' : 'destaque-blog';
               the_post_thumbnail($tamanho);
             endif;
             ?>
-          </div>
+          </a>
 
           <div <?php echo $is_resenha ? 'id="colunas-e-resenhas" class="detalhes-do-post resenha"' : 'class="detalhes-do-post"'; ?>>
             <?php if ($is_resenha) : ?>

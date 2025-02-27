@@ -4,10 +4,6 @@
  * The main template file
  *
  *
- * @Date:   2019-10-15 12:30:02
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2022-02-08 17:03:18
- *
  * @package leitura
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  */
@@ -17,7 +13,7 @@ namespace Air_Light;
 function is_resenhas_category()
 {
   $current_cat = get_queried_object();
-  $resenhas_id = 403; // ID da categoria "colunas-e-resenhas"
+  $resenhas_id = 403; // ID da categoria "se-liga-na-leitura"
 
   // Verifica se é a própria categoria ou uma filha
   return ($current_cat->category_parent === $resenhas_id || $current_cat->term_id === $resenhas_id);
@@ -49,13 +45,13 @@ get_header();
 
           <article id="post-<?php the_ID(); ?>" <?php post_class('block'); ?>>
 
-            <div class="thumbnail">
+            <a href="<?php echo esc_url(get_the_permalink()); ?>" class="thumbnail">
               <?php
               if ($thumb) {
                 echo $thumb;
               }
               ?>
-            </div>
+            </a>
 
             <div class="detalhes-do-post">
 

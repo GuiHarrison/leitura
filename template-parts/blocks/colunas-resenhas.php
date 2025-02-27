@@ -8,11 +8,9 @@
 
 namespace Air_Light;
 
-$categoria = get_queried_object_id();
 $ppp = get_field('ppp');
 $posts = get_posts(array(
-  'posts_per_page' => $ppp,
-  'category' => $categoria,
+  'posts_per_page' => $ppp
 ));
 
 if ($posts) {
@@ -45,14 +43,14 @@ if ($posts) {
             </h4>
           </div>
 
-          <div class="livro-thumbnail">
+          <a href="<?php echo esc_url(get_the_permalink()); ?>" class="livro-thumbnail">
             <?php the_post_thumbnail('resenha-p', array('loading' => 'lazy', 'fetchpriority' => 'low')); ?>
-          </div>
+          </a>
 
           <div class="autor-info">
             <img class="aspas" src="<?php echo get_theme_file_uri('/img/aspas.svg'); ?>">
             <img src="<?php echo esc_url($foto); ?>" alt="Autor: <?php echo esc_html(get_the_author()); ?>" class="autor-foto">
-            <h5 class="autor-nome"><?php echo esc_html(get_the_author()); ?></h5>
+            <h5 class="autor-nome"><a href="<?php echo esc_url(get_author_posts_url($usuário)); ?>"><?php echo esc_html(get_the_author()); ?></a></h5>
           </div>
 
           <div class="resenha-citacao">

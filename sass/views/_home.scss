@@ -155,7 +155,7 @@ time {
     text-align: center;
     padding-bottom: 130px;
 
-    @media (min-width: breakpoints.$width-wide) {
+    @media (min-width: breakpoints.$width-grid-base) {
       padding: 70px 70px 190px;
     }
   }
@@ -215,7 +215,7 @@ time {
     margin: 0;
     text-transform: uppercase;
 
-    @media (min-width: breakpoints.$width-wide) {
+    @media (min-width: breakpoints.$width-grid-base) {
       bottom: 70px;
       left: 70px;
     }

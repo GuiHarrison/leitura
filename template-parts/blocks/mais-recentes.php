@@ -35,9 +35,9 @@ if ($posts) {
 
         <article id="post-<?php the_ID(); ?>" <?php post_class('publicacao-item'); ?>>
           <?php if ($contador === 1 && has_post_thumbnail()) : ?>
-            <div class="publicacao-thumbnail">
+            <a href="<?php echo esc_url(get_the_permalink()); ?>" class="publicacao-thumbnail">
               <?php the_post_thumbnail('destaque-home', ['loading' => 'lazy', 'fetchpriority' => 'low']); ?>
-            </div>
+            </a>
           <?php endif; ?>
           <div class="detalhes-do-post">
             <?php if (has_category()) : ?>

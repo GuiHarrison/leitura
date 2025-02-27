@@ -11,7 +11,7 @@
 namespace Air_Light;
 ?>
 
-<?php if (get_queried_object() && (get_queried_object()->slug === 'colunas-e-resenhas' || is_tax('category_generos', 'colunas-e-resenhas'))) : ?>
+<?php if (get_queried_object() && (get_queried_object()->slug === 'se-liga-na-leitura' || is_tax('category_generos', 'se-liga-na-leitura'))) : ?>
   <div class="s-filtrar">
     <h4>→ Filtrar gêneros:</h4>
     <ul class="categories">

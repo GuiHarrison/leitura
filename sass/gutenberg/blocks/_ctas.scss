@@ -47,7 +47,7 @@ img.cta-image {
 .revista-container {
   display: flex;
   max-width: breakpoints.$container-mobile;
-  // max-height: 250px;
+  max-height: 240px;
   background-color: var(--color-white);
   padding: 20px;
   gap: 20px;
@@ -57,6 +57,7 @@ img.cta-image {
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
+    flex-basis: 150%;
 
     .button {
       font-weight: var(--typography-weight-medium);
@@ -69,6 +70,7 @@ img.cta-image {
     flex-basis: fit-content;
     height: 100%;
     display: flex;
+    margin: 0;
 
     .img-thumbnail {
       width: auto;

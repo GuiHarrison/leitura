@@ -93,7 +93,7 @@ body.archive {
       flex-direction: column;
       justify-content: center;
 
-      @media (min-width: breakpoints.$width-wide) {
+      @media (min-width: breakpoints.$width-grid-base) {
         padding: 0 8% 0 14%;
       }
 

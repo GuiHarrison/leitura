@@ -31,13 +31,13 @@ if ($destaque_blog) {
 
     <article id="post-<?php the_ID(); ?>" <?php post_class('block destaque-blog'); ?>>
 
-      <div class="destaque thumbnail">
+      <a href="<?php echo esc_url(get_the_permalink()); ?>" class="destaque thumbnail">
         <?php
         if (has_post_thumbnail()) {
           the_post_thumbnail('destaque-home', array('loading' => 'lazy', 'fetchpriority' => 'low'));
         }
         ?>
-      </div>
+      </a>
 
       <div class="detalhes-do-post">
         <?php if (has_category()) : ?>
