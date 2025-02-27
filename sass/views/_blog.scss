@@ -133,7 +133,7 @@ body.archive {
     display: block;
   }
 
-  &>div:not(.s-filtrar, .histórico) {
+  div:not(:first-child) {
     margin-top: 40px;
   }
 

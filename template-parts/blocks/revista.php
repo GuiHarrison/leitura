@@ -27,7 +27,7 @@ if ($revistas) {
       '<h2 class="post-title"><a href="' . esc_url($pdf) . '">Explore as ofertas de ' . esc_html($first_word) . '</a></h2>' .
       '<a class="button" href="' . esc_url($pdf) . '" target="_blank">Acessar revista</a>' .
       '</div>' .
-      // '<div class="thumbnail">'.
+      '<div class="thumbnail">' .
       get_the_post_thumbnail(
         get_the_ID(),
         'revista',
@@ -37,7 +37,7 @@ if ($revistas) {
           'fetchpriority' => 'low'
         ]
       ) .
-      // '</div>'.
+      '</div>' .
       '</div>';
   }
   wp_reset_postdata();

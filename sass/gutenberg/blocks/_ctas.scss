@@ -47,7 +47,7 @@ img.cta-image {
 .revista-container {
   display: flex;
   max-width: breakpoints.$container-mobile;
-  max-height: 250px;
+  // max-height: 250px;
   background-color: var(--color-white);
   padding: 20px;
   gap: 20px;
@@ -65,8 +65,13 @@ img.cta-image {
     }
   }
 
-  .img-thumbnail {
-    width: 100%;
-    flex-grow: 0;
+  .thumbnail {
+    flex-basis: fit-content;
+    height: 100%;
+    display: flex;
+
+    .img-thumbnail {
+      width: auto;
+    }
   }
 }

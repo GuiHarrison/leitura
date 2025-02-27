@@ -232,3 +232,7 @@ input[type="checkbox"]+label:focus {
     padding: 30px;
   }
 }
+
+.frm_submit.frm_flex {
+  justify-content: flex-end;
+}

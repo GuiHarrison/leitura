@@ -58,7 +58,9 @@ namespace Air_Light;
         'walker'         => new Nav_Walker(),
       )); ?>
 
-      <?php get_template_part('template-parts/snippets/redes-sociais'); ?>
+      <div class="hide-on-desktop-nav-view">
+        <?php get_template_part('template-parts/snippets/redes-sociais'); ?>
+      </div>
     </div>
 
   </div>

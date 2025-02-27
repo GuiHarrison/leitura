@@ -100,7 +100,9 @@ get_header();
 
   <?php } ?>
 
-  <?php get_sidebar(); ?>
+  <div id="sidebar" class="sidebar">
+    <?php get_sidebar(); ?>
+  </div>
 
   </section>
 
