@@ -14,7 +14,7 @@
   font-weight: var(--typography-weight-semibold);
   line-height: 1.39;
   margin-bottom: 0;
-  max-width: 230px;
+  max-width: 400px;
   overflow: hidden;
   padding-bottom: calc(14px - calc(var(--border-width-input-field) * 2));
   padding-left: calc(21px - calc(var(--border-width-input-field) * 2));
@@ -27,6 +27,7 @@
   white-space: nowrap;
   width: auto;
   text-align: center;
+
   &.focus,
   &:hover,
   &:focus {

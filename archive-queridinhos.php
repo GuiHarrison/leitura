@@ -147,7 +147,7 @@ for ($i = 1; $i <= 2; $i++) {
       <?php get_template_part('template-parts/blocks/revista'); ?>
     </aside>
 
-    <?php get_template_part('template-parts/blocks/newsletter'); ?>
+    <?php get_template_part('template-parts/blocks/form-seliga'); ?>
 
 </div>
 

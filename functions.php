@@ -219,8 +219,8 @@ add_action('after_setup_theme', function () {
         'icon'           => 'interactive',
       ],
       [
-        'name'           => 'newsletter',
-        'title'          => 'Newsletter',
+        'name'           => 'form-seliga',
+        'title'          => 'Formulário Se liga na Leitura',
         'icon'           => 'tickets',
       ],
       [

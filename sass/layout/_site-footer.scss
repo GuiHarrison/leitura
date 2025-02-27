@@ -132,6 +132,9 @@
             padding: 0;
 
             li {
+              display: inline-block;
+              overflow: hidden;
+              width: 30px;
               list-style-type: none;
               cursor: pointer;
 

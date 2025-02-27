@@ -200,36 +200,57 @@ input[type="checkbox"]+label:focus {
   width: 60px;
 }
 
-// Esses valores são pensados para desktop.
-.newsletter-formulário {
+.button.com-seta-direita {
+  &:after {
+    content: '→';
+    float: right;
+  }
+}
+
+#frm_form_11_container {
+  padding: 0;
+
+  fieldset {
+    padding: 0;
+
+    button.frm_button_submit {
+      text-align: left;
+    }
+
+    .frm_description {
+      font-size: 80%;
+      font-weight: var(--typography-weight-semibold);
+      text-align: center;
+    }
+  }
+}
+
+
+.form-seliga {
   display: flex;
   flex-direction: column;
-  padding-top: 16%;
-  gap: 50px;
-  background-image: url(../../img/banner-newsletter-desktop.png);
-  background-size: contain;
+  gap: 40px;
   background-position: top left;
+  padding-top: calc(100% + 40px);
+  padding-right: 40px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  background-image: url(../../img/seliga-celular.png);
+  background-size: contain;
 
-  // .frm_submit.frm_flex {
-  //   ::before {
-  //     display: none !important;
-  //     // não estou conseguindo tirar o before que está empurrando o botão de envio para baixo.
-  //   }
-  // }
-
-  @media (max-width: breakpoints.$width-max-mobile) {
-    padding-top: 350px;
-    background-image: url(../../img/banner-newsletter-mobile.png);
-    background-size: auto;
+  @media (min-width: breakpoints.$width-max-mobile) {
+    background-image: url(../../img/seliga-desktop.png);
+    padding-top: 16%;
+    background-size: contain;
   }
 }
 
 .frm_forms {
   background-color: var(--color-white);
-  padding: 60px;
+  padding: 30px;
 
-  @media (max-width: 640px) {
-    padding: 30px;
+  @media (min-width: 640px) {
+    padding: 60px;
   }
 }
 
