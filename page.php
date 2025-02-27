@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all pages
  *
@@ -23,8 +24,8 @@ get_header(); ?>
 
 <main class="site-main container">
   <?php
-    the_content();
-    air_edit_link();
+  the_content();
+  air_edit_link();
   ?>
 </main>
 

@@ -24,7 +24,7 @@ if ($posts) {
 
   <section id="queridinhos-da-leitura" class="publicacoes sem-margem">
     <div class="titulo">
-      <h2 class="section-title">→ Queridinhos da Leitura</h2>
+      <h2 class="section-title">Queridinhos da Leitura</h2>
       <a href="<?php echo esc_url(home_url('/queridinhos')); ?>" class="ver-todas">Ver todas</a>
     </div>
 

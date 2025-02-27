@@ -96,7 +96,7 @@ if ($destaque_blog) {
               </div>
 
               <div class="resenha-link">
-                <a href="<?php echo get_the_permalink(get_the_ID()) ?>">→ Ler resenha completa</a>
+                <a href="<?php echo get_the_permalink(get_the_ID()) ?>">Ler resenha completa</a>
               </div>
             <?php else : ?>
               <?php if (has_category()) : ?>

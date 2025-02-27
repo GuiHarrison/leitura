@@ -14,7 +14,13 @@
 namespace Air_Light;
 
 the_post();
-get_header(); ?>
+get_header();
+$thumb = get_the_post_thumbnail(get_the_ID(), 'post', array('loading' => 'lazy', 'fetchpriority' => 'low'));
+$classe_livro = '';
+$is_resenha = get_post_type() === 'queridinhos' || in_array(403, wp_get_post_categories(get_the_ID()));
+$classe_livro = $is_resenha ? ' livro-thumbnail' : '';
+$cor = get_field('fundo_do_livro', get_the_ID()) ? get_field('fundo_do_livro', get_the_ID()) : '#e6e6e6';
+?>
 
 <main class="site-main">
 
@@ -45,6 +51,10 @@ get_header(); ?>
       <div class="data-e-autor">
         <?php get_template_part('template-parts/snippets/data-publicacao'); ?>
         <p><?php echo esc_html(get_the_author()); ?></p>
+      </div>
+
+      <div class="thumbnail<?php echo esc_attr($classe_livro); ?>" style="background-color: <?php echo $cor; ?>">
+        <?php echo $thumb; ?>
       </div>
 
       <?php the_content();

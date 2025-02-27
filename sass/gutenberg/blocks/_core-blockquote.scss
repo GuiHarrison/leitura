@@ -1,8 +1,8 @@
-@use 'variables/index' as *;
+@use 'variables/breakpoints';
 
 // Core/blockquote block
-blockquote + cite,
-blockquote + p > cite {
+blockquote+cite,
+blockquote+p>cite {
   margin-bottom: 2.5rem;
 }
 
@@ -22,35 +22,50 @@ blockquote {
     position: relative;
   }
 
-  @media (min-width: $container-ipad) {
+  @media (min-width: breakpoints.$container-ipad) {
     margin-top: 2.5rem;
     padding-bottom: 2.5rem;
   }
 }
 
 .wp-block-quote {
-  border-left: 2px solid var(--color-paragraph);
-  line-height: var(--typography-paragraph-line-height);
   margin-bottom: 2.5rem;
   margin-left: auto;
   margin-right: auto;
   margin-top: 2.5rem;
-  padding: 2.1875rem 3.75rem;
+  padding: 2.1875rem 2.75rem;
   width: calc(100% - 7.5rem);
+  color: var(--azul-leitura);
 
-  > p {
-    color: var(--color-paragraph);
-    line-height: var(--typography-paragraph-line-height);
+  &:before {
+    position: absolute;
+    top: 66px;
+    left: -10px;
+    display: inline-block;
+    width: 44px;
+    height: 42px;
+    content: '';
+    // Símbolo de aspas em SVG
+    background-image: url('data:image/svg+xml, %3Csvg width="43" height="37" viewBox="0 0 43 37" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0.287109 0L20.0114 0L20.0114 15.19C20.0114 20.7823 18.8476 25.2108 16.52 28.4755C14.1923 31.71 10.2173 34.5515 4.59471 37L0.287109 28.9289C3.79365 27.2966 6.19683 25.6793 7.49667 24.0772C8.82673 22.4449 9.56734 20.5253 9.71848 18.3186H0.287109L0.287109 0ZM23.2761 0L43.0003 0V15.19C43.0003 20.7823 41.8365 25.2108 39.5089 28.4755C37.1813 31.71 33.2062 34.5515 27.5837 37L23.2761 28.9289C26.7826 27.2966 29.1858 25.6793 30.4856 24.0772C31.8157 22.4449 32.5563 20.5253 32.7075 18.3186H23.2761L23.2761 0Z" fill="%23004d8f"/%3E%3C/svg%3E%0A');
   }
 
-  @media (max-width: $width-max-article + 40px) {
-    padding: 2.1875rem 1.25rem;
-    width: calc(100% - calc(var(--spacing-container-padding-inline) * 2));
+  @media (min-width: breakpoints.$width-max-mobile) {
+    padding: 2.1875rem 0;
+    max-width: 510px;
+
+    &:before {
+      left: -64px;
+    }
   }
 
-  @media (max-width: $container-mobile) {
-    padding: 2.5rem 2.5rem 2.5rem 1.25rem;
+  >p {
+    color: var(--azul-leitura);
+    font-size: var(--typography-h1-size);
+    line-height: var(--typography-heading-core-line-height);
+    font-weight: var(--typography-weight-bold);
+    letter-spacing: -2px;
   }
+
 }
 
 .wp-block-blockquote.alignwide,

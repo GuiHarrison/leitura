@@ -46,13 +46,10 @@
           gap: 12px;
 
           h2 {
-            color: var(--color-science-blue);
-            font-family: 'Faktum', sans-serif;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 28.89px;
-            letter-spacing: -0.6px;
             margin: 0;
+            color: var(--azul-leitura);
+            font-size: 20px;
+            font-weight: var(--typography-weight-normal);
           }
         }
 
@@ -168,7 +165,7 @@
         .footer-column {
           display: flex;
           flex-direction: column;
-          gap: 30px !important;
+          gap: 0;
 
           .title {
             h2 {
@@ -198,11 +195,12 @@
           .phone-email.active {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 10px;
             padding-top: 10px;
           }
 
           .footer-contact {
+            margin-top: 70px;
             gap: 70px;
 
             .phone-email {

@@ -20,7 +20,7 @@ namespace Air_Light;
 /**
  * The current version of the theme.
  */
-define('AIR_LIGHT_VERSION', '9.4.7');
+define('AIR_LIGHT_VERSION', '0.1.0');
 
 // We need to have some defaults as comments or empties so let's allow this:
 // phpcs:disable Squiz.Commenting.InlineComment.SpacingBefore, WordPress.Arrays.ArrayDeclarationSpacing.SpaceInEmptyArray
@@ -223,6 +223,24 @@ add_action('after_setup_theme', function () {
         'title'          => 'Newsletter',
         'icon'           => 'tickets',
       ],
+      [
+        'name'           => 'post-livro',
+        'title'          => 'Descrição de livro',
+        'supports'       => [
+          'customClassName' => true,
+          'align'          => true,
+          'spacing'        => true,
+          'anchor'         => true,
+          'jsx'            => true,
+          'blockGap'       => true,
+          'dimensions'     => true,
+          'grid'           => [
+            'columnCount' => true,
+            'columnSpan'  => true
+          ]
+        ],
+        'icon'           => 'book-alt',
+      ],
     ],
 
     // Custom ACF block default settings
@@ -232,6 +250,7 @@ add_action('after_setup_theme', function () {
       'align'             => 'full',
       'post_types'        => [
         'page',
+        'post',
       ],
       'supports'  => [
         'align'           => false,
@@ -247,12 +266,14 @@ add_action('after_setup_theme', function () {
     // or any specific block or a combination of these
     // Accepts both string (all*/none-options only) and array (options + specific blocks)
     'allowed_blocks' => [
-      'post' => 'all-core-blocks',
+      'post' => [
+        'acf/post-livro',
+        'all-core-blocks',
+      ],
       'page' => [
         'all',
-        'all-acf-blocks',
+        // 'all-acf-blocks',
       ],
-      'all-acf-blocks',
       // 'page' => [
       //   'all-acf-blocks',
       //   'core/paragraph',

@@ -16,20 +16,20 @@ get_header(); ?>
   <section class="block-blog">
     <main class="main grid-container grid">
       <?php
-      // Identificar se estamos em uma categoria ou taxonomia
-      $current_term_id = null;
-      $current_taxonomy = null;
+      // Obtém o ID da categoria 'blog'
+      $blog_category = get_category_by_slug('blog');
+      $category_ids = array();
 
-      if (is_category()) {
-        $current_term_id = get_queried_object_id();
-        $current_taxonomy = 'category';
-      } elseif (is_tax('category_generos')) {
-        $current_term_id = get_queried_object_id();
-        $current_taxonomy = 'category_generos';
+      if ($blog_category) {
+        // Obtém todas as subcategorias
+        $category_ids = array_merge(
+          array($blog_category->term_id),
+          get_term_children($blog_category->term_id, 'category')
+        );
       }
 
-      // Query args base
-      $destaque_args = array(
+      $destaque_blog = new \WP_Query(array(
+        'category__in' => $category_ids,
         'meta_query' => array(
           array(
             'key' => 'destaque',
@@ -37,38 +37,25 @@ get_header(); ?>
             'compare' => 'LIKE',
           ),
         ),
-        'posts_per_page' => 1
-      );
+        'posts_per_page' => 1,
+        'orderby' => 'date',
+        'order' => 'DESC'
+      ));
 
-      // Adiciona filtro de taxonomia se estivermos em uma página de categoria/taxonomia
-      if ($current_term_id && $current_taxonomy) {
-        $destaque_args['tax_query'] = array(
-          array(
-            'taxonomy' => $current_taxonomy,
-            'field' => 'term_id',
-            'terms' => $current_term_id,
-          ),
-        );
-      }
-
-      $destaque_blog = get_posts($destaque_args);
-
-      if ($destaque_blog) {
-        global $post;
-
-        foreach ($destaque_blog as $post) {
-          setup_postdata($post);
+      if ($destaque_blog->have_posts()) {
+        while ($destaque_blog->have_posts()) {
+          $destaque_blog->the_post();
       ?>
 
           <article id="post-<?php the_ID(); ?>" <?php post_class('block destaque-blog'); ?>>
 
-            <div class="destaque thumbnail">
+            <a href="<?php echo esc_url(get_the_permalink()); ?>" class="destaque thumbnail">
               <?php
               if (has_post_thumbnail()) {
                 the_post_thumbnail('destaque-home', array('loading' => 'lazy', 'fetchpriority' => 'low'));
               }
               ?>
-            </div>
+            </a>
 
             <div class="detalhes-do-post">
               <?php if (has_category()) : ?>
@@ -107,6 +94,23 @@ get_header(); ?>
       ?>
 
       <?php
+      // Obtém o ID da categoria 'blog'
+      $blog_category = get_category_by_slug('blog');
+
+      if ($blog_category) {
+        // Obtém todas as subcategorias
+        $category_ids = array_merge(
+          array($blog_category->term_id),
+          get_term_children($blog_category->term_id, 'category')
+        );
+
+        // Modifica a query principal
+        query_posts(array(
+          'category__in' => $category_ids,
+          'paged' => get_query_var('paged') ? get_query_var('paged') : 1
+        ));
+      }
+
       if (have_posts()) :
 
         while (have_posts()) :
@@ -116,13 +120,13 @@ get_header(); ?>
 
           <article id="post-<?php the_ID(); ?>" <?php post_class('block'); ?>>
 
-            <div class="thumbnail">
+            <a href="<?php echo esc_url(get_the_permalink()); ?>" class="thumbnail">
               <?php
               if ($thumb) {
                 echo $thumb;
               }
               ?>
-            </div>
+            </a>
 
             <div class="detalhes-do-post">
               <h3 class="post-title">

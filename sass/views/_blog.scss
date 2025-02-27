@@ -21,8 +21,8 @@ body.archive {
       }
 
       article.destaque-blog {
-        display: block;
-        gap: 20px;
+        //   display: block;
+        //   gap: 20px;
 
         @media (min-width: breakpoints.$width-max-mobile) {
           grid-column: span 2;

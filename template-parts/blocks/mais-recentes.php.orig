@@ -18,7 +18,7 @@
 ?>
 
 	<div id="publicacoes-recentes">
-		<h2 id="destaque-home">→ Publicações recentes</h2>
+		<h2 id="destaque-home">Publicações recentes</h2>
 		<a href="<?php echo esc_url( home_url( '/se-liga-na-leitura' ) ); ?>" class="ver-todas">Ver todas</a>
 
 		<?php

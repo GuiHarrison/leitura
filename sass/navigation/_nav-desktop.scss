@@ -8,6 +8,7 @@
   // Affecting to both main and sub-levels
   --color-dropdown-toggle: var(--color-white);
   --color-current: var(--cinza-clarinho);
+  --color-sub-current: var(--azul-forte);
   --dropdown-toggle-size: 0.75rem;
 
   // Main level items on desktop
@@ -110,6 +111,11 @@
   .menu-item.current-menu-parent>a,
   .menu-item.current-menu-item>a {
     color: var(--color-current);
+  }
+
+  // cor submenu não está funcionando
+  .sub-menu .menu-item.current-menu-item a {
+    color: var(--color-sub-current);
   }
 
   // Let's make space for the nav-toggle/arrow

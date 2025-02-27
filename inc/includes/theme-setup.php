@@ -173,6 +173,7 @@ function acf_maps_key()
  */
 function tamanhos_de_imagens()
 {
+  add_image_size('post', 700, 700, true);
   add_image_size('destaque-home', 346, 346, true);
   add_image_size('destaque-blog', 532, 532, true);
   add_image_size('revista', 250, 356, true);

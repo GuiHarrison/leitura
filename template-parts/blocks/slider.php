@@ -17,14 +17,30 @@ namespace Air_Light;
         $imagem_desktop = get_sub_field('imagem_desktop');
         $imagem_celular = get_sub_field('imagem_celular');
         $link = get_sub_field('link');
+        $legenda = get_sub_field('legenda');
       ?>
         <div class="item">
-          <a class="no-external-link-indicator" target="_blank" href="<?php echo esc_url($link); ?>">
-            <picture>
-              <source media="(max-width: 768px)" srcset="<?php echo esc_url($imagem_celular['url']); ?>">
-              <img src="<?php echo esc_url($imagem_desktop['url']); ?>" alt="<?php echo esc_attr($imagem_desktop['alt']); ?>">
-            </picture>
-          </a>
+          <?php if ($link) : ?>
+            <a class="no-external-link-indicator" target="_blank" href="<?php echo esc_url($link); ?>">
+            <?php endif; ?>
+
+            <figure>
+              <picture>
+                <?php if ($imagem_celular) : ?>
+                  <source media="(max-width: 768px)" srcset="<?php echo esc_url($imagem_celular['url']); ?>">
+                <?php endif; ?>
+                <img src="<?php echo esc_url($imagem_desktop['url']); ?>" alt="<?php echo esc_attr($imagem_desktop['alt']); ?>">
+              </picture>
+              <?php if ($legenda) : ?>
+                <figcaption class="legenda">
+                  <?php echo wp_kses_post($legenda); ?>
+                </figcaption>
+              <?php endif; ?>
+            </figure>
+
+            <?php if ($link) : ?>
+            </a>
+          <?php endif; ?>
         </div>
       <?php endwhile; ?>
     </div>
@@ -37,7 +53,7 @@ namespace Air_Light;
           nav: true,
           dots: true,
           autoplay: true,
-          autoplayTimeout: 2000,
+          autoplayTimeout: 3000,
           autoplayHoverPause: true
         });
       });

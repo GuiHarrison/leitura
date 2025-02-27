@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Bloco CTA 2/3
+ * Bloco CTA 3/3
  *
  * @package airclean
  */

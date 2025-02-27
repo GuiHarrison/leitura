@@ -19,7 +19,6 @@
   // Custom Gutenberg block styles
   @include meta.load-css('gutenberg/blocks/boxed');
   @include meta.load-css('gutenberg/blocks/button-file');
-  @include meta.load-css('gutenberg/blocks/hero');
 
   // Add here those ACF Gutenberg blocks you want to use inside article-content
   // @import 'gutenberg/blocks/your-new-acf-block';
@@ -34,4 +33,5 @@
   // ACF blocks
   @include meta.load-css('gutenberg/blocks/hero');
   @include meta.load-css('gutenberg/blocks/ctas');
+  @include meta.load-css('gutenberg/blocks/livro');
 }

@@ -24,9 +24,6 @@
 // Global features
 @use 'features/index' as *;
 
-// Views
-@use 'views/index' as *;
-
 // Gutenberg layout outside blocks
 @use 'gutenberg/layout/content' as *;
 
@@ -35,3 +32,6 @@
 
 // Gutenberg formatting
 @use 'gutenberg/formatting' as *;
+
+// Views
+@use 'views/index' as *;

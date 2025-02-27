@@ -1,4 +1,5 @@
-@use 'variables/index' as *;
+@use 'variables/breakpoints';
+@use 'variables/colors';
 
 .cta {
   display: flex;
@@ -31,7 +32,11 @@ img.cta-image {
 
 .cta-rodape {
   .cta-link {
-    grid-column: span 2;
+    grid-column: span 1;
+
+    @media (min-width: breakpoints.$width-max-article) {
+      grid-column: span 2;
+    }
   }
 }
 
@@ -41,7 +46,7 @@ img.cta-image {
 
 .revista-container {
   display: flex;
-  max-width: $container-mobile;
+  max-width: breakpoints.$container-mobile;
   max-height: 250px;
   background-color: var(--color-white);
   padding: 20px;

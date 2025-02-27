@@ -128,7 +128,7 @@
   margin-bottom: 0;
   overflow: visible;
 
-  input {
+  input:not([type="checkbox"]) {
     @media (max-width: breakpoints.$container-mobile) {
       width: 100%;
     }

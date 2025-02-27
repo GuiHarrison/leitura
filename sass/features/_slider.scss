@@ -59,10 +59,16 @@
   position: relative;
   min-height: 1px;
   float: left;
+  justify-content: center;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+
+  figcaption {
+    background-color: var(--color-white);
+    padding: 20px;
+  }
 }
 
 .owl-carousel .owl-item img {
