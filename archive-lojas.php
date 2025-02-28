@@ -182,7 +182,7 @@ $geoapify = $api_keys->get_key('geoapify');
 
     // Buscar dados das lojas
     function fetchTodasLojas(page = 1, TodasLojas = []) {
-      return fetch(`http://leitura.local/wp-json/wp/v2/lojas?per_page=100&page=${page}`)
+      return fetch(`https://seliganaleitura.com.br/wp-json/wp/v2/lojas?per_page=100&page=${page}`)
         .then(response => response.json())
         .then(data => {
           if (data.length > 0) {
