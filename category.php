@@ -107,6 +107,16 @@ get_header();
     <?php get_template_part('template-parts/blocks/cta-3-3'); ?>
   </aside>
 
+  <aside class="cta-rodape">
+    <?php
+    if (is_resenhas_category()) {
+      get_template_part('template-parts/blocks/form-seliga');
+    } else {
+      get_template_part('template-parts/blocks/cta-news');
+    }
+    ?>
+  </aside>
+
 </div>
 
 <?php get_footer();

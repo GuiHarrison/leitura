@@ -162,6 +162,24 @@ add_action('after_setup_theme', function () {
         'icon'           => 'tickets',
       ],
       [
+        'name'           => 'cta-news',
+        'title'          => 'CTA Newsletter',
+        'supports'       => [
+          'customClassName' => true,
+          'align'          => true,
+          'spacing'        => true,
+          'anchor'         => true,
+          'jsx'            => true,
+          'blockGap'       => true,
+          'dimensions'     => true,
+          'grid'           => [
+            'columnCount' => true,
+            'columnSpan'  => true
+          ]
+        ],
+        'icon'           => 'email',
+      ],
+      [
         'name'           => 'cta-pagina',
         'title'          => 'CTA Página interna',
         'supports'       => [
@@ -338,7 +356,7 @@ add_filter('excerpt_length', __NAMESPACE__ . '\tamanho_do_excerpt');
 /**
  * Suporte temporário para SVG
  */
-// Allow SVG
+/* // Allow SVG
 add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mimes) {
   global $wp_version;
 
@@ -371,7 +389,7 @@ function fix_svg()
         }
         </style>';
 }
-add_action('admin_head',  __NAMESPACE__ . '\fix_svg');
+add_action('admin_head',  __NAMESPACE__ . '\fix_svg'); */
 
 add_action('pre_get_posts', __NAMESPACE__ . '\ppp_categorias');
 

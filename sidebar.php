@@ -11,7 +11,11 @@
 namespace Air_Light;
 ?>
 
-<?php if (get_queried_object() && (get_queried_object()->slug === 'se-liga-na-leitura' || is_tax('category_generos', 'se-liga-na-leitura'))) : ?>
+<?php if (get_queried_object() && (
+  get_queried_object()->slug === 'se-liga-na-leitura' ||
+  is_tax('category_generos', 'se-liga-na-leitura') ||
+  is_tax('category_generos', get_queried_object()->slug)
+)) : ?>
   <div class="s-filtrar">
     <h4>→ Filtrar gêneros:</h4>
     <ul class="categories">
@@ -22,9 +26,11 @@ namespace Air_Light;
       ));
 
       if (!empty($generos) && !is_wp_error($generos)) {
+        $current_term = get_queried_object();
         echo '<li><a href="' . get_post_type_archive_link('post') . '" class="category">Todas</a></li>';
         foreach ($generos as $genero) {
-          echo '<li><a href="' . get_term_link($genero) . '" class="category">' . $genero->name . '</a></li>';
+          $current_class = ($current_term && $current_term->term_id === $genero->term_id) ? ' current' : '';
+          echo '<li><a href="' . get_term_link($genero) . '" class="category' . $current_class . '">' . $genero->name . '</a></li>';
         }
       }
       ?>

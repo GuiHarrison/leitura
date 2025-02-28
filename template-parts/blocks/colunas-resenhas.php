@@ -8,9 +8,11 @@
 
 namespace Air_Light;
 
+$categoria = get_queried_object_id();
 $ppp = get_field('ppp');
 $posts = get_posts(array(
-  'posts_per_page' => $ppp
+  'posts_per_page' => $ppp,
+  'category' => $categoria,
 ));
 
 if ($posts) {

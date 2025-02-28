@@ -168,7 +168,7 @@ get_header(); ?>
     ?>
   </aside>
 
-  <?php get_template_part('template-parts/blocks/form-seliga'); ?>
+  <?php get_template_part('template-parts/blocks/cta-news'); ?>
 
 </div>
 

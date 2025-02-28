@@ -31,6 +31,8 @@ img.cta-image {
 }
 
 .cta-rodape {
+  margin-top: 40px;
+
   .cta-link {
     grid-column: span 1;
 
@@ -48,6 +50,7 @@ img.cta-image {
   display: flex;
   max-width: breakpoints.$container-mobile;
   max-height: 240px;
+  min-height: 225px;
   background-color: var(--color-white);
   padding: 20px;
   gap: 20px;

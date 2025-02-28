@@ -257,3 +257,10 @@ input[type="checkbox"]+label:focus {
 .frm_submit.frm_flex {
   justify-content: flex-end;
 }
+
+.ss-main .ss-values .ss-value .ss-value-text,
+.ss-main .ss-values .ss-value .ss-value-delete svg path,
+.ss-main .ss-values .ss-value .ss-value-text {
+  color: var(--color-white);
+  stroke: var(--color-white);
+}
