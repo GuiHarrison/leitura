@@ -88,6 +88,7 @@ add_action('after_setup_theme', function () {
       'airdev.test',
       'airwptheme.com',
       'localhost',
+      'seliganaleitura.com.br',
     ],
 
     /**
