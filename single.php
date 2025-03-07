@@ -15,11 +15,11 @@ namespace Air_Light;
 
 the_post();
 get_header();
-$thumb = get_the_post_thumbnail(get_the_ID(), 'post', array('loading' => 'lazy', 'fetchpriority' => 'low'));
-$classe_livro = '';
 $is_resenha = get_post_type() === 'queridinhos' || in_array(403, wp_get_post_categories(get_the_ID()));
 $classe_livro = $is_resenha ? ' livro-thumbnail' : '';
-$cor = get_field('fundo_do_livro', get_the_ID()) ? get_field('fundo_do_livro', get_the_ID()) : '#e6e6e6';
+$cor = get_field('fundo_do_livro', get_the_ID()) ? get_field('fundo_do_livro', get_the_ID()) : '#f7f7f7';
+$thumbsize = $is_resenha ? 'resenha-p' : 'post';
+$thumb = get_the_post_thumbnail(get_the_ID(), $thumbsize, array('loading' => 'lazy', 'fetchpriority' => 'low'));
 ?>
 
 <main class="site-main">

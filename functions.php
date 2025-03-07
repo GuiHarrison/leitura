@@ -104,25 +104,27 @@ add_action('after_setup_theme', function () {
      * Taxonomies
      *
      * See the instructions:
-     * https://github.com/digitoimistodude/leitura#custom-taxonomies
+     * https://github.com/digitoimistodude/air-light#custom-taxonomies
      */
     'taxonomies' => [
       // 'Your_Taxonomy' => [ 'post', 'page' ],
       'Category_Cidade_Estado' => ['lojas', 'eventos'],
       'Category_Generos' => ['post', 'queridinhos'],
+      'Category_Vagas' => ['lojas', 'sistema-rh'],
     ],
 
     /**
      * Post types
      *
      * See the instructions:
-     * https://github.com/digitoimistodude/leitura#custom-post-types
+     * https://github.com/digitoimistodude/air-light#custom-post-types
      */
     'post_types' => [
       'lojas',
-      'eventos',
+      // 'eventos',
       'revista',
       'queridinhos',
+      'vagas',
     ],
 
     /**
