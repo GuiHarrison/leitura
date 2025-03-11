@@ -28,15 +28,7 @@ if ($revistas) {
       '<a class="button com-seta-direita" href="' . esc_url($pdf) . '" target="_blank">Acessar revista</a>' .
       '</div>' .
       '<div class="thumbnail">' .
-      get_the_post_thumbnail(
-        get_the_ID(),
-        'revista',
-        [
-          'class' => 'img-thumbnail',
-          'loading' => 'lazy',
-          'fetchpriority' => 'low'
-        ]
-      ) .
+      get_the_post_thumbnail(get_the_ID(), 'revista') .
       '</div>' .
       '</div>';
   }

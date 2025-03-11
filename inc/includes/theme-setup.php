@@ -173,7 +173,7 @@ function acf_maps_key()
  */
 function tamanhos_de_imagens()
 {
-  add_image_size('post', 700, 700, true);
+  add_image_size('post', 800, 640, true);
   add_image_size('destaque-home', 346, 346, true);
   add_image_size('destaque-blog', 532, 532, true);
   add_image_size('revista', 250, 356, true);
@@ -223,4 +223,51 @@ function excluir_lojas_da_busca($query)
     $query->set('post_type', array_values($post_types));
   }
   return $query;
+}
+
+/**
+ * Popula os campos de loja do formulário Formidable
+ */
+function popula_campos_com_lojas($field)
+{
+  $loja_field_ids = [136, 153, 154]; // field_loja1, field_loja2, field_loja3
+
+  if (in_array($field['id'], $loja_field_ids)) {
+    $lojas = get_transient('all_lojas_list');
+
+    if (false === $lojas) {
+      $args = [
+        'post_type' => 'lojas',
+        'posts_per_page' => -1,
+        'orderby' => 'title',
+        'order' => 'ASC',
+      ];
+
+      $lojas_query = new \WP_Query($args);
+      $lojas = [];
+
+      if ($lojas_query->have_posts()) {
+        while ($lojas_query->have_posts()) {
+          $lojas_query->the_post();
+          $lojas[get_the_ID()] = get_the_title();
+        }
+      }
+      wp_reset_postdata();
+
+      set_transient('all_lojas_list', $lojas, 12 * HOUR_IN_SECONDS);
+    }
+
+    // Formatar opções no formato que o Formidable espera
+    $field['options'] = [''] + $lojas; // Manter opção vazia e adicionar lojas
+  }
+
+  return $field;
+}
+
+// Limpa o cache quando uma loja é atualizada
+function clear_lojas_cache($post_id, $post)
+{
+  if ($post->post_type === 'lojas') {
+    delete_transient('all_lojas_list');
+  }
 }

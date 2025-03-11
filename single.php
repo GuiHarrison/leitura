@@ -16,10 +16,10 @@ namespace Air_Light;
 the_post();
 get_header();
 $is_resenha = get_post_type() === 'queridinhos' || in_array(403, wp_get_post_categories(get_the_ID()));
-$classe_livro = $is_resenha ? ' livro-thumbnail' : '';
+// $classe_livro = $is_resenha ? ' livro-thumbnail' : '';
 $cor = get_field('fundo_do_livro', get_the_ID()) ? get_field('fundo_do_livro', get_the_ID()) : '#f7f7f7';
-$thumbsize = $is_resenha ? 'resenha-p' : 'post';
-$thumb = get_the_post_thumbnail(get_the_ID(), $thumbsize, array('loading' => 'lazy', 'fetchpriority' => 'low'));
+// $thumbsize = $is_resenha ? 'resenha-p' : 'post';
+$thumb = get_the_post_thumbnail(get_the_ID(), 'post', array('loading' => 'lazy', 'fetchpriority' => 'low'));
 ?>
 
 <main class="site-main">
@@ -53,9 +53,11 @@ $thumb = get_the_post_thumbnail(get_the_ID(), $thumbsize, array('loading' => 'la
         <p><?php echo esc_html(get_the_author()); ?></p>
       </div>
 
-      <div class="thumbnail<?php echo esc_attr($classe_livro); ?>" style="background-color: <?php echo $cor; ?>">
-        <?php echo $thumb; ?>
-      </div>
+      <?php if (get_field('thumb_no_post', get_the_ID())) : ?>
+        <div class="thumbnail" style="background-color: <?php echo $cor; ?>">
+          <?php echo $thumb; ?>
+        </div>
+      <?php endif; ?>
 
       <?php the_content();
 

@@ -72,11 +72,10 @@ if ($destaque_blog) {
       ?>
 
         <article id="post-<?php the_ID(); ?>" <?php post_class('block destaque-blog item'); ?>>
-          <a href="<?php echo esc_url(get_the_permalink()); ?>" <?php echo $is_resenha ? 'class="destaque thumbnail livro-thumbnail" style="background-color: ' . $cor . ';"' : 'class="destaque thumbnail"'; ?>>
+          <a href="<?php echo esc_url(get_the_permalink()); ?>" class="destaque thumbnail">
             <?php
             if (has_post_thumbnail()) :
-              $tamanho = $is_resenha ? 'resenha-g' : 'destaque-blog';
-              the_post_thumbnail($tamanho);
+              the_post_thumbnail('destaque-blog', array('loading' => 'lazy', 'fetchpriority' => 'low'));
             endif;
             ?>
           </a>

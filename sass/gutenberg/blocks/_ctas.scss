@@ -71,12 +71,13 @@ img.cta-image {
 
   .thumbnail {
     flex-basis: fit-content;
-    height: 100%;
+    flex-shrink: 1;
     display: flex;
     margin: 0;
 
-    .img-thumbnail {
+    img {
       width: auto;
+      height: 100%;
     }
   }
 }

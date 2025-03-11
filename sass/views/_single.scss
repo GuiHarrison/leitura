@@ -107,6 +107,13 @@
       color: var(--color-white);
     }
   }
+
+  figure {
+    img {
+      display: block;
+      margin: inherit;
+    }
+  }
 }
 
 .block-single {

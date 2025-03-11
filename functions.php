@@ -20,12 +20,10 @@ namespace Air_Light;
 /**
  * The current version of the theme.
  */
-define('AIR_LIGHT_VERSION', '0.1.0');
+define('AIR_LIGHT_VERSION', '1.0.1');
 
 // We need to have some defaults as comments or empties so let's allow this:
 // phpcs:disable Squiz.Commenting.InlineComment.SpacingBefore, WordPress.Arrays.ArrayDeclarationSpacing.SpaceInEmptyArray
-
-error_log('Iniciando o functions.php');
 
 /**
  * Theme settings
@@ -359,7 +357,8 @@ add_filter('excerpt_length', __NAMESPACE__ . '\tamanho_do_excerpt');
 /**
  * Suporte temporário para SVG
  */
-/* // Allow SVG
+/*
+// Allow SVG
 add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mimes) {
   global $wp_version;
 
@@ -392,8 +391,5 @@ function fix_svg()
         }
         </style>';
 }
-add_action('admin_head',  __NAMESPACE__ . '\fix_svg'); */
-
-add_action('pre_get_posts', __NAMESPACE__ . '\ppp_categorias');
-
-add_filter('pre_get_posts', __NAMESPACE__ . '\excluir_lojas_da_busca');
+add_action('admin_head',  __NAMESPACE__ . '\fix_svg');
+*/

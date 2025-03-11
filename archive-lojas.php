@@ -45,44 +45,6 @@ $geoapify = $api_keys->get_key('geoapify');
   // import seCelular from './navigation/se-celular';
   seCelular();
 
-  estiloDoMapa = [{
-    "featureType": "all",
-    "elementType": "labels.text",
-    "stylers": [{
-      "color": "#878787"
-    }]
-  }, {
-    "featureType": "all",
-    "elementType": "labels.text.stroke",
-    "stylers": [{
-      "visibility": "off"
-    }]
-  }, {
-    "featureType": "landscape",
-    "elementType": "all",
-    "stylers": [{
-      "color": "#f9f5ed"
-    }]
-  }, {
-    "featureType": "road.highway",
-    "elementType": "all",
-    "stylers": [{
-      "color": "#f5f5f5"
-    }]
-  }, {
-    "featureType": "road.highway",
-    "elementType": "geometry.stroke",
-    "stylers": [{
-      "color": "#c9c9c9"
-    }]
-  }, {
-    "featureType": "water",
-    "elementType": "all",
-    "stylers": [{
-      "color": "#aee0f4"
-    }]
-  }]
-
   var map; // Declare a variável map no escopo global
   var markers = {};
   var requestOptions = {
@@ -169,12 +131,11 @@ $geoapify = $api_keys->get_key('geoapify');
         lat: window.latDetec,
         lng: window.longDetec
       },
-      styles: estiloDoMapa,
       streetViewControl: false,
       mapTypeControl: false,
       mapfullscreenControl: false,
       fullscreenControl: false,
-      mapId: 'YOUR_MAP_ID'
+      mapId: '8e08a18cdd960c02'
     });
 
     var geocoder = new google.maps.Geocoder();
@@ -194,7 +155,7 @@ $geoapify = $api_keys->get_key('geoapify');
         });
     }
 
-    // No futuro, preencher primeiro as lojas no estado identificado pelo campo `response.satte.name` do geoapify, depois o restante.
+    // No futuro, preencher primeiro as lojas no estado identificado pelo campo `response.state.name` do geoapify, depois o restante.
 
     fetchTodasLojas().then(data => {
       data.sort((a, b) => b.acf.mapa_loja.lat - a.acf.mapa_loja.lat);

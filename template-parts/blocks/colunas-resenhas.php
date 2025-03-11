@@ -32,6 +32,10 @@ if ($posts) {
       ?>
 
         <article id="post-<?php the_ID(); ?>" class="resenha-item">
+          <a href="<?php echo esc_url(get_the_permalink()); ?>" class="thumbnail">
+            <?php the_post_thumbnail('post', array('loading' => 'lazy', 'fetchpriority' => 'low')); ?>
+          </a>
+
           <div class="resenha-titulo">
             <h3 class="post-title">
               <a class="sublinhado-bonito" href="<?php echo esc_url(get_the_permalink()); ?>">
@@ -45,21 +49,17 @@ if ($posts) {
             </h4>
           </div>
 
-          <a href="<?php echo esc_url(get_the_permalink()); ?>" class="livro-thumbnail">
-            <?php the_post_thumbnail('resenha-p', array('loading' => 'lazy', 'fetchpriority' => 'low')); ?>
-          </a>
-
           <div class="autor-info">
             <img class="aspas" src="<?php echo get_theme_file_uri('/img/aspas.svg'); ?>">
             <img src="<?php echo esc_url($foto); ?>" alt="Autor: <?php echo esc_html(get_the_author()); ?>" class="autor-foto">
-            <h5 class="autor-nome"><a href="<?php echo esc_url(get_author_posts_url($usuário)); ?>"><?php echo esc_html(get_the_author()); ?></a></h5>
+            <h5 class="autor-nome"><?php echo esc_html(get_the_author()); ?></h5>
           </div>
 
-          <div class="resenha-citacao">
+          <a href="<?php echo esc_url(get_the_permalink()); ?>" class="resenha-citacao sublinhado-bonito">
             <span class="aspas">“</span>
             <?php echo esc_html($citacao ? $citacao : wp_trim_words(get_the_excerpt(), 20, '[…]')); ?>
             <span class="aspas">”</span>
-          </div>
+          </a>
 
           <div class="resenha-data">
             <?php echo get_template_part('template-parts/snippets/data-publicacao'); ?>

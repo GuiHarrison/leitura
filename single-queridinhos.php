@@ -15,7 +15,7 @@ namespace Air_Light;
 
 the_post();
 get_header();
-$thumb = get_the_post_thumbnail(get_the_ID(), 'post', array('loading' => 'lazy', 'fetchpriority' => 'low'));
+$thumb = get_the_post_thumbnail(get_the_ID(), 'resenha-g', array('loading' => 'lazy', 'fetchpriority' => 'low'));
 $cor = get_field('fundo_do_livro', get_the_ID()) ? get_field('fundo_do_livro', get_the_ID()) : '#e6e6e6';
 ?>
 

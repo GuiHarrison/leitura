@@ -174,24 +174,33 @@
     right: 50px;
   }
 
-  .container {
-    justify-content: end;
-    width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  @media (min-width: breakpoints.$container-ipad-landscape) {
+  @media (min-width: breakpoints.$width-max-mobile) {
     position: relative;
     top: 0;
     right: 0;
     padding: 34px 0;
     background-color: var(--azul-leitura);
+    transition: position 0.3s ease;
+
+    &.is-sticky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      width: 100%;
+    }
 
     .container {
       padding: 0;
       justify-content: center;
     }
+  }
+
+  .container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
