@@ -62,11 +62,11 @@ for ($i = 1; $i <= 2; $i++) {
           setup_postdata($post);
           $ordem = get_field('queridinho_n', get_the_ID());
           $comprar = get_field('link_na_loja');
-          $usuário = get_the_author_meta('ID');
-          $loja = get_field('loja_relacionada', 'user_' . $usuário);
-          $id_loja = $loja->ID;
-          $endereço = get_field('mapa_loja', $id_loja);
-          $estado = endereco_para_estado_curto($endereço['address']);
+          // $usuário = get_the_author_meta('ID');
+          // $loja = get_field('loja_relacionada', 'user_' . $usuário);
+          // $id_loja = $loja->ID;
+          // $endereço = get_field('mapa_loja', $id_loja);
+          // $estado = endereco_para_estado_curto($endereço['address']);
         ?>
 
           <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -82,12 +82,14 @@ for ($i = 1; $i <= 2; $i++) {
                     <?php the_title(); ?>
                   </a>
                 </h3>
-                <div class="q-c-d-colaborador">
+                <!-- <div class="q-c-d-colaborador">
                   <p class="q-pessoa"><?php echo esc_html(get_the_author()); ?></p>
-                  <?php if ($loja) {
-                    echo '<p class="q-loja">' . esc_html($loja->post_title) . ' / ' . esc_html($estado) . '</p>';
-                  } ?>
-                </div>
+                  <?php
+                  // if ($loja) {
+                  //   echo '<p class="q-loja">' . esc_html($loja->post_title) . ' / ' . esc_html($estado) . '</p>';
+                  // }
+                  ?>
+                </div> -->
               </div>
 
             </div>

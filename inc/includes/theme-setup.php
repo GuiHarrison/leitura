@@ -230,10 +230,10 @@ function excluir_lojas_da_busca($query)
  */
 function popula_campos_com_lojas($field)
 {
-  $loja_field_ids = [136, 153, 154]; // field_loja1, field_loja2, field_loja3
+  $loja_field_ids = [136, 153, 154];
 
   if (in_array($field['id'], $loja_field_ids)) {
-    $lojas = get_transient('all_lojas_list');
+    $lojas = get_transient('lista_de_lojas');
 
     if (false === $lojas) {
       $args = [
@@ -244,21 +244,25 @@ function popula_campos_com_lojas($field)
       ];
 
       $lojas_query = new \WP_Query($args);
-      $lojas = [];
+      $field['options'] = [
+        ['label' => '', 'value' => ''] // Opção vazia
+      ];
 
       if ($lojas_query->have_posts()) {
         while ($lojas_query->have_posts()) {
           $lojas_query->the_post();
-          $lojas[get_the_ID()] = get_the_title();
+          $field['options'][] = [
+            'label' => get_the_title(),
+            'value' => get_the_ID()
+          ];
         }
       }
       wp_reset_postdata();
 
-      set_transient('all_lojas_list', $lojas, 12 * HOUR_IN_SECONDS);
+      set_transient('lista_de_lojas', $field['options'], 12 * HOUR_IN_SECONDS);
+    } else {
+      $field['options'] = $lojas;
     }
-
-    // Formatar opções no formato que o Formidable espera
-    $field['options'] = [''] + $lojas; // Manter opção vazia e adicionar lojas
   }
 
   return $field;
@@ -268,6 +272,6 @@ function popula_campos_com_lojas($field)
 function clear_lojas_cache($post_id, $post)
 {
   if ($post->post_type === 'lojas') {
-    delete_transient('all_lojas_list');
+    delete_transient('lista_de_lojas'); // Atualizando o nome do transiente
   }
 }

@@ -28,7 +28,7 @@ if ($posts) {
         $usuário = get_the_author_meta('ID');
         $foto = get_field('foto_usuario', 'user_' . $usuário);
         $foto = wp_get_attachment_image_src($foto, 'foto-perfil');
-        $foto = $foto[0];
+        $foto = $foto ? $foto[0] : '';
       ?>
 
         <article id="post-<?php the_ID(); ?>" class="resenha-item">
