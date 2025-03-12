@@ -283,7 +283,7 @@ function validate_cpf_field($errors, $field, $value)
 
     global $wpdb;
     $cpf_exists = $wpdb->get_var($wpdb->prepare(
-      "SELECT COUNT(*) FROM wp_postmeta WHERE meta_key = 'cpf_rh' and meta_value = %s",
+      "SELECT cpf FROM wp_cpf WHERE CPF = %s limit 1",
       $value
     ));
 

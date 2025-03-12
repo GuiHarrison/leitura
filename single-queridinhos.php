@@ -72,11 +72,6 @@ $cor = get_field('fundo_do_livro', get_the_ID()) ? get_field('fundo_do_livro', g
             <?php if ($prev_post) :
               $ordem = get_field('queridinho_n', $prev_post->ID);
               $comprar = get_field('link_na_loja', $prev_post->ID);
-              $usuario = get_post_field('post_author', $prev_post->ID);
-              $loja = get_field('loja_relacionada', 'user_' . $usuario);
-              $id_loja = $loja->ID;
-              $endereco = get_field('mapa_loja', $id_loja);
-              $estado = endereco_para_estado_curto($endereco['address']);
             ?>
               <article class="nav-previous queridinhos">
                 <div class="q-colunas">
@@ -91,12 +86,6 @@ $cor = get_field('fundo_do_livro', get_the_ID()) ? get_field('fundo_do_livro', g
                         <?php echo get_the_title($prev_post->ID); ?>
                       </a>
                     </h3>
-                    <div class="q-c-d-colaborador">
-                      <p class="q-pessoa"><?php echo get_the_author_meta('display_name', $usuario); ?></p>
-                      <?php if ($loja) {
-                        echo '<p class="q-loja">' . esc_html($loja->post_title) . ' / ' . esc_html($estado) . '</p>';
-                      } ?>
-                    </div>
                   </div>
                 </div>
 
@@ -110,11 +99,6 @@ $cor = get_field('fundo_do_livro', get_the_ID()) ? get_field('fundo_do_livro', g
             if ($next_post) :
               $ordem = get_field('queridinho_n', $next_post->ID);
               $comprar = get_field('link_na_loja', $next_post->ID);
-              $usuario = get_post_field('post_author', $next_post->ID);
-              $loja = get_field('loja_relacionada', 'user_' . $usuario);
-              $id_loja = $loja->ID;
-              $endereco = get_field('mapa_loja', $id_loja);
-              $estado = endereco_para_estado_curto($endereco['address']);
             ?>
               <article class="nav-next queridinhos">
                 <div class="q-colunas">
@@ -129,12 +113,6 @@ $cor = get_field('fundo_do_livro', get_the_ID()) ? get_field('fundo_do_livro', g
                         <?php echo get_the_title($next_post->ID); ?>
                       </a>
                     </h3>
-                    <div class="q-c-d-colaborador">
-                      <p class="q-pessoa"><?php echo get_the_author_meta('display_name', $usuario); ?></p>
-                      <?php if ($loja) {
-                        echo '<p class="q-loja">' . esc_html($loja->post_title) . ' / ' . esc_html($estado) . '</p>';
-                      } ?>
-                    </div>
                   </div>
                 </div>
 
