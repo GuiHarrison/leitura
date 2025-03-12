@@ -206,7 +206,7 @@ function tamanho_do_excerpt($tamanho)
  */
 function ppp_categorias($query)
 {
-  if (!is_admin() && $query->is_category() && $query->is_main_query()) {
+  if (!is_admin() && !$query->is_category(403) && $query->is_category() && $query->is_main_query()) {
     $query->set('posts_per_page', 8);
   }
 }
@@ -274,4 +274,22 @@ function clear_lojas_cache($post_id, $post)
   if ($post->post_type === 'lojas') {
     delete_transient('lista_de_lojas'); // Atualizando o nome do transiente
   }
+}
+
+// Depurando a validação do CPF
+function validate_cpf_field($errors, $field, $value)
+{
+  if ($field->id == 92) { // ID do campo CPF
+
+    global $wpdb;
+    $cpf_exists = $wpdb->get_var($wpdb->prepare(
+      "SELECT COUNT(*) FROM wp_postmeta WHERE meta_key = 'cpf_rh' and meta_value = %s",
+      $value
+    ));
+
+    if ($cpf_exists) {
+      $errors['field' . $field->id] = 'Você já possui um cadastro no banco de dados da Leitura. Conforme a nossa demanda entraremos em contato para convidá-lo para um processo seletivo.';
+    }
+  }
+  return $errors;
 }

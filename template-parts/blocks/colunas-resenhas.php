@@ -1,28 +1,16 @@
 <?php
 
-/**
- * Bloco para Colunas e Resenhas
- *
- * @package airclean
- */
-
 namespace Air_Light;
 
-$categoria = get_queried_object_id();
-$ppp = get_field('ppp');
-$posts = get_posts(array(
-  'posts_per_page' => $ppp,
-  'category' => $categoria,
-));
-
-if ($posts) {
-  global $post;
+if (have_posts()) :
 ?>
   <div class="resenhas-container">
     <div class="grid">
       <?php get_template_part('template-parts/blocks/slider-destaques'); ?>
-      <?php foreach ($posts as $post) {
-        setup_postdata($post);
+
+      <?php
+      while (have_posts()) :
+        the_post();
         $autoria = get_field('autoria', get_the_id());
         $citacao = get_field('citacao', get_the_id());
         $usuário = get_the_author_meta('ID');
@@ -30,7 +18,6 @@ if ($posts) {
         $foto = wp_get_attachment_image_src($foto, 'foto-perfil');
         $foto = $foto ? $foto[0] : '';
       ?>
-
         <article id="post-<?php the_ID(); ?>" class="resenha-item">
           <a href="<?php echo esc_url(get_the_permalink()); ?>" class="thumbnail">
             <?php the_post_thumbnail('post', array('loading' => 'lazy', 'fetchpriority' => 'low')); ?>
@@ -65,9 +52,16 @@ if ($posts) {
             <?php echo get_template_part('template-parts/snippets/data-publicacao'); ?>
           </div>
         </article>
-
-      <?php } ?>
+      <?php endwhile; ?>
     </div>
+
+    <?php
+    the_posts_pagination(array(
+      'prev_text' => __('Anterior'),
+      'next_text' => __('Próximo'),
+      'mid_size'  => 1,
+      'end_size'  => 1
+    ));
+    ?>
   </div>
-<?php wp_reset_postdata();
-} ?>
+<?php endif; ?>
