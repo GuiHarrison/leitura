@@ -91,10 +91,11 @@ $location = [
   }
 </script>
 
-<main class="site-main container">
-  <section class="detalhes-da-vaga">
+<main class="site-main container main-vagas">
+  <h2>→ Você está se inscrevendo na vaga</h2>
+  <section class="grid detalhes-da-vaga">
     <div class="vaga-info">
-      <h2><?php echo esc_html($current_term->name); ?></h2>
+      <h2>→ <?php echo esc_html($current_term->name); ?></h2>
 
       <div class="vaga-detalhes">
         <?php
@@ -126,6 +127,9 @@ $location = [
       <div id="mapTC" style="height: 400px"></div>
 
       <div class="ll-detalhes">
+        <?php if ($location['nome']): ?>
+          <h4 class="ll-nome"><?php echo esc_html($location['nome']); ?></h4>
+        <?php endif; ?>
         <?php if ($location['email']): ?>
           <p class="ll-email"><span>Email:</span> <?php echo esc_html($location['email']); ?></p>
         <?php endif; ?>
@@ -194,6 +198,7 @@ $location = [
       if (cargoNome && cargoSelect) {
         // Procurar a opção que corresponde ao cargo (case insensitive)
         Array.from(cargoSelect.options).forEach(option => {
+          console.log(option.text.toLowerCase(), ' <> ', decodeURIComponent(cargoNome).toLowerCase());
           if (option.text.toLowerCase() === decodeURIComponent(cargoNome).toLowerCase()) {
             cargoSelect.value = option.value;
 
