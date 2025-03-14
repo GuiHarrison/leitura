@@ -218,9 +218,7 @@ function ppp_categorias($query)
 function excluir_lojas_da_busca($query)
 {
   if (!is_admin() && $query->is_main_query() && $query->is_search()) {
-    $post_types = get_post_types(array('public' => true), 'names');
-    unset($post_types['lojas']); // Remove 'lojas' do array de post types
-    $query->set('post_type', array_values($post_types));
+    $query->set('post_type', array_diff(get_post_types(['public' => true]), ['lojas', 'vagas']));
   }
   return $query;
 }

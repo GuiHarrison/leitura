@@ -55,14 +55,6 @@ if ($posts) {
                   <?php the_title(); ?>
                 </a>
               </h3>
-              <!-- <div class="q-c-d-colaborador">
-                <p class="q-pessoa"><?php echo esc_html(get_the_author()); ?></p>
-                <?php
-                // if ($loja) {
-                //   echo '<p class="q-loja">' . esc_html($loja->post_title) . ' / ' . esc_html($estado) . '</p>';
-                // }
-                ?>
-              </div> -->
             </div>
 
           </div>
@@ -85,11 +77,15 @@ if ($posts) {
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       jQuery('#slider-queridinhos').owlCarousel({
+        responsiveBaseElement: '#slider-queridinhos',
         responsive: {
           0: {
             items: 1
           },
           600: {
+            items: 2
+          },
+          1000: {
             items: 3
           }
         },
@@ -97,7 +93,7 @@ if ($posts) {
         margin: 20,
         nav: true,
         dots: true,
-        autoplay: false
+        autoplay: false,
       });
     });
   </script>

@@ -10,45 +10,23 @@
 namespace Air_Light;
 
 get_header();
-?>
 
-<main class="site-main">
-  <section class="block block-single">
-    <article class="article-content queridinhos revista">
+echo '
+<main class="site-main container">.
+  <section class="block block-single">.
+    <article class="article-content">';
 
-      <?php
-      $posts = get_posts(array(
-        'post_type' => 'revista',
-        'posts_per_page' => 1,
-      ));
+get_template_part('template-parts/blocks/revista');
 
-      if ($posts) {
-        global $post;
-      ?>
+echo '
+    </article>.
+  </section>';
 
-        <?php
-        foreach ($posts as $post) {
-          setup_postdata($post);
-          $ordem = get_field('queridinho_n', get_the_ID());
-          $comprar = get_field('link_na_loja');
-        ?>
+get_template_part('template-parts/blocks/form-seliga');
 
-          <h1><?php the_title(); ?></h1>
-          <a href="<?php echo esc_url(get_the_permalink()); ?>" class="thumbnail">
-            <?php the_post_thumbnail('post'); ?>
-          </a>
-          <a href="<?php echo esc_url(get_the_permalink()); ?>" class="button ler">Acessar revista</a>
+echo '
+</main>.
+';
 
-      <?php
-        }
-        wp_reset_postdata();
-      }
-      ?>
 
-      <?php get_template_part('template-parts/blocks/form-seliga'); ?>
-
-    </article>
-  </section>
-</main>
-
-<?php get_footer(); ?>
+get_footer();

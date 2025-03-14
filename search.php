@@ -127,7 +127,7 @@ get_header(); ?>
   if (! empty($_GET['s']) && ! have_posts()) : ?>
     <section class="block block-search-results">
       <div class="container">
-        <h2><?php echo esc_html('No results found for your search'); ?>.</h2>
+        <h2><?php echo esc_html('Nenhum conteúdo encontrado com esses termos de busca.'); ?>.</h2>
       </div>
     </section>
   <?php endif; ?>

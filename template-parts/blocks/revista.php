@@ -27,7 +27,7 @@ if ($revistas) {
       '<h2 class="post-title"><a href="' . esc_url($pdf) . '">Explore as ofertas de ' . esc_html($first_word) . '</a></h2>' .
       '<a class="button com-seta-direita" href="' . esc_url($pdf) . '" target="_blank">Acessar revista</a>' .
       '</div>' .
-      '<div class="thumbnail">' .
+      '<div class="revista-thumbnail">' .
       get_the_post_thumbnail(get_the_ID(), 'revista') .
       '</div>' .
       '</div>';

@@ -291,20 +291,7 @@ add_action('after_setup_theme', function () {
       ],
       'page' => [
         'all',
-        // 'all-acf-blocks',
       ],
-      // 'page' => [
-      //   'all-acf-blocks',
-      //   'core/paragraph',
-      // ],
-      // 'post-type' => [
-      //   'acf/content-image',
-      //   'core/paragraph',
-      // ],
-      // 'example' => [
-      //   'all-core-blocks',
-      //   'acf/content-image',
-      // ],
     ],
 
     // If you want to use classic editor somewhere, define it here
@@ -353,43 +340,3 @@ add_action('after_setup_theme', __NAMESPACE__ . '\tamanhos_de_imagens');
  * Chamando o tamanho do excerpt
  */
 add_filter('excerpt_length', __NAMESPACE__ . '\tamanho_do_excerpt');
-
-/**
- * Suporte temporário para SVG
- */
-/*
-// Allow SVG
-add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mimes) {
-  global $wp_version;
-
-  if ('4.7.1' !== $wp_version) {
-    return $data;
-  }
-
-  $filetype = wp_check_filetype($filename, $mimes);
-
-  return [
-    'ext'             => $filetype['ext'],
-    'type'            => $filetype['type'],
-    'proper_filename' => $data['proper_filename'],
-  ];
-}, 10, 4);
-
-function cc_mime_types($mimes)
-{
-  $mimes['svg'] = 'image/svg+xml';
-  return $mimes;
-}
-add_filter('upload_mimes',  __NAMESPACE__ . '\cc_mime_types');
-
-function fix_svg()
-{
-  echo '<style type="text/css">
-        .attachment-266x266, .thumbnail img {
-             width: 100% !important;
-             height: auto !important;
-        }
-        </style>';
-}
-add_action('admin_head',  __NAMESPACE__ . '\fix_svg');
-*/
