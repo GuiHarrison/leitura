@@ -94,4 +94,4 @@ add_action('save_post', __NAMESPACE__ . '\leva_CPF', 10, 2);
 /**
  * Apenas usuários logados
  */
-add_filter('wp_nav_menu_items', 'filtrar_itens_menu', 10, 2);
+add_filter('wp_nav_menu_items', __NAMESPACE__ . '\filtrar_itens_menu', 10, 2);

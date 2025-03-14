@@ -322,6 +322,7 @@ function leva_CPF($post_id)
 function filtrar_itens_menu($items, $args)
 {
   if (!is_user_logged_in()) {
+    // Remove itens com uma classe específica
     $items = preg_replace('/<li class="[^"]*apenas-logado[^"]*".*?<\/li>/s', '', $items);
   }
   return $items;
