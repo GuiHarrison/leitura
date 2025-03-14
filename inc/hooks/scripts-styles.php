@@ -36,6 +36,57 @@ function enqueue_theme_scripts(): void
 
   // Enqueue jquery and front-end.js
   wp_enqueue_script('jquery-core');
+
+  // Enqueue DataTables CSS and JS only on vagas archive
+  if (is_post_type_archive('vagas') || is_singular('vagas')) {
+    // CSS files first
+    wp_enqueue_style(
+      'datatables-css',
+      get_theme_file_uri('css/jquery.dataTables.css'),
+      [],
+      filemtime(get_theme_file_path('css/jquery.dataTables.css'))
+    );
+
+    wp_enqueue_style(
+      'rh-css',
+      get_theme_file_uri('css/rh.css'),
+      [],
+      filemtime(get_theme_file_path('css/rh.css'))
+    );
+
+    // 1. Moment.js primeiro
+    wp_enqueue_script(
+      'moment',
+      'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js',
+      ['jquery'],
+      '2.8.4'
+    );
+
+    // 2. DataTables principal
+    wp_enqueue_script(
+      'datatables-js',
+      get_theme_file_uri('js/src/modules/jquery.dataTables.js'),
+      ['jquery', 'moment'],
+      filemtime(get_theme_file_path('js/src/modules/jquery.dataTables.js'))
+    );
+
+    // 3. DateTime-moment plugin por último
+    wp_enqueue_script(
+      'datatables-datetime-moment',
+      'https://cdn.datatables.net/plug-ins/1.10.12/sorting/datetime-moment.js',
+      ['jquery', 'moment', 'datatables-js'],
+      '1.10.12'
+    );
+
+    // Inicialização da tabela RH
+    wp_enqueue_script(
+      'rh-table-js',
+      get_theme_file_uri('js/src/modules/rh-table.js'),
+      ['jquery', 'moment', 'datatables-js', 'datatables-datetime-moment'],
+      filemtime(get_theme_file_path('js/src/modules/rh-table.js'))
+    );
+  }
+
   wp_enqueue_script(
     'scripts',
     get_theme_file_uri(get_asset_file('front-end.js')),

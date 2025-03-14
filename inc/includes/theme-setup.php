@@ -283,7 +283,7 @@ function validate_cpf_field($errors, $field, $value)
 
     global $wpdb;
     $cpf_exists = $wpdb->get_var($wpdb->prepare(
-      "SELECT COUNT(*) FROM wp_postmeta WHERE meta_key = 'cpf_rh' and meta_value = %s",
+      "SELECT cpf FROM wp_cpf WHERE CPF = %s limit 1",
       $value
     ));
 
@@ -292,4 +292,28 @@ function validate_cpf_field($errors, $field, $value)
     }
   }
   return $errors;
+}
+
+
+/**
+ * Colocando CPFs na tabela de checagem
+ */
+
+function leva_CPF($post_id)
+{
+  if (get_post_type($post_id) == 'vagas') {
+    global $wpdb;
+
+    // Trunca a tabela wp_cpf
+    $wpdb->query("TRUNCATE TABLE {$wpdb->prefix}wp_cpf");
+
+    // Insere os dados na tabela wp_cpf
+    $wpdb->query("
+          INSERT INTO {$wpdb->prefix}cpf (post_id, CPF)
+          SELECT pm.post_id, pm.meta_value
+          FROM {$wpdb->prefix}postmeta pm
+          WHERE pm.meta_key = 'cpf_rh'
+          ON DUPLICATE KEY UPDATE CPF = VALUES(CPF)
+      ");
+  }
 }

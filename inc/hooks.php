@@ -85,3 +85,8 @@ add_filter('pre_get_posts', __NAMESPACE__ . '\excluir_lojas_da_busca');
  * Validação de CPF no formulário
  */
 add_action('frm_validate_field_entry', __NAMESPACE__ . '\validate_cpf_field', 10, 4);
+
+/**
+ * Insere o CPF do candidato
+ */
+add_action('save_post', __NAMESPACE__ . '\leva_CPF', 10, 2);
