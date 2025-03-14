@@ -130,7 +130,7 @@ get_header(); ?>
           para oportunidades compatíveis.
         </p>
         <p>
-          <a href="{alterar para a página de banco de talentos}" class="candidatar button com-seta-direita">
+          <a href="<?php echo esc_url(get_permalink(156759)); ?>" class="candidatar button com-seta-direita">
             Quero me candidatar
           </a>
         </p>
