@@ -90,3 +90,8 @@ add_action('frm_validate_field_entry', __NAMESPACE__ . '\validate_cpf_field', 10
  * Insere o CPF do candidato
  */
 add_action('save_post', __NAMESPACE__ . '\leva_CPF', 10, 2);
+
+/**
+ * Apenas usuários logados
+ */
+add_filter('wp_nav_menu_items', 'filtrar_itens_menu', 10, 2);

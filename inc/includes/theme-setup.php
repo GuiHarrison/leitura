@@ -315,3 +315,14 @@ function leva_CPF($post_id)
       ");
   }
 }
+
+/**
+ * Filtrar itens do menu
+ */
+function filtrar_itens_menu($items, $args)
+{
+  if (!is_user_logged_in()) {
+    $items = preg_replace('/<li class="[^"]*apenas-logado[^"]*".*?<\/li>/s', '', $items);
+  }
+  return $items;
+}

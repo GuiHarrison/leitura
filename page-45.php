@@ -106,7 +106,7 @@ get_header(); ?>
                 'cargo' => urlencode($vaga->name)
               ]);
               ?>
-              <a href="<?php echo esc_url($categoria_url . '?' . $params); ?>" class="candidatar button com-seta-direita">
+              <a href="<?php echo esc_url($categoria_url . '?' . $params); ?>" class="candidatar button com-seta-direita" data-target="frm_form_3_container">
                 Quero me candidatar
               </a>
             </p>
@@ -141,5 +141,17 @@ get_header(); ?>
     </section>
   <?php endif; ?>
 </main>
+
+<script>
+  window.addEventListener('load', function() {
+    const target = document.querySelector('[data-target]')?.dataset.target;
+    if (target) {
+      const element = document.getElementById(target);
+      if (element) {
+        element.scrollIntoView();
+      }
+    }
+  });
+</script>
 
 <?php get_footer(); ?>
