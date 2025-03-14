@@ -319,11 +319,17 @@ function leva_CPF($post_id)
 /**
  * Filtrar itens do menu
  */
-function filtrar_itens_menu($items, $args)
+function filtrar_itens_menu($antes, $args)
 {
+  $depois = $antes;
   if (!is_user_logged_in()) {
-    // Remove itens com uma classe específica
-    $items = preg_replace('/<li class="[^"]*apenas-logado[^"]*".*?<\/li>/s', '', $items);
+    // Busca LIs com qualquer id, mas que contenham 'apenas-logado' entre as classes.
+    // [^"]* é qualquer coisa que não seja aspas.
+    // /s é o modificador para que o . possa pegar também quebras de linha.
+    $pattern = '/<li id="[^"]*" class="[^"]*apenas-logado[^"]*".*?<\/li>/s';
+
+    // Fazer a substituição
+    $depois = preg_replace($pattern, '', $antes);
   }
-  return $items;
+  return $depois;
 }
