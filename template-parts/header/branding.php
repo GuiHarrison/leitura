@@ -32,7 +32,7 @@ $description = get_bloginfo('description', 'display');
       <input type="search"
         name="s"
         value="<?php echo get_search_query(); ?>"
-        placeholder="Busque aqui por título, autor, editora ou código de barras…"
+        placeholder="Procurar…"
         aria-label="Pesquisar" />
       <button type="submit"></button>
     </form>
