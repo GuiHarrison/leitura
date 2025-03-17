@@ -333,3 +333,21 @@ function filtrar_itens_menu($antes, $args)
   }
   return $depois;
 }
+
+/**
+ * Cache de lojas
+ */
+function get_lojas_hash()
+{
+  global $wpdb;
+
+  // Pega a data de modificação mais recente das lojas
+  $latest_mod = $wpdb->get_var("
+        SELECT MAX(post_modified)
+        FROM {$wpdb->posts}
+        WHERE post_type = 'lojas'
+        AND post_status = 'publish'
+    ");
+
+  return md5($latest_mod);
+}

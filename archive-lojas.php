@@ -135,12 +135,23 @@ $geoapify = $api_keys->get_key('geoapify');
 
     // Buscar dados das lojas
     function fetchTodasLojas(page = 1, TodasLojas = []) {
+      // Tenta pegar do localStorage primeiro
+      const lojasCache = localStorage.getItem('lojasCache');
+      const hashCache = localStorage.getItem('lojasHash');
+      const currentHash = '<?php echo get_lojas_hash(); ?>';
+
+      // Se temos cache válido, use-o
+      if (lojasCache && hashCache === currentHash) {
+        return Promise.resolve(JSON.parse(lojasCache));
+      }
+
+      // Se não temos cache ou está desatualizado, busca do servidor
       return fetch(`/wp-json/wp/v2/lojas?per_page=100&page=${page}`)
         .then(response => {
           const totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1');
 
           if (page > totalPages) {
-            return TodasLojas; // Retorna lojas já coletadas se passar do total de páginas
+            return TodasLojas;
           }
 
           return response.json().then(data => {
@@ -150,11 +161,23 @@ $geoapify = $api_keys->get_key('geoapify');
               return fetchTodasLojas(page + 1, TodasLojas);
             }
 
+            // Salva no localStorage antes de retornar
+            try {
+              localStorage.setItem('lojasCache', JSON.stringify(TodasLojas));
+              localStorage.setItem('lojasHash', currentHash);
+            } catch (e) {
+              console.warn('Erro ao salvar no localStorage:', e);
+            }
+
             return TodasLojas;
           });
         })
         .catch(error => {
           console.error('Erro ao buscar lojas:', error);
+          // Em caso de erro, tenta usar cache mesmo que desatualizado
+          if (lojasCache) {
+            return JSON.parse(lojasCache);
+          }
           return TodasLojas;
         });
     }

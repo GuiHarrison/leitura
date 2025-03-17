@@ -95,3 +95,8 @@ add_action('save_post', __NAMESPACE__ . '\leva_CPF', 10, 2);
  * Apenas usuários logados
  */
 add_filter('wp_nav_menu_items', __NAMESPACE__ . '\filtrar_itens_menu', 10, 2);
+
+// Limpa o transient das lojas quando uma loja é atualizada
+add_action('save_post_lojas', function ($post_id) {
+  delete_transient('lojas_data');
+}, 10, 1);
