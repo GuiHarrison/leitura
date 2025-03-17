@@ -22,9 +22,19 @@ $geoapify = $api_keys->get_key('geoapify');
 ?>
 
 <script>
-  // Testando se é celular.
-  var isMobile; // Declare isMobile no escopo global
+  // Declare variáveis globais no início
+  var map;
+  var markers = {};
+  var isMobile;
 
+  // Configurar localização padrão global
+  window.latDetec = -14.235004;
+  window.longDetec = -51.92528;
+  window.offsetX = 0.03;
+  window.offsetY = 0;
+  window.zoom = 6;
+
+  // Testando se é celular.
   function seCelular(e) {
     // Pega --width-max-mobile do CSS
     const widthMaxMobile = getComputedStyle(
@@ -45,8 +55,6 @@ $geoapify = $api_keys->get_key('geoapify');
   // import seCelular from './navigation/se-celular';
   seCelular();
 
-  var map; // Declare a variável map no escopo global
-  var markers = {};
   var requestOptions = {
     method: 'GET',
   };
@@ -54,37 +62,21 @@ $geoapify = $api_keys->get_key('geoapify');
   fetch("https://api.geoapify.com/v1/ipinfo?apiKey=<?php echo esc_js($geoapify); ?>", requestOptions)
     .then(response => response.json())
     .then(result => {
-      var latDetec = result.location.latitude || -14.235004; // Latitude padrão do Brasil
-      var longDetec = result.location.longitude || -51.92528; // Longitude padrão do Brasil
-      var zoom = (latDetec === -14.235004) ? 6 : 14;
+      // Atualizar coordenadas com localização do usuário
+      window.latDetec = result.location.latitude + (isMobile ? -0.006 : 0);
+      window.longDetec = result.location.longitude - (isMobile ? 0 : 0);
+      window.zoom = 14;
 
-      if (isMobile) {
-        offsetX = 0;
-        offsetY = -0.006;
-      } else {
-        offsetX = 0.03;
-        offsetY = 0;
-      }
-
-      window.latDetec = latDetec + offsetY;
-      window.longDetec = longDetec - offsetX;
-      window.zoom = zoom;
-      window.offsetX = offsetX;
-      window.offsetY = offsetY;
-
-      if (typeof initMap === 'function') {
-        initMap();
+      // Atualizar mapa se já estiver inicializado
+      if (map) {
+        map.setCenter({
+          lat: window.latDetec,
+          lng: window.longDetec
+        });
+        map.setZoom(window.zoom);
       }
     })
-    .catch(error => {
-      // Coordenadas padrão do Brasil
-      window.latDetec = -14.235004;
-      window.longDetec = -51.92528;
-
-      if (typeof initMap === 'function') {
-        initMap();
-      }
-    });
+    .catch(error => console.error('Erro ao buscar localização:', error));
 
   function lojaSelecionada(lojaId) {
     var marker = markers[lojaId];
@@ -99,7 +91,7 @@ $geoapify = $api_keys->get_key('geoapify');
         lat: center.lat - offsetY,
         lng: center.lng - offsetX
       };
-      map.setZoom(zoom + 3);
+      map.setZoom(16);
       map.setCenter(offsetCenter);
 
       jQuery('.ll-loja').removeClass('selected');
@@ -143,15 +135,27 @@ $geoapify = $api_keys->get_key('geoapify');
 
     // Buscar dados das lojas
     function fetchTodasLojas(page = 1, TodasLojas = []) {
-      return fetch(`https://seliganaleitura.com.br/wp-json/wp/v2/lojas?per_page=100&page=${page}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.length > 0) {
-            TodasLojas = TodasLojas.concat(data);
-            return fetchTodasLojas(page + 1, TodasLojas);
-          } else {
-            return TodasLojas;
+      return fetch(`/wp-json/wp/v2/lojas?per_page=100&page=${page}`)
+        .then(response => {
+          const totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1');
+
+          if (page > totalPages) {
+            return TodasLojas; // Retorna lojas já coletadas se passar do total de páginas
           }
+
+          return response.json().then(data => {
+            TodasLojas = TodasLojas.concat(data);
+
+            if (page < totalPages) {
+              return fetchTodasLojas(page + 1, TodasLojas);
+            }
+
+            return TodasLojas;
+          });
+        })
+        .catch(error => {
+          console.error('Erro ao buscar lojas:', error);
+          return TodasLojas;
         });
     }
 
