@@ -73,7 +73,11 @@ add_filter('show_admin_bar', '__return_false');
  * Popula campos com o nome das lojas
  */
 add_filter('frm_setup_new_fields_vars', __NAMESPACE__ . '\popula_campos_com_lojas', 20, 2);
+/**
+ * Limpar o cache quando uma loja for criada, atualizada ou excluída
+ */
 add_action('save_post', __NAMESPACE__ . '\clear_lojas_cache', 10, 2);
+add_action('delete_post', __NAMESPACE__ . '\clear_lojas_cache', 10, 2);
 
 /**
  * Controle de listagem de posts
@@ -95,8 +99,3 @@ add_action('save_post', __NAMESPACE__ . '\leva_CPF', 10, 2);
  * Apenas usuários logados
  */
 add_filter('wp_nav_menu_items', __NAMESPACE__ . '\filtrar_itens_menu', 10, 2);
-
-// Limpa o transient das lojas quando uma loja é atualizada
-add_action('save_post_lojas', function ($post_id) {
-  delete_transient('lojas_data');
-}, 10, 1);

@@ -98,7 +98,10 @@ function enqueue_theme_scripts(): void
   // Adicionando API do Google Maps à página de Lojas
   if (is_page('lojas') || is_tax('category_vagas')) {
     $api_keys = APIKeys::get_instance();
-    $maps_key = $api_keys->get_key('mapsDev');
+    $maps_key = (strpos($_SERVER['REMOTE_ADDR'], '192.168') === 0 ||
+      $_SERVER['REMOTE_ADDR'] === '127.0.0.1')
+      ? $api_keys->get_key('mapsDev')
+      : $api_keys->get_key('maps');
 
     if ($api_keys) {
       wp_enqueue_script(

@@ -161,7 +161,10 @@ function build_theme_support()
 function acf_maps_key()
 {
   $api_keys = APIKeys::get_instance();
-  $maps_key = $api_keys->get_key('maps');
+  $maps_key = (strpos($_SERVER['REMOTE_ADDR'], '192.168') === 0 ||
+    $_SERVER['REMOTE_ADDR'] === '127.0.0.1')
+    ? $api_keys->get_key('mapsDev')
+    : $api_keys->get_key('maps');
 
   if ($maps_key) {
     acf_update_setting('google_api_key', $maps_key);
@@ -266,14 +269,6 @@ function popula_campos_com_lojas($field)
   return $field;
 }
 
-// Limpa o cache quando uma loja é atualizada
-function clear_lojas_cache($post_id, $post)
-{
-  if ($post->post_type === 'lojas') {
-    delete_transient('lista_de_lojas'); // Atualizando o nome do transiente
-  }
-}
-
 // Depurando a validação do CPF
 function validate_cpf_field($errors, $field, $value)
 {
@@ -337,17 +332,47 @@ function filtrar_itens_menu($antes, $args)
 /**
  * Cache de lojas
  */
-function get_lojas_hash()
+// Funções para gerenciar o cache das lojas
+function get_cached_lojas()
 {
-  global $wpdb;
+  $lojas_cache = get_transient('todas_lojas_cache');
 
-  // Pega a data de modificação mais recente das lojas
-  $latest_mod = $wpdb->get_var("
-        SELECT MAX(post_modified)
-        FROM {$wpdb->posts}
-        WHERE post_type = 'lojas'
-        AND post_status = 'publish'
-    ");
+  if ($lojas_cache === false) {
+    $args = array(
+      'post_type' => 'lojas',
+      'posts_per_page' => -1,
+      'orderby' => 'title',
+      'order' => 'ASC'
+    );
 
-  return md5($latest_mod);
+    $lojas = get_posts($args);
+    $lojas_data = array();
+
+    foreach ($lojas as $loja) {
+      $acf = get_fields($loja->ID);
+      if (!empty($acf['mapa_loja'])) {
+        $lojas_data[] = array(
+          'id' => $loja->ID,
+          'title' => array('rendered' => get_the_title($loja)),
+          'acf' => $acf
+        );
+      }
+    }
+
+    set_transient('todas_lojas_cache', $lojas_data, 24 * HOUR_IN_SECONDS);
+    return $lojas_data;
+  }
+
+  return $lojas_cache;
+}
+
+/**
+ * Cache de lojas
+ */
+function clear_lojas_cache($post_id)
+{
+  if (get_post_type($post_id) === 'lojas') {
+    delete_transient('todas_lojas_cache');
+    delete_transient('lista_de_lojas');
+  }
 }

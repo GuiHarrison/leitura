@@ -198,7 +198,6 @@ $location = [
       if (cargoNome && cargoSelect) {
         // Procurar a opção que corresponde ao cargo (case insensitive)
         Array.from(cargoSelect.options).forEach(option => {
-          console.log(option.text.toLowerCase(), ' <> ', decodeURIComponent(cargoNome).toLowerCase());
           if (option.text.toLowerCase() === decodeURIComponent(cargoNome).toLowerCase()) {
             cargoSelect.value = option.value;
 

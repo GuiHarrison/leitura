@@ -5,10 +5,6 @@
  *
  * Página de arquivos do tipo loja
  *
- * @Date:								 2025-01-03 16:54:35
- * @Last Modified by:		 Guilherme Harrison
- * @Last Modified time:	 2025-02-25 14:23:30
- *
  * @package leitura
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  */
@@ -133,118 +129,68 @@ $geoapify = $api_keys->get_key('geoapify');
     var geocoder = new google.maps.Geocoder();
     var iconUrl = <?php echo '"' . esc_url(get_theme_file_uri('svg/icone-mapa.svg')) . '"'; ?>;
 
-    // Buscar dados das lojas
-    function fetchTodasLojas(page = 1, TodasLojas = []) {
-      // Tenta pegar do localStorage primeiro
-      const lojasCache = localStorage.getItem('lojasCache');
-      const hashCache = localStorage.getItem('lojasHash');
-      const currentHash = '<?php echo get_lojas_hash(); ?>';
+    // Buscar dados das lojas do cache do servidor
+    const lojas = <?php echo json_encode(get_cached_lojas()); ?>;
 
-      // Se temos cache válido, use-o
-      if (lojasCache && hashCache === currentHash) {
-        return Promise.resolve(JSON.parse(lojasCache));
-      }
+    lojas.sort((a, b) => b.acf.mapa_loja.lat - a.acf.mapa_loja.lat);
 
-      // Se não temos cache ou está desatualizado, busca do servidor
-      return fetch(`/wp-json/wp/v2/lojas?per_page=100&page=${page}`)
-        .then(response => {
-          const totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1');
+    lojas.forEach(store => {
+      if (store.acf.mapa_loja) {
+        var location = {
+          id: store.id,
+          nome: store.title.rendered || '',
+          email: store.acf.email_loja || '',
+          telefone: store.acf.telefone_loja || '',
+          whatsapp: store.acf.wpp_loja || '',
+          horário: store.acf.funcionamento_loja || '',
+          endereço: store.acf.mapa_loja.address,
+          informações: store.acf.infor_loja || '',
+          lat: parseFloat(store.acf.mapa_loja.lat),
+          lng: parseFloat(store.acf.mapa_loja.lng),
+        };
 
-          if (page > totalPages) {
-            return TodasLojas;
-          }
+        // Criar elemento de conteúdo do marcador
+        var markerContent = document.createElement('div');
+        var markerImage = document.createElement('img');
+        markerImage.src = iconUrl;
+        markerImage.style.width = '36px';
+        markerImage.style.height = '49px';
+        markerContent.appendChild(markerImage);
 
-          return response.json().then(data => {
-            TodasLojas = TodasLojas.concat(data);
-
-            if (page < totalPages) {
-              return fetchTodasLojas(page + 1, TodasLojas);
-            }
-
-            // Salva no localStorage antes de retornar
-            try {
-              localStorage.setItem('lojasCache', JSON.stringify(TodasLojas));
-              localStorage.setItem('lojasHash', currentHash);
-            } catch (e) {
-              console.warn('Erro ao salvar no localStorage:', e);
-            }
-
-            return TodasLojas;
-          });
-        })
-        .catch(error => {
-          console.error('Erro ao buscar lojas:', error);
-          // Em caso de erro, tenta usar cache mesmo que desatualizado
-          if (lojasCache) {
-            return JSON.parse(lojasCache);
-          }
-          return TodasLojas;
+        // Adicionar marcadores ao mapa
+        var marker = new google.maps.marker.AdvancedMarkerElement({
+          position: {
+            lat: location.lat,
+            lng: location.lng
+          },
+          map: map,
+          content: markerContent
         });
-    }
+        markers[location.id] = marker;
+        marker.addListener('click', function() {
+          lojaSelecionada(location.id);
+        });
 
-    // No futuro, preencher primeiro as lojas no estado identificado pelo campo `response.state.name` do geoapify, depois o restante.
-
-    fetchTodasLojas().then(data => {
-      data.sort((a, b) => b.acf.mapa_loja.lat - a.acf.mapa_loja.lat);
-
-      data.forEach(store => {
-        if (store.acf.mapa_loja) {
-          var location = {
-            id: store.id,
-            nome: store.title.rendered || '',
-            email: store.acf.email_loja || '',
-            telefone: store.acf.telefone_loja || '',
-            whatsapp: store.acf.wpp_loja || '',
-            horário: store.acf.funcionamento_loja || '',
-            endereço: store.acf.mapa_loja.address,
-            informações: store.acf.infor_loja || '',
-            lat: parseFloat(store.acf.mapa_loja.lat),
-            lng: parseFloat(store.acf.mapa_loja.lng),
-          };
-
-          // Criar elemento de conteúdo do marcador
-          var markerContent = document.createElement('div');
-          var markerImage = document.createElement('img');
-          markerImage.src = iconUrl;
-          markerImage.style.width = '36px';
-          markerImage.style.height = '49px';
-          markerContent.appendChild(markerImage);
-
-          // Adicionar marcadores ao mapa
-          var marker = new google.maps.marker.AdvancedMarkerElement({
-            position: {
-              lat: location.lat,
-              lng: location.lng
-            },
-            map: map,
-            content: markerContent
-          });
-          markers[location.id] = marker;
-          marker.addListener('click', function() {
-            lojaSelecionada(location.id);
-          });
-
-          // Adicionar loja à lista
-          jQuery('#ll-lista').append(`
-							<li class="ll-loja ${isMobile ? 'hide-completely' : ''}" onclick="lojaSelecionada(${location.id})" id="${location.id}">
-								<h4 class="ll-nome">${location.nome}</h4>
-								<p class="ll-endereco">${location.endereço}</p>
-								<div class="ll-detalhes hide-completely">
-									${location.email ? `<p class="ll-email"><span>Email:</span> ${location.email}</p>` : ''}
-									${location.telefone ? `<p class="ll-telefone"><span>Telefone:</span> ${location.telefone}</p>` : ''}
-									${location.whatsapp ? `<p class="ll-whatsapp"><span>WhatsApp:</span> ${location.whatsapp}</p>` : ''}
-									${location.horário ? `<p class="ll-horário"><span>Funcionamento:</span> ${location.horário}</p>` : ''}
-									${location.informações ? `<p class="ll-informações"><span>Informações:</span> ${location.informações}</p>` : ''}
-									<a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr=${location.lat},${location.lng}" class="ll-como-chegar">Como chegar</a>
-									<button class="ll-fechar" onclick="zoomOut()"></button>
-								</div>
-							</li>
+        // Adicionar loja à lista
+        jQuery('#ll-lista').append(`
+                <li class="ll-loja ${isMobile ? 'hide-completely' : ''}" onclick="lojaSelecionada(${location.id})" id="${location.id}">
+                    <h4 class="ll-nome">${location.nome}</h4>
+                    <p class="ll-endereco">${location.endereço}</p>
+                    <div class="ll-detalhes hide-completely">
+                        ${location.email ? `<p class="ll-email"><span>Email:</span> ${location.email}</p>` : ''}
+                        ${location.telefone ? `<p class="ll-telefone"><span>Telefone:</span> ${location.telefone}</p>` : ''}
+                        ${location.whatsapp ? `<p class="ll-whatsapp"><span>WhatsApp:</span> ${location.whatsapp}</p>` : ''}
+                        ${location.horário ? `<p class="ll-horário"><span>Funcionamento:</span> ${location.horário}</p>` : ''}
+                        ${location.informações ? `<p class="ll-informações"><span>Informações:</span> ${location.informações}</p>` : ''}
+                        <a target="_blank" href="https://www.google.com/maps?saddr=My+Location&daddr=${location.lat},${location.lng}" class="ll-como-chegar">Como chegar</a>
+                        <button class="ll-fechar" onclick="zoomOut()"></button>
+                    </div>
+                </li>
             `);
-        } else {
-          console.log('Loja sem coordenadas:', store);
-        }
-      });
-    }).catch(error => console.error('Erro ao buscar dados das lojas:', error));
+      } else {
+        console.log('Loja sem coordenadas:', store);
+      }
+    });
   }
 
   function buscador_lojas() {
