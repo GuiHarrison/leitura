@@ -79,6 +79,7 @@ $geoapify = $api_keys->get_key('geoapify');
     if (marker) {
       if (isMobile) {
         offsetY = 0;
+        offsetX = 0;
       } else {
         offsetX = 0.003;
       }
@@ -98,9 +99,9 @@ $geoapify = $api_keys->get_key('geoapify');
 
       setTimeout(() => {
         if (isMobile) {
-          document.getElementById('colophon').scrollIntoView({
+          document.getElementById('map').scrollIntoView({
             behavior: 'smooth',
-            block: 'end'
+            block: 'start'
           });
         } else {
           document.getElementsByClassName('selected')[0].scrollIntoView({
@@ -224,10 +225,21 @@ $geoapify = $api_keys->get_key('geoapify');
     map.setZoom(zoom);
 
     campo.focus();
+    rolaBusca();
 
     if (!e) var e = window.event;
     e.cancelBubble = true;
     if (e.stopPropagation) e.stopPropagation();
+  }
+
+  function rolaBusca() {
+    document.getElementById('busca_lojas').addEventListener('focus', function() {
+      this.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      });
+    });
   }
 
   document.addEventListener('DOMContentLoaded', function() {

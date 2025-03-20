@@ -23,19 +23,29 @@
   }
 }
 
-.barra-topo .container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 1rem;
-
-  @media (min-width: breakpoints.$container-ipad-landscape) {
+.barra-topo {
+  .container {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+    @media (min-width: breakpoints.$container-ipad-landscape) {
+      justify-content: space-between;
+    }
+
+    p {
+      margin: 0;
+      font-size: .8rem;
+    }
   }
 
-  p {
-    margin: 0;
-    font-size: .8rem;
+  &.barra-boas-vindas {
+    .container {
+      padding: 1rem;
+    }
   }
 }
 
@@ -154,6 +164,10 @@
         background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"%3E%3Cpath d="M6.23548 0.0196049C12.2401 -0.419217 15.8045 6.42617 12.0609 11.099L16.194 15.2446C16.5931 15.8881 15.8476 16.6166 15.2194 16.1766L11.1039 12.0696C7.63586 14.8715 2.41819 13.6503 0.592598 9.5841C-1.31577 5.33536 1.59781 0.358643 6.23548 0.0196049ZM6.44752 1.37802C2.37907 1.64846 0.00126636 6.19769 2.19481 9.67992C4.38835 13.1621 9.2993 13.0663 11.4135 9.6544C13.7306 5.91535 10.817 1.08774 6.44752 1.37802Z" fill="var(--cinza-medio)" fill-opacity="0.4"/%3E%3C/svg%3E%0A');
         background-position: 50% 50%;
       }
+    }
+
+    &:not(.page-id-155702, .page-template-archive-lojas) {
+      display: none;
     }
   }
 

@@ -32,24 +32,33 @@
   }
 
   .ll-spacer {
-    padding: 40px 10%;
+    padding: 20px 10%;
+
+    @media (min-width: breakpoints.$width-max-mobile) {
+      padding: 40px 10%;
+    }
   }
 
   .ll-titulo {
-    font-size: 1.5em;
+    font-size: 1em;
     text-transform: uppercase;
     font-weight: bold;
-    margin: 0 0 20px 0;
+    margin: 0 0 10px 0;
     line-height: 1.2;
+
+    @media (min-width: breakpoints.$width-max-mobile) {
+      font-size: 1.5em;
+      margin: 0 0 20px 0;
+    }
   }
 
   .ll-campo {
     width: 100%;
     font-size: var(--typography-paragraph-size);
     margin: 0;
-    padding: 33px 23px 33px 63px;
+    padding: 14px 14px 14px 40px;
     background-image: url(../../svg/marcador.svg);
-    background-position: 30px 50%;
+    background-position: 10px 50%;
     background-repeat: no-repeat;
     background-size: 20px;
 
@@ -62,6 +71,7 @@
   .ll-lista {
     list-style: none;
     padding: 0;
+    margin: 0;
 
     .ll-loja {
       position: relative;

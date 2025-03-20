@@ -22,10 +22,10 @@ function watchFiles(done) {
   });
 
   // Styles in production environment
-  // const prodstyles = watch(config.styles.watch.production, series('prodstyles'));
-  // prodstyles.on('change', function (path) {
-  //   consoleInfo(path);
-  // });
+  const prodstyles = watch(config.styles.watch.production, series('prodstyles'));
+  prodstyles.on('change', function (path) {
+    consoleInfo(path);
+  });
 
   // JavaScript
   const javascript = watch(config.js.watch, series('js'));
@@ -42,7 +42,7 @@ function watchFiles(done) {
   });
 
   // Lint styles
-  // watch(config.styles.watch.development, series('lintstyles'));
+  watch(config.styles.watch.development, series('lintstyles'));
 
   // Finish task
   done();

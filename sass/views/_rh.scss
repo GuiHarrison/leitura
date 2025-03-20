@@ -62,7 +62,10 @@ select.form-control {
       padding: 40px;
 
       .vaga-info {
-        grid-column: span 2;
+
+        @media (min-width: breakpoints.$width-max-mobile) {
+          grid-column: span 2;
+        }
 
         .vaga-detalhes {
           display: grid;
@@ -115,6 +118,17 @@ select.form-control {
 
     input[type="submit"] {
       float: right;
+    }
+
+    .frm_submit {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+
+      .frm_ajax_loading {
+        position: absolute;
+        left: 50%;
+      }
     }
   }
 }

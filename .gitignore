@@ -1,7 +1,7 @@
 vendor/
 templates/
 content/
-css/
+css/dev/
 move_out.sh
 move_in.sh
 theme_tests.sh
@@ -15,5 +15,3 @@ html
 w3cErrors/
 .vscode
 inc/includes/resources.php
-css/dev/global.css.map
-css/dev/gutenberg-editor-styles.css.map
