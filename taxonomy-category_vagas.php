@@ -182,7 +182,7 @@ $location = [
           Array.from(currentSelect.options).slice(1).forEach(option => {
             // Desabilitar se o valor está selecionado em outro select
             const estaSelcionadoEmOutro = valoresSelecionados.includes(option.value) &&
-              option.value !== currentSelect.value;
+              currentSelect.value !== option.value;
 
             option.disabled = estaSelcionadoEmOutro;
           });

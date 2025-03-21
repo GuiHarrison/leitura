@@ -11,6 +11,14 @@
   // max-width: breakpoints.$width-grid-base;
   position: relative;
   z-index: 15;
+
+  @media screen and (min-width: breakpoints.$width-max-mobile) {
+    height: 275px;
+  }
+
+  @media print {
+    display: none;
+  }
 }
 
 .site-title {

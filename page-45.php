@@ -12,7 +12,7 @@ get_header();
 
 $link_talentos = (strpos($_SERVER['REMOTE_ADDR'], '192.168') === 0 ||
   $_SERVER['REMOTE_ADDR'] === '127.0.0.1')
-  ? 156235
+  ? 156759 // 156235
   : 156759;
 ?>
 
