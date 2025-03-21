@@ -86,9 +86,6 @@ global $post;
           $cargo_vaga = $vaga;
         }
 
-
-
-
         $cpf = get_field('cpf_rh');
         $endereco = get_field('endereco_rh');
         $nacionalidade = get_field('nacionalidade_rh');
@@ -107,16 +104,6 @@ global $post;
         $outros_cursos = get_field('outros_cursos_rh');
         $hardware = get_field('hardware_rh');
         $experiencia = get_field('experiencia_rh');
-
-        $data_inicio = get_field('data_inicio_rh');
-        if (!empty($data_inicio)) {
-          $data_inicio = date('d/m/Y', strtotime($data_inicio));
-        }
-
-        $data_conclusao = get_field('data_conclusao_rh');
-        if (!empty($data_conclusao)) {
-          $data_conclusao = date('d/m/Y', strtotime($data_conclusao));
-        }
 
         $empresa_anterior = get_field('empresa_atual_rh');
         $cargo_atuacao = get_field('cargo_atuacao_rh');
@@ -264,8 +251,6 @@ global $post;
 
               </div>
               <div class="col-md-6 col-lg-6">
-                <strong>Data de início:</strong> <?php echo $data_inicio; ?><br />
-                <strong>Data de Conclusão:</strong> <?php echo $data_conclusao; ?><br />
                 <strong>Outros Cursos:</strong> <?php echo $outros_cursos; ?>
               </div>
             </div>
