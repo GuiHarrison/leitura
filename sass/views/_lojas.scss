@@ -66,6 +66,10 @@
       padding: 32px 50px 32px 80px;
       background-position: 50px 50%;
     }
+
+    @media print {
+      display: none;
+    }
   }
 
   .ll-lista {
@@ -79,6 +83,11 @@
       padding: 40px 50px;
       background-color: var(--color-white);
       border-radius: var(--border-radius-input-field);
+
+      @media print {
+        margin: 10px 0;
+        padding: 10px 0;
+      }
 
       &:hover {
         background-color: var(--color-white);
@@ -187,6 +196,10 @@
   width: 40px;
   height: 40px;
   z-index: 3;
+
+  @media print {
+    display: none;
+  }
 
   @media (min-width: breakpoints.$width-max-mobile) {
     top: calc(286px + 100vh - 260px); // <------------------------------- Automatizar essa conta

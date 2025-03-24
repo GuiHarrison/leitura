@@ -125,6 +125,10 @@ select.form-control {
       justify-content: space-between;
       gap: 10px;
 
+      input[type="submit"] {
+        margin-left: auto;
+      }
+
       .frm_ajax_loading {
         position: absolute;
         left: 50%;

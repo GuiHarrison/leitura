@@ -20,4 +20,34 @@ get_header(); ?>
   ?>
 </main>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const lojaSelects = ['field_loja1', 'field_loja2', 'field_loja3'].map(id => document.getElementById(id));
+
+    function atualizarOpcoes() {
+      // Pegar valores selecionados
+      const valoresSelecionados = lojaSelects
+        .map(select => select.value)
+        .filter(value => value !== '');
+
+      // Para cada select
+      lojaSelects.forEach(currentSelect => {
+        // Pegar todas as options exceto a primeira (em branco)
+        Array.from(currentSelect.options).slice(1).forEach(option => {
+          // Desabilitar se o valor está selecionado em outro select
+          const estaSelcionadoEmOutro = valoresSelecionados.includes(option.value) &&
+            currentSelect.value !== option.value;
+
+          option.disabled = estaSelcionadoEmOutro;
+        });
+      });
+    }
+    // Adicionar evento de mudança para todos os selects
+    lojaSelects.forEach(select => {
+      select.addEventListener('change', atualizarOpcoes);
+    });
+    atualizarOpcoes();
+  });
+</script>
+
 <?php get_footer();

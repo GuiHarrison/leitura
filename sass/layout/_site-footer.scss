@@ -15,6 +15,10 @@
   display: flex;
   justify-content: center;
 
+  @media print {
+    display: none;
+  }
+
   .footer-container {
     display: flex;
     gap: 200px;

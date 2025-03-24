@@ -85,7 +85,10 @@ if ((is_archive())
       if (current_user_can('administrator')) {
         $user_loja = [$selected_loja];
       } else if (current_user_can('read')) {
-        $user_loja = get_user_meta($current_user->ID, "loja");
+        $usuário = $current_user->ID;
+        $loja = get_field('loja_relacionada', 'user_' . $usuário);
+        $user_loja = $loja->ID;
+        // $user_loja = get_user_meta($current_user->ID, "loja");
       }
     ?>
       <table id="rh_table" class="display" cellspacing="0" width="100%">
@@ -114,7 +117,7 @@ if ((is_archive())
         <tbody>
           <?php
           if (!empty($user_loja)) {
-            $loja = $user_loja[0];
+            $loja = $user_loja;
             $terms = wp_get_post_terms($post->ID, 'category_vagas');
 
             $args = array(
