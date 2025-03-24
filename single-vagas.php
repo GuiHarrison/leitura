@@ -20,7 +20,7 @@ global $post;
 
 <?php get_header(); ?>
 
-<div class="content container rh">
+<div class="site-main content container rh">
   <div class="logado remove-print ">
     <?php
     if (is_user_logged_in()):
@@ -102,7 +102,6 @@ global $post;
         $nivel_escolar = get_field('estudo_nivel_rh');
         $especializacao = get_field('especializacao_rh');
         $outros_cursos = get_field('outros_cursos_rh');
-        $hardware = get_field('hardware_rh');
         $experiencia = get_field('experiencia_rh');
 
         $empresa_anterior = get_field('empresa_atual_rh');
@@ -139,6 +138,7 @@ global $post;
         $status = get_field('status_rh');
         $status_lido_nao = get_field('status_lido_nao');
         $status_destacar = get_field('status_destacar');
+        $curriculo = get_field('anexar_curriculo_rh');
     ?>
 
         <?php
@@ -291,26 +291,30 @@ global $post;
                 <strong>Conhecimento em Informática:</strong> <?php echo $conhecimento_infor; ?><br />
                 <strong>Pacote Office:</strong> <?php echo $office_rh; ?>
               </div>
-              <div class="col-md-2 col-lg-2">
-                <strong>Hardware:</strong> <?php echo $hardware; ?>
-              </div>
               <div class="col-md-6 col-lg-6">
                 <strong>Descreva seu conhecimento em outros aplicativos:</strong> <?php echo $seus_conhecimentos; ?>
               </div>
             </div>
           </div>
+
           <div class="bloco_dados">
-            <h3>Idiomas</h3>
+            <h3>Currículo enviado</h3>
             <div class="row">
               <div class="col-md-4 col-lg-4">
-                <strong>Inglês:</strong> <?php echo $ingles; ?>
-              </div>
-              <div class="col-md-4 col-lg-4">
-                <strong>Espanhol:</strong> <?php echo $espanhol; ?>
+                <?php
+                $curriculo = get_field('anexar_curriculo_rh');
+                if ($curriculo) {
+                  $arquivo_url = is_numeric($curriculo) ? wp_get_attachment_url($curriculo) : $curriculo;
+                  if ($arquivo_url) {
+                    echo '<a class="button" href="' . esc_url($arquivo_url) . '" download>Baixar Currículo</a>';
+                  }
+                } else {
+                  echo 'Nenhum currículo enviado.';
+                }
+                ?>
               </div>
             </div>
           </div>
-
         </div>
 
     <?php endwhile;

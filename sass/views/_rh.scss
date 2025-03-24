@@ -139,6 +139,7 @@ input[type="radio"],
 input[type="checkbox"],
 select,
 textarea {
+  padding: 14px 20px !important;
   background-color: var(--color-white);
 }
 

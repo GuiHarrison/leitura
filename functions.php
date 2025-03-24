@@ -340,3 +340,60 @@ add_action('after_setup_theme', __NAMESPACE__ . '\tamanhos_de_imagens');
  * Chamando o tamanho do excerpt
  */
 add_filter('excerpt_length', __NAMESPACE__ . '\tamanho_do_excerpt');
+
+// Função para processar o upload do Formidable e anexar ao post
+add_action('frm_after_create_entry', __NAMESPACE__ . '\processar_upload_curriculo', 30, 2);
+function processar_upload_curriculo($entry_id, $form_id)
+{
+  // Obtém o post_id criado pelo Formidable
+  $post_id = \FrmDb::get_var('frm_items', array('id' => $entry_id), 'post_id');
+
+  if (!$post_id) return;
+
+  // 230 é o campo de upload no Formidable
+  $campo_upload = 230;
+
+  // Pega o arquivo enviado usando a classe correta do Formidable
+  $arquivo = \FrmDb::get_var('frm_item_metas', array('field_id' => $campo_upload, 'item_id' => $entry_id), 'meta_value');
+
+  if (empty($arquivo)) return;
+
+  // Se for uma URL, faz o download e anexa
+  if (filter_var($arquivo, FILTER_VALIDATE_URL)) {
+    // Baixa o arquivo
+    $tmp = download_url($arquivo);
+
+    if (!is_wp_error($tmp)) {
+      // Prepara o arquivo
+      $file_array = array(
+        'name' => basename($arquivo),
+        'tmp_name' => $tmp
+      );
+
+      // Anexa o arquivo à biblioteca de mídia
+      $attachment_id = media_handle_sideload($file_array, $post_id);
+
+      if (!is_wp_error($attachment_id)) {
+        // Atualiza o campo ACF com o ID do anexo
+        update_field('anexar_curriculo_rh', $attachment_id, $post_id);
+      }
+
+      @unlink($tmp);
+    }
+  }
+}
+
+/* add_action('frm_after_create_entry', 'anexar_arquivo_ao_post', 30, 2);
+function anexar_arquivo_ao_post($entry_id, $form_id)
+{
+  // 230 é o ID do campo de upload no Formidable
+  $arquivo_id = isset($_POST['item_meta'][230]) ? $_POST['item_meta'][230] : 0;
+
+  if ($arquivo_id) {
+    $post_id = \FrmDb::get_var('frm_items', array('id' => $entry_id), 'post_id');
+    if ($post_id) {
+      update_post_meta($post_id, 'anexar_curriculo_rh', $arquivo_id);
+    }
+  }
+}
+ */
