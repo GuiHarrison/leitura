@@ -146,11 +146,14 @@ textarea {
   background-color: var(--color-white);
 }
 
-select,
-textarea,
-input[type="text"],
-input[type="email"] {
-  padding: 14px 20px !important;
+.candidato-controles {
+
+  select,
+  textarea,
+  input[type="text"],
+  input[type="email"] {
+    padding: 14px 20px 15px;
+  }
 }
 
 

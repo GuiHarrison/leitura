@@ -16,6 +16,7 @@ import {
   navSticky, navClick, navDesktop, navMobile,
 } from './modules/navigation';
 import { initStickyNav } from './modules/navigation/sticky-nav';
+// import './modules/modal';
 
 // Define Javascript is active by changing the body class
 document.body.classList.remove('no-js');
@@ -44,4 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
   reframe('.wp-has-aspect-ratio iframe');
 
   initStickyNav();
+
+  // Modal.init();
 });

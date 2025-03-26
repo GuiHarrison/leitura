@@ -6,10 +6,6 @@
  * hooks and functions - please split those to their
  * own files under /inc and just require here.
  *
- * @Date: 2019-10-15 12:30:02
- * @Last Modified by:   Roni Laukkarinen
- * @Last Modified time: 2024-01-10 18:54:48
- *
  * @package leitura
  */
 
@@ -20,7 +16,7 @@ namespace Air_Light;
 /**
  * The current version of the theme.
  */
-define('AIR_LIGHT_VERSION', '1.0.1');
+define('AIR_LIGHT_VERSION', '1.0.5');
 
 // We need to have some defaults as comments or empties so let's allow this:
 // phpcs:disable Squiz.Commenting.InlineComment.SpacingBefore, WordPress.Arrays.ArrayDeclarationSpacing.SpaceInEmptyArray
@@ -81,11 +77,6 @@ add_action('after_setup_theme', function () {
      * indicator of that is included. Exclude domains from that check in this array.
      */
     'external_link_domains_exclude' => [
-      'localhost:3000',
-      'leitura.local',
-      'airdev.test',
-      'airwptheme.com',
-      'localhost',
       'seliganaleitura.com.br',
     ],
 
@@ -383,17 +374,8 @@ function processar_upload_curriculo($entry_id, $form_id)
   }
 }
 
-/* add_action('frm_after_create_entry', 'anexar_arquivo_ao_post', 30, 2);
-function anexar_arquivo_ao_post($entry_id, $form_id)
-{
-  // 230 é o ID do campo de upload no Formidable
-  $arquivo_id = isset($_POST['item_meta'][230]) ? $_POST['item_meta'][230] : 0;
-
-  if ($arquivo_id) {
-    $post_id = \FrmDb::get_var('frm_items', array('id' => $entry_id), 'post_id');
-    if ($post_id) {
-      update_post_meta($post_id, 'anexar_curriculo_rh', $arquivo_id);
-    }
-  }
-}
- */
+// // Debug scripts carregados
+// add_action('wp_footer', function () {
+//   global $wp_scripts;
+//   error_log('Scripts carregados: ' . print_r($wp_scripts->queue, true));
+// }, 999);

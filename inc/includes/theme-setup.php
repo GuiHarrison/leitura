@@ -281,7 +281,7 @@ function validate_cpf_field($errors, $field, $value)
     ));
 
     if ($cpf_exists) {
-      $errors['field' . $field->id] = 'Você já possui um cadastro no banco de dados da Leitura. Conforme a nossa demanda entraremos em contato para convidá-lo para um processo seletivo.';
+      $errors['field' . $field->id] = 'CPF já cadastrado';
     }
   }
   return $errors;
@@ -376,3 +376,44 @@ function clear_lojas_cache($post_id)
     delete_transient('lista_de_lojas');
   }
 }
+
+/**
+ * Adiciona um modal para informar que o CPF já está cadastrado
+ */
+function adicionar_modal_cpf()
+{
+  // Verifica se estamos em uma página que contém o formulário com campo CPF
+  if (class_exists('FrmForm') && \FrmField::get_all_types_in_form(3, 'number')) {
+    $modal = Modal::get_instance();
+
+    // Adiciona o HTML do modal
+    add_action('wp_footer', function () use ($modal) {
+      echo $modal->render(
+        'CPF já cadastrado',
+        'Você já possui um cadastro no banco de dados da Leitura. Conforme a nossa demanda entraremos em contato para convidá-lo para um processo seletivo.'
+      );
+    }, 5);
+
+    // Adiciona o JavaScript de detecção de erro
+    add_action('wp_footer', function () {
+?>
+      <script>
+        jQuery(document).ready(function($) {
+          // Verificando erros no formulário:
+          $(document).on('frmFormErrors', function(event, form, response) {
+            // Verificando se o erro é no CPF:
+            if (response.errors && response.errors['92']) {
+              if (typeof Modal !== 'undefined') {
+                Modal.abrir();
+              }
+            }
+          });
+        });
+      </script>
+<?php
+    }, 20);
+  }
+}
+
+// Adicionar o hook
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\adicionar_modal_cpf');
