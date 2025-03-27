@@ -374,8 +374,9 @@ function processar_upload_curriculo($entry_id, $form_id)
   }
 }
 
-// // Debug scripts carregados
-// add_action('wp_footer', function () {
-//   global $wp_scripts;
-//   error_log('Scripts carregados: ' . print_r($wp_scripts->queue, true));
-// }, 999);
+/* // Debug scripts carregados
+add_action('wp_footer', function () {
+  global $wp_scripts;
+  error_log('Scripts carregados: ' . print_r($wp_scripts->queue, true));
+}, 999);
+ */

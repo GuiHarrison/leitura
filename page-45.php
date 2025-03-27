@@ -10,10 +10,10 @@ namespace Air_Light;
 
 get_header();
 
-$link_talentos = (strpos($_SERVER['REMOTE_ADDR'], '192.168') === 0 ||
-  $_SERVER['REMOTE_ADDR'] === '127.0.0.1')
-  ? 156759 // 156235
-  : 156759;
+// $link_talentos = (strpos($_SERVER['REMOTE_ADDR'], '192.168') === 0 ||
+//   $_SERVER['REMOTE_ADDR'] === '127.0.0.1')
+//   ? 156759
+//   : 156759;
 ?>
 
 <main class="site-main container main-vagas">
@@ -136,7 +136,7 @@ $link_talentos = (strpos($_SERVER['REMOTE_ADDR'], '192.168') === 0 ||
           para oportunidades compatíveis.
         </p>
         <p>
-          <a href="<?php echo esc_url(get_permalink($link_talentos)); ?>" class="candidatar button com-seta-direita">
+          <a href="<?php echo esc_url(get_permalink(156759)); ?>" class="candidatar button com-seta-direita">
             Quero me candidatar
           </a>
         </p>

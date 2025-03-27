@@ -269,7 +269,9 @@ function popula_campos_com_lojas($field)
   return $field;
 }
 
-// Depurando a validação do CPF
+/**
+ * Valida o CPF no formulário
+ */
 function validate_cpf_field($errors, $field, $value)
 {
   if ($field->id == 92) { // ID do campo CPF
@@ -383,7 +385,7 @@ function clear_lojas_cache($post_id)
 function adicionar_modal_cpf()
 {
   // Verifica se estamos em uma página que contém o formulário com campo CPF
-  if (class_exists('FrmForm') && \FrmField::get_all_types_in_form(3, 'number')) {
+  if (class_exists('FrmForm') && \FrmField::getOne(92)) {
     $modal = Modal::get_instance();
 
     // Adiciona o HTML do modal
@@ -399,9 +401,7 @@ function adicionar_modal_cpf()
 ?>
       <script>
         jQuery(document).ready(function($) {
-          // Verificando erros no formulário:
           $(document).on('frmFormErrors', function(event, form, response) {
-            // Verificando se o erro é no CPF:
             if (response.errors && response.errors['92']) {
               if (typeof Modal !== 'undefined') {
                 Modal.abrir();
