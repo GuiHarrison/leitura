@@ -19,6 +19,12 @@
     grid-row: auto;
     overflow: hidden;
 
+    @media (min-width: breakpoints.$width-max-mobile) {
+      &:last-child:nth-child(even) {
+        // grid-column: span 2;
+      }
+    }
+
     // &.destaque-blog {
     //   padding: 0;
     // }

@@ -9,22 +9,11 @@
 namespace Air_Light;
 
 get_header();
-
-// $link_talentos = (strpos($_SERVER['REMOTE_ADDR'], '192.168') === 0 ||
-//   $_SERVER['REMOTE_ADDR'] === '127.0.0.1')
-//   ? 156759
-//   : 156759;
 ?>
 
 <main class="site-main container main-vagas">
-  <?php
-  if (have_posts()) : while (have_posts()) : the_post();
-      the_content();
-    endwhile;
-  endif;
-  ?>
   <h2>→ Vagas abertas</h2>
-  <section class="grid sem-margem">
+  <section class="grid">
     <form method="get" class="form-filtro">
       <select name="ofcategory_cidade_estado" class="selecione-cidade" onchange="this.form.submit()">
         <option value="">Selecione uma cidade</option>
@@ -146,6 +135,13 @@ get_header();
       ?>
     </section>
   <?php endif; ?>
+
+  <?php
+  if (have_posts()) : while (have_posts()) : the_post();
+      the_content();
+    endwhile;
+  endif;
+  ?>
 </main>
 
 <script>

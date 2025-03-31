@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Post type Queridinho.
  *
@@ -10,9 +11,11 @@ namespace Air_Light;
 /**
  * Registers the Queridinho post type.
  */
-class Queridinhos extends Post_Type {
+class Queridinhos extends Post_Type
+{
 
-  public function register() {
+  public function register()
+  {
     // Modify all the i18ized strings here.
     $generated_labels = [
       // The Post_Type ask__ function wraps the air-helper ask__, and automatically registers the keys to Polylang!
@@ -49,10 +52,10 @@ class Queridinhos extends Post_Type {
         'with_front'  => false,
         'slug'        => 'queridinhos',
       ],
-      'supports'            => [ 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions' ],
+      'supports'            => ['title', 'editor', 'thumbnail', 'revisions', 'show_in_rest'],
       'taxonomies'          => [],
     ];
 
-    $this->register_wp_post_type( $this->slug, $args );
+    $this->register_wp_post_type($this->slug, $args);
   }
 }

@@ -71,6 +71,9 @@ function build_post_types()
     return;
   }
 
+  // Carregar a classe base primeiro - não funcionou.
+  // require_once get_theme_file_path('/inc/post-types/base-post-type.php');
+
   foreach (THEME_SETTINGS['post_types'] as $name) {
     $slug = strtolower($name);
 
