@@ -52,7 +52,7 @@ class Queridinhos extends Post_Type
         'with_front'  => false,
         'slug'        => 'queridinhos',
       ],
-      'supports'            => ['title', 'editor', 'thumbnail', 'revisions', 'show_in_rest'],
+      'supports'            => ['title', 'editor', 'thumbnail', 'author', 'revisions', 'show_in_rest'],
       'taxonomies'          => [],
     ];
 

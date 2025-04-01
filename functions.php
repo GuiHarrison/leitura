@@ -78,6 +78,7 @@ add_action('after_setup_theme', function () {
      */
     'external_link_domains_exclude' => [
       'seliganaleitura.com.br',
+      'leitura.com.br',
     ],
 
     /**
