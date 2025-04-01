@@ -280,6 +280,10 @@ add_action('after_setup_theme', function () {
         'acf/post-livro',
         'all-core-blocks',
       ],
+      'queridinhos' => [
+        'acf/queridinhos-da-leitura',
+        'all-core-blocks',
+      ],
       'page' => [
         'all',
       ],
