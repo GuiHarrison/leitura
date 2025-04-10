@@ -385,17 +385,15 @@ function check_password_expiration($user_id)
   $last_password_change = get_user_meta($user_id, 'last_password_change', true);
   $expiration_period = 90 * DAY_IN_SECONDS; // 3 meses em segundos
 
-  error_log('check_password_expiration');
-  error_log($user_id);
-  error_log($last_password_change);
-
-  if (empty($last_password_change) || (time() - $last_password_change) > $expiration_period) {
-    return true;
+  if (empty($last_password_change)) {
+    update_user_meta($user_id, 'last_password_change', time());
+    return false;
   }
-  return false;
+
+  return (time() - $last_password_change) > $expiration_period;
 }
 
-// Atualizar timestamp quando a senha for alterada
+// Atualizar timestamp apenas quando a senha for efetivamente alterada
 function update_password_change_time($user_id)
 {
   if (is_int($user_id)) {
@@ -403,15 +401,14 @@ function update_password_change_time($user_id)
   }
 }
 
-// Adicionar hooks extras para capturar todas as alterações de senha
-add_action('password_reset', __NAMESPACE__ . '\update_password_change_time');
-add_action('profile_update', function ($user_id, $old_user_data) {
-  if (isset($_POST['pass1']) && !empty($_POST['pass1'])) {
-    update_password_change_time($user_id);
-  }
-}, 10, 2);
-add_action('user_register', __NAMESPACE__ . '\update_password_change_time');
-add_action('reset_password', __NAMESPACE__ . '\update_password_change_time');
+// Remover todos os hooks anteriores e adicionar apenas os necessários
+add_action('password_reset', function ($user) {
+  update_password_change_time($user->ID);
+});
+
+add_action('after_password_reset', function ($user) {
+  update_password_change_time($user->ID);
+});
 
 // Verificar expiração de senha no login
 function check_password_expiration_on_login($user, $username, $password)
@@ -421,15 +418,27 @@ function check_password_expiration_on_login($user, $username, $password)
   }
 
   if (check_password_expiration($user->ID)) {
-    // Gerar código de redefinição
+    // Gerar token para a sessão
+    $token = wp_generate_password(43, false);
+
+    // Configurar dados da sessão
+    $session_data = array(
+      'force_password_reset' => true,
+      'expiration' => time() + 2 * DAY_IN_SECONDS,
+      'token' => $token
+    );
+
+    // Atualizar sessão com token
+    \WP_Session_Tokens::get_instance($user->ID)->update($token, $session_data);
+
+    // Redirecionar para página de redefinição
     $key = get_password_reset_key($user);
     if (!is_wp_error($key)) {
-      // Redirecionar para página de redefinição com mensagem de expiração
-      $reset_url = network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user->user_login) . "&password_expired=1");
-      wp_redirect($reset_url);
+      wp_redirect(network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user->user_login) . "&password_expired=1"));
       exit;
     }
   }
+
   return $user;
 }
 add_filter('authenticate', __NAMESPACE__ . '\check_password_expiration_on_login', 99, 3);
@@ -473,37 +482,127 @@ function enforce_strong_password($errors, $update, $user)
 }
 add_action('user_profile_update_errors', __NAMESPACE__ . '\enforce_strong_password', 10, 3);
 
-// Verificar histórico de senhas
-function check_password_history($errors, $update, $user)
+// Adiciona o histórico de senhas caso ele ainda não exista
+function initialize_password_history($user_id)
 {
-  if (isset($_POST['pass1']) && !empty($_POST['pass1'])) {
-    $password = $_POST['pass1'];
-    $history = get_user_meta($user->ID, 'password_history', true);
-
-    if (!is_array($history)) {
-      $history = array();
-    }
-
-    // Verificar últimas 5 senhas
-    foreach ($history as $old_hash) {
-      if (wp_check_password($password, $old_hash)) {
-        $errors->add('password_reused', 'Esta senha já foi utilizada recentemente. Por favor, escolha uma senha diferente.');
-        break;
-      }
-    }
-
-    // Manter apenas as últimas 5 senhas no histórico
-    if (empty($errors->errors)) {
-      $history[] = wp_hash_password($password);
-      if (count($history) > 5) {
-        array_shift($history);
-      }
-      update_user_meta($user->ID, 'password_history', $history);
+  $history = get_user_meta($user_id, 'password_history', true);
+  if (empty($history)) {
+    $user = get_user_by('id', $user_id);
+    if ($user) {
+      $history = array($user->user_pass);
+      update_user_meta($user_id, 'password_history', $history);
+      error_log('Histórico de senha inicializado para usuário: ' . $user_id);
     }
   }
+}
+
+// Modificar a função check_password_history para ser mais rigorosa
+function check_password_history($errors, $update, $user)
+{
+  error_log('=== check_password_history INICIADO ===');
+
+  if (!isset($_POST['pass1']) || empty($_POST['pass1'])) {
+    error_log('pass1 não definido ou vazio. Retornando erros.');
+    error_log('=== check_password_history FINALIZADO ===');
+    return $errors;
+  }
+
+  $new_password = $_POST['pass1'];
+
+  // Debug
+  error_log('User ID: ' . $user->ID);
+
+  // Verificar senha atual primeiro
+  if (wp_check_password($new_password, $user->user_pass)) {
+    error_log('Senha igual à atual detectada');
+    $errors->add('password_same_as_current', 'A nova senha não pode ser igual à senha atual.');
+    error_log('=== check_password_history FINALIZADO ===');
+    return $errors;
+  }
+
+  // Buscar e verificar histórico
+  $history = get_user_meta($user->ID, 'password_history', true);
+  error_log('Histórico atual: ' . print_r($history, true));
+
+  if (!is_array($history)) {
+    $history = array();
+  }
+
+  // Garantir que a senha atual está no histórico
+  if (!in_array($user->user_pass, $history)) {
+    array_unshift($history, $user->user_pass);
+  }
+
+  // Verificar cada hash do histórico
+  foreach ($history as $old_hash) {
+    if (!empty($old_hash)) {
+      error_log('Verificando hash: ' . $old_hash);
+      if (wp_check_password($new_password, $old_hash)) {
+        error_log('Senha encontrada no histórico!');
+        $errors->add('password_reused', 'Esta senha já foi utilizada anteriormente. Por favor, escolha uma senha diferente.');
+        error_log('=== check_password_history FINALIZADO ===');
+        return $errors;
+      }
+    }
+  }
+
+  // Se chegou aqui, a senha é válida
+  if (empty($errors->errors)) {
+    $new_hash = wp_hash_password($new_password);
+    array_unshift($history, $new_hash);
+    $history = array_slice($history, 0, 5);
+    $history = array_filter($history); // Remover valores vazios
+    update_user_meta($user->ID, 'password_history', $history);
+    error_log('Novo histórico salvo: ' . print_r($history, true));
+  }
+
+  error_log('=== check_password_history FINALIZADO ===');
   return $errors;
 }
-add_action('user_profile_update_errors', __NAMESPACE__ . '\check_password_history', 10, 3);
+
+// Adicione estes hooks para garantir que o histórico seja atualizado
+add_action('user_register', __NAMESPACE__ . '\initialize_password_history');
+add_action('reset_password', function ($user) {
+  initialize_password_history($user->ID);
+});
+add_action('profile_update', function ($user_id) {
+  if (isset($_POST['pass1']) && !empty($_POST['pass1'])) {
+    initialize_password_history($user_id);
+  }
+}, 10);
+
+// Inicializar histórico de senhas para todos os usuários
+function initialize_all_users_password_history()
+{
+  // Verificar se já foi executado
+  if (get_option('password_history_initialized')) {
+    return;
+  }
+
+  global $wpdb;
+
+  // Buscar todos os usuários
+  $users = $wpdb->get_results("SELECT ID, user_pass FROM {$wpdb->users}");
+
+  foreach ($users as $user) {
+    // Verificar se já tem histórico
+    $history = get_user_meta($user->ID, 'password_history', true);
+
+    if (empty($history)) {
+      // Criar histórico com a senha atual
+      $history = array($user->user_pass);
+      update_user_meta($user->ID, 'password_history', $history);
+      error_log("Histórico de senha inicializado para usuário ID: {$user->ID}");
+    }
+  }
+
+  // Marcar como executado
+  update_option('password_history_initialized', true);
+  error_log('Inicialização do histórico de senhas completa para todos os usuários');
+}
+
+// Executar na inicialização do WordPress
+add_action('init', __NAMESPACE__ . '\initialize_all_users_password_history');
 
 // Desabilitar lista de usuários para não-administradores
 function disable_users_list()
@@ -527,7 +626,7 @@ function limit_login_attempts($user, $username, $password)
   }
 
   if ($login_attempts >= 5) { // Limite de 5 tentativas
-    return new \WP_Error('too_many_attempts', 'Muitas tentativas de login. Por favor, tente novamente em 15 minutos.');
+    return new \WP_Error('too_many_attempts', 'Muitas tentativas de login. Bloqueamos novas tentativas de login por 15 minutos.');
   }
 
   if ($user instanceof \WP_Error) {
@@ -575,6 +674,64 @@ add_action('wp_login_failed', function ($username) {
     wp_mail($to, $subject, $message);
   }
 });
+
+// Adicionar verificação de histórico no reset de senha
+add_action('validate_password_reset', function ($errors, $user) {
+  if (!$errors->has_errors() && isset($_POST['pass1']) && !empty($_POST['pass1'])) {
+    error_log('=== Verificando senha no reset ===');
+    error_log('User ID: ' . $user->ID);
+
+    $new_password = $_POST['pass1'];
+    $history = get_user_meta($user->ID, 'password_history', true);
+
+    error_log('Histórico atual: ' . print_r($history, true));
+
+    // Verificar senha atual
+    if (wp_check_password($new_password, $user->user_pass)) {
+      error_log('Tentativa de usar a mesma senha no reset');
+      $errors->add('password_same_as_current', 'A nova senha não pode ser igual à senha atual.');
+      return $errors;
+    }
+
+    if (is_array($history)) {
+      foreach ($history as $old_hash) {
+        if (!empty($old_hash) && wp_check_password($new_password, $old_hash)) {
+          error_log('Senha encontrada no histórico durante reset');
+          $errors->add('password_reused', 'Esta senha já foi utilizada anteriormente. Por favor, escolha uma senha diferente.');
+          return $errors;
+        }
+      }
+    }
+
+    error_log('Senha válida no reset');
+  }
+  return $errors;
+}, 10, 2);
+
+// Atualizar histórico após reset bem-sucedido
+add_action('after_password_reset', function ($user) {
+  error_log('Atualizando histórico após reset de senha');
+  if (isset($_POST['pass1']) && !empty($_POST['pass1'])) {
+    $history = get_user_meta($user->ID, 'password_history', true);
+    if (!is_array($history)) {
+      $history = array();
+    }
+
+    array_unshift($history, $user->user_pass); // Adiciona a senha atual ao histórico
+    $history = array_slice($history, 0, 5);
+    update_user_meta($user->ID, 'password_history', $history);
+    error_log('Histórico atualizado após reset: ' . print_r($history, true));
+  }
+});
+
+// Remover opção de confirmar senha fraca
+add_action('login_enqueue_scripts', function () {
+  wp_add_inline_script('password-strength-meter', 'jQuery(document).ready(function($) {
+      $("div.pw-weak").remove();
+      $("#pw-checkbox").parent().remove();
+  });', 'after');
+});
+
 
 // Notificar quando a conta for bloqueada
 /* add_action('wp_login_failed', function ($username) {
