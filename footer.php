@@ -150,7 +150,6 @@ if (
   !is_singular('vagas') &&
   !is_tax('category_vagas') &&
   !is_page('156759')
-  // !in_array(get_the_ID(), [45, 156759], true)
 ) : ?>
   <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/dfdefea9-8ac0-4104-8096-16f1e05b7cae-loader.js"></script>
 <?php endif; ?>
