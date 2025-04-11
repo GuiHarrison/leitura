@@ -173,7 +173,8 @@
       }
     }
 
-    &:not(.page-id-155702, .page-template-archive-lojas) {
+    body.page-id-155702 &,
+    body.page-template-archive-lojas & {
       display: none;
     }
   }
