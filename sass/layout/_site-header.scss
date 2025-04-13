@@ -46,6 +46,11 @@
 
     @media (min-width: breakpoints.$container-ipad-landscape) {
       justify-content: space-between;
+
+      &.busca-container {
+        flex-direction: row;
+        align-items: center;
+      }
     }
 
     p {
