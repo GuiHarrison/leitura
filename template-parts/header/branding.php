@@ -12,7 +12,7 @@ $description = get_bloginfo('description', 'display');
 ?>
 
 <div class="barra-topo barra-logo-busca-redes">
-  <div class="container">
+  <div class="busca-container container">
 
     <div class="site-branding">
       <p class="site-title">
