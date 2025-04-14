@@ -12,8 +12,8 @@ namespace Air_Light;
 ?>
 
 <?php if (get_queried_object() && (
-  get_queried_object()->slug === 'se-liga-na-leitura' ||
-  is_tax('category_generos', 'se-liga-na-leitura') ||
+  get_queried_object()->slug === 'portal-de-conteudos' ||
+  is_tax('category_generos', 'portal-de-conteudos') ||
   is_tax('category_generos', get_queried_object()->slug)
 )) : ?>
   <div class="s-filtrar">
