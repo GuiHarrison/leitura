@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying 404 pages (not found)
  *
@@ -20,9 +21,9 @@ get_header(); ?>
     <div class="container">
       <div class="content">
 
-        <h1 id="content">404 <span class="screen-reader-text"><?php echo esc_html( 'Page not found.' ); ?></span></h1>
-        <h2 aria-hidden="true"><?php echo esc_html( 'Page not found.' ); ?></h2>
-        <p><?php echo esc_html( 'The reason might be mistyped or expired URL.' ); ?></p>
+        <h1 id="content">404 <span class="screen-reader-text"><?php echo esc_html('Página não encontrada.'); ?></span></h1>
+        <h2 aria-hidden="true"><?php echo esc_html('Página não encontrada.'); ?></h2>
+        <p><?php echo esc_html('Pode ser um endereço digitado errado ou o link não existe mais :('); ?></p>
 
       </div>
     </div>
