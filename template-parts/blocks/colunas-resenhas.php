@@ -6,7 +6,11 @@ if (have_posts()) :
 ?>
   <div class="resenhas-container">
     <div class="grid">
-      <?php get_template_part('template-parts/blocks/slider-destaques'); ?>
+      <?php if (is_author()) : ?>
+        <h2 class="grid-column-span-2">Postagens de <?php echo esc_html(get_the_author()); ?></h2>
+      <?php else : ?>
+        <?php get_template_part('template-parts/blocks/slider-destaques'); ?>
+      <?php endif; ?>
 
       <?php
       while (have_posts()) :

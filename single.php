@@ -50,7 +50,7 @@ $thumb = get_the_post_thumbnail(get_the_ID(), 'post', array('loading' => 'lazy',
       <h1><?php the_title(); ?></h1>
       <div class="data-e-autor">
         <?php get_template_part('template-parts/snippets/data-publicacao'); ?>
-        <p><?php echo esc_html(get_the_author()); ?></p>
+        <a href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>"><?php echo esc_html(get_the_author()); ?></a>
       </div>
 
       <?php if (get_field('thumb_no_post', get_the_ID())) : ?>

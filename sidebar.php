@@ -27,7 +27,7 @@ namespace Air_Light;
 
       if (!empty($generos) && !is_wp_error($generos)) {
         $current_term = get_queried_object();
-        echo '<li><a href="' . get_post_type_archive_link('post') . '" class="category">Todas</a></li>';
+        echo '<li><a href="' . get_category_link(403) /* 403: portal-de-conteudos (Se liga na leitura) */ . '" class="category">Todas</a></li>';
         foreach ($generos as $genero) {
           $current_class = ($current_term && $current_term->term_id === $genero->term_id) ? ' current' : '';
           echo '<li><a href="' . get_term_link($genero) . '" class="category' . $current_class . '">' . $genero->name . '</a></li>';

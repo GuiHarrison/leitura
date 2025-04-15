@@ -71,11 +71,11 @@ get_header();
                 </h4>
               </div>
 
-              <div class="autor-info">
+              <a href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'))); ?>" class="autor-info">
                 <img class="aspas" src="<?php echo get_theme_file_uri('/img/aspas.svg'); ?>">
                 <img src="<?php echo esc_url($foto); ?>" alt="Autor: <?php echo esc_html(get_the_author()); ?>" class="autor-foto">
                 <h5 class="autor-nome"><?php echo esc_html(get_the_author()); ?></h5>
-              </div>
+              </a>
 
               <a href="<?php echo esc_url(get_the_permalink()); ?>" class="resenha-citacao sublinhado-bonito">
                 <span class="aspas">"</span>

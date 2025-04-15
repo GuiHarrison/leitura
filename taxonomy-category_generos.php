@@ -56,6 +56,9 @@ get_header(); ?>
 
         the_posts_pagination();
 
+      else :
+        echo '<h2>Nenhum post nessa categoria ainda 📖</h2>';
+
       endif;
       ?>
 
