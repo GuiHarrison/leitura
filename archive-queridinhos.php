@@ -16,8 +16,10 @@ for ($i = 1; $i <= 2; $i++) {
   $cta_field = get_field("cta-queridinhos-{$i}", 'option');
   if ($cta_field) {
     $cta_data[$i] = [
-      'desktop' => $cta_field["imagem_queridinhos{$i}_desktop"],
-      'celular' => $cta_field["imagem_queridinhos{$i}_celular"],
+      'desktop_id' => $cta_field["imagem_queridinhos{$i}_desktop"]['ID'],
+      'celular_id' => $cta_field["imagem_queridinhos{$i}_celular"]['ID'],
+      'desktop_alt' => $cta_field["imagem_queridinhos{$i}_desktop"]['alt'],
+      'celular_alt' => $cta_field["imagem_queridinhos{$i}_celular"]['alt'],
       'link' => $cta_field["queridinhos{$i}_link"],
       'cor' => $cta_field["q{$i}_cor"]
     ];
@@ -28,14 +30,20 @@ for ($i = 1; $i <= 2; $i++) {
 <div class="site-main container">
 
   <?php
-  if ($cta_data[1]['desktop'] && $cta_data[1]['link']) {
+  if ($cta_data[1]['desktop_id'] && $cta_data[1]['link']) {
     $is_mobile = wp_is_mobile();
-    $imagem = $is_mobile && $cta_data[1]['celular'] ? $cta_data[1]['celular'] :  $cta_data[1]['desktop'];
-    if ($imagem) {
+    if ($is_mobile && $cta_data[1]['celular_id']) {
+      $imagem_url = wp_get_attachment_image_url($cta_data[1]['celular_id'], 'ctaCelular');
+      $imagem_alt = $cta_data[1]['celular_alt'];
+    } else {
+      $imagem_url = wp_get_attachment_image_url($cta_data[1]['desktop_id'], 'ctaDesktop');
+      $imagem_alt = $cta_data[1]['desktop_alt'];
+    }
+    if ($imagem_url) {
       echo
       '<aside class="cta sem-margem">' .
         '<a href="' . esc_url($cta_data[1]['link']) . '" class="cta-link" rel="nofollow" target="_blank">' .
-        '<img src="' . esc_url($imagem['url']) . '" alt="' . esc_html($imagem['alt']) . '" class="cta-image">' .
+        '<img src="' . esc_url($imagem_url) . '" alt="' . esc_html($imagem_alt) . '" class="cta-image">' .
         '</a>' .
         '</aside>';
     }
@@ -108,14 +116,20 @@ for ($i = 1; $i <= 2; $i++) {
       ?>
 
       <?php
-      if ($cta_data[2]['desktop'] && $cta_data[2]['link']) {
+      if ($cta_data[2]['desktop_id'] && $cta_data[2]['link']) {
         $is_mobile = wp_is_mobile();
-        $imagem = $is_mobile && $cta_data[2]['celular'] ? $cta_data[2]['celular'] :  $cta_data[2]['desktop'];
-        if ($imagem) {
+        if ($is_mobile && $cta_data[2]['celular_id']) {
+          $imagem_url = wp_get_attachment_image_url($cta_data[2]['celular_id'], 'ctaCelular');
+          $imagem_alt = $cta_data[2]['celular_alt'];
+        } else {
+          $imagem_url = wp_get_attachment_image_url($cta_data[2]['desktop_id'], 'ctaDesktop');
+          $imagem_alt = $cta_data[2]['desktop_alt'];
+        }
+        if ($imagem_url) {
           echo
           '<aside class="cta grid-column-span-2 sem-margem" style="background-color: ' . $cta_data[2]['cor'] . '">' .
             '<a href="' . esc_url($cta_data[2]['link']) . '" class="cta-link" rel="nofollow" target="_blank">' .
-            '<img src="' . esc_url($imagem['url']) . '" alt="' . esc_html($imagem['alt']) . '" class="cta-image">' .
+            '<img src="' . esc_url($imagem_url) . '" alt="' . esc_html($imagem_alt) . '" class="cta-image">' .
             '</a>' .
             '</aside>';
         }

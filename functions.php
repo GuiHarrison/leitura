@@ -42,6 +42,7 @@ add_action('after_setup_theme', function () {
     'default_featured_image'  => null,
     'logo'                    => '/svg/logo-azul.svg',
     'logo-simbolo-preta'      => '/svg/logo-simbolo-preta.svg',
+    'logo-simbolo-branca'     => '/svg/logo-simbolo-branca.svg',
 
     /**
      * Social media links

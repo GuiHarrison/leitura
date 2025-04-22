@@ -179,6 +179,8 @@ function acf_maps_key()
  */
 function tamanhos_de_imagens()
 {
+  add_image_size('ctaDesktop', 1400, false);
+  add_image_size('ctaCelular', 670, false);
   add_image_size('post', 800, 640, true);
   add_image_size('destaque-home', 346, 346, true);
   add_image_size('destaque-blog', 532, 532, true);
@@ -413,10 +415,97 @@ function adicionar_modal_cpf()
           });
         });
       </script>
-<?php
+  <?php
     }, 20);
   }
 }
 
 // Adicionar o hook
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\adicionar_modal_cpf');
+
+
+/**
+ * Customiza a tela de login do WordPress
+ */
+function custom_login_logo()
+{
+  ?>
+  <style type="text/css">
+    #login h1 a,
+    .login h1 a {
+      background-image: url(<?php echo esc_url(get_template_directory_uri() . esc_url(THEME_SETTINGS['logo-simbolo-branca'])); ?>);
+      height: 80px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding-bottom: 0;
+    }
+
+    #loginform,
+    #lostpasswordform {
+      background: #CDDCE9;
+      border-radius: 20px;
+      box-shadow: none;
+      padding: 40px;
+      color: #333;
+    }
+
+    .login {
+      background-color: #004D8F;
+      color: #fff;
+    }
+
+    .login a {
+      color: #fff !important;
+    }
+
+    .login .message,
+    .login .notice,
+    .login .error,
+    .login .success {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: none;
+      padding: 20px;
+      color: #333;
+    }
+
+    .submit {
+      width: 100%;
+      overflow: hidden;
+      margin-top: 50px !important;
+    }
+
+    #wp-submit {
+      width: 100%;
+    }
+
+    .wp-core-ui .button-primary {
+      border-radius: 0 !important;
+      padding: 5px 20px !important;
+      background: #005CE8 !important;
+      border-color: #005CE8 !important;
+    }
+
+    .wp-core-ui .button-primary:hover {
+      background: #062a4a !important;
+      border-color: #062a4a !important;
+    }
+  </style>
+<?php }
+
+add_action('login_enqueue_scripts', __NAMESPACE__ . '\custom_login_logo');
+
+// Altera a URL do logo na tela de login
+function custom_login_logo_url()
+{
+  return home_url();
+}
+add_filter('login_headerurl', __NAMESPACE__ . '\custom_login_logo_url');
+
+// Altera o título do logo na tela de login
+function custom_login_logo_url_title()
+{
+  return get_bloginfo('name');
+}
+add_filter('login_headertext', __NAMESPACE__ . '\custom_login_logo_url_title');

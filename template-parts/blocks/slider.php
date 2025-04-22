@@ -15,7 +15,9 @@ namespace Air_Light;
     <div id="slider1" class="owl-carousel owl-theme">
       <?php while (have_rows('slides')) : the_row();
         $imagem_desktop = get_sub_field('imagem_desktop');
+        $imagem_desktop['url'] = wp_get_attachment_image_url($imagem_desktop['ID'], 'ctaDesktop');
         $imagem_celular = get_sub_field('imagem_celular');
+        $imagem_celular['url'] = wp_get_attachment_image_url($imagem_celular['ID'], 'ctaCelular');
         $link = get_sub_field('link');
         $legenda = get_sub_field('legenda');
       ?>
