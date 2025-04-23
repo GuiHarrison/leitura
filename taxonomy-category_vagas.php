@@ -149,7 +149,12 @@ $location = [
     </div>
   </section>
   <div class="formidable">
-    <?php echo \FrmFormsController::get_form_shortcode(['id' => 3, 'title' => false, 'description' => false]); ?>
+    <?php
+    echo \FrmFormsController::get_form_shortcode(['id' => 3, 'title' => false, 'description' => false]);
+    if (function_exists(__NAMESPACE__ . '\adicionar_modal_cpf')) {
+      adicionar_modal_cpf();
+    }
+    ?>
   </div>
 
   <script>

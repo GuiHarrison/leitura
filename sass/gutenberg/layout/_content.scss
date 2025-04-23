@@ -30,3 +30,35 @@
     }
   }
 }
+
+.editor-styles-wrapper {
+  .owl-carousel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-grid-gap);
+  }
+
+  article {
+    h3 {
+      line-height: 1 !important;
+    }
+
+    p,
+    a {
+      font-size: 70%;
+    }
+  }
+
+  #queridinhos-da-leitura {
+    article {
+      .thumbnail {
+        margin-bottom: 0;
+
+        img {
+          max-height: 100px;
+          width: auto;
+        }
+      }
+    }
+  }
+}

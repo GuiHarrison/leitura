@@ -44,3 +44,9 @@
 
 // Editor
 @use 'gutenberg/editor';
+
+// Home
+@use 'views/home';
+@use 'views/single';
+@use 'views/queridinhos';
+@use 'layout/grid';

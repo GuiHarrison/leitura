@@ -1,4 +1,5 @@
 // Declare the blocks you'd like to style.
+
 // eslint-disable-next-line
 wp.blocks.registerBlockStyle('core/paragraph', {
   name: 'boxed',

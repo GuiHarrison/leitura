@@ -420,9 +420,6 @@ function adicionar_modal_cpf()
   }
 }
 
-// Adicionar o hook
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\adicionar_modal_cpf');
-
 
 /**
  * Customiza a tela de login do WordPress

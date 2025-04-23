@@ -11,12 +11,16 @@ namespace Air_Light;
 
 the_post();
 
-get_header(); ?>
+get_header();
+?>
 
 <main class="site-main container main-vagas">
   <?php
   the_content();
   air_edit_link();
+  if (function_exists(__NAMESPACE__ . '\adicionar_modal_cpf')) {
+    adicionar_modal_cpf();
+  }
   ?>
 </main>
 
