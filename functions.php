@@ -314,7 +314,14 @@ require get_theme_file_path('/inc/template-tags.php');
 add_action('after_setup_theme', __NAMESPACE__ . '\theme_setup');
 add_action('after_setup_theme', __NAMESPACE__ . '\build_theme_support');
 
-// Post types and taxonomies
+/*
+ * First: we register the taxonomies and post types after setup theme
+ * If air-helper loads (for translations), we unregister the original taxonomies and post types
+ * and reregister them with the translated ones.
+ *
+ * This allows the slugs translations to work before the translations are available,
+ * and for the label translations to work if they are available.
+ */
 add_action('after_setup_theme', __NAMESPACE__ . '\build_taxonomies');
 add_action('after_setup_theme', __NAMESPACE__ . '\build_post_types');
 
@@ -330,3 +337,29 @@ add_action('after_setup_theme', __NAMESPACE__ . '\tamanhos_de_imagens');
  * Chamando o tamanho do excerpt
  */
 add_filter('excerpt_length', __NAMESPACE__ . '\tamanho_do_excerpt');
+
+// Função para processar o upload do Formidable e anexar ao post
+add_action('frm_after_create_entry', __NAMESPACE__ . '\processar_upload_curriculo', 30, 2);
+function processar_upload_curriculo($entry_id, $form_id)
+{
+  // Obtém o post_id criado pelo Formidable
+  $post_id = \FrmDb::get_var('frm_items', array('id' => $entry_id), 'post_id');
+
+  if (!$post_id) return;
+
+  // 230 é o campo de upload no Formidable
+  $campo_upload = 230;
+
+  // Pega o arquivo enviado usando a classe correta do Formidable
+  $arquivo = \FrmDb::get_var('frm_item_metas', array('field_id' => $campo_upload, 'item_id' => $entry_id), 'meta_value');
+
+  error_log('Arquivo: ' . print_r($arquivo, true)); // Log para depuração
+
+  if (empty($arquivo)) return;
+
+  // Se for um ID numérico, usa direto
+  if (is_numeric($arquivo)) {
+    update_field('anexar_curriculo_rh', $arquivo, $post_id);
+    return;
+  }
+}
