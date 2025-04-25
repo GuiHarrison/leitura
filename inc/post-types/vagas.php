@@ -40,7 +40,7 @@ class vagas extends Post_Type
       'public'                => true,
       'show_ui'               => true,
       'show_in_menu'          => true,
-      'menu_position'         => 10,
+      'menu_position'         => 6,
       'has_archive'           => true,
       'exclude_from_search'   => false,
       'show_in_rest'          => true,

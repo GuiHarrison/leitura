@@ -44,6 +44,7 @@ class Queridinhos extends Post_Type
       'menu_icon'           => 'dashicons-book-alt',
       'public'              => true,
       'show_ui'             => true,
+      'menu_position'       => 5,
       'has_archive'         => true,
       'exclude_from_search' => false,
       'show_in_rest'        => true,

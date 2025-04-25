@@ -303,7 +303,9 @@ global $post;
               <div class="col-md-4 col-lg-4">
                 <?php
                 $curriculo = get_field('anexar_curriculo_rh');
+                print_r($curriculo, true);
                 if ($curriculo) {
+
                   $arquivo_url = is_numeric($curriculo) ? wp_get_attachment_url($curriculo) : $curriculo;
                   if ($arquivo_url) {
                     echo '<a class="button" href="' . esc_url($arquivo_url) . '" download>Baixar Currículo</a>';

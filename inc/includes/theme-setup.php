@@ -305,7 +305,7 @@ function leva_CPF($post_id)
     global $wpdb;
 
     // Trunca a tabela wp_cpf
-    $wpdb->query("TRUNCATE TABLE {$wpdb->prefix}wp_cpf");
+    $wpdb->query("TRUNCATE TABLE {$wpdb->prefix}cpf");
 
     // Insere os dados na tabela wp_cpf
     $wpdb->query("
