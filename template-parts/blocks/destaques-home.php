@@ -26,7 +26,7 @@ if ($posts_destaque) {
   <section id="publicacoes-em-destaque" class="publicacoes">
     <div class="titulo">
       <h2 id="destaque-home">Publicações em destaque</h2>
-      <a href="<?php echo esc_url(home_url('/se-liga-na-leitura')); ?>" class="ver-todas">Ver todas</a>
+      <a href="<?php echo esc_url(get_category_link(403)); ?>" class="ver-todas">Ver todas</a>
     </div>
 
     <div class="grid-container grid">
