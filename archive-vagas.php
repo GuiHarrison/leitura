@@ -190,7 +190,6 @@ if ((is_archive())
               $status_destacar = get_field('status_destacar');
           ?>
 
-
               <tr class="<?php
                           if ($status == 'Contratado') echo "contratado ";
                           if ($status_lido_nao == 'lido') echo "lido";

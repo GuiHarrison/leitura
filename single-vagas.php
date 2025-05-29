@@ -156,46 +156,46 @@ global $post;
         <div class="detalhes_conta">
 
           <?php if (current_user_can('read')): ?>
-            <section class="candidato-controles grid-6">
-              <input type="button" onclick="window.close();" class="button" value="Voltar">
+            <form method="POST">
+              <section class="candidato-controles grid-6">
+                <input type="button" onclick="window.close();" class="button" value="Voltar">
 
-              <div class="candidato-status">
-                <div class="status">
-                  <label for="aprovacao">Status</label>
-                  <select id="aprovacao" name="select_aprovacao_<?php echo $id_post; ?>">
-                    <option
-                      <?php if (
-                        $status != 'nao-contratado' ||
-                        $status != 'selecionado-para-entrevista' ||
-                        $status != 'cadastro-de-reserva' ||
-                        $status != 'Contratado'
-                      )
-                        echo "selected='selected'"; ?>
-                      value="sem-status">
-                      Sem Status
-                    </option>
-                    <option <?php if ($status == 'selecionado-para-entrevista') echo "selected='selected'"; ?> value="selecionado-para-entrevista">Selecionado para entrevista</option>
-                    <option <?php if ($status == 'cadastro-de-reserva') echo "selected='selected'"; ?> value="cadastro-de-reserva">Cadastro de reserva</option>
-                    <option <?php if ($status == 'Contratado') echo "selected='selected'"; ?> value="Contratado">Contratado</option>
-                    <option <?php if ($status == 'nao-contratado') echo "selected='selected'"; ?> value="nao-contratado">Não contratado</option>
-                  </select>
+                <div class="candidato-status">
+                  <div class="status">
+                    <label for="aprovacao">Status</label>
+                    <select id="aprovacao" name="select_aprovacao_<?php echo $id_post; ?>">
+                      <option
+                        <?php if (
+                          $status != 'nao-contratado' ||
+                          $status != 'selecionado-para-entrevista' ||
+                          $status != 'cadastro-de-reserva' ||
+                          $status != 'Contratado'
+                        )
+                          echo "selected='selected'"; ?>
+                        value="sem-status">
+                        Sem Status
+                      </option>
+                      <option <?php if ($status == 'selecionado-para-entrevista') echo "selected='selected'"; ?> value="selecionado-para-entrevista">Selecionado para entrevista</option>
+                      <option <?php if ($status == 'cadastro-de-reserva') echo "selected='selected'"; ?> value="cadastro-de-reserva">Cadastro de reserva</option>
+                      <option <?php if ($status == 'Contratado') echo "selected='selected'"; ?> value="Contratado">Contratado</option>
+                      <option <?php if ($status == 'nao-contratado') echo "selected='selected'"; ?> value="nao-contratado">Não contratado</option>
+                    </select>
+                  </div>
+
+                  <input class="atualizar" type="submit" name="submit_meta" value="Salvar" />
+                  <input class="delete_cliente" value="Deletar" type="button" onclick="return confirm('Tem certeza que deseja deletar currículo de <?php the_title(); ?> <?php echo $sobre_nome; ?>?')" href="<?php echo get_delete_post_link($post->ID) ?>">
+                  <input class="imprimir" type="button" name="imprimir" value="Imprimir" onclick="window.print();">
                 </div>
 
-                <input class="atualizar" type="submit" name="submit_meta" value="Salvar" />
-                <input class="delete_cliente" value="Deletar" type="button" onclick="return confirm('Tem certeza que deseja deletar currículo de <?php the_title(); ?> <?php echo $sobre_nome; ?>?')" href="<?php echo get_delete_post_link($post->ID) ?>">
-                <input class="imprimir" type="button" name="imprimir" value="Imprimir" onclick="window.print();">
-              </div>
-
-
-              <div class="candidato-destacar">
-                <label for="destacar">Destacar</label>
-                <select id="destacar" name="select_destacar_<?php echo $id_post; ?>">
-                  <option <?php if ($status_destacar == 'nao') echo "selected='selected'"; ?> value="nao">Não</option>
-                  <option <?php if ($status_destacar == 'sim') echo "selected='selected'"; ?> value="sim">Sim</option>
-                </select>
-              </div>
-
-            </section>
+                <div class="candidato-destacar">
+                  <label for="destacar">Destacar</label>
+                  <select id="destacar" name="select_destacar_<?php echo $id_post; ?>">
+                    <option <?php if ($status_destacar == 'nao') echo "selected='selected'"; ?> value="nao">Não</option>
+                    <option <?php if ($status_destacar == 'sim') echo "selected='selected'"; ?> value="sim">Sim</option>
+                  </select>
+                </div>
+              </section>
+            </form>
           <?php endif; ?>
           <div class="bloco_dados">
             <h2 class="title-section"><?php the_title(); ?> <?php echo $sobre_nome; ?></h2>
