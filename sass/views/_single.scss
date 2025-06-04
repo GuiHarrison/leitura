@@ -175,3 +175,12 @@
     }
   }
 }
+
+.site-main {
+  section {
+    &.detalhes {
+      background-color: var(--color-white);
+      padding: 40px;
+    }
+  }
+}

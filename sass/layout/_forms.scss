@@ -157,10 +157,10 @@ input[type="radio"]::before,
 input[type="checkbox"]::before {
   background-color: var(--color-checkbox-checked);
   // Change checkbox color by changing 7effe1 to something else below
-  background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" heighg="16"%3E%3Cg class="nc-icon-wrapper" stroke-width="3" fill="%237effe1" stroke="%237effe1"%3E%3Cpolyline fill="none" stroke="%237effe1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1, 9 5, 13 15, 3" data-cap="butt"%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A');
-  background-position: center;
-  background-size: var(--size-checkbox-marker) var(--size-checkbox-marker);
-  border: 1px solid var(--color-checkbox-checked);
+  // background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" heighg="16"%3E%3Cg class="nc-icon-wrapper" stroke-width="3" fill="%237effe1" stroke="%237effe1"%3E%3Cpolyline fill="none" stroke="%237effe1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="1, 9 5, 13 15, 3" data-cap="butt"%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E%0A');
+  // background-position: center;
+  // background-size: var(--size-checkbox-marker) var(--size-checkbox-marker);
+  border: 3px solid var(--color-checkbox-checked);
   content: '';
   height: var(--size-checkbox);
   opacity: 0;
@@ -240,6 +240,7 @@ input[type="checkbox"]+label:focus {
   padding-left: 40px;
   background-image: url(../../img/seliga-celular.png);
   background-size: contain;
+  background-color: #fff;
 
   @media (min-width: breakpoints.$width-max-mobile) {
     background-image: url(../../img/seliga-desktop.png);
@@ -249,11 +250,36 @@ input[type="checkbox"]+label:focus {
 }
 
 .frm_forms {
-  background-color: var(--color-white);
+  // background-color: var(--color-white);
   padding: 30px;
 
   @media (min-width: 640px) {
     padding: 60px;
+  }
+
+  form {
+
+    .radioLadoALado {
+      .frm_opt_container {
+        max-width: 200px;
+      }
+    }
+
+    .frm_opt_container {
+      .frm_radio {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    }
+
+    h2:first-of-type {
+      margin: 0;
+    }
+
+    h2 {
+      margin: 40px 0 0 0;
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -266,4 +292,14 @@ input[type="checkbox"]+label:focus {
 .ss-main .ss-values .ss-value .ss-value-text {
   color: var(--color-white);
   stroke: var(--color-white);
+}
+
+.wp-editor-container button {
+  background-color: white;
+  border: solid 2px antiquewhite;
+}
+
+.frm_dropzone .dz-message {
+  border: 2px dashed #98A2B3;
+  background-color: transparent;
 }
