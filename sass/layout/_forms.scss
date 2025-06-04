@@ -288,7 +288,10 @@ input[type="checkbox"]+label:focus {
 
   &.frm_style_ouvidoria {
     margin: auto;
-    // max-width: breakpoints.$width-max-article;
+
+    .frm_submit.frm_flex {
+      justify-content: space-between;
+    }
   }
 }
 
