@@ -280,6 +280,15 @@ input[type="checkbox"]+label:focus {
       margin: 40px 0 0 0;
       text-transform: uppercase;
     }
+
+    .frm_start_over {
+      order: -1;
+    }
+  }
+
+  &.frm_style_ouvidoria {
+    margin: auto;
+    // max-width: breakpoints.$width-max-article;
   }
 }
 
@@ -299,7 +308,15 @@ input[type="checkbox"]+label:focus {
   border: solid 2px antiquewhite;
 }
 
-.frm_dropzone .dz-message {
-  border: 2px dashed #98A2B3;
-  background-color: transparent;
+.frm_form_field:not(.frm_compact) {
+
+  .frm_dropzone {
+    max-width: 100%;
+    width: 100%;
+
+    .dz-message {
+      border: 2px dashed #98A2B3;
+      background-color: transparent;
+    }
+  }
 }
