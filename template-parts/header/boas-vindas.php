@@ -26,16 +26,15 @@ namespace Air_Light;
             <?php
             $sac = get_field('sac', 'option');
             if ($sac) {
-              $sac = preg_replace('/\D/', '', $sac['telefone']);
-              $telefone = $sac;
-              if (strlen($telefone) === 11) {
-                $telefone_formatado = '(' . substr($telefone, 0, 2) . ') ' . substr($telefone, 2, 5) . '-' . substr($telefone, 7, 4);
-              } elseif (strlen($telefone) === 10) {
-                $telefone_formatado = '(' . substr($telefone, 0, 2) . ') ' . substr($telefone, 2, 4) . '-' . substr($telefone, 6, 4);
+              $sac = preg_replace('/\D/', '', $sac);
+              if (strlen($sac) === 11) {
+                $sac_formatado = '(' . substr($sac, 0, 2) . ') ' . substr($sac, 2, 5) . '-' . substr($sac, 7, 4);
+              } elseif (strlen($sac) === 10) {
+                $sac_formatado = '(' . substr($sac, 0, 2) . ') ' . substr($sac, 2, 4) . '-' . substr($sac, 6, 4);
               } else {
-                $telefone_formatado = $telefone;
+                $sac_formatado = $sac;
               }
-              echo esc_html($telefone_formatado);
+              echo esc_html($sac_formatado);
             }
             ?>
           </span>
