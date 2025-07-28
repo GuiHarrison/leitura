@@ -99,3 +99,8 @@ add_action('save_post', __NAMESPACE__ . '\leva_CPF', 10, 2);
  * Apenas usuários logados
  */
 add_filter('wp_nav_menu_items', __NAMESPACE__ . '\filtrar_itens_menu', 10, 2);
+
+/**
+ * Pega só posts da categoria 'blog' e suas subcategorias
+ */
+add_filter('pre_get_posts', __NAMESPACE__ . '\filtrar_posts_blog');

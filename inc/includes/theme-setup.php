@@ -506,3 +506,23 @@ function custom_login_logo_url_title()
   return get_bloginfo('name');
 }
 add_filter('login_headertext', __NAMESPACE__ . '\custom_login_logo_url_title');
+
+
+// Pega só posts da categoria 'blog' e suas subcategorias
+function filtrar_posts_blog($query)
+{
+  if (
+    !is_admin() &&
+    $query->is_main_query() &&
+    (is_home() || is_date())
+  ) {
+    $blog_category = get_category_by_slug('blog');
+    if ($blog_category) {
+      $category_ids = array_merge(
+        [$blog_category->term_id],
+        get_term_children($blog_category->term_id, 'category')
+      );
+      $query->set('category__in', $category_ids);
+    }
+  }
+}

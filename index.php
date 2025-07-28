@@ -103,12 +103,6 @@ get_header(); ?>
           array($blog_category->term_id),
           get_term_children($blog_category->term_id, 'category')
         );
-
-        // Modifica a query principal
-        query_posts(array(
-          'category__in' => $category_ids,
-          'paged' => get_query_var('paged') ? get_query_var('paged') : 1
-        ));
       }
 
       if (have_posts()) :
