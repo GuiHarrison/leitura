@@ -6,7 +6,8 @@
 // so feel free to remove everything in this file
 // and start over.
 .site-footer {
-  // Making sure the footer background is white, even on WordPress.org
+  position: relative;
+  z-index: 1;
   background-color: var(--cinza-clarinho);
   clear: both;
   color: var(--color-paragraph);
