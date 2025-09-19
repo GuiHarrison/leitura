@@ -336,7 +336,7 @@ body ::selection {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: calc(50% - 450px);
+    width: calc(50% - 550px);
     height: 100%;
     max-height: 1000px;
     background-image: url(../img/noTelefone.webp);
