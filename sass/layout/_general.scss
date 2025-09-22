@@ -41,6 +41,10 @@ section {
   position: relative;
 }
 
+.is-layout-flex {
+  justify-content: center;
+}
+
 // Block padding exceptions
 // This class is useful when we have multiple blocks stacked with same background-color
 // stylelint-disable-next-line selector-max-class, selector-max-specificity
