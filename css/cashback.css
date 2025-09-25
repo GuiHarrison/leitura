@@ -137,6 +137,10 @@ body {
     0 0 2px #011C40;
 }
 
+.coluna-texto p {
+  text-shadow: 0 0 8px #f7f4e8, 0 0 8px #f7f4e8, 0 0 8px #f7f4e8, 0 0 8px #f7f4e8, 0 0 8px #f7f4e8, 0 0 8px #f7f4e8, 0 0 8px #f7f4e8, 0 0 8px #f7f4e8, 0 0 8px #f7f4e8, 0 0 8px #f7f4e8;
+}
+
 .coluna-texto .texto-pequeno {
   font-size: 0.8rem;
   color: #555;
@@ -301,12 +305,25 @@ body ::selection {
     padding: 1rem;
     gap: 1.5rem;
   }
+
+  .coluna-vazia,
+  .no-telefone {
+    display: none;
+  }
 }
 
 @media (max-width: 700px) {
   body {
     padding-right: 0;
     background-image: none;
+  }
+
+  .hero {
+    margin: 0;
+  }
+
+  .site-content {
+    padding-right: 0;
   }
 
   .container-login {
