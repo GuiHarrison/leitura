@@ -140,20 +140,19 @@ function enqueue_theme_scripts(): void {
 		  wp_enqueue_script(
         'cashback-jquerymasks-js',
         get_theme_file_uri( 'js/src/modules/cashback/jquery.mask.min.js' ),
-        [ 'jquery' ],
-        [],
-        filemtime(
-          get_theme_file_path( 'js/src/modules/cashback/jquery.mask.min.js' )
-        ),
-        true
+			[ 'jquery' ],
+			filemtime(
+			  get_theme_file_path( 'js/src/modules/cashback/jquery.mask.min.js' )
+			),
+			true
 		  );
 
 		  wp_enqueue_script(
         'cashback-three-js',
         'https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.min.js',
-        [ 'jquery' ],
-        [],
-        true
+			[ 'jquery' ],
+			'0.153.0',
+			true
 		  );
 
 		  wp_enqueue_script(
@@ -167,23 +166,21 @@ function enqueue_theme_scripts(): void {
       wp_enqueue_script(
         'cashback-jquery-validate-js',
         get_theme_file_uri( 'js/src/modules/cashback/jquery.validate.min.js' ),
-        [ 'jquery' ],
-        [],
-        filemtime(
-          get_theme_file_path( 'js/src/modules/cashback/jquery.validate.min.js' )
-        ),
-        true
+			[ 'jquery' ],
+			filemtime(
+			  get_theme_file_path( 'js/src/modules/cashback/jquery.validate.min.js' )
+			),
+			true
       );
 
       wp_enqueue_script(
         'cashback-validate-js',
         get_theme_file_uri( 'js/src/modules/cashback/validate.min.js' ),
-        [ 'jquery' ],
-        [],
-        filemtime(
-          get_theme_file_path( 'js/src/modules/cashback/validate.min.js' )
-        ),
-        true
+			[ 'jquery' ],
+			filemtime(
+			  get_theme_file_path( 'js/src/modules/cashback/validate.min.js' )
+			),
+			true
       );
   }
 

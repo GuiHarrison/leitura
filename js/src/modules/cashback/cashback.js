@@ -1,19 +1,73 @@
 // Cena 3D de fundo (moedas)
+/* global THREE */
 const cena = new THREE.Scene();
 
 // breakpoint para dispositivos móveis
 const BP_MOBILE_PX = 700;
 const mqMobile = window.matchMedia(`(max-width: ${BP_MOBILE_PX}px)`);
 
+// Configuração de moedas por breakpoint
+// x e y em [0, 1] (0.5, 0.5) é o centro
+// size: fator multiplicador do raio base (1 = normal)
+// top: 'coroa' ou 'cara' define a textura do topo/base
+const moedasConfig = {
+  desktop: [
+    {
+      x: 0.75, y: 0.8, size: 1.3, top: 'cara',
+    },
+    {
+      x: 0.83, y: 0.62, size: 0.5, top: 'cara',
+    },
+    {
+      x: 0.27, y: 0.99, size: 1.0, top: 'coroa',
+    },
+    {
+      x: 0.05, y: 0.84, size: 3.0, top: 'coroa',
+    },
+    {
+      x: 0.13, y: 0.75, size: 0.5, top: 'cara',
+    },
+    {
+      x: 0.83, y: -0.10, size: 1.0, top: 'cara',
+    },
+    {
+      x: 0.70, y: 0.00, size: 2, top: 'coroa',
+    },
+  ],
+  mobile: [
+    {
+      x: 0.17, y: 0.845, size: 1.5, top: 'coroa',
+    },
+    {
+      x: 0.25, y: 0.823, size: 0.8, top: 'cara',
+    },
+    {
+      x: 0.75, y: 0.89, size: 0.8, top: 'cara',
+    },
+    {
+      x: 0.16, y: 0.5, size: 1.8, top: 'coroa',
+    },
+    {
+      x: 0.25, y: 0.48, size: 0.8, top: 'cara',
+    },
+    {
+      x: 0.88, y: 0.37, size: 2, top: 'cara',
+    },
+    {
+      x: 0.19, y: 0.07, size: 2.7, top: 'coroa',
+    },
+  ],
+};
+
 let largura = 0;
 let altura = 0;
 let moedas = [];
 let velocidades = [];
-let circleTextureGlobal;
+let moedaCaraGlobal;
 let moedaTexture;
 
 // Ajusta a câmera com base no tamanho da tela (criada depois de definir largura/altura)
-const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 3000);
+const camera = new THREE.PerspectiveCamera(60, 1, 0.2, 3000);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setClearColor('#f2edd9');
@@ -42,7 +96,7 @@ function computeWidth() {
   // quando o media query corresponder (telas pequenas), usamos toda a largura
   if (mqMobile.matches) return dimensions.width;
   // caso contrário, aplicamos o offset original (1/10 da largura)
-  return dimensions.width - dimensions.width / 10;
+  return dimensions.width - dimensions.width / 20;
 }
 
 function clearMoedas() {
@@ -76,10 +130,10 @@ function updateSceneSize() {
   camera.position.set(0, 0, Math.max(largura, altura) * 1.1);
 
   // Se já tivermos texturas carregadas, recria moedas para ajustar ao novo tamanho
-  if (circleTextureGlobal !== undefined || moedaTexture !== undefined) {
+  if (moedaCaraGlobal !== undefined || moedaTexture !== undefined) {
     clearMoedas();
     // chama recriação usando texturas armazenadas (podem ser null)
-    criarMoedas(circleTextureGlobal || null, moedaTexture || null);
+    criarMoedas(moedaCaraGlobal || null, moedaTexture || null);
   }
 }
 
@@ -90,8 +144,7 @@ mqMobile.addEventListener ? mqMobile.addEventListener('change', updateSceneSize)
 // chama inicialmente para configurar tamanho/câmera
 updateSceneSize();
 
-// Parâmetro: quantidade de moedas
-const quantidadeMoedas = 5;
+// A quantidade de moedas passa a ser definida pela lista de posições
 
 // Carrega textura externo e só cria as moedas após o carregamento
 const textureLoader = new THREE.TextureLoader();
@@ -110,27 +163,37 @@ textureLoader.load('/wp-content/themes/leitura/img/fundo.jpg', (fundoTexture) =>
   cena.add(plano);
 });
 
-function criarMoedas(circleTexture, moedaTextureParam) {
+function criarMoedas(moedaCara, moedaCoroa) {
   // garante que usamos as texturas globais para possíveis recriações futuras
-  circleTextureGlobal = circleTexture;
-  moedaTexture = moedaTextureParam;
+  moedaCaraGlobal = moedaCara;
+  moedaTexture = moedaCoroa;
 
   clearMoedas();
 
-  // calcula raios proporcionais à viewport, com limites
+  // raio base proporcional à viewport
   const minSide = Math.min(largura, altura);
-  const raio = Math.round(Math.max(8, Math.min(60, minSide * 0.035)));
-  const espessuraMoeda = Math.max(4, Math.round(raio * 0.28));
+  const raioBase = Math.max(8, Math.min(60, Math.round(minSide * 0.035)));
   const segmentos = 32;
 
-  for (let i = 0; i < quantidadeMoedas; i++) {
-    const geometria = new THREE.CylinderGeometry(raio, raio, espessuraMoeda, segmentos, 1, false);
+  const listaMoedas = mqMobile.matches ? moedasConfig.mobile : moedasConfig.desktop;
+  for (let i = 0; i < listaMoedas.length; i++) {
+    const item = listaMoedas[i];
+
+    // Tamanho individual por moeda
+    const fator = typeof item.size === 'number' && isFinite(item.size) ? item.size : 1;
+    const raioItem = Math.max(8, Math.min(60, Math.round(raioBase * fator)));
+    const espessuraMoeda = Math.max(4, Math.round(raioItem * 0.28));
+
+    const geometria = new THREE.CylinderGeometry(raioItem, raioItem, espessuraMoeda, segmentos, 1, false);
 
     // Aleatoriedade para cor lateral e textura
     const lateralColor = Math.random() < 0.4 ? '#32529e' : '#172947';
-    const useMoedaTexture = Math.random() < 0.3;
+    // Seleção explícita da textura do topo/base por item
+    let topoMap = null;
+    if (item.top === 'coroa' && moedaCoroa) topoMap = moedaCoroa;
+    if (item.top === 'cara' && moedaCara) topoMap = moedaCara;
 
-    const materialTopoBase = new THREE.MeshBasicMaterial({ map: useMoedaTexture && moedaTextureParam ? moedaTextureParam : circleTexture });
+    const materialTopoBase = new THREE.MeshBasicMaterial({ map: topoMap });
     const materialLateral = new THREE.MeshBasicMaterial({ color: lateralColor });
     const materiais = [materialLateral, materialTopoBase, materialTopoBase];
     const moeda = new THREE.Mesh(geometria, materiais);
@@ -140,10 +203,11 @@ function criarMoedas(circleTexture, moedaTextureParam) {
       geometria.groups[g].materialIndex = g;
     }
 
-    // Distribuição na tela inteira (coord. centradas)
-    moeda.position.x = (Math.random() * largura) - (largura / 2);
-    moeda.position.y = (Math.random() * altura) - (altura / 2);
-    moeda.position.z = Math.random() * 1000;
+    // Posição baseada em percentuais predefinidos (origem no centro)
+    const { x, y } = item;
+    moeda.position.x = (x - 0.5) * largura;
+    moeda.position.y = (y - 0.5) * altura;
+    moeda.position.z = 500;
 
     // Rotações iniciais aleatórias
     moeda.rotation.y = Math.random() * Math.PI * 2;
@@ -174,17 +238,17 @@ textureLoader.load('/wp-content/themes/leitura/img/moeda.jpg', (loadedMoedaTextu
   moedaTexture = loadedMoedaTexture;
   textureLoader.load(
     '/wp-content/themes/leitura/img/circle-outline.jpg',
-    (circleTexture) => {
-      circleTextureGlobal = circleTexture;
+    (moedaCara) => {
+      moedaCaraGlobal = moedaCara;
       // garante que o tamanho/câmera estão calculados antes de criar
       updateSceneSize();
-      criarMoedas(circleTextureGlobal, moedaTexture);
+      criarMoedas(moedaCaraGlobal, moedaTexture);
       animar();
     },
     undefined,
     () => {
       // Se falhar, cria moedas sem textura
-      circleTextureGlobal = null;
+      moedaCaraGlobal = null;
       updateSceneSize();
       criarMoedas(null, moedaTexture);
       animar();
@@ -194,15 +258,15 @@ textureLoader.load('/wp-content/themes/leitura/img/moeda.jpg', (loadedMoedaTextu
   // Se falhar ao carregar moeda/moeda.jpg, usa só circle-outline.jpg
   textureLoader.load(
     '/wp-content/themes/leitura/img/circle-outline.jpg',
-    (circleTexture) => {
-      circleTextureGlobal = circleTexture;
+    (moedaCara) => {
+      moedaCaraGlobal = moedaCara;
       updateSceneSize();
-      criarMoedas(circleTextureGlobal, null);
+      criarMoedas(moedaCaraGlobal, null);
       animar();
     },
     undefined,
     () => {
-      circleTextureGlobal = null;
+      moedaCaraGlobal = null;
       moedaTexture = null;
       updateSceneSize();
       criarMoedas(null, null);
