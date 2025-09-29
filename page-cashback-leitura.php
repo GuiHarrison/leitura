@@ -32,10 +32,10 @@ get_header();
 		<form class="full-post" method="POST" action="https://cashbackleitura.com.br/index.php?opcao=login"
 			name="form_login" id="form_login">
 			<div class="form-cadastro">
-				<a class="cadastrar texto-grande"
+				<a class="cadastrar texto-grande poppins-semibold"
 					href="https://cashbackleitura.com.br/index.php?opcao=inclui_cadastro">Cadastre-se</a>
 			</div>
-			<div class="form-group">
+			<div class="form-group poppins-medium">
 				<p>Já possui cadastro?</p>
 				<input type="text" placeholder="CPF / CNPJ" class="texto-grande valid-chars mask mask-cpf-cnpj"
 					maxlength="18" name="usuario" id="usuario" autocomplete="off"
