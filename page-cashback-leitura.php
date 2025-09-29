@@ -37,23 +37,23 @@ get_header();
 			</div>
 			<div class="form-group poppins-medium">
 				<p>Já possui cadastro?</p>
-				<input type="text" placeholder="CPF / CNPJ" class="texto-grande valid-chars mask mask-cpf-cnpj"
+				<input type="text" placeholder="CPF / CNPJ" class="texto-grande valid-chars mask mask-cpf-cnpj poppins-medium"
 					maxlength="18" name="usuario" id="usuario" autocomplete="off"
 					style="max-width: 100%; box-sizing: border-box;">
 				<span class="icon icon-user"></span>
 			</div>
 			<div class="form-group">
-				<input type="password" autocomplete="off" placeholder="Senha" class="texto-grande" maxlength="20"
+				<input type="password" autocomplete="off" placeholder="Senha" class="texto-grande poppins-medium" maxlength="20"
 					name="senha" id="senha" style="max-width: 100%; box-sizing: border-box;">
 				<span class="icon icon-password toggle-password" data-pwd-field="#senha"></span>
 			</div>
 			<div class="error-container hidden">
 				<a class="texto-padrao error-message"></a>
 			</div>
-			<button class="texto-grande white login-button" type="submit" name="envia_login"
+			<button class="texto-grande white login-button poppins-medium" type="submit" name="envia_login"
 				id="envia_login">Entrar</button>
 			<input type="hidden" name="envia_login" value="1">
-			<a class="texto-padrao small"
+			<a class="texto-padrao small poppins-medium"
 				href="https://cashbackleitura.com.br/index.php?opcao=esqueci_senha">Esqueci minha senha</a>
 		</form>
 	</section>
