@@ -10,6 +10,10 @@ namespace Air_Light;
 
 get_header();
 ?>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
 <div id="cena3d"></div>
 <main class="container-login">
 	<div class="no-telefone"></div>
