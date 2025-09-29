@@ -18,11 +18,11 @@ get_header();
 	</div>
 	<div class="coluna-vazia"></div>
 	<div class="coluna-texto">
-		<h1>Cashback Leitura: transforme compras em vantagens</h1>
-		<h3>Mais benefícios, mais facilidade e muito mais leitura</h3>
-		<p>O Cashback Leitura chegou para tornar sua experiência ainda melhor! Agora, em vez de pontos, você recebe créditos a cada compra e pode utilizá-los nas próximas. É fácil, rápido e pensado para valorizar quem é apaixonado por livros: faça seu cadastro, acompanhe seu saldo e aproveite as vantagens sempre que quiser renovar sua estante.</p>
-		<p class="texto-pequeno"><strong>Importante:</strong> seus créditos são válidos exclusivamente nas lojas físicas da Livraria Leitura espalhadas por todo o Brasil.</p>
-		<a class="texto-padrao" target="_blank" href="https://seliganaleitura.com.br/cashbackleitura/regulamento.html">Conheça o regulamento do programa</a>
+		<h1 class="poppins-bold">Cashback Leitura: transforme compras em vantagens</h1>
+		<h3 class="poppins-medium">Mais benefícios, mais facilidade e muito mais leitura</h3>
+		<p class="poppins-medium">O Cashback Leitura chegou para tornar sua experiência ainda melhor! Agora, em vez de pontos, você recebe créditos a cada compra e pode utilizá-los nas próximas. É fácil, rápido e pensado para valorizar quem é apaixonado por livros: faça seu cadastro, acompanhe seu saldo e aproveite as vantagens sempre que quiser renovar sua estante.</p>
+		<p class="texto-pequeno poppins-medium"><strong>Importante:</strong> seus créditos são válidos exclusivamente nas lojas físicas da Livraria Leitura espalhadas por todo o Brasil.</p>
+		<a class="texto-padrao poppins-medium" target="_blank" href="https://seliganaleitura.com.br/cashbackleitura/regulamento.html">Conheça o regulamento do programa</a>
 	</div>
 	<section class="coluna-formulario">
 		<form class="full-post" method="POST" action="https://cashbackleitura.com.br/index.php?opcao=login"
