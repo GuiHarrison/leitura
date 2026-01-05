@@ -6,13 +6,13 @@
 // Remember to add these also to gutenberg/variables/_typography.scss with correct paths
 
 // Variable fonts
-@include variablefont.variablefont('Mona Sans', '../../fonts/monasansvf', 1 999);
+@include variablefont.variablefont('Mona Sans', '../../fonts/monasansvf', 1 999, swap);
 
 // Regular fonts
-@include font.font('Faktum', '../../fonts/Faktum-Light', 400);
-@include font.font('Faktum', '../../fonts/Faktum-Regular', 500);
-@include font.font('Faktum', '../../fonts/Faktum-SemiBold', 600);
-@include font.font('Faktum', '../../fonts/Faktum-Bold', 700);
+@include font.font('Faktum', '../../fonts/Faktum-Light', 400, swap);
+@include font.font('Faktum', '../../fonts/Faktum-Regular', 500, swap);
+@include font.font('Faktum', '../../fonts/Faktum-SemiBold', 600, swap);
+@include font.font('Faktum', '../../fonts/Faktum-Bold', 700, swap);
 
 // stylelint-disable rem-over-px/rem-over-px
 // CSS Variables for responsive fonts

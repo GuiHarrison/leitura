@@ -180,7 +180,7 @@ function acf_maps_key()
 function tamanhos_de_imagens()
 {
   add_image_size('ctaDesktop', 1400, false);
-  add_image_size('ctaCelular', 670, false);
+  add_image_size('ctaCelular', 465, false);
   add_image_size('post', 800, 640, true);
   add_image_size('destaque-home', 346, 346, true);
   add_image_size('destaque-blog', 532, 532, true);
