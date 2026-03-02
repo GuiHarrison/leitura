@@ -299,6 +299,12 @@ class Nav_Walker extends \Walker_Nav_Menu
      */
     $title = apply_filters('nav_menu_item_title', $title, $item, $args, $depth);
 
+    // Substituir o título por imagem se o item tiver a classe logo-seliga
+    if (in_array('logo-seliga', $classes, true)) {
+      $image_path = get_template_directory_uri() . '/img/se-liga-na-leitura-menu.png';
+      $title = '<img src="' . esc_url($image_path) . '" alt="' . esc_attr($item->title) . '" class="menu-logo-seliga" />';
+    }
+
     // If the .screen-reader-text class was set apply to the nav items text only.
     if (in_array('screen-reader-text', $linkmod_classes, true)) {
       $title         = self::wrap_for_screen_reader($title);

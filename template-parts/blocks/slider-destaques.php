@@ -16,9 +16,9 @@ $current_taxonomy = null;
 if (is_category()) {
   $current_term_id = get_queried_object_id();
   $current_taxonomy = 'category';
-} elseif (is_tax('category_generos')) {
+} elseif (is_tax('category_curadoria')) {
   $current_term_id = get_queried_object_id();
-  $current_taxonomy = 'category_generos';
+  $current_taxonomy = 'category_curadoria';
 }
 
 // Query args base

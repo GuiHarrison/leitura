@@ -11,54 +11,68 @@
 namespace Air_Light;
 ?>
 
-<?php if (get_queried_object() && (
-  get_queried_object()->slug === 'portal-de-conteudos' ||
-  is_tax('category_generos', 'portal-de-conteudos') ||
-  is_tax('category_generos', get_queried_object()->slug)
-)) : ?>
-  <div class="s-filtrar">
-    <h4>→ Filtrar gêneros:</h4>
-    <ul class="categories">
-      <?php
-      $generos = get_terms(array(
-        'taxonomy' => 'category_generos',
-        'hide_empty' => false,
-      ));
+<div class="s-filtrar">
+  <ul class="categories">
+    <?php
+    $blog_id = get_cat_ID('blog');
+    $categories = get_categories(array(
+      'child_of' => $blog_id,
+      'hide_empty' => false,
+      'exclude' => get_cat_ID('uncategorized'),
+      'orderby' => 'name',
+    ));
 
-      if (!empty($generos) && !is_wp_error($generos)) {
-        $current_term = get_queried_object();
-        echo '<li><a href="' . get_category_link(403) /* 403: portal-de-conteudos (Se liga na leitura) */ . '" class="category">Todas</a></li>';
-        foreach ($generos as $genero) {
-          $current_class = ($current_term && $current_term->term_id === $genero->term_id) ? ' current' : '';
-          echo '<li><a href="' . get_term_link($genero) . '" class="category' . $current_class . '">' . $genero->name . '</a></li>';
-        }
+    $current_curadoria = get_current_curadoria_slug();
+    $current_category = get_current_category_id();
+
+    // Link "Todas" com a curadoria atual se houver
+    $todas_url = home_url('/blog/');
+    if ($current_curadoria) {
+      $todas_url = add_query_arg('curadoria', $current_curadoria, $todas_url);
+    }
+    echo '<li><a href="' . $todas_url . '" class="category fundo-azul">Todas</a></li>';
+
+    foreach ($categories as $category) {
+      $category_url = build_filter_url($category->term_id, $current_curadoria);
+      $current_class = ($current_category && $current_category == $category->term_id) ? ' current' : '';
+      echo '<li><a href="' . $category_url . '" class="category fundo-azul' . $current_class . '">' . $category->name . '</a></li>';
+    }
+    ?>
+  </ul>
+</div>
+
+
+<div class="s-filtrar">
+  <ul class="categories">
+    <?php
+    $curadorias = get_terms(array(
+      'taxonomy' => 'category_curadoria',
+      'hide_empty' => true,
+    ));
+
+    if (!empty($curadorias) && !is_wp_error($curadorias)) {
+      $current_category = get_current_category_id();
+      $current_curadoria = get_current_curadoria_slug();
+
+      // Link "Todas" com a categoria atual se houver
+      $todas_url = home_url('/blog/');
+      if ($current_category) {
+        $todas_url = add_query_arg('cat', $current_category, $todas_url);
       }
-      ?>
-    </ul>
-  </div>
-<?php elseif (get_queried_object() && (get_queried_object()->slug === 'blog' || cat_is_ancestor_of(get_cat_ID('blog'), get_queried_object_id()))) : ?>
-  <div class="s-filtrar">
-    <h4>→ Filtrar categorias:</h4>
-    <ul class="categories">
-      <?php
-      $blog_id = get_cat_ID('blog');
-      $categories = get_categories(array(
-        'child_of' => $blog_id,
-        'hide_empty' => false,
-      ));
+      echo '<li><a href="' . $todas_url . '" class="category">Todas</a></li>';
 
-      if (!empty($categories) && !is_wp_error($categories)) {
-        echo '<li><a href="' . get_category_link($blog_id) . '" class="category">Todas</a></li>';
-        foreach ($categories as $category) {
-          echo '<li><a href="' . get_category_link($category->term_id) . '" class="category">' . $category->name . '</a></li>';
-        }
+      foreach ($curadorias as $curadoria) {
+        $curadoria_url = build_filter_url($current_category, $curadoria->slug);
+        $current_class = ($current_curadoria && $current_curadoria === $curadoria->slug) ? ' current' : '';
+        echo '<li><a href="' . $curadoria_url . '" class="category' . $current_class . '">' . $curadoria->name . '</a></li>';
       }
-      ?>
-    </ul>
-  </div>
-<?php endif; ?>
+    }
+    ?>
+  </ul>
+</div>
 
-<?php if (get_queried_object() && (get_queried_object()->slug === 'blog' || cat_is_ancestor_of(get_cat_ID('blog'), get_queried_object_id())) || (is_date())) : ?>
+
+<?php if (is_date()) : ?>
   <div class="histórico block-accordion">
     <h4>→ Postagens por mês:</h4>
     <?php
@@ -125,9 +139,9 @@ namespace Air_Light;
   </div>
 <?php endif; ?>
 
-<div class="revista">
+<!-- <div class="revista">
   <?php get_template_part('template-parts/blocks/revista'); ?>
-</div>
+</div> -->
 
 <?php
 

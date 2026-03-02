@@ -7,7 +7,7 @@
 .tags {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
   list-style: none;
   list-style-type: none;
@@ -25,6 +25,7 @@
   border-radius: 0;
   color: var(--cinza-escuro);
   font-size: var(--typography-size-14);
+  font-weight: var(--typography-weight-medium);
   display: inline-block;
   margin: 0;
   padding: .6rem .9rem 0.3rem 0.9rem;
@@ -35,6 +36,13 @@
   &.current {
     background-color: var(--color-black);
     color: var(--color-white);
+  }
+
+  // Tipos de conteúdo (botões azuis)
+  &.fundo-azul {
+    background-color: var(--azul-leitura);
+    color: white;
+    border-radius: 30px;
   }
 }
 

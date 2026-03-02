@@ -34,3 +34,6 @@ if (file_exists(get_theme_file_path('/inc/includes/post-type.php'))) {
 
 // Modal
 require get_theme_file_path('/inc/includes/Modal.php');
+
+// Filter helper for dual taxonomy filtering
+require get_theme_file_path('/inc/helpers/filter-helper.php');

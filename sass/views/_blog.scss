@@ -10,14 +10,14 @@ body.archive {
     align-items: start;
 
     @media (min-width: breakpoints.$width-max-mobile) {
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr;
     }
 
     .grid {
       grid-template-columns: 1fr;
 
       @media (min-width: breakpoints.$width-max-mobile) {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
       }
 
       article.destaque-blog {
@@ -38,25 +38,26 @@ body.archive {
   }
 }
 
-body.archive {
-  article:not(.resenha-item, .queridinhos) {
+// Primeiro post mais largo
+// body.archive {
+//   article:not(.resenha-item, .queridinhos) {
 
-    &:first-child,
-    &.destaque-blog {
-      display: block;
+//     &:first-child,
+//     &.destaque-blog {
+//       display: block;
 
-      @media (min-width: breakpoints.$width-max-mobile) {
-        grid-column: span 2;
-        display: flex;
-        gap: 40px;
+//       @media (min-width: breakpoints.$width-max-mobile) {
+//         grid-column: span 2;
+//         display: flex;
+//         gap: 40px;
 
-        .thumbnail {
-          flex-basis: 100%;
-        }
-      }
-    }
-  }
-}
+//         .thumbnail {
+//           flex-basis: 100%;
+//         }
+//       }
+//     }
+//   }
+// }
 
 #destaques-blog {
   margin: 0;

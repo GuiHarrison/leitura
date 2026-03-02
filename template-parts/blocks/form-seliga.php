@@ -19,7 +19,7 @@ namespace Air_Light;
       .forEach(cb => cb.checked = false);
 
     // Pega todas as opções selecionadas do select múltiplo
-    const select = document.querySelector('.rd-generos');
+    const select = document.querySelector('.rd-curadoria');
     if (!select) return;
 
     Array.from(select.selectedOptions).forEach(option => {
@@ -28,7 +28,7 @@ namespace Air_Light;
     });
   }
 
-  const select = document.querySelector('.rd-generos');
+  const select = document.querySelector('.rd-curadoria');
   if (select) {
     select.addEventListener('change', updateCheckboxes);
   }

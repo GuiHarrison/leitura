@@ -33,9 +33,10 @@
       grid-row: span 2;
     }
 
-    &.has-post-thumbnail:not(:first-child, :last-child, .queridinhos) {
-      grid-row: span 2;
-    }
+    // Dupla altura se tiver thumbnail, desativado para manter tudo do mesmo tamanho
+    // &.has-post-thumbnail:not(:first-child, :last-child, .queridinhos) {
+    //   grid-row: span 2;
+    // }
 
     &:not(.has-post-thumbnail) {
       grid-row: span 1

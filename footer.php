@@ -104,7 +104,9 @@ namespace Air_Light;
   </div>
 </footer>
 </div>
-
+<div class="rodape fundo-azul logo-rodape">
+  <div class="container"><img height="50" src="<?php echo get_theme_file_uri('/img/muito-mais-que-uma-livraria.png'); ?>" alt="Muito mais que uma Livraria" class="logo"></div>
+</div>
 <?php wp_footer(); ?>
 
 <a
