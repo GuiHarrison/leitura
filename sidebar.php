@@ -24,13 +24,15 @@ namespace Air_Light;
 
     $current_curadoria = get_current_curadoria_slug();
     $current_category = get_current_category_id();
+    $request_path = trim((string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+    $is_todas_current = ($request_path === 'blog' || preg_match('#^curadoria(/.*)?$#', $request_path));
 
     // Link "Todas" com a curadoria atual se houver
     $todas_url = home_url('/blog/');
     if ($current_curadoria) {
       $todas_url = add_query_arg('curadoria', $current_curadoria, $todas_url);
     }
-    echo '<li><a href="' . $todas_url . '" class="category fundo-azul">Todas</a></li>';
+    echo '<li><a href="' . $todas_url . '" class="category fundo-azul' . ($is_todas_current ? ' current' : '') . '">Todas</a></li>';
 
     foreach ($categories as $category) {
       $category_url = build_filter_url($category->term_id, $current_curadoria);
@@ -47,19 +49,23 @@ namespace Air_Light;
     <?php
     $curadorias = get_terms(array(
       'taxonomy' => 'category_curadoria',
-      'hide_empty' => true,
+      'hide_empty' => false,
     ));
 
     if (!empty($curadorias) && !is_wp_error($curadorias)) {
       $current_category = get_current_category_id();
       $current_curadoria = get_current_curadoria_slug();
+      $request_path = trim((string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+      $has_curadoria_query = array_key_exists('curadoria', $_GET);
+      $is_curadoria_path = (bool) preg_match('#^curadoria(/.*)?$#', $request_path);
+      $is_todas_current = (!$is_curadoria_path && !$has_curadoria_query);
 
       // Link "Todas" com a categoria atual se houver
       $todas_url = home_url('/blog/');
       if ($current_category) {
         $todas_url = add_query_arg('cat', $current_category, $todas_url);
       }
-      echo '<li><a href="' . $todas_url . '" class="category">Todas</a></li>';
+      echo '<li><a href="' . $todas_url . '" class="category' . ($is_todas_current ? ' current' : '') . '">Todas</a></li>';
 
       foreach ($curadorias as $curadoria) {
         $curadoria_url = build_filter_url($current_category, $curadoria->slug);

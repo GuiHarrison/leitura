@@ -24,8 +24,8 @@ if ($revistas) {
     echo
     '<div class="revista-container">' .
       '<div class="conteudo">' .
-      '<h2 class="post-title"><a href="' . esc_url($pdf) . '">Explore as ofertas de ' . esc_html($first_word) . '</a></h2>' .
-      '<a class="button com-seta-direita" href="' . esc_url($pdf) . '" target="_blank">Acessar revista</a>' .
+      '<h2 class="post-title"><a href="' . site_url('/revista-se-liga-na-leitura') . '">Explore as ofertas de ' . esc_html($first_word) . '</a></h2>' .
+      '<a class="button com-seta-direita" href="' . site_url('/revista-se-liga-na-leitura') . '" target="_blank">Acessar revista</a>' .
       '</div>' .
       '<div class="revista-thumbnail">' .
       get_the_post_thumbnail(get_the_ID(), 'revista') .

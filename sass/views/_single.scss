@@ -43,6 +43,10 @@
     background-color: var(--azul-leitura);
     color: white;
     border-radius: 30px;
+
+    &.current {
+      background-color: var(--azul-forte);
+    }
   }
 }
 

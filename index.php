@@ -52,6 +52,19 @@ get_header(); ?>
             </a>
 
             <div class="detalhes-do-post">
+              <?php if (has_category()) : ?>
+                <ul class="categories">
+                  <?php
+                  $categories = wp_get_post_categories(get_the_id(), ['fields' => 'all']);
+                  if (! empty($categories)) {
+                    foreach ($categories as $category) {
+                      echo '<li><a href="' . esc_url(get_category_link($category)) . '">' . esc_html($category->name) . '</a></li>';
+                    }
+                  }
+                  ?>
+                </ul>
+              <?php endif; ?>
+
               <h3 class="post-title">
                 <a href="<?php echo esc_url(get_the_permalink()); ?>">
                   <?php the_title(); ?>

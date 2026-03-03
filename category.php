@@ -86,14 +86,14 @@ get_header();
 
   <!-- </section> -->
 
-  <aside class="grid cta-rodape">
+  <!--   <aside class="grid cta-rodape">
     <?php get_template_part('template-parts/blocks/revista'); ?>
     <?php get_template_part('template-parts/blocks/cta-3-3'); ?>
   </aside>
 
   <aside class="cta-rodape">
     <?php get_template_part('template-parts/blocks/cta-news'); ?>
-  </aside>
+  </aside> -->
 
 </div>
 
