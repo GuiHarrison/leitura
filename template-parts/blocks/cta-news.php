@@ -11,16 +11,23 @@ namespace Air_Light;
 $cta_data = get_field('cta-news', 'option');
 
 if ($cta_data && $cta_data['imagem_news_desktop'] && $cta_data['news_link']) {
-  $is_mobile = wp_is_mobile();
   $cor = $cta_data['news_cor'];
-  $imagem = $is_mobile && $cta_data['imagem_news_celular'] ?
-    $cta_data['imagem_news_celular'] :
-    $cta_data['imagem_news_desktop'];
+  $imagem_desktop = $cta_data['imagem_news_desktop'];
+  $imagem_celular = $cta_data['imagem_news_celular'];
+  $imagem_desktop_url = !empty($imagem_desktop['url']) ? $imagem_desktop['url'] : wp_get_attachment_image_url($imagem_desktop['ID'], 'full');
+  $imagem_celular_url = $imagem_celular ? (!empty($imagem_celular['url']) ? $imagem_celular['url'] : wp_get_attachment_image_url($imagem_celular['ID'], 'full')) : false;
+  $imagem_alt = !empty($imagem_desktop['alt']) ? $imagem_desktop['alt'] : '';
 
-  if ($imagem) {
+  if ($imagem_desktop_url) {
+    $imagem_html =
+      '<picture>' .
+      ($imagem_celular_url ? '<source media="(max-width: 767px)" srcset="' . esc_url($imagem_celular_url) . '">' : '') .
+      '<img src="' . esc_url($imagem_desktop_url) . '" alt="' . esc_html($imagem_alt) . '" class="cta-image">' .
+      '</picture>';
+
     echo
     '<a href="' . esc_url($cta_data['news_link']) . '" class="cta-link" rel="nofollow" target="_blank" style="background-color: ' . $cor . '">' .
-      '<img src="' . esc_url($imagem['url']) . '" alt="' . esc_html($imagem['alt']) . '" class="cta-image">' .
+      $imagem_html .
       '</a>';
   }
 }

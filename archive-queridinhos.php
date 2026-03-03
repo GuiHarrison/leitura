@@ -31,19 +31,20 @@ for ($i = 1; $i <= 2; $i++) {
 
   <?php
   if ($cta_data[1]['desktop_id'] && $cta_data[1]['link']) {
-    $is_mobile = wp_is_mobile();
-    if ($is_mobile && $cta_data[1]['celular_id']) {
-      $imagem_url = wp_get_attachment_image_url($cta_data[1]['celular_id'], 'ctaCelular');
-      $imagem_alt = $cta_data[1]['celular_alt'];
-    } else {
-      $imagem_url = wp_get_attachment_image_url($cta_data[1]['desktop_id'], 'ctaDesktop');
-      $imagem_alt = $cta_data[1]['desktop_alt'];
-    }
-    if ($imagem_url) {
+    $imagem_desktop_url = wp_get_attachment_image_url($cta_data[1]['desktop_id'], 'ctaDesktop');
+    $imagem_celular_url = $cta_data[1]['celular_id'] ? wp_get_attachment_image_url($cta_data[1]['celular_id'], 'ctaCelular') : false;
+    $imagem_alt = $cta_data[1]['desktop_alt'];
+    if ($imagem_desktop_url) {
+      $imagem_html =
+        '<picture>' .
+        ($imagem_celular_url ? '<source media="(max-width: 767px)" srcset="' . esc_url($imagem_celular_url) . '">' : '') .
+        '<img src="' . esc_url($imagem_desktop_url) . '" alt="' . esc_html($imagem_alt) . '" class="cta-image">' .
+        '</picture>';
+
       echo
       '<aside class="cta sem-margem">' .
         '<a href="' . esc_url($cta_data[1]['link']) . '" class="cta-link" rel="nofollow" target="_blank">' .
-        '<img src="' . esc_url($imagem_url) . '" alt="' . esc_html($imagem_alt) . '" class="cta-image">' .
+        $imagem_html .
         '</a>' .
         '</aside>';
     }
@@ -117,19 +118,20 @@ for ($i = 1; $i <= 2; $i++) {
 
       <?php
       if ($cta_data[2]['desktop_id'] && $cta_data[2]['link']) {
-        $is_mobile = wp_is_mobile();
-        if ($is_mobile && $cta_data[2]['celular_id']) {
-          $imagem_url = wp_get_attachment_image_url($cta_data[2]['celular_id'], 'ctaCelular');
-          $imagem_alt = $cta_data[2]['celular_alt'];
-        } else {
-          $imagem_url = wp_get_attachment_image_url($cta_data[2]['desktop_id'], 'ctaDesktop');
-          $imagem_alt = $cta_data[2]['desktop_alt'];
-        }
-        if ($imagem_url) {
+        $imagem_desktop_url = wp_get_attachment_image_url($cta_data[2]['desktop_id'], 'ctaDesktop');
+        $imagem_celular_url = $cta_data[2]['celular_id'] ? wp_get_attachment_image_url($cta_data[2]['celular_id'], 'ctaCelular') : false;
+        $imagem_alt = $cta_data[2]['desktop_alt'];
+        if ($imagem_desktop_url) {
+          $imagem_html =
+            '<picture>' .
+            ($imagem_celular_url ? '<source media="(max-width: 767px)" srcset="' . esc_url($imagem_celular_url) . '">' : '') .
+            '<img src="' . esc_url($imagem_desktop_url) . '" alt="' . esc_html($imagem_alt) . '" class="cta-image">' .
+            '</picture>';
+
           echo
           '<aside class="cta grid-column-span-2 sem-margem" style="background-color: ' . $cta_data[2]['cor'] . '">' .
             '<a href="' . esc_url($cta_data[2]['link']) . '" class="cta-link" rel="nofollow" target="_blank">' .
-            '<img src="' . esc_url($imagem_url) . '" alt="' . esc_html($imagem_alt) . '" class="cta-image">' .
+            $imagem_html .
             '</a>' .
             '</aside>';
         }

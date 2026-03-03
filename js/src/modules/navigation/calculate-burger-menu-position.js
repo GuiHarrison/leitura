@@ -1,3 +1,5 @@
+import { isMobileViewport } from '../device-detection';
+
 // Calculate burger menu position
 function calculateBurgerMenuPosition() {
   // If nav-toggle, site-header or main-menu not found, bail
@@ -8,18 +10,12 @@ function calculateBurgerMenuPosition() {
     return;
   }
 
-  // Set viewport
-  const viewportWidth = document.documentElement.clientWidth || document.body.clientWidth;
-
-  // Get --width-max-mobile from CSS
-  const widthMaxMobile = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--width-max-mobile'), 10);
-
   // Get the height of .site-header and #nav-toggle
   // Calculate the top position of the toggle to be exactly in the center vertically
   const siteHeaderHeight = document.querySelector('.site-header').offsetHeight;
 
   // Set navigation position from top if on mobile
-  if (viewportWidth <= widthMaxMobile) {
+  if (isMobileViewport()) {
     // document.getElementById('menu-items-wrapper').style.top = `${siteHeaderHeight}px`;
     // document.getElementById('menu-items-wrapper').style.height = `calc(100vh - ${siteHeaderHeight}px)`;
     document.getElementById('menu-items-wrapper').style.top = '0';

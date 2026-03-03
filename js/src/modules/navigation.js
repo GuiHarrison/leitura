@@ -196,7 +196,9 @@ const navSticky = () => {
   }
 
   function initStickyNav() {
-    seCelular();
+    if (seCelular()) {
+      return;
+    }
 
     const siteHeader = document.querySelector('.site-header');
     const headerHeight = getComputedStyle(siteHeader).height.split('px')[0];

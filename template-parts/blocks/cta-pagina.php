@@ -12,17 +12,21 @@ namespace Air_Light;
 $cta_data = get_field('cta-pagina', 'option');
 
 if ($cta_data && $cta_data['cta_pagina_imagem_desktop'] && $cta_data['cta_pagina_link']) {
-  $is_mobile = wp_is_mobile();
-  $imagem_id = $is_mobile && $cta_data['cta_pagina_imagem_celular'] ?
-    $cta_data['cta_pagina_imagem_celular'] :
-    $cta_data['cta_pagina_imagem_desktop'];
+  $imagem_desktop = wp_get_attachment_image_src($cta_data['cta_pagina_imagem_desktop'], 'full');
+  $imagem_celular = $cta_data['cta_pagina_imagem_celular'] ?
+    wp_get_attachment_image_src($cta_data['cta_pagina_imagem_celular'], 'full') :
+    false;
 
-  $imagem = wp_get_attachment_image_src($imagem_id, 'full');
+  if ($imagem_desktop) {
+    $imagem_html =
+      '<picture>' .
+      ($imagem_celular ? '<source media="(max-width: 767px)" srcset="' . esc_url($imagem_celular[0]) . '">' : '') .
+      '<img src="' . esc_url($imagem_desktop[0]) . '" alt="" class="cta-image">' .
+      '</picture>';
 
-  if ($imagem) {
     echo
     '<a href="' . esc_url($cta_data['cta_pagina_link']) . '" class="cta-link" rel="nofollow">' .
-      '<img src="' . esc_url($imagem[0]) . '" alt="" class="cta-image">' .
+      $imagem_html .
       '</a>';
   }
 }

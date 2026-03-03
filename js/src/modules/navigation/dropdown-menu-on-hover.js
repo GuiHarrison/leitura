@@ -1,3 +1,5 @@
+import { isMobileViewport } from '../device-detection';
+
 // Dropdown menu function
 function dropdownMenuOnHover(items) {
   // Optional timeout
@@ -6,11 +8,7 @@ function dropdownMenuOnHover(items) {
   items.forEach((li) => {
     // eslint-disable-next-line func-names
     li.addEventListener('mouseover', function () {
-      // Get --width-max-mobile from CSS
-      const widthMaxMobile = getComputedStyle(document.documentElement).getPropertyValue('--width-max-mobile');
-
-      // Let's see if we are on mobile viewport
-      const isMobile = window.matchMedia(`(max-width: ${widthMaxMobile})`).matches;
+      const isMobile = isMobileViewport();
 
       // If rules don't apply, bail
       if (li.classList.contains('removing-hover') || isMobile) {

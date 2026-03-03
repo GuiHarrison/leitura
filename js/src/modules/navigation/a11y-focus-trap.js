@@ -1,3 +1,5 @@
+import { isMobileViewport } from '../device-detection';
+
 function a11yFocusTrap(e) {
   // Init focusable elements
   let focusableElements = [];
@@ -8,13 +10,7 @@ function a11yFocusTrap(e) {
   // Define nav-toggle
   const navToggle = document.getElementById('nav-toggle');
 
-  // Get --width-max-mobile from CSS
-  const widthMaxMobile = getComputedStyle(
-    document.documentElement,
-  ).getPropertyValue('--width-max-mobile');
-
-  // Let's see if we are on mobile viewport
-  const isMobile = window.matchMedia(`(max-width: ${widthMaxMobile})`).matches;
+  const isMobile = isMobileViewport();
 
   // If things are not okay, bail
   if (!container || !navToggle || !isMobile) {

@@ -12,6 +12,7 @@ import backToTop from './modules/top';
 import initAccordions from './modules/accordion';
 import initA11ySkipLink from './modules/a11y-skip-link';
 import initA11yFocusSearchField from './modules/a11y-focus-search-field';
+import { initDeviceDetectionCache } from './modules/device-detection';
 import {
   navSticky, navClick, navDesktop, navMobile,
 } from './modules/navigation';
@@ -22,6 +23,8 @@ document.body.classList.remove('no-js');
 document.body.classList.add('js');
 
 document.addEventListener('DOMContentLoaded', () => {
+  initDeviceDetectionCache();
+
   initAnchors();
   backToTop();
   styleExternalLinks();
