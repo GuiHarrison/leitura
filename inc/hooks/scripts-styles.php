@@ -218,7 +218,7 @@ function enqueue_theme_scripts(): void
  */
 function get_asset_file($filename)
 {
-  $env = 'production' === wp_get_environment_type() && ! isset($_GET['load_production_builds']) ? 'dev' : 'prod'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+  $env = 'prod' === wp_get_environment_type() && ! isset($_GET['load_production_builds']) ? 'dev' : 'prod'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
   $filetype = pathinfo($filename)['extension'];
 

@@ -51,7 +51,7 @@ module.exports = {
     production: themeDir + 'css/prod/',
     watch: {
       development: themeDir + 'sass/**/*.scss',
-      production: themeDir + 'css/dev/*.css',
+      production: themeDir + 'css/prod/*.css',
     },
     stylelint: {
       src: themeDir + 'sass/**/*.scss',
