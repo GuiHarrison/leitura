@@ -19,7 +19,7 @@ function calculateBurgerMenuPosition() {
     // document.getElementById('menu-items-wrapper').style.top = `${siteHeaderHeight}px`;
     // document.getElementById('menu-items-wrapper').style.height = `calc(100vh - ${siteHeaderHeight}px)`;
     document.getElementById('menu-items-wrapper').style.top = '0';
-    document.getElementById('menu-items-wrapper').style.height = 'auto';
+    // document.getElementById('menu-items-wrapper').style.height = 'auto';
 
     // If there is air-notification element(s), calculate top and height of menu-items-wrapper
     if (document.querySelector('.air-notification')) {

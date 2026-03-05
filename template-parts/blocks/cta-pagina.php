@@ -25,7 +25,7 @@ if ($cta_data && $cta_data['cta_pagina_imagem_desktop'] && $cta_data['cta_pagina
       '</picture>';
 
     echo
-    '<a href="' . esc_url($cta_data['cta_pagina_link']) . '" class="cta-link" rel="nofollow">' .
+    '<a href="' . esc_url($cta_data['cta_pagina_link']) . '" class="cta-link no-external-link-indicator" rel="nofollow">' .
       $imagem_html .
       '</a>';
   }

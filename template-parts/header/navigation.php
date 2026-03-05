@@ -18,8 +18,8 @@ namespace Air_Light;
     </button>
 
     <div id="menu-items-wrapper" class="menu-items-wrapper">
-      <div class="logo-preta hide-on-desktop-nav-view">
-        <?php include get_theme_file_path(THEME_SETTINGS['logo-simbolo-preta']); ?>
+      <div class="logo hide-on-desktop-nav-view">
+        <?php include get_theme_file_path(THEME_SETTINGS['logo-simbolo-branca']); ?>
       </div>
 
       <?php wp_nav_menu(array(

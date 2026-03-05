@@ -12,7 +12,7 @@
   position: relative;
   z-index: 15;
 
-  @media screen and (min-width: breakpoints.$width-max-mobile) {
+  @media screen and (min-width: breakpoints.$container-desktop) {
     height: 275px;
   }
 
@@ -44,7 +44,7 @@
       align-items: stretch;
     }
 
-    @media (min-width: breakpoints.$container-ipad-landscape) {
+    @media (min-width: breakpoints.$container-desktop) {
       justify-content: space-between;
 
       &.busca-container {
@@ -105,9 +105,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-  padding: 0;
 
-  @media (min-width: breakpoints.$container-ipad-landscape) {
+  @media (min-width: breakpoints.$container-desktop) {
+    padding: 0 1.6rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
@@ -115,13 +115,13 @@
   }
 
   .site-branding {
-    padding: 40px 54px 40px 50px;
-    min-height: 100px;
-    width: 100vw;
     max-width: 300px;
+    padding: 40px 54px 40px 50px;
+    width: 100vw;
 
-    @media (min-width: breakpoints.$container-ipad-landscape) {
-      max-width: 400px;
+    @media (min-width: breakpoints.$container-desktop) {
+      max-width: 200px;
+      padding: 0;
     }
 
     svg {
@@ -130,7 +130,7 @@
       min-width: 200px;
       width: auto;
 
-      @media (min-width: breakpoints.$container-ipad-landscape) {
+      @media (min-width: breakpoints.$container-desktop) {
         max-height: initial;
       }
     }
@@ -140,7 +140,7 @@
     background-color: var(--azul-leitura);
     padding: 20px 54px;
 
-    @media (min-width: breakpoints.$container-ipad-landscape) {
+    @media (min-width: breakpoints.$container-desktop) {
       background-color: transparent;
       width: 550px;
       padding: 40px 54px;
@@ -154,7 +154,7 @@
       button {
         height: 3rem;
 
-        @media (min-width: breakpoints.$container-ipad-landscape) {
+        @media (min-width: breakpoints.$container-desktop) {
           height: 3.5rem;
         }
       }
@@ -193,18 +193,19 @@
   .redes-sociais {
     display: none;
 
-    @media (min-width: breakpoints.$container-ipad-landscape) {
+    @media (min-width: breakpoints.$container-desktop) {
       display: flex;
-      min-width: 240px;
+      min-width: 200px;
       flex-direction: row;
       justify-content: space-between;
       color: var(--azul-leitura);
+      padding: 0;
     }
   }
 }
 
 .barra-navegação {
-  @media (max-width: breakpoints.$width-max-mobile) {
+  @media (max-width: breakpoints.$container-desktop) {
     position: absolute;
     width: 50px;
     height: 50px;
@@ -212,7 +213,7 @@
     right: 0;
   }
 
-  @media (min-width: breakpoints.$width-max-mobile) {
+  @media (min-width: breakpoints.$container-desktop) {
     position: relative;
     top: 0;
     right: 0;

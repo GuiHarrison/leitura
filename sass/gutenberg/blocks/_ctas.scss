@@ -62,21 +62,29 @@ img.cta-image {
     flex-grow: 1;
     // flex-basis: 150%;
 
+    h2 {
+      hyphens: auto;
+    }
+
     .button {
       font-weight: var(--typography-weight-medium);
       text-align: left;
       width: 100%;
+      padding: 14px 6px;
     }
   }
 
   .revista-thumbnail {
-    flex-basis: fit-content;
-    flex-shrink: 1;
-    display: flex;
     margin: 0;
 
     img {
-      width: auto;
+      height: 100%;
+    }
+
+    @media (max-width: breakpoints.$container-desktop) {
+      img {
+        height: auto;
+      }
     }
   }
 }
@@ -86,11 +94,15 @@ img.cta-image {
   .revista-container {
     max-height: initial;
     max-width: initial;
-    gap: 40px;
+    gap: 20px;
     justify-content: space-evenly;
 
     .conteudo {
       max-width: 400px;
+
+      h2 {
+        hyphens: auto;
+      }
 
       a {
         font-size: 1.1rem;
@@ -98,6 +110,10 @@ img.cta-image {
 
       h2 a {
         font-size: 2.3rem;
+      }
+
+      .button {
+        padding: 14px 6px;
       }
     }
   }

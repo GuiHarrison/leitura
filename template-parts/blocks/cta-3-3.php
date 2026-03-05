@@ -26,7 +26,7 @@ if ($cta_data && $cta_data['cta_externo_imagem_desktop'] && $cta_data['cta_exter
       '</picture>';
 
     echo
-    '<a href="' . esc_url($cta_data['cta_externo_link']) . '" class="cta-link" rel="nofollow" target="_blank" style="background-color: ' . $cor . '">' .
+    '<a href="' . esc_url($cta_data['cta_externo_link']) . '" class="cta-link no-external-link-indicator" rel="nofollow" target="_blank" style="background-color: ' . $cor . '">' .
       $imagem_html .
       '</a>';
   }

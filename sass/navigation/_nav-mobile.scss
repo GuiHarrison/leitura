@@ -13,18 +13,18 @@
   --width-navigation: 100vw;
 
   // Affecting to both main and sub-levels
-  --color-background-menu-items: var(--color-white);
-  --color-background-menu-items-active: var(--color-white);
+  --color-background-menu-items: var(--azul-leitura);
+  --color-background-menu-items-active: var(--azul-leitura);
   --color-separator-nav-mobile: rgb(255 255 255 / .1);
-  --color-current-menu-item: var(--color-black);
-  --color-dropdown-toggle-mobile: var(--color-black);
+  --color-current-menu-item: var(--color-white);
+  --color-dropdown-toggle-mobile: var(--color-white);
 
   // Main level items on mobile
   --typography-size-main-level-mobile: 1.2rem;
   --typography-weight-main-level-mobile: 600;
   --padding-main-level-vertical-mobile: 0.75rem;
-  --color-main-level-menu-item-hover-focus-mobile: var(--color-black);
-  --color-main-level-menu-item-mobile: var(--color-black);
+  --color-main-level-menu-item-hover-focus-mobile: var(--color-white);
+  --color-main-level-menu-item-mobile: var(--color-white);
 
   // Sub-menu items on mobile
   --typography-size-sub-menu-mobile: 1.1rem;
@@ -32,11 +32,11 @@
   --margin-left-sub-menu: 0.625rem;
   --padding-sub-menu-vertical-mobile: 0.5rem;
   --padding-sub-menu-horizontal-mobile: 1.5625rem;
-  --color-sub-menu-mobile: var(--cinza-medio);
+  --color-sub-menu-mobile: var(--azul-claro);
 }
 
 // Navigation core functionality
-@media only screen and (max-width: breakpoints.$width-max-mobile) {
+@media only screen and (max-width: breakpoints.$container-desktop) {
 
   // Functionality needs display: none here for visual reasons
   .menu-items ul {
@@ -44,14 +44,14 @@
   }
 }
 
-@media only screen and (max-width: breakpoints.$width-max-mobile) {
+@media only screen and (max-width: breakpoints.$container-desktop) {
   ul .sub-menu.toggled-on {
     display: block;
   }
 }
 
 // Mobile styles
-@media screen and (max-width: calc(breakpoints.$width-max-mobile - 1px)) {
+@media screen and (max-width: calc(breakpoints.$container-desktop - 1px)) {
 
   // Let's ensure site-header loads properly and doesn't leave empty spaces
   .site-header {
@@ -85,10 +85,10 @@
     backface-visibility: hidden;
     background-color: var(--color-white);
     // Real height is calculated in JS so this is a fallback
-    height: calc(100vh - 7.2rem);
+    height: 100vh;
     overflow: auto;
     // Add padding to ensure all nav elements are visible on all devices and browsers for example iOS Safari
-    padding-bottom: 7.5rem;
+    // padding-bottom: 7.5rem;
     pointer-events: none;
     // Hide mobile navigation by default while enabling use of animations
     position: fixed;
@@ -102,7 +102,12 @@
     z-index: 5;
   }
 
-
+  .logo {
+    svg {
+      max-height: 40px;
+      width: auto;
+    }
+  }
 
   .menu-items {
     margin: 0;
@@ -154,8 +159,8 @@
   }
 
   // Current menu item color
-  .menu-item.current-menu-parent>a,
-  .menu-item.current-menu-item>a {
+  .menu-item.current-menu-parent > a,
+  .menu-item.current-menu-item > a {
     color: var(--color-current-menu-item);
   }
 
@@ -183,7 +188,7 @@
 
     // Make svg not clickable so that it won't interfere with the menu item
     svg {
-      background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" style="width: var(--dropdown-toggle-size); height: var(--dropdown-toggle-size);" width="10" height="10" viewBox="0 0 10 10"%3E%3Cpath fill="none" stroke="%23000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 1.5v7M1.5 5h7"/%3E%3C/svg%3E%0A');
+      background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" style="width: var(--dropdown-toggle-size); height: var(--dropdown-toggle-size);" width="10" height="10" viewBox="0 0 10 10"%3E%3Cpath fill="none" stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 1.5v7M1.5 5h7"/%3E%3C/svg%3E%0A');
       background-size: 100%;
       height: var(--dropdown-toggle-size);
       pointer-events: none;
@@ -202,7 +207,7 @@
 
   .dropdown-toggle.toggled-on {
     svg {
-      background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" style="width: var(--dropdown-toggle-size); height: var(--dropdown-toggle-size);" width="10" height="10" viewBox="0 0 10 10"%3E%3Cpath fill="none" stroke="%239b9b9b" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1.5 5h7"/%3E%3C/svg%3E%0A');
+      background-image: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" style="width: var(--dropdown-toggle-size); height: var(--dropdown-toggle-size);" width="10" height="10" viewBox="0 0 10 10"%3E%3Cpath fill="none" stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1.5 5h7"/%3E%3C/svg%3E%0A');
       transform: rotate(-180deg);
     }
   }
@@ -254,5 +259,9 @@
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 0px;
+
+    img {
+      filter: grayscale(1) brightness(10);
+    }
   }
 }

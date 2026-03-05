@@ -26,7 +26,7 @@ if ($cta_data && $cta_data['imagem_news_desktop'] && $cta_data['news_link']) {
       '</picture>';
 
     echo
-    '<a href="' . esc_url($cta_data['news_link']) . '" class="cta-link" rel="nofollow" target="_blank" style="background-color: ' . $cor . '">' .
+    '<a href="' . esc_url($cta_data['news_link']) . '" class="cta-link no-external-link-indicator" rel="nofollow" target="_blank" style="background-color: ' . $cor . '">' .
       $imagem_html .
       '</a>';
   }
