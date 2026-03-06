@@ -22,16 +22,25 @@ const initAccordions = () => {
     const allowToggle = (allowMultiple) || accordion.hasAttribute('data-allow-toggle');
 
     // Create the array of toggle elements for the accordion group
-    const triggers = Array.prototype.slice.call(accordion.querySelectorAll('.accordion-trigger'));
-    const panels = Array.prototype.slice.call(accordion.querySelectorAll('.accordion-panel'));
+    const triggers = Array.prototype.slice.call(accordion.querySelectorAll('.accordion-trigger'))
+      .filter((trigger) => trigger.closest('.accordion') === accordion);
+    const panels = Array.prototype.slice.call(accordion.querySelectorAll('.accordion-panel'))
+      .filter((panel) => panel.closest('.accordion') === accordion);
+
+    // Initialize panels with aria-expanded attribute
+    panels.forEach((panel) => {
+      if (!panel.hasAttribute('aria-expanded')) {
+        panel.setAttribute('aria-expanded', 'false');
+      }
+    });
 
     accordion.addEventListener('click', (event) => {
       const { target } = event;
 
-      if (target.classList.contains('accordion-trigger')) {
+      if (target.classList.contains('accordion-trigger') && target.closest('.accordion') === accordion) {
         // Check if the current toggle is expanded.
         const isExpanded = target.getAttribute('aria-expanded') === 'true';
-        const active = accordion.querySelector('[aria-expanded="true"]');
+        const active = triggers.find((trigger) => trigger.getAttribute('aria-expanded') === 'true');
 
         // without allowMultiple, close the open accordion
         if (!allowMultiple && active && active !== target) {
@@ -39,7 +48,10 @@ const initAccordions = () => {
           active.setAttribute('aria-expanded', 'false');
 
           // Hide the accordion sections, using aria-controls to specify the desired section
-          document.getElementById(active.getAttribute('aria-controls')).setAttribute('hidden', '');
+          const activePanel = document.getElementById(active.getAttribute('aria-controls'));
+          if (activePanel) {
+            activePanel.setAttribute('aria-expanded', 'false');
+          }
 
           // When toggling is not allowed, clean up disabled state
           if (!allowToggle) {
@@ -51,8 +63,11 @@ const initAccordions = () => {
           // Set the expanded state on the triggering element
           target.setAttribute('aria-expanded', 'true');
 
-          // Hide the accordion sections, using aria-controls to specify the desired section
-          document.getElementById(target.getAttribute('aria-controls')).removeAttribute('hidden');
+          // Show the accordion sections, using aria-controls to specify the desired section
+          const targetPanel = document.getElementById(target.getAttribute('aria-controls'));
+          if (targetPanel) {
+            targetPanel.setAttribute('aria-expanded', 'true');
+          }
 
           // If toggling is not allowed, set disabled state on trigger
           if (!allowToggle) {
@@ -63,7 +78,10 @@ const initAccordions = () => {
           target.setAttribute('aria-expanded', 'false');
 
           // Hide the accordion sections, using aria-controls to specify the desired section
-          document.getElementById(target.getAttribute('aria-controls')).setAttribute('hidden', '');
+          const targetPanel = document.getElementById(target.getAttribute('aria-controls'));
+          if (targetPanel) {
+            targetPanel.setAttribute('aria-expanded', 'false');
+          }
         }
 
         event.preventDefault();
@@ -82,7 +100,7 @@ const initAccordions = () => {
       const ctrlModifier = (event.ctrlKey && key.match(/33|34/));
 
       // Is this coming from an accordion header?
-      if (target.classList.contains('accordion-trigger')) {
+      if (target.classList.contains('accordion-trigger') && target.closest('.accordion') === accordion) {
         // Up/ Down arrow and Control + Page Up/ Page Down keyboard operations
         // 38 = Up, 40 = Down
         if (key.match(/38|40/) || ctrlModifier) {
@@ -112,7 +130,7 @@ const initAccordions = () => {
     });
 
     // These are used to style the accordion when one of the buttons has focus
-    accordion.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+    triggers.forEach((trigger) => {
       trigger.addEventListener('focus', (event) => {
         accordion.classList.add('focus');
       });
@@ -126,7 +144,7 @@ const initAccordions = () => {
     // expanded/ active accordion which is not allowed to be toggled close
     if (!allowToggle) {
       // Get the first expanded/ active accordion
-      const expanded = accordion.querySelector('[aria-expanded="true"]');
+      const expanded = triggers.find((trigger) => trigger.getAttribute('aria-expanded') === 'true');
 
       // If an expanded/ active accordion is found, disable
       if (expanded) {
